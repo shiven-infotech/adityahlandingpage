@@ -17,11 +17,11 @@ export default function Footer() {
         <div>
           <h3 className="text-lg font-semibold mb-3">Quick Links</h3>
           <ul className="space-y-2 text-sm">
-            <li><a href="/" className="hover:text-green-200">Home</a></li>
-            <li><a href="/about" className="hover:text-green-200">About Us</a></li>
-            <li><a href="/services" className="hover:text-green-200">Services</a></li>
-            <li><a href="/appointment" className="hover:text-green-200">Book Appointment</a></li>
-            <li><a href="/contact" className="hover:text-green-200">Contact</a></li>
+            <li><a href="/" className="hover:text-yellow-300">Home</a></li>
+            <li><a href="/about" className="hover:text-yellow-300">About Us</a></li>
+            <li><a href="/services" className="hover:text-yellow-300">Services</a></li>
+            <li><a href="/appointment" className="hover:text-yellow-300">Book Appointment</a></li>
+            <li><a href="/contact" className="hover:text-yellow-300">Contact</a></li>
           </ul>
         </div>
 
@@ -35,10 +35,10 @@ export default function Footer() {
             <FaEnvelope /> <span>info@adityahomeopathy.com</span>
           </div>
           <div className="flex gap-4">
-            <a href="#" className="hover:text-green-200">
+            <a href="#" className="hover:text-yellow-300">
               <FaFacebookF />
             </a>
-            <a href="#" className="hover:text-green-200">
+            <a href="#" className="hover:text-yellow-300">
               <FaInstagram />
             </a>
           </div>
