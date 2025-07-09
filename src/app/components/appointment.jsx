@@ -23,7 +23,7 @@ export default function AppointmentForm() {
 
   return (
     <div className=" bg-gray-100 flex justify-center items-center py-10 px-4">
-      <div className="bg-white rounded-2xl shadow-lg p-8 w-full max-w-xl">
+      <div className="bg-white rounded-2xl shadow-lg p-8 max-w-6xl mx-w-md w-full">
         <h2 className="text-3xl font-bold text-green-700 mb-6 text-center">
           Book an Appointment
         </h2>

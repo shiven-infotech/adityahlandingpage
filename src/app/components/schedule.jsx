@@ -15,8 +15,8 @@ export default function ClinicSchedule() {
         Clinic Schedule
       </h2>
 
-      <div className="max-w-3xl mx-auto overflow-x-auto">
-        <table className="w-full border border-green-300 rounded-xl shadow-md">
+      <div className="max-w-6xl rounded-2xl shadow-lg mx-auto overflow-x-auto">
+        <table className="w-full border border-green-300 ">
           <thead className="bg-green-600 text-white">
             <tr>
               <th className="py-3 px-4 text-left">Day</th>

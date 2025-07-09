@@ -3,7 +3,7 @@ export default function PrivacyPolicy() {
     {
       label: "1. Information We Collect",
       content: (
-        <ul className="list-disc space-y-2 pl-5">
+        <ul className="list-disc pl-5 space-y-1">
           <li><strong>Personal Info:</strong> Name, phone, email, gender, age.</li>
           <li><strong>Medical Info:</strong> Symptoms, history, prescriptions.</li>
           <li><strong>Appointments:</strong> Date, time, follow-up, feedback.</li>
@@ -13,7 +13,7 @@ export default function PrivacyPolicy() {
     {
       label: "2. How We Use Your Info",
       content: (
-        <ul className="list-disc space-y-2 pl-5">
+        <ul className="list-disc pl-5 space-y-1">
           <li>Provide proper homeopathic treatment.</li>
           <li>Store your consultation records securely.</li>
           <li>Send reminders and health updates.</li>
@@ -65,19 +65,30 @@ export default function PrivacyPolicy() {
   ];
 
   return (
-    <div className="max-w-5xl bg-white mx-auto px-6 py-12">
-      <h1 className="text-3xl font-bold text-green-700 mb-10">Privacy Policy</h1>
+    <div className="  px-6  bg-gray-100 py-12">
+      <h1 className="text-3xl font-bold text-green-700 mb-10 text-center">
+        Privacy Policy
+      </h1>
 
-      <div className="space-y-8">
-        {sections.map((section, index) => (
-          <div
-            key={index}
-            className="grid md:grid-cols-4 gap-4 border-b border-gray-200 pb-6"
-          >
-            <div className="text-green-600 font-semibold">{section.label}</div>
-            <div className="md:col-span-3 text-gray-700">{section.content}</div>
-          </div>
-        ))}
+      <div className="max-w-6xl rounded-2xl shadow-lg mx-auto overflow-x-auto  ">
+        <table className="w-full  table-auto border border-gray-300 text-left">
+          <thead>
+            <tr className="bg-green-100 text-green-800">
+              <th className="p-4 border border-gray-300 w-1/3">Section</th>
+              <th className="p-4 border border-gray-300">Details</th>
+            </tr>
+          </thead>
+          <tbody className="text-gray-700">
+            {sections.map((section, index) => (
+              <tr key={index} className="border-t border-gray-200 align-top">
+                <td className="p-4 border border-gray-300 font-semibold text-green-600">
+                  {section.label}
+                </td>
+                <td className="p-4 border border-gray-300">{section.content}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
       </div>
     </div>
   );

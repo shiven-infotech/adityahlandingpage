@@ -10,8 +10,8 @@ import PatientTestimonials from "./components/patienttestimonials";
 import Faqs from "./components/faqs";
 import AppointmentForm from "./components/appointment";
 import Schedule from "./components/schedule";
-import Footer from "./components/footer";
 import PrivacyPolicy from "./components/privacypolicy";
+import Footer from "./components/footer";
 
 
 export default function Home() {
@@ -29,8 +29,8 @@ export default function Home() {
     <Faqs/>
     <AppointmentForm/>
     <Schedule/>
-    <Footer/>
     <PrivacyPolicy/>
+      <Footer/>
 
     </>
   );

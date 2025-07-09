@@ -45,7 +45,7 @@ export default function HomeopathyFAQs() {
         <span className="text-red-600">Questions</span>
       </h2>
 
-      <div className="max-w-3xl mx-auto space-y-4">
+      <div className="max-w-6xl mx-auto space-y-4">
         {faqs.map((faq, index) => (
           <div key={index} className="bg-white rounded-xl shadow-md">
             <button

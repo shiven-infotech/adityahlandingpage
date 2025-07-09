@@ -27,12 +27,12 @@ export default function HomeopathyFactsMyths() {
   ];
 
   return (
-    <div className="min-h-screen bg-gray-100 p-6 ">
+    <div className="bg-gray-100 p-6 ">
       <h1 className="text-3xl font-bold text-green-700 text-center mb-8">
         Myths & Facts About Homeopathy
       </h1>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-6xl mx-auto">
         {data.map((item, index) => (
           <div
             key={index}

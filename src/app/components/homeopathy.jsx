@@ -43,11 +43,11 @@ export default function HomeopathyFundamentals() {
   ];
 
   return (
-    <div className="min-h-screen bg-gray-100 p-6 pb-0">
+    <div className=" bg-gray-100 p-6 pb-0">
       <h1 className="text-3xl font-bold text-green-700 text-center mb-6">
         Fundamentals of Homeopathy
       </h1>
-      <div className="overflow-x-auto bg-white rounded-2xl shadow-md">
+      <div className="overflow-x-auto bg-white rounded-2xl shadow-md max-w-6xl mx-auto">
         <table className="min-w-full table-auto border border-gray-200">
           <thead className="bg-green-600 text-white">
             <tr>

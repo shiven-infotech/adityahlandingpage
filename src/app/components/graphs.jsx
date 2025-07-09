@@ -24,7 +24,6 @@ ChartJS.register(
 );
 
 export default function HomeopathyDashboard() {
-  // Charts Data
   const barData = {
     labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun"],
     datasets: [
@@ -33,6 +32,20 @@ export default function HomeopathyDashboard() {
         data: [45, 60, 55, 75, 90, 110],
         backgroundColor: "#22c55e",
         borderRadius: 8,
+      },
+    ],
+  };
+
+  const lineData = {
+    labels: ["Week 1", "Week 2", "Week 3", "Week 4", "Week 5", "Week 6"],
+    datasets: [
+      {
+        label: "Symptom Score",
+        data: [9, 7, 6, 4, 2, 1],
+        borderColor: "#22c55e",
+        backgroundColor: "#bbf7d0",
+        tension: 0.4,
+        pointBackgroundColor: "#15803d",
       },
     ],
   };
@@ -63,51 +76,40 @@ export default function HomeopathyDashboard() {
     ],
   };
 
-  const lineData = {
-    labels: ["Week 1", "Week 2", "Week 3", "Week 4", "Week 5", "Week 6"],
-    datasets: [
-      {
-        label: "Symptom Score",
-        data: [9, 7, 6, 4, 2, 1],
-        borderColor: "#22c55e",
-        backgroundColor: "#bbf7d0",
-        tension: 0.4,
-        pointBackgroundColor: "#15803d",
-      },
-    ],
-  };
-
   return (
-    <div className="min-h-screen bg-gray-100 p-6">
-      
+    <div className=" bg-gray-100 py-10 px-4">
+      <h1 className="text-3xl font-bold text-green-700 text-center mb-10">
+        📊 Homeopathy Clinic Dashboard
+      </h1>
 
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-        {/* Card 1: Bar Chart */}
-        <div className="bg-white rounded-2xl shadow-lg p-6">
+      {/* Grid Layout */}
+      <div className="grid grid-cols-1 md:grid-cols-4 gap-6 max-w-6xl mx-auto">
+        {/* Bar Chart */}
+        <div className="bg-white rounded-2xl shadow-lg p-6 w-full">
           <h2 className="text-xl font-semibold text-green-600 mb-4">
             Monthly Patients Treated
           </h2>
           <Bar data={barData} />
         </div>
 
-        {/* Card 2: Line Chart */}
-        <div className="bg-white rounded-2xl shadow-lg p-6">
+        {/* Line Chart */}
+        <div className="bg-white rounded-2xl shadow-lg p-6 w-full">
           <h2 className="text-xl font-semibold text-green-600 mb-4">
             Symptom Improvement Over Time
           </h2>
           <Line data={lineData} />
         </div>
 
-        {/* Card 3: Pie Chart */}
-        <div className="bg-white rounded-2xl shadow-lg p-6">
+        {/* Pie Chart */}
+        <div className="bg-white rounded-2xl shadow-lg p-6 w-full">
           <h2 className="text-xl font-semibold text-green-600 mb-4">
             Treatment Success by Condition
           </h2>
           <Pie data={pieData} />
         </div>
 
-        {/* Card 4: Doughnut Chart */}
-        <div className="bg-white rounded-2xl shadow-lg p-6">
+        {/* Doughnut Chart */}
+        <div className="bg-white rounded-2xl shadow-lg p-6 w-full">
           <h2 className="text-xl font-semibold text-green-600 mb-4">
             Consultation Types
           </h2>
