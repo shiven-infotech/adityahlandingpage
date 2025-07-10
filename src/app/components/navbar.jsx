@@ -24,9 +24,9 @@ export default function Navbar() {
         <ul className="hidden md:flex space-x-6">
           <li className="hover:text-yellow-300 cursor-pointer">Home</li>
           <li className="hover:text-yellow-300 cursor-pointer">Services</li>
-          <li className="hover:text-yellow-300 cursor-pointer">Contacts</li>
-          <li className="hover:text-yellow-300 cursor-pointer">Doctors</li>
-          <li className="hover:text-yellow-300 cursor-pointer">About Us</li>
+          <li className="hover:text-yellow-300 cursor-pointer">Contact us</li>
+          <li className="hover:text-yellow-300 cursor-pointer">About us</li>
+          <li className="hover:text-yellow-300 cursor-pointer">Login</li>
         </ul>
 
         {/* Hamburger Menu Button */}
