@@ -27,7 +27,7 @@ export default function HomeopathyFactsMyths() {
   ];
 
   return (
-    <div className="bg-gray-100 p-6 ">
+    <div className="bg-[#FFFDD0] p-6 ">
       <h1 className="text-3xl font-bold text-green-700 text-center mb-8">
         Myths & Facts About Homeopathy
       </h1>

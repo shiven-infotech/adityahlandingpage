@@ -10,7 +10,7 @@ export default function ClinicSchedule() {
   ];
 
   return (
-    <div className="bg-gray-100 py-10 px-6">
+    <div className="bg-[#FFFDD0] py-10 px-6">
       <h2 className="text-3xl font-bold text-center text-green-700 mb-8">
         Clinic Schedule
       </h2>

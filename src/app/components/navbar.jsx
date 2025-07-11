@@ -1,73 +1,55 @@
 "use client";
 import { useState } from "react";
-import Image from "next/image";
+import { usePathname } from "next/navigation";
+import Link from "next/link";
 
 export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
+  const pathname = usePathname();
+
+  const isActive = (path) => pathname === path;
+
+  const linkClass = (path) =>
+    `hover:text-green-700 ${isActive(path) ? "underline text-green-700 font-semibold" : ""}`;
 
   return (
-    <nav className="sticky top-0 z-50 bg-green-700 text-white px-6 py-4">
-      <div className="flex justify-between items-center max-w-7xl mx-auto">
-        {/* Logo */}
-        <div className="flex items-center space-x-2">
-          <Image
-            src="/logo.png"
-            alt="Logo for Aditya Homoeopathy"
-            width={60}
-            height={60} 
-            className="object-contain"
-          />
-          <span className="text-xl font-bold">ADITYA HOMOEOPATHY</span>
-        </div>
-
+    <nav className="sticky top-0 z-50 bg-[#FFFDD0] text-black shadow-md px-6 py-3">
+      <div className="flex justify-center items-center max-w-7xl mx-auto">
         {/* Desktop Menu */}
-        <ul className="hidden md:flex space-x-6">
-          <li className="hover:text-yellow-300 cursor-pointer">Home</li>
-          <li className="hover:text-yellow-300 cursor-pointer">Services</li>
-          <li className="hover:text-yellow-300 cursor-pointer">Contact us</li>
-          <li className="hover:text-yellow-300 cursor-pointer">About us</li>
-          <li className="hover:text-yellow-300 cursor-pointer">Login</li>
+        <ul className="flex flex-wrap  item-center justify-center gap-x-6 gap-y-2 text-sm font-medium">
+          <li><Link href="/" className={linkClass("/")}>Home</Link></li>
+          <li><Link href="/Aboutus" className={linkClass("/Aboutus")}>About Us</Link></li>
+          <li><Link href="/AcuteAilments" className={linkClass("/AcuteAilments")}>Acute Ailments</Link></li>
+          <li><Link href="/ChronicAilments" className={linkClass("/ChronicAilments")}>Chronic Ailments</Link></li>
+          <li><Link href="/AlternativeTherapies" className={linkClass("/AlternativeTherapies")}>Alternative Therapies</Link></li>
+          <li><Link href="/HealthPackages" className={linkClass("/HealthPackages")}>Health Packages</Link></li>
+          <li><Link href="/Testimonials" className={linkClass("/Testimonials")}>Testimonials</Link></li>
+          <li><Link href="/OnlineClinic" className={linkClass("/OnlineClinic")}>Online Clinic</Link></li>
+          <li><Link href="/Resource" className={linkClass("/Resource")}>Resource</Link></li>
+          <li><Link href="/ContactUS" className={linkClass("/ContactUS")}>Contact Us</Link></li>
+          <li><Link href="/login" className={linkClass("/login")}>Login</Link></li>
         </ul>
 
-        {/* Hamburger Menu Button */}
-        <button
-          className="md:hidden focus:outline-none"
-          onClick={() => setMenuOpen(!menuOpen)}
-        >
-          <svg
-            className="w-6 h-6"
-            fill="none"
-            stroke="currentColor"
-            strokeWidth={2}
-            viewBox="0 0 24 24"
-          >
-            {menuOpen ? (
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                d="M6 18L18 6M6 6l12 12"
-              />
-            ) : (
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                d="M4 6h16M4 12h16M4 18h16"
-              />
-            )}
-          </svg>
-        </button>
+    
+       
       </div>
 
       {/* Mobile Menu */}
       {menuOpen && (
-        <ul className="md:hidden mt-4 space-y-2 px-2">
-          <li className="hover:text-yellow-300 cursor-pointer">Home</li>
-          <li className="hover:text-yellow-300 cursor-pointer">Services</li>
-          <li className="hover:text-yellow-300 cursor-pointer">Contacts</li>
-          <li className="hover:text-yellow-300 cursor-pointer">Doctors</li>
-          <li className="hover:text-yellow-300 cursor-pointer">About Us</li>
+        <ul className="md:hidden mt-4 space-y-2 px-2 text-sm font-medium">
+          <li><Link href="/" className={linkClass("/")}>Home</Link></li>
+          <li><Link href="/Aboutus" className={linkClass("/Aboutus")}>About Us</Link></li>
+          <li><Link href="/AcuteAilments" className={linkClass("/AcuteAilments")}>Acute Ailments</Link></li>
+          <li><Link href="/ChronicAilments" className={linkClass("/ChronicAilments")}>Chronic Ailments</Link></li>
+          <li><Link href="/AlternativeTherapies" className={linkClass("/AlternativeTherapies")}>Alternative Therapies</Link></li>
+          <li><Link href="/HealthPackages" className={linkClass("/HealthPackages")}>Health Packages</Link></li>
+          <li><Link href="/Testimonials" className={linkClass("/Testimonials")}>Testimonials</Link></li>
+          <li><Link href="/OnlineClinic" className={linkClass("/OnlineClinic")}>Online Clinic</Link></li>
+          <li><Link href="/Resource" className={linkClass("/Resource")}>Resource</Link></li>
+          <li><Link href="/ContactUS" className={linkClass("/ContactUS")}>Contact Us</Link></li>
+          <li><Link href="/login" className={linkClass("/login")}>Login</Link></li>
         </ul>
       )}
     </nav>
   );
-}
+} 

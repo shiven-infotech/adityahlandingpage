@@ -20,7 +20,7 @@ export default function TherapiesSection() {
   ];
 
   return (
-    <section className="py-12 px-4 bg-gray-100 text-gray-800">
+    <section className="py-12 px-4 bg-[#FFFDD0] text-gray-800">
       <h2 className="text-4xl font-bold text-center text-green-700 mb-10">Therapies</h2>
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 max-w-6xl mx-auto">
         {therapies.map((therapy, index) => (

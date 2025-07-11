@@ -43,7 +43,7 @@ export default function HomeopathyFundamentals() {
   ];
 
   return (
-    <div className=" bg-gray-100 p-6 pb-0">
+    <div className=" bg-[#FFFDD0] p-6 pb-0">
       <h1 className="text-3xl font-bold text-green-700 text-center mb-6">
         Fundamentals of Homeopathy
       </h1>
