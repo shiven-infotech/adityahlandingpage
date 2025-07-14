@@ -12,7 +12,7 @@ export default function Header() {
           height={60}
           className="object-contain"
         />
-        <h1 className="text-2xl font-bold">ADITYA HOMOEOPATHY</h1>
+        <h1 className="text-2xl font-bold">ADITYA HOMOEOPATHY CLINIC</h1>
       </div>
     </header>
   );

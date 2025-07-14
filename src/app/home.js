@@ -1,6 +1,7 @@
 import Header from "./components/header"; 
 import Navbar from "./components/navbar";
 import Hero from "./components/hero";
+import SpecialitySection from "./components/specialitysection";
 import Services from "./components/services";
 import WhyChooseUs from "./components/whychooseus";
 import Therapies from "./components/therapies";
@@ -21,6 +22,7 @@ export default function Home() {
     <Header/>
       <Navbar />
        <Hero />
+    <SpecialitySection />
       <Services/>
     <WhyChooseUs/>
     <Therapies />

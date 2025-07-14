@@ -14,7 +14,7 @@ export default function LoginPage() {
   };
 
   return (
-    <div className="min-h-screen flex flex-col items-center justify-center bg-gray-100 px-4">
+    <div className=" flex flex-col items-center justify-center bg-[#FFFDD0] max-w-auto h-screen p-6 rounded-lg shadow-lg">
       {/* Top Header */}
       <h1 className="text-3xl font-bold text-green-700 mb-8 text-center tracking-wide">
         ADITYA HOMOEOPATHY

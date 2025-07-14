@@ -65,7 +65,7 @@ export default function PrivacyPolicy() {
   ];
 
   return (
-    <div className="  px-6  bg-[#FFFDD0] py-12">
+    <div className="  px-4  bg-[#FFFDD0] py-8">
       <h1 className="text-3xl font-bold text-green-700 mb-10 text-center">
         Privacy Policy
       </h1>

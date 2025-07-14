@@ -2,7 +2,7 @@ import { FaFacebookF, FaInstagram, FaPhoneAlt, FaEnvelope } from "react-icons/fa
 
 export default function Footer() {
   return (
-    <footer className="bg-green-700 text-white py-10 px-6">
+    <footer className="bg-green-700 text-white py-8 px-4">
       <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8">
         {/* Clinic Info */}
         <div>

@@ -44,13 +44,13 @@ export default function ServicesSection() {
   ];
 
   return (
-    <section className="py-12 px-4 bg-[#FFFDD0] text-gray-800">
+    <section className="py-8 px-4 bg-[#FFFDD0] text-gray-800">
       <h2 className="text-4xl font-bold text-center text-green-700 mb-10">Our Services</h2>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto shadow-lg ">
         {services.map((service, index) => (
           <div
             key={index}
-            className="border rounded-2xl p-6  shadow-xl/30"
+            className=" bg-white border rounded-2xl p-6  shadow-xl/30"
           >
             <h3 className="text-xl font-semibold mb-3">{service.title}</h3>
             <ul className="list-disc list-inside text-gray-700 space-y-1">
