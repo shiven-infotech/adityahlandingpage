@@ -71,9 +71,9 @@ export default function PrivacyPolicy() {
       </h1>
 
       <div className="max-w-6xl rounded-2xl shadow-lg mx-auto overflow-x-auto  ">
-        <table className="w-full  table-auto border border-gray-300 text-left">
+        <table className="w-full  table-auto bg-white border border-gray-300 text-left">
           <thead>
-            <tr className="bg-green-100 text-green-800">
+            <tr className="bg-green-700 text-white">
               <th className="p-4 border border-gray-300 w-1/3">Section</th>
               <th className="p-4 border border-gray-300">Details</th>
             </tr>

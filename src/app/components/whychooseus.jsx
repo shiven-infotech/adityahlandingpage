@@ -26,7 +26,7 @@ export default function WhyChooseUs() {
 
   return (
     <section className="py-8 px-4 bg-[#FFFDD0] text-gray-800">
-      <h2 className="text-4xl font-bold text-center text-green-700 mb-10">WHY CHOOSE US</h2>
+      <h2 className="text-3xl font-bold text-center text-green-700 mb-10">WHY CHOOSE US</h2>
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-6 max-w-6xl mx-auto shadow-lg">
         {features.map((item, index) => (
           <div

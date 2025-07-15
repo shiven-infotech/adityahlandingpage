@@ -1,6 +1,5 @@
 import Image from "next/image";
 import Home from "./home";
-import Services from "./components/services";
 import therapies from "./components/therapies";
 import dynamic from "next/dynamic";
 

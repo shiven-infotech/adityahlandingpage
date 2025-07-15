@@ -2,7 +2,9 @@ import Header from "./components/header";
 import Navbar from "./components/navbar";
 import Hero from "./components/hero";
 import SpecialitySection from "./components/specialitysection";
-import Services from "./components/services";
+import TreatmentsCard from "./components/treatmentscard";
+import AlternativeTherapies from "./components/alternativetherapies";
+import HealthPackages from "./components/healthpackages";
 import WhyChooseUs from "./components/whychooseus";
 import Therapies from "./components/therapies";
 import Graphs from "./components/graphs";
@@ -23,7 +25,9 @@ export default function Home() {
      <Navbar/> 
        <Hero />
     <SpecialitySection />
-      <Services/>
+    <TreatmentsCard />
+    <AlternativeTherapies/>
+    <HealthPackages />
     <WhyChooseUs/>
     <Therapies />
     <Graphs/>

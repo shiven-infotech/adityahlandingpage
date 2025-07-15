@@ -21,7 +21,7 @@ export default function TherapiesSection() {
 
   return (
     <section className="py-8 px-4 bg-[#FFFDD0] text-gray-800">
-      <h2 className="text-4xl font-bold text-center text-green-700 mb-10">Therapies</h2>
+      <h2 className="text-3xl font-bold text-center text-green-700 mb-10">Therapies</h2>
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 max-w-6xl mx-auto shadow-lg">
         {therapies.map((therapy, index) => (
           <div
@@ -29,7 +29,7 @@ export default function TherapiesSection() {
             className="bg-white border rounded-2xl p-6 shadow-sm hover:shadow-md transition text-center"
           >
             <div className="flex justify-center mb-4">{therapy.icon}</div>
-            <h3 className="text-xl font-semibold mb-2">{therapy.title}</h3>
+            <h3 className="text-xl text-green-700 font-semibold mb-2">{therapy.title}</h3>
             <p className="text-gray-600">{therapy.description}</p>
           </div>
         ))}

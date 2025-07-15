@@ -63,7 +63,7 @@ export default function HomeopathyFundamentals() {
             {fundamentals.map((item, index) => (
               <tr
                 key={index}
-                className={index % 2 === 0 ? "bg-green-50" : "bg-white"}
+                className={index % 2 === 0 ? "bg-green-50" : "bg-[#FFFDD0]"}
               >
                 <td className="p-4 font-medium border-r border-gray-200">
                   {item.principle}
