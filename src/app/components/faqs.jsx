@@ -47,7 +47,7 @@ export default function HomeopathyFAQs() {
 
       <div className="max-w-6xl mx-auto space-y-4">
         {faqs.map((faq, index) => (
-          <div key={index} className="bg-white rounded-xl shadow-md">
+          <div key={index} className="bg-white rounded-xl shadow hover:shadow-xl transition">
             <button
               onClick={() => toggleFAQ(index)}
               className="w-full px-6 py-4 flex justify-between items-center text-left font-semibold text-lg"

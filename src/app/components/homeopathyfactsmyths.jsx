@@ -36,7 +36,7 @@ export default function HomeopathyFactsMyths() {
         {data.map((item, index) => (
           <div
             key={index}
-            className="bg-white rounded-2xl shadow-lg p-6 border border-green-100"
+            className="bg-white rounded-2xl shadow hover:shadow-xl transition p-6 border border-green-100"
           >
             <h2 className="text-lg font-semibold text-red-500 mb-2">Myth</h2>
             <p className="text-gray-800 mb-4">{item.myth}</p>

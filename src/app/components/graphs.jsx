@@ -85,7 +85,7 @@ export default function HomeopathyDashboard() {
       {/* Grid Layout */}
       <div className="grid grid-cols-1 md:grid-cols-4 gap-6 max-w-6xl mx-auto">
         {/* Bar Chart */}
-        <div className="bg-white rounded-2xl shadow-lg p-6 w-full">
+        <div className="bg-white rounded-2xl shadow hover:shadow-xl transition p-6 w-full">
           <h2 className="text-xl font-semibold text-green-600 mb-4">
             Monthly Patients Treated
           </h2>
@@ -93,7 +93,7 @@ export default function HomeopathyDashboard() {
         </div>
 
         {/* Line Chart */}
-        <div className="bg-white rounded-2xl shadow-lg p-6 w-full">
+        <div className="bg-white rounded-2xl shadow hover:shadow-xl transition p-6 w-full">
           <h2 className="text-xl font-semibold text-green-600 mb-4">
             Symptom Improvement Over Time
           </h2>
@@ -101,7 +101,7 @@ export default function HomeopathyDashboard() {
         </div>
 
         {/* Pie Chart */}
-        <div className="bg-white rounded-2xl shadow-lg p-6 w-full">
+        <div className="bg-white rounded-2xl shadow hover:shadow-xl transition p-6 w-full">
           <h2 className="text-xl font-semibold text-green-600 mb-4">
             Treatment Success by Condition
           </h2>
@@ -109,7 +109,7 @@ export default function HomeopathyDashboard() {
         </div>
 
         {/* Doughnut Chart */}
-        <div className="bg-white rounded-2xl shadow-lg p-6 w-full">
+        <div className="bg-white rounded-2xl shadow hover:shadow-xl transition p-6 w-full">
           <h2 className="text-xl font-semibold text-green-600 mb-4">
             Consultation Types
           </h2>
