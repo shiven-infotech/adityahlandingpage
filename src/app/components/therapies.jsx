@@ -26,7 +26,7 @@ export default function TherapiesSection() {
         {therapies.map((therapy, index) => (
           <div
             key={index}
-            className="bg-white border rounded-2xl p-6 shadow-sm hover:shadow-md transition text-center"
+            className="bg-white  rounded-2xl p-6 shadow-sm hover:shadow-md transition text-center"
           >
             <div className="flex justify-center mb-4">{therapy.icon}</div>
             <h3 className="text-xl text-green-700 font-semibold mb-2">{therapy.title}</h3>

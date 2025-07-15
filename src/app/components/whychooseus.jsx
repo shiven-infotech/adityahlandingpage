@@ -31,7 +31,7 @@ export default function WhyChooseUs() {
         {features.map((item, index) => (
           <div
             key={index}
-            className="bg-white border rounded-2xl p-6 shadow-sm hover:shadow-md transition flex gap-4 items-start"
+            className="bg-white  rounded-2xl p-6 shadow-sm hover:shadow-md transition flex gap-4 items-start"
           >
             <div>{item.icon}</div>
             <div>
