@@ -10,7 +10,7 @@ import HomeopathyFundamentals from "./components/homeopathy";
 import HomeopathyFactsMyths from "./components/homeopathyfactsmyths";
 import PatientTestimonials from "./components/patienttestimonials";
 import Faqs from "./components/faqs";
-import AppointmentForm from "./components/appointment";
+import ClientAppointmentWrapper from "./components/clientAppointmentWrapper";
 import Schedule from "./components/schedule";
 import PrivacyPolicy from "./components/privacypolicy";
 import Footer from "./components/footer";
@@ -20,7 +20,7 @@ export default function Home() {
   return (
     <>
     <Header/>
-      <Navbar />
+     <Navbar/> 
        <Hero />
     <SpecialitySection />
       <Services/>
@@ -31,7 +31,7 @@ export default function Home() {
     <HomeopathyFactsMyths />
     <PatientTestimonials/>
     <Faqs/>
-    <AppointmentForm/>
+    <ClientAppointmentWrapper/>
     <Schedule/>
     <PrivacyPolicy/>
       <Footer/>
