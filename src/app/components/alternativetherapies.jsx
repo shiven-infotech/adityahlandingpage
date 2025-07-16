@@ -31,7 +31,7 @@ export default function AlternativeTherapies() {
   ];
 
   return (
-    <section className="px-4 py-8 bg-[#FFFDD0]">
+    <section className="px-4 py-8 bg-[#e3ffe0]">
       <h2 className="text-3xl font-bold text-center text-green-700 mb-10">
         Alternative Therapies
       </h2>

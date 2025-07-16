@@ -39,20 +39,20 @@ export default function HomeopathyFAQs() {
   };
 
   return (
-    <div className="bg-[#FFFDD0]  py-8 px-4">
+    <div className="bg-[#e3ffe0]  py-8 px-4">
       <h2 className="text-3xl font-bold text-center mb-10">
         <span className="text-green-700">Frequently Asked </span>
-        <span className="text-red-600">Questions</span>
+        <span className="">Questions</span>
       </h2>
 
-      <div className="max-w-6xl mx-auto space-y-4">
+      <div className="max-w-7xl mx-auto space-y-4">
         {faqs.map((faq, index) => (
           <div key={index} className="bg-white rounded-xl shadow hover:shadow-xl transition">
             <button
               onClick={() => toggleFAQ(index)}
               className="w-full px-6 py-4 flex justify-between items-center text-left font-semibold text-lg"
             >
-              <div className="flex items-center gap-2 text-red-600">
+              <div className="flex items-center gap-2 ">
                 <FaQuestionCircle />
                 {faq.question}
               </div>
@@ -72,8 +72,8 @@ export default function HomeopathyFAQs() {
         ))}
 
         {/* Contact Us CTA */}
-        <div className="bg-red-50 mt-8 p-6 rounded-xl text-center border border-red-200">
-          <h3 className="text-xl font-semibold text-red-700 mb-2">
+        <div className="bg-[#e3ffe0] mt-8 p-6 rounded-xl text-center border border-red-200">
+          <h3 className="text-xl font-semibold  mb-2">
             Didn't find your question?
           </h3>
           <p className="text-gray-700 mb-4">

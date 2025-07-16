@@ -8,8 +8,8 @@ export default function Header() {
         <Image
           src="/logo.png"
           alt="Logo"
-          width={60}
-          height={60}
+          width={100}
+          height={100}
           className="object-contain"
         />
         <h1 className="text-2xl font-bold">ADITYA HOMOEOPATHY CLINIC</h1>

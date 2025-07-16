@@ -12,12 +12,19 @@ export default function Navbar() {
   const isActive = (path) => pathname === path;
 
   const linkClass = (path) =>
-    `block px-4 py-2 hover:text-green-700 ${
+    `block py-2 px-4 hover:text-green-700 break-words whitespace-normal ${
       isActive(path) ? "text-green-700 font-semibold" : ""
     }`;
 
   const menu = [
     { label: "Home", href: "/" },
+    {
+      label: "About Us",
+      children: [
+        { label: "Fundamentals of Homeopathy", href: "/fundamentalsofhomeopathy" },
+        { label: "Myths & Facts About Homeopathy", href: "/myths&factsabouthomeopathy" },
+      ],
+    },
     {
       label: "Acute Ailments",
       children: [
@@ -36,15 +43,15 @@ export default function Navbar() {
             { label: "Alopecia Areata", href: "/AcuteAilments/skin/alopeciaareata" },
             { label: "Warts", href: "/AcuteAilments/skin/warts" },
             { label: "Corn", href: "/AcuteAilments/skin/corn" },
-            {label :"Vitilligo", href:"/AcuteAilments/skin/vitilligo"},
-            {label :"Heat Storks", href:"/AcuteAilments/skin/heatstorks"},
-            {label :"Sun Burns", href:"/AcuteAilments/skin/sunburns"},
-            {label :"Skin Rashes", href:"/AcuteAilments/skin/skinrashes"},
-            {label :"Varicose Veins", href:"/AcuteAilments/skin/varicoseveins"},
+            { label: "Vitilligo", href: "/AcuteAilments/skin/vitilligo" },
+            { label: "Heat Storks", href: "/AcuteAilments/skin/heatstorks" },
+            { label: "Sun Burns", href: "/AcuteAilments/skin/sunburns" },
+            { label: "Skin Rashes", href: "/AcuteAilments/skin/skinrashes" },
+            { label: "Varicose Veins", href: "/AcuteAilments/skin/varicoseveins" },
           ],
         },
-        { 
-          label: "Beauty", 
+        {
+          label: "Beauty",
           href: "/AcuteAilments/beauty",
           children: [
             { label: "Hair Loss", href: "/AcuteAilments/beauty/hairloss" },
@@ -56,14 +63,25 @@ export default function Navbar() {
             { label: "Ear Infection", href: "/AcuteAilments/beauty/earinfection" },
             { label: "Conjunctivits", href: "/AcuteAilments/beauty/conjunctivits" },
             { label: "Vision Improvement", href: "/AcuteAilments/beauty/visionimprovement" },
-          ]
+          ],
         },
+        { label: "Bone Ailments", href: "/AcuteAilments/bone",
+          children: [
+            { label: "Cervical Spondylitis", href: "/acuteailments/bone/cervicalspondylitis" },
+            { label: "Lumbar Spondylitis", href: "/AcuteAilments/bone/lumbarspondylitis" },
+            { label: "Gout", href: "/AcuteAilments/bone/gout" },
+            { label: "Sciatica", href: "/AcuteAilments/bone/sciatica" },
+            { label: "Spinal Stenosis", href: "/AcuteAilments/bone/spinalstenosis" },
+            { label: "Degeneratve Changes", href: "/AcuteAilments/bone/degenerativechanges" },
+            { label: "Joint pain", href: "/AcuteAilments/bone/jointpain" },
+            { label: "Rheumatism", href: "/AcuteAilments/bone/rheumatism" },
+            { label: "Joint and Muscular Pain", href: "/AcuteAilments/bone/jointandmuscularpain" },
+          ]
+         },
 
-        { label: "Bone Ailments", href: "/AcuteAilments/bone" },
         { label: "Children Ailments", href: "/AcuteAilments/children" },
         { label: "Digestive Disorders", href: "/AcuteAilments/digestive" },
         { label: "Female Ailments", href: "/AcuteAilments/female" },
-        
       ],
     },
     {
@@ -75,37 +93,54 @@ export default function Navbar() {
       ],
     },
     {
-      label: "Therapies",
+      label: "Alternative Therapies",
       children: [
-        { label: "Alternative Therapies", href: "/AlternativeTherapies" },
-        { label: "Health Packages", href: "/HealthPackages" },
+        { label: "Nutrition", href: "/nutrition" },
+        { label: "Counselling", href: "/counselling" },
+        { label: "Acupunture Therapy", href: "/acupuncturetherapy" },
+        { label: "Acupressure Therapy", href: "/acupressuretherapy" },
+        { label: "Ayurvedic Therapy", href: "/ayurvedictherapy" },
+        { label: "Naturopathy", href: "/naturopathy" },
+        { label: "Physiotherapy", href: "/physiotherapy" },
       ],
     },
     {
-      label: "About Us",
+      label: "Health Packages",
       children: [
-        { label: "About Us", href: "/aboutus" },
-        { label: "Testimonials", href: "/testimonials" },
-        { label: "Vision and Mission", href: "/visionandmission" },
+        { label: "Reversal Program", href: "/reversalprogram" },
+        { label: "Garbh Sanskar Classes", href: "/garbhsanskarclasses" },
+        { label: "Right Brain Activation Classes", href: "/rightbrainactivationclasses" },
+        { label: "Pre Pregancy", href: "/prepregancy" },
+        { label: "Post Delivery", href: "/postdelivery" },
+        { label: "Corporate Wellness Program", href: "/corporatewellnessprogram" },
       ],
     },
+    {
+      label: "Resource",
+      children: [
+        { label: "Patients Testimonials", href: "/patientstestimonials" },
+        { label: "Case Studies", href: "/casestudies" },
+        { label: "Blogs", href: "/blogs" },
+        { label: "Online Forms", href: "/onlineforms" },
+      ],
+    },
+    { label: "Philanthropy", href: "/philanthropy" },
     {
       label: "Contact Us",
       children: [
-        { label: "Contact Form", href: "/ContactUS" },
-        { label: "Location", href: "/ContactUS/location" },
-        { label: "Support", href: "/ContactUS/support" },
+        { label: "Contact Us", href: "/contactus" },
+        { label: "Request a Call Back", href: "/requestacallback" },
+        { label: "Didn't Find Your Questions?", href: "/didn'tfindyourquestion?" },
       ],
     },
-    { label: "Login", href: "/Login" },
+    { label: "Login", href: "/login" },
   ];
 
   return (
-    <nav className="sticky top-0 z-50 bg-[#FFFDD0] text-black shadow-md px-4 py-3">
+    <nav className="sticky top-0 z-50 bg-[#e3ffe0] text-black shadow-md px-4 py-3 backdrop-blur-sm">
       <div className="max-w-screen-2xl mx-auto">
-
         {/* Desktop Menu */}
-        <ul className="hidden md:flex justify-center items-center gap-4 text-sm font-medium text-green-700">
+        <ul className="hidden md:flex flex-wrap justify-center items-center gap-6 text-[15px] font-bold text-green-700">
           {menu.map((item, idx) => (
             <li
               key={item.label}
@@ -118,11 +153,9 @@ export default function Navbar() {
             >
               {item.children ? (
                 <>
-                  <span className="cursor-pointer hover:text-green-700">
-                    {item.label} ▼
-                  </span>
+                  <span className="cursor-pointer hover:text-green-700">{item.label}</span>
                   <ul
-                    className={`absolute left-0 top-full mt-2 bg-white text-black rounded shadow-lg min-w-[200px] z-50 transition-all duration-200 ease-in-out ${
+                    className={`absolute left-0 top-full mt-2 bg-white text-black font-medium rounded shadow-lg min-w-[200px] z-50 transition-all duration-200 ease-in-out ${
                       openDropdown === idx
                         ? "opacity-100 visible translate-y-0"
                         : "opacity-0 invisible -translate-y-2"
@@ -137,12 +170,11 @@ export default function Navbar() {
                       >
                         {child.children ? (
                           <>
-                            <span className="flex justify-between items-center px-4 py-2 hover:text-green-700 cursor-pointer">
+                            <span className="block px-4 py-2 hover:text-green-700 cursor-pointer">
                               {child.label}
-                              <span className="ml-2">▶</span>
                             </span>
                             <ul
-                              className={`absolute left-full top-0 ml-1 bg-white text-black rounded shadow-lg min-w-[220px] max-h-96 overflow-y-auto z-50 transition-all duration-200 ease-in-out ${
+                              className={`absolute left-full top-0 ml-1 bg-white text-black font-medium rounded shadow-lg min-w-[220px] max-h-[400px] overflow-y-auto z-50 transition-all duration-200 ease-in-out ${
                                 openSubDropdown === child.label
                                   ? "opacity-100 visible"
                                   : "opacity-0 invisible"
@@ -196,12 +228,12 @@ export default function Navbar() {
 
         {/* Mobile Menu */}
         {menuOpen && (
-          <ul className="md:hidden mt-4 space-y-2 text-sm font-medium text-black">
+          <ul className="md:hidden mt-4 space-y-3 text-[16px] font-semibold text-green-900 px-2">
             {menu.map((item) => (
               <li key={item.label}>
                 {item.children ? (
                   <details className="ml-2">
-                    <summary className="cursor-pointer py-1">{item.label}</summary>
+                    <summary className="cursor-pointer py-1 no-arrow">{item.label}</summary>
                     <ul className="ml-4 mt-1 space-y-1">
                       {item.children.map((child) => (
                         <li key={child.label}>
@@ -237,6 +269,13 @@ export default function Navbar() {
           </ul>
         )}
       </div>
+
+      {/* ✅ Hide summary arrows in mobile */}
+      <style jsx global>{`
+        summary::marker {
+          display: none;
+        }
+      `}</style>
     </nav>
   );
 }

@@ -23,7 +23,7 @@ export default function CorporateWellnessSection() {
   ];
 
   return (
-    <section className="bg-[#FFFDD0] py-12 px-6 text-center">
+    <section className="bg-[#e3ffe0] py-12 px-6 text-center">
       <h2 className="text-3xl font-bold text-green-800 mb-4">
         Corporate Wellness Program
       </h2>
@@ -33,7 +33,7 @@ export default function CorporateWellnessSection() {
         workplace through holistic homeopathic care and lifestyle support.
       </p>
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 max-w-6xl mx-auto">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 max-w-7xl mx-auto">
         {features.map((item, index) => (
           <div
             key={index}

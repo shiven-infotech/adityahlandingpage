@@ -48,12 +48,12 @@ export default function PatientTestimonials() {
   };
 
   return (
-    <div className="bg-[#FFFDD0] py-8 px-4">
+    <div className="bg-[#e3ffe0] py-8 px-4">
       <h2 className="text-3xl font-bold text-center text-green-700 mb-10">
         What Our Patients Say
       </h2>
 
-      <div className=" grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-6 max-w-6xl mx-auto">
+      <div className=" grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-6 max-w-7xl mx-auto">
         {testimonials.map((t, index) => (
           <div
             key={index}

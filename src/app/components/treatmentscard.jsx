@@ -71,12 +71,12 @@ export default function TreatmentsCard() {
   ];
 
   return (
-    <section className="px-4 py-8 bg-[#FFFDD0]">
+    <section className="px-4 py-8 bg-[#e3ffe0]">
       <h2 className="text-3xl font-bold text-center text-green-700 mb-10">
-        Homeopathic Treatments
+        Clinical Conditions Acute and Chronic 
       </h2>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-7xl mx-auto">
         {treatments.map((treatment) => (
           <div
             key={treatment.title}

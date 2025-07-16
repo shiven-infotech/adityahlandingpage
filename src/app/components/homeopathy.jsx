@@ -43,11 +43,11 @@ export default function HomeopathyFundamentals() {
   ];
 
   return (
-    <div className=" bg-[#FFFDD0] py-8 px-4">
+    <div className=" bg-[#e3ffe0] py-8 px-4">
       <h1 className="text-3xl font-bold text-green-700 text-center mb-6">
         Fundamentals of Homeopathy
       </h1>
-      <div className="overflow-x-auto bg-white rounded-2xl shadow-md max-w-6xl mx-auto">
+      <div className="overflow-x-auto bg-white rounded-2xl shadow-md max-w-7xl mx-auto">
         <table className="min-w-full table-auto border border-gray-200">
           <thead className="bg-green-600 text-white">
             <tr>
@@ -63,7 +63,7 @@ export default function HomeopathyFundamentals() {
             {fundamentals.map((item, index) => (
               <tr
                 key={index}
-                className={index % 2 === 0 ? "bg-green-50" : "bg-[#FFFDD0]"}
+                className={index % 2 === 0 ? "bg-green-50" : "bg-[#e3ffe0]"}
               >
                 <td className="p-4 font-medium border-r border-gray-200">
                   {item.principle}
