@@ -21,8 +21,8 @@ export default function Navbar() {
     {
       label: "About Us",
       children: [
-        { label: "Fundamentals of Homeopathy", href: "/fundamentalsofhomeopathy" },
-        { label: "Myths & Facts About Homeopathy", href: "/myths&factsabouthomeopathy" },
+        { label: "Fundamentals of Homeopathy", href: "/" },
+        { label: "Myths & Facts About Homeopathy", href: "/" },
       ],
     },
     {
@@ -78,20 +78,133 @@ export default function Navbar() {
             { label: "Joint and Muscular Pain", href: "/AcuteAilments/bone/jointandmuscularpain" },
           ]
          },
-
-        { label: "Children Ailments", href: "/AcuteAilments/children" },
-        { label: "Digestive Disorders", href: "/AcuteAilments/digestive" },
-        { label: "Female Ailments", href: "/AcuteAilments/female" },
+         { label: "Children Aliment", href: "/AcuteAilments/bone",
+          children: [
+            { label: "Late Learning to Walk", href: "/acuteailments/bone/latelearningtowalk" },
+            { label: "Late Learning to Talk", href: "/AcuteAilments/bone/latelearningtotalk" },
+            { label: "Stammering", href: "/AcuteAilments/bone/stammering" },
+            { label: "Examination Phobia", href: "/AcuteAilments/bone/examinationphobia" },
+            { label: "Memory Grasping & Recollecting Problem", href: "/AcuteAilments/bone/memorygrasping&recollectingproblem" },
+            { label: "Bed Wetting, Concentration Diffuculties", href: "/AcuteAilments/bone/bedwetting,concentrationdifficulties" },
+            { label: "Insect Bite, injury, Operation, Burns", href: "/AcuteAilments/bone/insectbite,injury,operation,burns" },
+            { label: "Mental Stress in adults", href: "/AcuteAilments/bone/mentalstressinadults" },
+            { label: "Children (irritant behaviour/ violent behaviour)", href: "/AcuteAilments/bone/children(irritantbehaviour/violentbehaviour)" },
+            {label: "Attention Deficit", href: "/AcuteAilments/bone/attentiondeficit" },
+            { label: "Hyperactivity Disorder", href: "/AcuteAilments/bone/hyperactivitydisorder" },
+            { label: "Children (disobedient, not interested in studies)", href: "/AcuteAilments  /bone/children(disobedient,notinterestedinstudies)" },
+          ]
+         },
+        { label: "Digestive Disorders", href: "/AcuteAilments/digestivedisorder" ,
+        children: [
+          { label: "Acidity", href: "/AcuteAilments/digestive/acidity" },
+          { label: "Constipation", href: "/AcuteAilments/digestive/constipation" },
+          { label: "Piles", href: "/AcuteAilments/digestive/piles" },
+          { label: "Fissures", href: "/AcuteAilments/digestive/Fissures" },
+          { label: "Gases", href: "/AcuteAilments/digestive/gases" },
+          { label:"Stomatitis", href: "/AcuteAilments/digestive/stomatitis" },
+          { label: "IBS", href: "/AcuteAilments/digestive/ibs" },
+          { label: "Migraine", href: "/AcuteAilments/digestive/migraine" },
+          { label: "Motion Sickness", href: "/AcuteAilments/digestive/motionsickness" },
+          { label: "Food Posioning", href: "/AcuteAilments/digestive/foodposioning" },
+        ] 
+      },
+      { label: "Female Aliments", href: "/AcuteAilments/femalealiments" ,
+        children: [
+          { label: "Irregular Period", href: "/AcuteAilments/femalealiments/irregularperiod" },
+          { label: "Fibriod", href: "/AcuteAilments/femalealiments/fibriod" },
+          { label: "Infertility[Difficulty in Pregnancy]", href: "/AcuteAilments/femalealiments/infertility[difficulty in pregnancy]" },
+          { label: "PCOD", href: "/AcuteAilments/femalealiments/pcod" },
+          { label: "Endometriosis", href: "/AcuteAilments/femalealiments/endometriosis" },
+          { label:"Menopause", href: "/AcuteAilments/femalealiments/menopause" },
+          { label: "White Discharge", href: "/AcuteAilments/femalealiments/whitedischarge" },
+         
+        ] 
+      },
+      
       ],
     },
+
     {
       label: "Chronic Ailments",
       children: [
-        { label: "Diabetes", href: "/ChronicAilments/diabetes" },
-        { label: "Arthritis", href: "/ChronicAilments/arthritis" },
-        { label: "Thyroid", href: "/ChronicAilments/thyroid" },
+        { label: "Brain Aliments", 
+          href: "/ChronicAilments/brainaliments",
+        
+       children: [
+        { label: "Brain Infract", href: "/ChronicAilments/braininfarct" },
+        { label: "Brain Haemorrhage", href: "/ChronicAilments/brainhaemorrage" },
+        { label: "Haematoma of Brain", href: "/ChronicAilments/haematomaofbrain" },
+        { label: "Migraine Headache", href: "/ChronicAilments/migraineheadache" },
+       
       ],
     },
+        { label: "Heart Ailments", 
+          href: "/ChronicAilments/heartailments",
+          children: [
+            { label: "B.P.", href: "/ChronicAilments/b.p." },
+            { label: "Heart Blockages", href: "/ChronicAilments/heartblockages" },
+            { label: "Cholesterol", href: "/ChronicAilments/chloesterol" },
+            { label: "High/Low BP", href: "/ChronicAilments/high/lowbp" },
+           
+          ],
+        },
+        { label: "Kidney Disorder", 
+          href: "/ChronicAilments/kidneydisorder",
+          children: [
+            { label: "Kidney Stone", href: "/ChronicAilments/kidneystone" },
+            { label: "UTI", href: "/ChronicAilments/uti" },
+            { label: "Burning in Urine", href: "/ChronicAilments/burninginurine" },
+            { label: "Blood in Urine", href: "/ChronicAilments/bloodinurine" },
+            { label: "Cyst", href: "/ChronicAilments/cyst" },
+            { label: "Kidney disease", href: "/ChronicAilments/kidneydisease" },
+          ],
+        },
+        { label: "Life Style Disorder", 
+          href: "/ChronicAilments/lifestyledisorder",
+          children: [
+            { label: "Obesity (Overweight)", href: "/ChronicAilments/obesity(overweight)" },
+            { label: "Diabetes", href: "/ChronicAilments/diabetes" },
+            { label: "Thyroid Disorder", href: "/ChronicAilments/thyroiddisorder" },
+            { label: "Goitre", href: "/ChronicAilments/goitre" },
+            { label: "Nutritional Deficiency", href: "/ChronicAilments/nutritionaldeficiency" },
+            { label: "Mineral Deficiency", href: "/ChronicAilments/mineraldeficiency" },
+            { label: "Vitamin Deficiency", href: "/ChronicAilments/vitamindeficiency" },
+            { label: "Fatty Liver", href: "/ChronicAilments/fattyliver" },
+            { label: "Hepatitis B", href: "/ChronicAilments/hepatitisb" },
+            { label: "Jaundice", href: "/ChronicAilments/jaundice" },
+          ],
+        },
+        { label: "Respiratory Disorders", 
+          href: "/ChronicAilments/respiratorydisorders",
+          children: [
+            { label: "Asthma", href: "/ChronicAilments/asthma" },
+            { label: "COPD", href: "/ChronicAilments/copd" },
+            { label: "Allergies", href: "/ChronicAilments/allergies" },
+            { label: "Sinusitis", href: "/ChronicAilments/sinusitis" },
+            { label: "Bronchitis", href: "/ChronicAilments/bronchitis" },
+          ],
+        },
+        { label: "Mental Health", 
+          href: "/ChronicAilments/mentalhealth",
+          children: [
+            { label: "Anxiety Disorders", href: "/ChronicAilments/anxietydisorders" },
+            { label: "Depression", href: "/ChronicAilments/depression" },
+            { label: "Stress Management", href: "/ChronicAilments/stressmanagement" },
+            { label: "Sleep Disorders", href: "/ChronicAilments/sleepdisorders" },
+          ],
+        },
+      ],
+    },
+
+    {
+      label: "Services",
+      children: [
+        { label: "Homeopathy Consultation", href: "/homeopathyconsultation" },
+        { label: "Online Consultation", href: "/onlineconsultation" },
+        { label: "In Clinic Consultation", href: "/inclinicconsultation" },
+  ]
+  },
+
     {
       label: "Alternative Therapies",
       children: [

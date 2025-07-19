@@ -1,4 +1,5 @@
 "use client";
+
 import {
   Chart as ChartJS,
   BarElement,
@@ -11,6 +12,9 @@ import {
   Legend,
 } from "chart.js";
 import { Bar, Line, Pie, Doughnut } from "react-chartjs-2";
+import { useEffect } from "react";
+import AOS from "aos";
+import "aos/dist/aos.css";
 
 ChartJS.register(
   BarElement,
@@ -24,6 +28,14 @@ ChartJS.register(
 );
 
 export default function HomeopathyDashboard() {
+  useEffect(() => {
+    AOS.init({
+      duration: 1000,
+      delay: 200,
+      once: true,
+    });
+  }, []);
+
   const barData = {
     labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun"],
     datasets: [
@@ -77,43 +89,65 @@ export default function HomeopathyDashboard() {
   };
 
   return (
-    <div className=" bg-[#e3ffe0] py-8 px-4">
-      <h1 className="text-3xl font-bold text-green-700 text-center mb-10">
+    <div className="bg-[#e3ffe0] py-8 px-4 ">
+      <h1
+        className="text-3xl font-bold text-green-700 text-center mb-10"
+        data-aos="fade-down"
+      >
         📊 Homeopathy Clinic Dashboard
       </h1>
 
-      {/* Grid Layout */}
-      <div className="grid grid-cols-1 md:grid-cols-4 gap-6 max-w-7xl mx-auto">
+      <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-6 max-w-7xl mx-auto">
         {/* Bar Chart */}
-        <div className="bg-white rounded-2xl shadow hover:shadow-xl transition p-6 w-full">
-          <h2 className="text-xl font-semibold text-green-600 mb-4">
+        <div
+          className="bg-white rounded-2xl shadow hover:shadow-xl transition p-4 sm:p-6 w-full overflow-x-auto max-w-full"
+          data-aos="fade-up"
+        >
+          <h2 className="text-lg sm:text-xl font-semibold text-green-600 mb-4">
             Monthly Patients Treated
           </h2>
-          <Bar  data={barData} />
+          <div className="min-w-[280px] sm:min-w-0">
+            <Bar data={barData} />
+          </div>
         </div>
 
         {/* Line Chart */}
-        <div className="bg-white rounded-2xl shadow hover:shadow-xl transition p-6 w-full">
-          <h2 className="text-xl font-semibold text-green-600 mb-4">
+        <div
+          className="bg-white rounded-2xl shadow hover:shadow-xl transition p-4 sm:p-6 w-full overflow-x-auto max-w-full"
+          data-aos="fade-up"
+        >
+          <h2 className="text-lg sm:text-xl font-semibold text-green-600 mb-4">
             Symptom Improvement Over Time
           </h2>
-          <Line data={lineData} />
+          <div className="min-w-[280px] sm:min-w-0">
+            <Line data={lineData} />
+          </div>
         </div>
 
         {/* Pie Chart */}
-        <div className="bg-white rounded-2xl shadow hover:shadow-xl transition p-6 w-full">
-          <h2 className="text-xl font-semibold text-green-600 mb-4">
+        <div
+          className="bg-white rounded-2xl shadow hover:shadow-xl transition p-4 sm:p-6 w-full overflow-x-auto max-w-full"
+          data-aos="fade-up"
+        >
+          <h2 className="text-lg sm:text-xl font-semibold text-green-600 mb-4">
             Treatment Success by Condition
           </h2>
-          <Pie data={pieData} />
+          <div className="min-w-[280px] sm:min-w-0">
+            <Pie data={pieData} />
+          </div>
         </div>
 
         {/* Doughnut Chart */}
-        <div className="bg-white rounded-2xl shadow hover:shadow-xl transition p-6 w-full">
-          <h2 className="text-xl font-semibold text-green-600 mb-4">
+        <div
+          className="bg-white rounded-2xl shadow hover:shadow-xl transition p-4 sm:p-6 w-full overflow-x-auto max-w-full"
+          data-aos="fade-up"
+        >
+          <h2 className="text-lg sm:text-xl font-semibold text-green-600 mb-4">
             Consultation Types
           </h2>
-          <Doughnut data={doughnutData} />
+          <div className="min-w-[280px] sm:min-w-0">
+            <Doughnut data={doughnutData} />
+          </div>
         </div>
       </div>
     </div>

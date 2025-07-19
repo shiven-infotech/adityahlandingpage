@@ -1,4 +1,13 @@
+"use client";
+import { useEffect } from "react";
+import AOS from "aos";
+import "aos/dist/aos.css";
+
 export default function HomeopathyFundamentals() {
+  useEffect(() => {
+    AOS.init({ once: true, duration: 1000 });
+  }, []);
+
   const fundamentals = [
     {
       principle: "Like Cures Like",
@@ -43,36 +52,60 @@ export default function HomeopathyFundamentals() {
   ];
 
   return (
-    <div className=" bg-[#e3ffe0] py-8 px-4">
-      <h1 className="text-3xl font-bold text-green-700 text-center mb-6">
+    <div className="bg-[#e3ffe0] py-8 px-4 sm:px-6 lg:px-8 min-h-screen overflow-hidden">
+      <h1
+        className="text-2xl sm:text-3xl font-bold text-green-700 text-center mb-10"
+        data-aos="fade-down"
+      >
         Fundamentals of Homeopathy
       </h1>
-      <div className="overflow-x-auto bg-white rounded-2xl shadow-md max-w-7xl mx-auto">
-        <table className="min-w-full table-auto border border-gray-200">
-          <thead className="bg-green-600 text-white">
-            <tr>
-              <th className="p-4 text-left text-sm font-semibold uppercase border-r border-green-500">
-                Principle
-              </th>
-              <th className="p-4 text-left text-sm font-semibold uppercase">
-                Meaning
-              </th>
-            </tr>
-          </thead>
-          <tbody className="text-gray-700">
-            {fundamentals.map((item, index) => (
-              <tr
-                key={index}
-                className={index % 2 === 0 ? "bg-green-50" : "bg-[#e3ffe0]"}
-              >
-                <td className="p-4 font-medium border-r border-gray-200">
-                  {item.principle}
-                </td>
-                <td className="p-4">{item.meaning}</td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
+
+      <div className="max-w-7xl mx-auto flex flex-col lg:flex-row items-center gap-10">
+        {/* Image Section */}
+        <div
+          className="w-full lg:w-1/2 flex justify-center"
+          data-aos="fade-right"
+        >
+          <img
+            src="fundamentals.jpg"
+            alt="Homeopathy Concept"
+            className="rounded-2xl shadow-md w-full max-w-xs sm:max-w-sm md:max-w-md lg:max-w-lg object-cover"
+          />
+        </div>
+
+        {/* Table Section */}
+        <div
+          className="w-full lg:w-1/2 overflow-x-auto bg-white rounded-2xl shadow-md"
+          data-aos="fade-left"
+        >
+          <div className="min-w-full">
+            <table className="w-full table-auto border border-gray-200">
+              <thead className="bg-green-600 text-white">
+                <tr>
+                  <th className="p-4 text-left text-xs sm:text-sm font-semibold uppercase border-r border-green-500">
+                    Principle
+                  </th>
+                  <th className="p-4 text-left text-xs sm:text-sm font-semibold uppercase">
+                    Meaning
+                  </th>
+                </tr>
+              </thead>
+              <tbody className="text-gray-700 text-sm sm:text-base">
+                {fundamentals.map((item, index) => (
+                  <tr
+                    key={index}
+                    className={index % 2 === 0 ? "bg-green-50" : "bg-[#e3ffe0]"}
+                  >
+                    <td className="p-4 font-medium border-r border-gray-200">
+                      {item.principle}
+                    </td>
+                    <td className="p-4">{item.meaning}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </div>
       </div>
     </div>
   );

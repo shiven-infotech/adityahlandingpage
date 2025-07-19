@@ -12,7 +12,7 @@ import CorporateWellnessSection from "./components/corporatewellnesssection";
 import PhilanthropySection from "./components/philantropysection";
 import Graphs from "./components/graphs";
 import HomeopathyFundamentals from "./components/homeopathy";
-import HomeopathyFactsMyths from "./components/homeopathyfactsmyths";
+import HomeopathyMythsFacts from "./components/homeopathymythsfacts";
 import PatientTestimonials from "./components/patienttestimonials";
 import Faqs from "./components/faqs";
 import ClientAppointmentWrapper from "./components/clientAppointmentWrapper";
@@ -36,7 +36,7 @@ export default function Home() {
     <PhilanthropySection />
     <Graphs/>
     <HomeopathyFundamentals />
-    <HomeopathyFactsMyths />
+    <HomeopathyMythsFacts />
     <PatientTestimonials/>
     <Faqs/>
     <ClientAppointmentWrapper/>
