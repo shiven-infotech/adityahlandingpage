@@ -11,8 +11,6 @@ import WhyChooseUs from "./components/whychooseus";
 import CorporateWellnessSection from "./components/corporatewellnesssection";
 import PhilanthropySection from "./components/philantropysection";
 import Graphs from "./components/graphs";
-import HomeopathyFundamentals from "./components/homeopathy";
-import HomeopathyMythsFacts from "./components/homeopathymythsfacts";
 import PatientTestimonials from "./components/patienttestimonials";
 import Faqs from "./components/faqs";
 import ClientAppointmentWrapper from "./components/clientAppointmentWrapper";
@@ -35,8 +33,6 @@ export default function Home() {
     <CorporateWellnessSection />
     <PhilanthropySection />
     <Graphs/>
-    <HomeopathyFundamentals />
-    <HomeopathyMythsFacts />
     <PatientTestimonials/>
     <Faqs/>
     <ClientAppointmentWrapper/>

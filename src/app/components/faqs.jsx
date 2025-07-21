@@ -39,6 +39,7 @@ export default function FAQSection() {
 
   return (
     <section className=" py-12 bg-[#e3ffe0] px-4 md:px-16">
+      <h1 className="text-center text-green-700 font-bold text-3xl mb-10">Frequently Asked Questions Answer</h1>
       <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-10 items-center">
           <div
             ref={sectionRef}

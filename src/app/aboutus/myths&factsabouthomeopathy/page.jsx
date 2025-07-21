@@ -4,6 +4,9 @@ import Image from "next/image";
 import { useEffect } from "react";
 import AOS from "aos";
 import "aos/dist/aos.css";
+import Header from "../../components/header";
+import Navbar from "../../components/navbar";
+import Footer from "../../components/footer";
 
 export default function HomeopathyMythsFacts() {
   useEffect(() => {
@@ -44,6 +47,9 @@ export default function HomeopathyMythsFacts() {
   const bottomItems = data.slice(2);
 
   return (
+    <>
+        <Header />
+        <Navbar />
     <div className="bg-[#e3ffe0] py-12 px-4">
       <h1 className="text-3xl font-bold text-green-700 text-center mb-10">
         Myths & Facts About Homeopathy
@@ -102,5 +108,7 @@ export default function HomeopathyMythsFacts() {
         ))}
       </div>
     </div>
+    <Footer />
+    </>
   );
 }
