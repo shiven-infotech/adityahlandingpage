@@ -75,9 +75,9 @@ export default function WhyChooseUs() {
           data-aos-delay="500"
         >
           <img
-            src="/whychooseus.png"
+            src="/choose.png"
             alt="Why Choose Us"
-            className="rounded-2xl shadow-md w-[90%] max-w-xs sm:max-w-sm md:max-w-md object-cover"
+            className="rounded-2xl w-[90%] max-w-xs sm:max-w-sm md:max-w-md object-cover"
           />
         </div>
       </div>

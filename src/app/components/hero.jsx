@@ -1,5 +1,6 @@
 'use client';
 
+import Image from 'next/image';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Autoplay, Pagination, Navigation } from 'swiper/modules';
 import 'swiper/css';
@@ -8,17 +9,17 @@ import 'swiper/css/navigation';
 
 const slides = [
   {
-    image: 'https://www.canadiancmc.com/wp-content/uploads/2015/09/HP03.webp',
+    image: '/hero.jpeg',
     title: 'Welcome to Aditya Homeopathy',
     subtitle: 'Natural Healing with Aditya Homeopathy',
   },
   {
-    image: '/NewTheme/Images/Slider-4.png',
+    image: '/holistic.jpeg',
     title: 'Holistic Treatments',
     subtitle: 'Safe and Gentle Care for Everyone',
   },
   {
-    image: 'https://media.istockphoto.com/id/1226721780/photo/alternative-medicine.jpg?s=612x612&w=0&k=20&c=H4Dsxky23XjYwWSl_PqzGc0SPT-vToGXUHFJdHKFqVo=',
+    image: '/expert.jpeg',
     title: 'Expert Homeopathic Doctors',
     subtitle: 'Experience You Can Trust',
   },
@@ -26,7 +27,7 @@ const slides = [
 
 export default function Hero() {
   return (
-    <div className="relative w-full h-[450px] sm:h-[500px] md:h-[550px] lg:h-[600px] xl:h-[650px]">
+    <div className="relative w-full aspect-[16/9] sm:aspect-[4/3] md:aspect-[16/7] lg:aspect-[21/9] overflow-hidden">
       <Swiper
         modules={[Autoplay, Pagination, Navigation]}
         autoplay={{ delay: 5000 }}
@@ -38,19 +39,24 @@ export default function Hero() {
         {slides.map((slide, index) => (
           <SwiperSlide key={index}>
             <div className="relative w-full h-full">
-              <img
+              <Image
                 src={slide.image}
                 alt={`Slide ${index + 1}`}
-                className="object-cover w-full h-full absolute inset-0"
+                fill
+                className="object-cover object-center"
+                sizes="100vw"
+                priority={index === 0}
               />
-              <div className="absolute inset-0 bg-black/30 flex flex-col items-center justify-center text-center px-4">
-                <h1 className="text-[#FFFDD0] text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-4">
+
+              {/* Text Overlay */}
+              <div className="absolute inset-0 bg-black/30 flex flex-col items-center justify-center text-center px-4 sm:px-8">
+                <h1 className="text-[#FFFDD0] text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-2 sm:mb-4 leading-snug sm:leading-tight">
                   {slide.title}
                 </h1>
-                <p className="text-[#FFFDD0] text-lg sm:text-xl md:text-2xl mb-6">
+                <p className="text-[#FFFDD0] text-sm sm:text-lg md:text-xl mb-4 sm:mb-6">
                   {slide.subtitle}
                 </p>
-                <button className="bg-green-700 hover:bg-yellow-300 text-white px-6 py-2 rounded-xl text-sm sm:text-base">
+                <button className="bg-green-700 hover:bg-yellow-300 text-white hover:text-black px-4 sm:px-6 py-2 rounded-xl text-sm sm:text-base transition-all">
                   Book Appointment
                 </button>
               </div>

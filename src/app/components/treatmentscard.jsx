@@ -1,4 +1,5 @@
-"use client";
+'use client';
+
 import {
   FaChild,
   FaHeart,
@@ -71,16 +72,19 @@ export default function TreatmentsCard() {
   ];
 
   return (
-    <section className="px-4 py-8 bg-[#e3ffe0]">
-      <h2 className="text-3xl font-bold text-center text-green-700 mb-10">
-        Clinical Conditions Acute and Chronic 
+    <section className="px-4 py-12 bg-[#e3ffe0]">
+      <h2 className="text-2xl sm:text-3xl font-bold text-center text-green-700 mb-10">
+        Clinical Conditions Acute and Chronic
       </h2>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-7xl mx-auto">
-        {treatments.map((treatment) => (
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-7xl mx-auto">
+        {treatments.map((treatment, index) => (
           <div
             key={treatment.title}
             className="bg-white p-6 rounded-2xl shadow-md hover:shadow-lg transition duration-300 flex flex-col justify-between"
+            data-aos="fade-up"
+            data-aos-delay={index * 100}
+            data-aos-duration="800"
           >
             <div>
               <div className="flex items-center gap-4 mb-4">

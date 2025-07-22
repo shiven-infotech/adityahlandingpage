@@ -1,134 +1,79 @@
 "use client";
 import { useState } from "react";
+import Calendar from "react-calendar";
+import "react-calendar/dist/Calendar.css"; // 📌 Required for default styles
 import Image from "next/image";
 
 export default function AppointmentForm() {
-  const [form, setForm] = useState({
-    name: "",
-    email: "",
-    phone: "",
-    date: "",
-    message: "",
-  });
-
-  const handleChange = (e) => {
-    setForm({ ...form, [e.target.name]: e.target.value });
-  };
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    console.log("Appointment Data:", form);
-    alert("Appointment submitted successfully!");
-  };
+  const [date, setDate] = useState(new Date());
 
   return (
-    <div className="bg-[#e3ffe0] flex justify-center items-center py-12 px-4">
-      <div className="bg-white rounded-2xl shadow-lg flex flex-col lg:flex-row overflow-hidden max-w-7xl w-full">
+    <section className="  bg-[#e3ffe0] py-10 px-4  sm:px-6 lg:px-8">
+      <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-8 items-start">
         {/* Left Image */}
-        <div className="relative w-full lg:w-1/2 h-64 lg:h-auto">
+        <div className="w-full h-full">
           <Image
-            src="/appointment.png"
-            alt="Appointment"
-            layout="fill"
-            objectFit="cover"
-            className="animate-fade-in"
+            src="/appointment.png" // Replace with your own image path
+            alt="Appointment Booking"
+            width={600}
+            height={500}
+            className="w-full h-auto object-cover rounded-xl "
           />
         </div>
 
         {/* Right Form */}
-        <div className="w-full lg:w-1/2 p-8">
-          <h2 className="text-3xl font-bold text-green-700 mb-6 text-center">
-            Book an Appointment
-          </h2>
-          <form onSubmit={handleSubmit} className="space-y-4">
-            {/* Name */}
+        <div className="bg-[#f6fef6] p-6 rounded-xl shadow">
+          <h2 className="text-2xl font-bold text-green-700 mb-6">Add Appointment</h2>
+
+          <form className="space-y-4">
             <div>
-              <label className="block text-sm font-medium text-green-700 mb-1">
-                Full Name
-              </label>
+              <label className="block text-sm font-medium text-gray-700">Select Role</label>
+              <select className="w-full border border-gray-300 rounded px-3 py-2">
+                <option>Doctor</option>
+              </select>
+            </div>
+
+            <div>
+              <label className="block text-sm font-medium text-gray-700">Select Doctor</label>
+              <select className="w-full border border-gray-300 rounded px-3 py-2">
+                <option>Dr Shital Khodke</option>
+              </select>
+            </div>
+
+            <div>
+              <label className="block text-sm font-medium text-gray-700">Patient Contact</label>
               <input
                 type="text"
-                name="name"
-                value={form.name}
-                onChange={handleChange}
-                required
-                className="w-full border border-green-300 rounded-xl px-4 py-2 focus:outline-none focus:ring-2 focus:ring-green-500"
-                placeholder="Enter your name"
+                className="w-full border border-gray-300 rounded px-3 py-2"
+                placeholder="Enter Contact Number"
               />
             </div>
 
-            {/* Email */}
             <div>
-              <label className="block text-sm font-medium text-green-700 mb-1">
-                Email
-              </label>
-              <input
-                type="email"
-                name="email"
-                value={form.email}
-                onChange={handleChange}
-                required
-                className="w-full border border-green-300 rounded-xl px-4 py-2 focus:outline-none focus:ring-2 focus:ring-green-500"
-                placeholder="you@example.com"
+              <label className="block text-sm font-medium text-gray-700 mb-2">Date</label>
+              <Calendar
+                onChange={setDate}
+                value={date}
+                tileDisabled={({ date }) => date.getDay() === 0} // Example: disable Sundays
               />
             </div>
 
-            {/* Phone */}
             <div>
-              <label className="block text-sm font-medium text-green-700 mb-1">
-                Phone
-              </label>
-              <input
-                type="tel"
-                name="phone"
-                value={form.phone}
-                onChange={handleChange}
-                required
-                className="w-full border border-green-300 rounded-xl px-4 py-2 focus:outline-none focus:ring-2 focus:ring-green-500"
-                placeholder="+91 9876543210"
-              />
+              <label className="block text-sm font-medium text-gray-700">Selected Date</label>
+              <div className="text-green-800 font-semibold">
+                {date.toDateString()}
+              </div>
             </div>
 
-            {/* Date */}
-            <div>
-              <label className="block text-sm font-medium text-green-700 mb-1">
-                Preferred Date
-              </label>
-              <input
-                type="date"
-                name="date"
-                value={form.date}
-                onChange={handleChange}
-                required
-                className="w-full border border-green-300 rounded-xl px-4 py-2 focus:outline-none focus:ring-2 focus:ring-green-500"
-              />
-            </div>
-
-            {/* Message */}
-            <div>
-              <label className="block text-sm font-medium text-green-700 mb-1">
-                Health Concern (optional)
-              </label>
-              <textarea
-                name="message"
-                value={form.message}
-                onChange={handleChange}
-                rows={3}
-                className="w-full border border-green-300 rounded-xl px-4 py-2 focus:outline-none focus:ring-2 focus:ring-green-500"
-                placeholder="Describe your condition or symptoms"
-              ></textarea>
-            </div>
-
-            {/* Submit Button */}
             <button
               type="submit"
-              className="w-full bg-green-600 text-white py-2 px-4 rounded-xl hover:bg-green-700 transition"
+              className="bg-green-700 text-white px-4 py-2 rounded hover:bg-green-800 transition"
             >
               Book Appointment
             </button>
           </form>
         </div>
       </div>
-    </div>
+    </section>
   );
 }
