@@ -1,120 +1,120 @@
 "use client";
 
-import { useEffect } from "react";
-import AOS from "aos";
-import "aos/dist/aos.css";
-import Header from "../../../components/header";
+import React from "react";
+import Header from "../../../components/header";   // Adjust paths if needed
 import Navbar from "../../../components/navbar";
 import Footer from "../../../components/footer";
 
-export default function psoriasis() {
-  useEffect(() => {
-    AOS.init({ once: true, duration: 1000 });
-  }, []);
-
-  const fundamentals = [
-    {
-      principle: "Like Cures Like",
-      meaning:
-        "A substance causing symptoms in a healthy person can cure similar symptoms in a sick person.",
-    },
-    {
-      principle: "Minimum Dose",
-      meaning:
-        "Use highly diluted substances to stimulate the body’s natural healing response without toxicity.",
-    },
-    {
-      principle: "Individualized Care",
-      meaning:
-        "Each patient is treated uniquely, considering physical, emotional, and mental aspects.",
-    },
-    {
-      principle: "Vital Force",
-      meaning:
-        "Belief in a life energy that maintains health; disease is an imbalance of this force.",
-    },
-    {
-      principle: "Potentization",
-      meaning:
-        "Process of dilution and shaking (succussion) that enhances the healing power of remedies.",
-    },
-    {
-      principle: "Law of Cure (Hering’s Law)",
-      meaning:
-        "Healing progresses from within outward, from top to bottom, and in reverse order of symptoms.",
-    },
-    {
-      principle: "Holistic Healing",
-      meaning:
-        "Homeopathy treats the root cause, not just symptoms — aiming for long-lasting wellness.",
-    },
-    {
-      principle: "Common Potencies",
-      meaning:
-        "Common potencies used: 6C, 30C, 200C, 1M — chosen based on patient sensitivity and case.",
-    },
-  ];
-
+export default function PsoriasisPage() {
   return (
     <>
-      <Header />  
+      <Header />
       <Navbar />
-      
 
-    <div className="bg-[#e3ffe0] py-10 px-4 sm:px-6 lg:px-16 min-h-screen overflow-hidden">
+      <div className="max-w-4xl mx-auto px-4 py-10 text-gray-800">
+        <h1 className="text-3xl md:text-4xl font-bold text-green-700 mb-6">
+          Psoriasis Homeopathy Treatment
+        </h1>
 
-      <h1
-        className="text-3xl sm:text-4xl font-bold text-green-700 text-center mb-12"
-        data-aos="fade-down"
-      >
-        Fundamentals of Homeopathy
-      </h1>
+        {/* What is Psoriasis */}
+        <section className="mb-10">
+          <h2 className="text-2xl font-semibold mb-2">What is Psoriasis?</h2>
+          <p className="mb-4">
+            Psoriasis is a chronic autoimmune skin condition where skin cells build up rapidly,
+            causing scaling, redness, and inflammation. It often comes and goes in cycles of
+            flare-ups and remission.
+          </p>
+          <p className="mb-4">
+            It's not contagious, but it can significantly affect quality of life. While there's
+            no permanent cure, many treatments—including homeopathy—help manage symptoms effectively.
+          </p>
+        </section>
 
-      <div className="max-w-7xl mx-auto flex flex-col lg:flex-row items-center gap-12">
-        {/* Left: Image */}
-        <div className="w-full lg:w-1/2 flex justify-center" data-aos="fade-right">
-          <img
-            src="/fundamentals.jpg"
-            alt="Homeopathy Concept"
-            className="rounded-2xl shadow-lg w-full max-w-xs sm:max-w-sm md:max-w-md lg:max-w-lg object-cover" />
-        </div>
+        {/* Homeopathy Benefits */}
+        <section className="mb-10">
+          <h2 className="text-2xl font-semibold mb-2">
+            Why Choose Homeopathy for Psoriasis?
+          </h2>
+          <ul className="list-disc list-inside space-y-3">
+            <li>
+              <strong>Individualized Approach:</strong> Homeopathy tailors treatment to your
+              unique symptoms and triggers.
+            </li>
+            <li>
+              <strong>Natural Remedies:</strong> Prepared from plant and mineral sources, they
+              are gentle and have minimal side effects.
+            </li>
+            <li>
+              <strong>Safe for All Ages:</strong> Ideal for both children and adults.
+            </li>
+            <li>
+              <strong>Root Cause Treatment:</strong> Focuses on immune balance and long-term healing.
+            </li>
+          </ul>
+        </section>
 
-        {/* Right: Table */}
-        <div
-          className="w-full lg:w-1/2 overflow-x-auto bg-white rounded-2xl shadow-lg"
-          data-aos="fade-left"
-        >
-          <table className="w-full table-auto border border-gray-200">
-            <thead className="bg-green-600 text-white">
-              <tr>
-                <th className="p-4 text-left text-sm font-semibold uppercase border-r border-green-500">
-                  Principle
-                </th>
-                <th className="p-4 text-left text-sm font-semibold uppercase">
-                  Meaning
-                </th>
-              </tr>
-            </thead>
-            <tbody className="text-gray-700">
-              {fundamentals.map((item, index) => (
-                <tr
-                  key={index}
-                  className={index % 2 === 0 ? "bg-green-50" : "bg-[#e3ffe0]"}
-                >
-                  <td className="p-4 font-medium border-r border-gray-200">
-                    {item.principle}
-                  </td>
-                  <td className="p-4">{item.meaning}</td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
+        {/* Comparison */}
+        <section className="mb-10">
+          <h2 className="text-2xl font-semibold mb-2">
+            Psoriasis Treatment: Allopathy vs Homeopathy
+          </h2>
+          <ul className="list-disc list-inside space-y-3">
+            <li>
+              <strong>Allopathy:</strong> Fast-acting but often uses steroids or immunosuppressants
+              which may cause side effects.
+            </li>
+            <li>
+              <strong>Homeopathy:</strong> Slow and steady improvement with a focus on long-term relief
+              and immune correction.
+            </li>
+            <li>
+              <strong>Non-Invasive:</strong> No injections or harsh medications.
+            </li>
+          </ul>
+        </section>
+
+        {/* FAQs */}
+        <section className="mb-10">
+          <h2 className="text-2xl font-semibold mb-2">
+            FAQs – Homeopathic Psoriasis Care
+          </h2>
+          <div className="space-y-4">
+            <div>
+              <strong>Can homeopathy cure psoriasis permanently?</strong>
+              <p>
+                It helps manage and control symptoms effectively, often reducing flare-ups over time.
+              </p>
+            </div>
+            <div>
+              <strong>How soon will I see results?</strong>
+              <p>
+                Many patients begin seeing improvement in 3–6 weeks with consistent treatment.
+              </p>
+            </div>
+            <div>
+              <strong>Can I use homeopathy along with other treatments?</strong>
+              <p>
+                Yes, but consult your doctor for a proper integrative approach.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        {/* CTA */}
+        <section className="text-center mt-10 bg-green-50 p-6 rounded-lg shadow-md">
+          <h3 className="text-xl font-semibold mb-4 text-green-700">
+            Start Your Natural Psoriasis Healing Journey
+          </h3>
+          <p className="mb-4">
+            Connect with our expert homeopathic doctors today for a personalized treatment plan.
+          </p>
+          <button className="bg-green-700 hover:bg-green-800 text-white font-semibold px-6 py-2 rounded-lg transition">
+            Book Appointment
+          </button>
+        </section>
       </div>
-    </div>
-    
-    <Footer />
+
+      <Footer />
     </>
-    
   );
 }
