@@ -243,12 +243,13 @@ export default function Navbar() {
       ],
     },
     { label: "Philanthropy", href: "/philanthropy" },
+    
     {
       label: "Contact Us",
       children: [
         { label: "Contact Us", href: "/contactus" },
         { label: "Request a Call Back", href: "/requestacallback" },
-        { label: "Didn't Find Your Questions", href: "/didn'tfindyourquestion" },
+        { label: "Did not Find Your Questions", href: "/didnotfindyourquestion" },
       ],
     },
     { label: "Login", href: "/login" },
