@@ -69,14 +69,14 @@ export default function Navbar() {
         { label: "Bone Ailments", href: "/acuteailments/boneailments",
           children: [
             { label: "Cervical Spondylosis", href: "/acuteailments/boneailments/cervicalspondylosis" },
-            { label: "Lumbar Spondylitis", href: "/AcuteAilments/boneailments/lumbarspondylitis" },
-            { label: "Gout", href: "/AcuteAilments/boneailments/gout" },
-            { label: "Sciatica", href: "/AcuteAilments/boneailments/sciatica" },
-            { label: "Spinal Stenosis", href: "/AcuteAilments/boneailments/spinalstenosis" },
-            { label: "Degenerative Changes", href: "/AcuteAilments/boneailments/degenerativechanges" },
-            { label: "Joint pain", href: "/AcuteAilments/boneailments/jointpain" },
-            { label: "Rheumatism", href: "/AcuteAilments/boneailments/rheumatism" },
-            { label: "Joint and Muscular Pain", href: "/AcuteAilments/boneailments/jointandmuscularpain" },
+            { label: "Lumbar Spondylosis", href: "/acuteailments/boneailments/lumbarspondylosis" },
+            { label: "Gout", href: "/acuteailments/boneailments/gout" },
+            { label: "Sciatica", href: "/acuteailments/boneailments/sciatica" },
+            { label: "Spinal Stenosis", href: "/acuteailments/boneailments/spinalstenosis" },
+            { label: "Degenerative Changes", href: "/acuteailments/boneailments/degenerativechanges" },
+            { label: "Joint pain", href: "/acuteailments/boneailments/jointpain" },
+            { label: "Rheumatism", href: "/acuteailments/boneailments/rheumatism" },
+            { label: "Joint and Muscular Pain", href: "/acuteailments/boneailments/jointandmuscularpain" },
           ]
          },
          { label: "Children Aliments", href: "/AcuteAilments/childrenaliments",
@@ -246,6 +246,7 @@ export default function Navbar() {
     
     {
       label: "Contact Us",
+      href:"contactus",
       children: [
         { label: "Contact Us", href: "/contactus" },
         { label: "Request a Call Back", href: "/requestacallback" },
@@ -274,7 +275,7 @@ export default function Navbar() {
                 <>
                   <span className="cursor-pointer hover:text-green-700">{item.label}</span>
                   <ul
-                    className={`absolute left-0 top-full mt-2 bg-white text-black font-medium rounded shadow-lg min-w-[200px] z-50 transition-all duration-200 ease-in-out ${
+                    className={`absolute  left-0 top-full mt-2 bg-[#e3ffe0] text-center text-black font-medium rounded shadow-lg min-w-[200px] z-50 transition-all duration-200 ease-in-out ${
                       openDropdown === idx
                         ? "opacity-100 visible translate-y-0"
                         : "opacity-0 invisible -translate-y-2"
@@ -293,7 +294,7 @@ export default function Navbar() {
                               {child.label}
                             </span>
                             <ul
-                              className={`absolute left-full top-0 ml-1 bg-white text-black font-medium rounded shadow-lg min-w-[220px] max-h-[400px] overflow-y-auto z-50 transition-all duration-200 ease-in-out ${
+                              className={`absolute left-full top-0 ml-1 bg-[#e3ffe0] text-black font-medium rounded shadow-lg min-w-[220px] max-h-[400px] overflow-y-auto z-50 transition-all duration-200 ease-in-out ${
                                 openSubDropdown === child.label
                                   ? "opacity-100 visible"
                                   : "opacity-0 invisible"

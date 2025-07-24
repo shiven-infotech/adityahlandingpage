@@ -1,4 +1,11 @@
-import { FaFacebookF, FaInstagram, FaPhoneAlt, FaEnvelope } from "react-icons/fa";
+import {
+  FaFacebookF,
+  FaInstagram,
+  FaPhoneAlt,
+  FaEnvelope,
+  FaWhatsapp,
+  FaLinkedinIn,
+} from "react-icons/fa";
 
 export default function Footer() {
   return (
@@ -34,12 +41,18 @@ export default function Footer() {
           <div className="flex items-center gap-2 text-sm mb-4">
             <FaEnvelope /> <span>info@adityahomeopathy.com</span>
           </div>
-          <div className="flex gap-4">
-            <a href="#" className="hover:text-yellow-300">
+          <div className="flex gap-4 text-xl">
+            <a href="https://www.facebook.com" target="_blank" rel="noopener noreferrer" className="hover:text-yellow-300">
               <FaFacebookF />
             </a>
-            <a href="#" className="hover:text-yellow-300">
+            <a href="https://www.instagram.com" target="_blank" rel="noopener noreferrer" className="hover:text-yellow-300">
               <FaInstagram />
+            </a>
+            <a href="https://wa.me/919876543210" target="_blank" rel="noopener noreferrer" className="hover:text-yellow-300">
+              <FaWhatsapp />
+            </a>
+            <a href="https://www.linkedin.com" target="_blank" rel="noopener noreferrer" className="hover:text-yellow-300">
+              <FaLinkedinIn />
             </a>
           </div>
         </div>

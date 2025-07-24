@@ -41,6 +41,13 @@ export default function AlternativeTherapies() {
 
   return (
     <section className="px-4 py-12 bg-[#e3ffe0]">
+
+        <div className="col-span-full w-full text-center mb-6">
+  <h2 className="text-3xl font-bold text-green-700 mb-6 text-center ">
+            Alternative Therapies
+          </h2>
+            </div>
+
       <div
         className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-10 items-center"
         data-aos="fade-up"
@@ -48,8 +55,8 @@ export default function AlternativeTherapies() {
         {/* Left Image Section */}
         <div className="w-full h-full order-1 lg:order-none" data-aos="fade-right">
           <Image
-            src="/alternative.png"
-            alt="Alternative Therapies"
+            src="/thrapies.jpg"
+            alt=" Therapies"
             width={600}
             height={500}
             className="w-full h-auto rounded-xl object-cover"
@@ -57,10 +64,9 @@ export default function AlternativeTherapies() {
         </div>
 
         {/* Right Text + Cards Section */}
+
         <div data-aos="fade-left">
-          <h2 className="text-3xl font-bold text-green-700 mb-6 text-center lg:text-left">
-            Alternative Therapies
-          </h2>
+          
 
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
             {therapies.map((therapy, index) => (

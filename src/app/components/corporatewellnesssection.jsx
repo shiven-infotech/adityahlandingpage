@@ -32,7 +32,7 @@ export default function CorporateWellnessSection() {
         {/* Left Image */}
         <div className="w-full" data-aos="fade-right">
           <Image
-            src="/wellness.png" // ✅ Replace with your actual image
+            src="/corporate.jpg" // ✅ Replace with your actual image
             alt="Corporate Wellness"
             width={600}
             height={500}
