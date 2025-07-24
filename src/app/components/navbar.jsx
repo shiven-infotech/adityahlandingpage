@@ -24,6 +24,7 @@ export default function Navbar() {
       children: [
         { label: "Fundamentals of Homeopathy", href: "/aboutus/fundamentalsofhomeopathy" },
         { label: "Myths & Facts About Homeopathy", href: "/aboutus/myths&factsabouthomeopathy" },
+        {label:"Vision and Mission", href:"/visionandmission"}
       ],
     },
     {

@@ -75,7 +75,7 @@ export default function TreatmentsCard() {
   return (
     <section className="px-4 py-12 bg-[#e3ffe0]">
       <h2 className="text-2xl sm:text-3xl font-bold text-center text-green-700 mb-8">
-        Clinical Conditions Acute and Chronic
+        Clinical Conditions For Acute and Chronic Ailments
       </h2>
 
       {/* Full-Width Image on Top */}

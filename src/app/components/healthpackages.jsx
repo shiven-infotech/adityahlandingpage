@@ -56,13 +56,16 @@ export default function HealthPackages() {
         Health Packages
       </h2>
 
-      <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
+      <div className="max-w-7xl mx-auto flex flex-col lg:flex-row gap-10 items-stretch">
         {/* Left: Packages */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-6" data-aos="fade-right">
+        <div
+          className="grid grid-cols-1 sm:grid-cols-2 gap-6 h-[500px] flex-1"
+          data-aos="fade-right"
+        >
           {packages.map((pkg, index) => (
             <div
               key={pkg.title}
-              className="bg-white p-6 rounded-2xl shadow-md hover:shadow-lg transition duration-300 flex flex-col justify-between"
+              className="bg-white p-6 rounded-2xl shadow-md hover:shadow-lg transition duration-300 flex flex-col justify-between h-[240px]"
               data-aos="zoom-in"
               data-aos-delay={index * 100}
             >
@@ -87,13 +90,13 @@ export default function HealthPackages() {
         </div>
 
         {/* Right: Image */}
-        <div className="flex justify-center" data-aos="fade-left">
+        <div className="flex justify-center items-center flex-1" data-aos="fade-left">
           <Image
-            src="/packages.jpg" // Replace with your image path
+            src="/packages.jpg"
             alt="Health Packages"
             width={500}
             height={500}
-            className="rounded-xl object-cover "
+            className="rounded-xl object-cover h-[500px] w-full"
           />
         </div>
       </div>

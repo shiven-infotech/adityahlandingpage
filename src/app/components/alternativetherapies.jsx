@@ -49,49 +49,50 @@ export default function AlternativeTherapies() {
             </div>
 
       <div
-        className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-10 items-center"
-        data-aos="fade-up"
+        className="max-w-7xl mx-auto flex flex-col lg:flex-row gap-10 items-stretch" data-aos="fade-up"
+
       >
-        {/* Left Image Section */}
-        <div className="w-full h-full order-1 lg:order-none" data-aos="fade-right">
-          <Image
-            src="/thrapies.jpg"
-            alt=" Therapies"
-            width={600}
-            height={500}
-            className="w-full h-auto rounded-xl object-cover"
-          />
-        </div>
+      {/* Left Image Section */}
+<div className="w-full h-full flex-1" data-aos="fade-right">
+  <Image
+  src="/thrapies.jpg"
+  alt="Therapies"
+  width={600}
+  height={500}
+  className="w-full h-[500px] rounded-xl object-cover"
+/>
 
-        {/* Right Text + Cards Section */}
+</div>
 
-        <div data-aos="fade-left">
-          
-
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-            {therapies.map((therapy, index) => (
-              <div
-                key={therapy.title}
-                className="bg-white p-4 rounded-xl shadow hover:shadow-lg transition"
-                data-aos="zoom-in"
-                data-aos-delay={index * 100}
-              >
-                <div className="flex items-start gap-3 mb-2">
-                  {therapy.icon}
-                  <h3 className="text-lg font-semibold text-green-800">
-                    {therapy.title}
-                  </h3>
-                </div>
-                <p className="text-gray-600 text-sm mb-3">{therapy.description}</p>
-                <Link href={therapy.link}>
-                  <span className="inline-block bg-green-700 text-white px-3 py-1.5 rounded-md text-xs font-medium hover:bg-green-800 transition">
-                    Learn More
-                  </span>
-                </Link>
-              </div>
-            ))}
+<div className="flex-1 h-full flex items-center" data-aos="fade-left">
+  <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 w-full">
+    {therapies.map((therapy, index) => (
+      <div
+        key={therapy.title}
+        className="bg-white p-4 rounded-xl shadow hover:shadow-lg transition h-[235px] flex flex-col justify-between"
+        data-aos="zoom-in"
+        data-aos-delay={index * 100}
+      >
+        <div>
+          <div className="flex items-start gap-3 mb-2">
+            {therapy.icon}
+            <h3 className="text-lg font-semibold text-green-800">
+              {therapy.title}
+            </h3>
           </div>
+          <p className="text-gray-600 text-sm">{therapy.description}</p>
         </div>
+        <Link href={therapy.link}>
+          <span className="inline-block bg-green-700 text-white px-3 py-1.5 rounded-md text-xs font-medium hover:bg-green-800 transition mt-2">
+            Learn More
+          </span>
+        </Link>
+      </div>
+    ))}
+  </div>
+</div>
+
+
       </div>
     </section>
   );

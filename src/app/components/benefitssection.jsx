@@ -51,34 +51,34 @@ export default function BenefitsSection() {
         Benefits of Homeopathy & Alternative Therapies
       </h2>
 
-      <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+      <div className="max-w-7xl mx-auto flex flex-col lg:flex-row gap-12 items-stretch">
         {/* Left Image */}
-        <div className="flex justify-center" data-aos="fade-right">
+        <div className="flex justify-center items-center w-full lg:w-1/2" data-aos="fade-right">
           <Image
-            src="/benefits.jpeg" // Replace with your actual image path
+            src="/benefits.jpeg"
             alt="Benefits"
             width={600}
-            height={500}
-            className="rounded-xl w-[6000px] h-[400px] object-cover"
+            height={600}
+            className="rounded-xl w-full h-[600px] object-cover"
           />
         </div>
 
         {/* Right Benefits Grid */}
         <div
-          className="grid grid-cols-1 sm:grid-cols-2 gap-6"
+          className="grid grid-cols-1 sm:grid-cols-2 gap-6 w-full lg:w-1/2"
           data-aos="fade-left"
         >
           {benefits.map((benefit, index) => (
             <div
               key={index}
-              className="bg-white p-6 rounded-xl shadow-md hover:shadow-xl transition duration-300"
+              className="bg-white p-6 rounded-xl shadow-md hover:shadow-xl transition duration-300 h-[180px] flex flex-col justify-between"
               data-aos="zoom-in"
               data-aos-delay={index * 100}
             >
               <h3 className="text-xl font-semibold text-green-800 mb-2">
                 {benefit.title}
               </h3>
-              <p className="text-gray-700">{benefit.description}</p>
+              <p className="text-gray-700 text-sm">{benefit.description}</p>
             </div>
           ))}
         </div>

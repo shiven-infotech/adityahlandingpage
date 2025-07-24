@@ -1,123 +1,174 @@
 "use client";
-import { useState } from "react";
+
+import { useState, useEffect } from "react";
 import Calendar from "react-calendar";
 import "react-calendar/dist/Calendar.css";
 import Image from "next/image";
+import AOS from "aos";
+import "aos/dist/aos.css";
 
 export default function AppointmentForm() {
   const [date, setDate] = useState(new Date());
   const [mode, setMode] = useState("online");
+  const [submitted, setSubmitted] = useState(false);
+
+  useEffect(() => {
+    AOS.init({ duration: 800 });
+  }, []);
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    setSubmitted(true);
+    setTimeout(() => setSubmitted(false), 4000);
+  };
 
   return (
-    <section className="bg-[#e3ffe0] py-10 px-4 sm:px-6 lg:px-8">
-      <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-8 items-start">
+    <section className="bg-[#e3ffe0] py-14 px-4 sm:px-6 lg:px-8">
+      <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-10">
         {/* Left Image */}
-        <div className="w-full h-full">
+        <div
+          className="rounded-2xl overflow-hidden h-[540px]"
+          data-aos="fade-right"
+        >
           <Image
             src="/appointment.png"
             alt="Appointment Booking"
             width={600}
             height={500}
-            className="w-full h-auto object-cover rounded-xl"
+            className="w-full h-full object-cover"
           />
         </div>
 
         {/* Right Form */}
-        <div className="bg-[#f6fef6] p-6 rounded-xl shadow">
-          <h2 className="text-2xl font-bold text-green-700 mb-6">Add Appointment</h2>
+        <div
+          className="bg-white p-8 rounded-2xl shadow-md flex flex-col justify-between h-[540px] overflow-y-auto"
+          data-aos="fade-left"
+        >
+          <div>
+            <h2 className="text-3xl font-bold text-green-800 mb-6 text-center">
+              Book an Appointment
+            </h2>
 
-          <form className="space-y-4">
-            {/* Role */}
-            <div>
-              <label className="block text-sm font-medium text-gray-700">Select Role</label>
-              <select className="w-full border border-gray-300 rounded px-3 py-2">
-                <option>Doctor</option>
-              </select>
-            </div>
-
-            {/* Doctor */}
-            <div>
-              <label className="block text-sm font-medium text-gray-700">Select Doctor</label>
-              <select className="w-full border border-gray-300 rounded px-3 py-2">
-                <option>Dr Shital Khodke</option>
-              </select>
-            </div>
-
-            {/* Contact */}
-            <div>
-              <label className="block text-sm font-medium text-gray-700">Patient Contact</label>
-              <input
-                type="text"
-                className="w-full border border-gray-300 rounded px-3 py-2"
-                placeholder="Enter Contact Number"
-              />
-            </div>
-
-            {/* Appointment Mode */}
-            <div>
-              <label className="block text-sm font-medium text-gray-700 mb-1">Appointment Mode</label>
-              <div className="flex items-center gap-4">
-                <label className="inline-flex items-center">
-                  <input
-                    type="radio"
-                    name="appointmentMode"
-                    value="online"
-                    checked={mode === "online"}
-                    onChange={() => setMode("online")}
-                    className="text-green-600 focus:ring-green-500"
-                  />
-                  <span className="ml-2 text-gray-700">Online</span>
-                </label>
-                <label className="inline-flex items-center">
-                  <input
-                    type="radio"
-                    name="appointmentMode"
-                    value="offline"
-                    checked={mode === "offline"}
-                    onChange={() => setMode("offline")}
-                    className="text-green-600 focus:ring-green-500"
-                  />
-                  <span className="ml-2 text-gray-700">Offline</span>
-                </label>
-              </div>
-            </div>
-
-            {/* Optional Address Field for Offline */}
-            {mode === "offline" && (
-              <div>
-                <label className="block text-sm font-medium text-gray-700">Clinic Location / Address</label>
-                <input
-                  type="text"
-                  className="w-full border border-gray-300 rounded px-3 py-2"
-                  placeholder="Enter clinic address"
-                />
+            {submitted && (
+              <div className="mb-4 p-3 rounded-lg bg-green-100 text-green-800 border border-green-300 animate-fadeIn">
+                ✅ Appointment submitted successfully!
               </div>
             )}
 
-            {/* Calendar */}
-            <div>
-              <label className="block text-sm font-medium text-gray-700 mb-2">Date</label>
-              <Calendar
-                onChange={setDate}
-                value={date}
-                tileDisabled={({ date }) => date.getDay() === 0} // Disable Sundays
-              />
-            </div>
+            <form className="space-y-5" onSubmit={handleSubmit}>
+              {/* Role */}
+              <div>
+                <label className="block text-sm font-medium text-gray-700">
+                  Select Role
+                </label>
+                <select className="w-full border border-gray-300 rounded px-3 py-2">
+                  <option>Doctor</option>
+                </select>
+              </div>
 
-            {/* Selected Date */}
-            <div>
-              <label className="block text-sm font-medium text-gray-700">Selected Date</label>
-              <div className="text-green-800 font-semibold">{date.toDateString()}</div>
-            </div>
+              {/* Doctor */}
+              <div>
+                <label className="block text-sm font-medium text-gray-700">
+                  Select Doctor
+                </label>
+                <select className="w-full border border-gray-300 rounded px-3 py-2">
+                  <option>Dr. Shital Khodke</option>
+                </select>
+              </div>
 
-            {/* Submit */}
-            <button
-              type="submit"
-              className="bg-green-700 text-white px-4 py-2 rounded hover:bg-green-800 transition"
-            >
-              Book Appointment
-            </button>
-          </form>
+              {/* Contact */}
+              <div>
+                <label className="block text-sm font-medium text-gray-700">
+                  Patient Contact
+                </label>
+                <input
+                  type="text"
+                  placeholder="Enter Contact Number"
+                  className="w-full border border-gray-300 rounded px-3 py-2"
+                />
+              </div>
+
+              {/* Appointment Mode */}
+              <div>
+                <label className="block text-sm font-medium text-gray-700 mb-1">
+                  Appointment Mode
+                </label>
+                <div className="flex items-center gap-6">
+                  <label className="inline-flex items-center">
+                    <input
+                      type="radio"
+                      name="mode"
+                      value="online"
+                      checked={mode === "online"}
+                      onChange={() => setMode("online")}
+                      className="text-green-600"
+                    />
+                    <span className="ml-2 text-gray-700">Online</span>
+                  </label>
+                  <label className="inline-flex items-center">
+                    <input
+                      type="radio"
+                      name="mode"
+                      value="offline"
+                      checked={mode === "offline"}
+                      onChange={() => setMode("offline")}
+                      className="text-green-600"
+                    />
+                    <span className="ml-2 text-gray-700">Offline</span>
+                  </label>
+                </div>
+              </div>
+
+              {/* Address Field (always rendered for height stability) */}
+              <div
+                className={`transition-all duration-300 ${
+                  mode === "online"
+                    ? "opacity-0 pointer-events-none h-0 overflow-hidden"
+                    : "opacity-100 h-auto"
+                }`}
+              >
+                <label className="block text-sm font-medium text-gray-700">
+                  Clinic Address
+                </label>
+                <input
+                  type="text"
+                  placeholder="Enter clinic address"
+                  className="w-full border border-gray-300 rounded px-3 py-2"
+                />
+              </div>
+
+              {/* Calendar */}
+              <div>
+                <label className="block text-sm font-medium text-gray-700 mb-2">
+                  Choose a Date
+                </label>
+                <Calendar
+                  onChange={setDate}
+                  value={date}
+                  tileDisabled={({ date }) => date.getDay() === 0}
+                  className="rounded-lg border border-gray-200 w-full"
+                />
+              </div>
+
+              {/* Selected Date */}
+              <div>
+                <label className="block text-sm font-medium text-gray-700">
+                  Selected Date
+                </label>
+                <div className="text-green-800 font-semibold">
+                  {date.toDateString()}
+                </div>
+              </div>
+
+              {/* Submit */}
+              <button
+                type="submit"
+                className="w-full bg-green-700 text-white py-3 rounded-lg font-medium hover:bg-green-800 transition"
+              >
+                Book Appointment
+              </button>
+            </form>
+          </div>
         </div>
       </div>
     </section>
