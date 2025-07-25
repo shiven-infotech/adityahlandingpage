@@ -22,7 +22,7 @@ export default function Header() {
         </div>
 
         {/* Right: Buttons */}
-        <div className="flex gap-3">
+        <div className="flex mx-3 gap-3">
           <Link href="/appointment">
             <span className="  bg-white text-green-700 font-medium px-4 py-2 rounded-md hover:bg-green-100 transition">
               Book an Appointment

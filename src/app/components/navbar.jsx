@@ -24,7 +24,7 @@ export default function Navbar() {
       children: [
         { label: "Fundamentals of Homeopathy", href: "/aboutus/fundamentalsofhomeopathy" },
         { label: "Myths & Facts About Homeopathy", href: "/aboutus/myths&factsabouthomeopathy" },
-        {label:"Vision and Mission", href:"/visionandmission"}
+        {label:"Vision and Mission", href:"/aboutus/visionandmission"}
       ],
     },
     {
@@ -236,22 +236,24 @@ export default function Navbar() {
     },
     {
       label: "Resource",
+      href:"resource",
       children: [
-        { label: "Patients Testimonials", href: "/patientstestimonials" },
-        { label: "Case Studies", href: "/casestudies" },
-        { label: "Blogs", href: "/blogs" },
-        { label: "Online Forms", href: "/onlineforms" },
+        { label: "Patients Testimonials", href: "/resource/patientstestimonials" },
+        { label: "Case Studies", href: "/resource/casestudies" },
+        { label: "Blogs", href: "/resource/blogs" },
+        { label: "Online Forms", href: "/resource/onlineforms" },
       ],
     },
+    
     { label: "Philanthropy", href: "/philanthropy" },
     
     {
       label: "Contact Us",
       href:"contactus",
       children: [
-        { label: "Contact Us", href: "/contactus" },
-        { label: "Request a Call Back", href: "/requestacallback" },
-        { label: "Did not Find Your Questions", href: "/didnotfindyourquestion" },
+        { label: "Contact Us", href: "/contactus/contactus" },
+        { label: "Request a Call Back", href: "/contactus/requestacallback" },
+        { label: "Did not Find Your Questions", href: "/contactus/didnotfindyourquestions" },
       ],
     },
     { label: "Login", href: "/login" },

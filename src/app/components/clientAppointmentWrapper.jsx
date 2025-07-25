@@ -1,10 +1,10 @@
-"use client";
-import dynamic from "next/dynamic";
+// "use client";
+// import dynamic from "next/dynamic";
 
-const AppointmentForm = dynamic(() => import(".//appointment"), {
-  ssr: false,
-});
+// const AppointmentForm = dynamic(() => import(".//appointment"), {
+//   ssr: false,
+// });
 
-export default function ClientAppointmentWrapper() {
-  return <AppointmentForm />;
-}
+// export default function ClientAppointmentWrapper() {
+//   return <AppointmentForm />;
+// }
