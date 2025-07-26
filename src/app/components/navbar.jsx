@@ -22,6 +22,7 @@ export default function Navbar() {
       label: "About Us",
       href: "/aboutus",
       children: [
+        {label:"About Us", href:"/aboutus/aboutus"},
         { label: "Fundamentals of Homeopathy", href: "/aboutus/fundamentalsofhomeopathy" },
         { label: "Myths & Facts About Homeopathy", href: "/aboutus/myths&factsabouthomeopathy" },
         {label:"Vision and Mission", href:"/aboutus/visionandmission"}
@@ -235,13 +236,13 @@ export default function Navbar() {
       ],
     },
     {
-      label: "Resource",
-      href:"resource",
+      label: "Resources",
+      href:"resources",
       children: [
-        { label: "Patients Testimonials", href: "/resource/patientstestimonials" },
-        { label: "Case Studies", href: "/resource/casestudies" },
-        { label: "Blogs", href: "/resource/blogs" },
-        { label: "Online Forms", href: "/resource/onlineforms" },
+        { label: "Patients Testimonials", href: "/resources/patientstestimonials" },
+        { label: "Case Studies", href: "/resources/casestudies" },
+        { label: "Blogs", href: "/resources/blogs" },
+        { label: "Online Forms", href: "/resources/onlineforms" },
       ],
     },
     

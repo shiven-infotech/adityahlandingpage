@@ -7,37 +7,46 @@ import "aos/dist/aos.css";
 import Header from "../../components/header";
 import Navbar from "../../components/navbar";
 import Footer from "../../components/footer";
-import Link from "next/link";
 
-export default function DidNotFindYourQuestionsPage() {
+export default function DidNotFindYourQuestionPage() {
   const [formData, setFormData] = useState({
     name: "",
-    email: "",
     question: "",
+    date: "",
   });
-  const [submitted, setSubmitted] = useState(false);
-  const [search, setSearch] = useState("");
 
-  const faqs = [
-    "What is homeopathy and how does it work?",
-    "Is homeopathy safe for children and elderly?",
-    "How long does a treatment take to show results?",
-    "Can I take homeopathic and allopathic medicines together?",
-    "What conditions can be treated with homeopathy?",
-    "Are there any side effects of homeopathy?",
-    "How do I book an online consultation?",
-  ];
+  const [faqs, setFaqs] = useState([
+    { question: "Is homeopathy safe for children?", answer: "Yes, homeopathy is safe and effective for all age groups." },
+    { question: "How long does treatment take?", answer: "It depends on the condition and individual response." },
+    { question: "How long does it take to see results with homeopathy?",
+  answer: "The time for visible results varies depending on the individual and condition. Acute issues may improve within days, while chronic problems may take weeks to months of consistent treatment."},
+   {  question: "Can I take homeopathic treatment alongside allopathic medicines?",
+  answer: "Yes, homeopathy can be taken safely with conventional medicines. Our doctor will guide you on the best approach to integrate both therapies effectively."},
+  { question: "Does homeopathy treat the root cause of disease?",
+  answer: "Yes, homeopathy aims to address the root cause by enhancing the body’s natural healing mechanisms rather than suppressing symptoms."},
+  {
+  question: "Is online consultation available at Aditya Homeopathic Clinic?",
+  answer: "Yes, we offer both in-clinic and online consultations for your convenience. You can request a callback or book an appointment through our website."
+}
+  ]);
 
-  const filteredFaqs = faqs.filter((faq) =>
-    faq.toLowerCase().includes(search.toLowerCase())
-  );
+  const [newFAQ, setNewFAQ] = useState({ question: "", answer: "" });
 
   useEffect(() => {
-    AOS.init({ duration: 1000, once: true });
+    AOS.init({ duration: 1000 });
+    const today = new Date().toISOString().split("T")[0];
+    setFormData((prev) => ({ ...prev, date: today }));
   }, []);
 
-  const handleChange = (e) => {
+  const handleInputChange = (e) => {
     setFormData((prev) => ({
+      ...prev,
+      [e.target.name]: e.target.value,
+    }));
+  };
+
+  const handleFAQChange = (e) => {
+    setNewFAQ((prev) => ({
       ...prev,
       [e.target.name]: e.target.value,
     }));
@@ -45,140 +54,131 @@ export default function DidNotFindYourQuestionsPage() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log("User Question:", formData);
-    setSubmitted(true);
+    console.log("Submitted Question:", formData);
+  };
 
-    setTimeout(() => {
-      setSubmitted(false);
-      setFormData({ name: "", email: "", question: "" });
-    }, 3000);
+  const addFAQ = (e) => {
+    e.preventDefault();
+    if (newFAQ.question && newFAQ.answer) {
+      setFaqs([...faqs, newFAQ]);
+      setNewFAQ({ question: "", answer: "" });
+    }
   };
 
   return (
     <>
       <Header />
       <Navbar />
+      <main className=" bg-[#e3ffe0] py-10 px-4 md:px-6">
+        <div className="max-w-7xl mx-auto  flex flex-col md:flex-row gap-6">
+          {/* Sidebar Menu */}
+         <aside
+  className="md:w-1/4 w-full h-fit md:sticky md:top-24  p-4 space-y-3 bg-[#e3ffe0] "
+  data-aos="fade-right"
+>
+  <h2 className="text-xl font-bold text-green-700 mb-3">Health Packages</h2>
+  <ul className="space-y-2 text-gray-800 cursor-pointer hover:text-green-700  font-medium">
+    <li><a href="/reversalprogram">Reversal Program</a></li>
+    <li><a href="/garbhsanskarclasses">Garbh Sanskar Classes</a></li>
+    <li><a href="/rightbrainactivationclasses">Right Brain Activation</a></li>
+    <li><a href="/prepregnancy">Pre Pregnancy</a></li>
+    <li><a href="/postdelivery">Post Delivery</a></li>
+    <li><a href="/corporatewellnessprogram">Corporate Wellness Program</a></li>
+  </ul>
+</aside>
 
-      <main className="bg-[#e3ffe0] min-h-screen py-12 px-4">
-        <div className="max-w-4xl mx-auto space-y-12">
 
-          {/* Page Heading */}
-          <div
-            className="text-center space-y-2"
-            data-aos="fade-up"
-          >
-            <h2 className="text-3xl font-bold text-green-700">
-              Didn't Find Your Question?
-            </h2>
-            <p className="text-gray-600">
-              Search below or submit your question directly to our experts.
-            </p>
-          </div>
+          {/* Main Content */}
+          <section className="flex-1  space-y-10" data-aos="fade-left">
+            {/* Form */}
+            <div className="bg-[#e3ffe0] p-6  " data-aos="fade-up">
+              <h2 className="text-2xl font-bold mb-4 text-green-700">Didn't Find Your Question?</h2>
+              <form onSubmit={handleSubmit} className="space-y-4">
+                <div>
+                  <label className="block font-medium">Your Name</label>
+                  <input
+                    type="text"
+                    name="name"
+                    value={formData.name}
+                    onChange={handleInputChange}
+                    required
+                    className="w-full p-2 border rounded-md"
+                  />
+                </div>
+                <div>
+                  <label className="block font-medium">Your Question</label>
+                  <textarea
+                    name="question"
+                    value={formData.question}
+                    onChange={handleInputChange}
+                    rows="3"
+                    required
+                    className="w-full p-2 border rounded-md"
+                  ></textarea>
+                </div>
+                <div>
+                  <label className="block font-medium">Date</label>
+                  <input
+                    type="text"
+                    name="date"
+                    value={formData.date}
+                    readOnly
+                    className="w-full p-2 bg-gray-100 border rounded-md"
+                  />
+                </div>
+                <button
+                  type="submit"
+                  className="bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700"
+                >
+                  Submit
+                </button>
+              </form>
+            </div>
 
-          {/* Search Input */}
-          <div className="max-w-md mx-auto" data-aos="fade-in">
-            <input
-              type="text"
-              value={search}
-              onChange={(e) => setSearch(e.target.value)}
-              placeholder="Search common questions..."
-              className="w-full p-2 border border-gray-300 rounded-md"
-            />
-          </div>
+            {/* FAQs Section */}
+            <div className="bg-[#e3ffe0] p-6 " data-aos="fade-up">
+              <h3 className="text-xl font-semibold mb-4 text-green-700">Frequently Asked Questions</h3>
+              <ul className="space-y-3">
+                {faqs.map((faq, index) => (
+                  <li key={index} className="border-b pb-2">
+                    <strong>{faq.question}</strong>
+                    <p className="text-gray-700">{faq.answer}</p>
+                  </li>
+                ))}
+              </ul>
 
-          {/* Related Questions List */}
-          <div data-aos="fade-up">
-            <h3 className="text-xl font-semibold mb-2 text-green-600">
-              Related Questions:
-            </h3>
-            <ul className="space-y-2 list-disc list-inside text-gray-700">
-              {filteredFaqs.length > 0 ? (
-                filteredFaqs.map((faq, index) => (
-                  <li key={index}>{faq}</li>
-                ))
-              ) : (
-                <li>No related questions found.</li>
-              )}
-            </ul>
-          </div>
-
-          {/* Continue to FAQs Button */}
-          <div className="text-center" data-aos="zoom-in">
-            <Link
-              href="/faqs"
-              className="inline-block bg-green-600 hover:bg-green-700 text-white font-semibold px-6 py-2 rounded-md transition"
-            >
-              Continue to FAQs
-            </Link>
-          </div>
-
-          {/* Submit Custom Question Form */}
-          <div
-            className="bg-white shadow-2xl rounded-xl p-8 max-w-2xl mx-auto space-y-6"
-            data-aos="fade-up"
-          >
-            <h3 className="text-2xl font-bold text-center text-green-700">
-              Ask Your Own Question
-            </h3>
-
-            {submitted && (
-              <div
-                className="text-green-700 font-medium text-center animate-bounce"
-                data-aos="fade-in"
-              >
-                ✅ Question submitted successfully!
-              </div>
-            )}
-
-            <form onSubmit={handleSubmit} className="space-y-4">
-              <div>
-                <label className="block font-medium">Your Name</label>
+              {/* Add New FAQ */}
+              <form onSubmit={addFAQ} className="mt-6 space-y-3" data-aos="fade-up">
+                <h4 className="font-bold text-green-600">Add a New FAQ</h4>
                 <input
                   type="text"
-                  name="name"
-                  required
-                  value={formData.name}
-                  onChange={handleChange}
-                  className="w-full p-2 border border-gray-300 rounded-md"
-                />
-              </div>
-
-              <div>
-                <label className="block font-medium">Email</label>
-                <input
-                  type="email"
-                  name="email"
-                  required
-                  value={formData.email}
-                  onChange={handleChange}
-                  className="w-full p-2 border border-gray-300 rounded-md"
-                />
-              </div>
-
-              <div>
-                <label className="block font-medium">Your Question</label>
-                <textarea
                   name="question"
+                  placeholder="New Question"
+                  value={newFAQ.question}
+                  onChange={handleFAQChange}
+                  className="w-full p-2 border rounded-md"
                   required
-                  rows="4"
-                  value={formData.question}
-                  onChange={handleChange}
-                  className="w-full p-2 border border-gray-300 rounded-md"
-                  placeholder="Type your question here..."
+                />
+                <textarea
+                  name="answer"
+                  placeholder="Answer"
+                  value={newFAQ.answer}
+                  onChange={handleFAQChange}
+                  rows="2"
+                  className="w-full p-2 border rounded-md"
+                  required
                 ></textarea>
-              </div>
-
-              <button
-                type="submit"
-                className="w-full bg-green-600 hover:bg-green-700 text-white font-semibold py-2 rounded-md transition"
-              >
-                Submit Question
-              </button>
-            </form>
-          </div>
+                <button
+                  type="submit"
+                  className="bg-yellow-500 text-white px-4 py-2 rounded hover:bg-yellow-600"
+                >
+                  Add FAQ
+                </button>
+              </form>
+            </div>
+          </section>
         </div>
       </main>
-
       <Footer />
     </>
   );

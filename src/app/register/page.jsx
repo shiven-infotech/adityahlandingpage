@@ -53,9 +53,9 @@ export default function PatientRegisterPage() {
       <Header />
       <Navbar />
 
-      <main className="min-h-screen flex items-center justify-center bg-green-100 px-4 py-12">
+      <main className=" flex items-center justify-center bg-[#e3ffe0] px-4 py-12">
         <div
-          className="bg-white shadow-2xl rounded-2xl p-8 max-w-2xl w-full space-y-6"
+          className="bg-[#e3ffe0]  p-8 max-w-2xl w-full space-y-6"
           data-aos="fade-up"
         >
           <h1
