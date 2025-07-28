@@ -9,7 +9,7 @@ export default function GoutPage() {
     <>
       <Header />
       <Navbar />
-      <main className="max-w-5xl mx-auto px-4 py-10 space-y-10 text-gray-800">
+      <main className="max-w-screen text-center bg-[#e3ffe0] mx-auto px-4 py-10 space-y-10 text-gray-800">
         <section>
           <h1 className="text-3xl font-bold text-center mb-6">
             Gout Homeopathy Treatment

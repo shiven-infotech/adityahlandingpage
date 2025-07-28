@@ -10,7 +10,7 @@ export default function SpinalStenosisPage() {
       <Header />
       <Navbar />
 
-      <main className="px-6 py-10 max-w-5xl mx-auto space-y-10 text-gray-800">
+      <main className="px-6 py-10 bg-[#e3ffe0] max-w-screen mx-auto text-center space-y-10 text-gray-800">
         <section>
           <h1 className="text-3xl font-bold text-center text-green-700 mb-6">
             Spinal Stenosis Homeopathy Treatment

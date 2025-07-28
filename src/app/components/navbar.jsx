@@ -236,13 +236,13 @@ export default function Navbar() {
       ],
     },
     {
-      label: "Resources",
-      href:"resources",
+      label: "Resource",
+      href:"resource",
       children: [
-        { label: "Patients Testimonials", href: "/resources/patientstestimonials" },
-        { label: "Case Studies", href: "/resources/casestudies" },
-        { label: "Blogs", href: "/resources/blogs" },
-        { label: "Online Forms", href: "/resources/onlineforms" },
+        { label: "Patients Testimonials", href: "/resource/patientstestimonials" },
+        { label: "Case Studies", href: "/resource/casestudies" },
+        { label: "Blogs", href: "/resource/blogs" },
+        { label: "Online Forms", href: "/resource/onlineforms" },
       ],
     },
     

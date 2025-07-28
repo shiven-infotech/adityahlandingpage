@@ -10,7 +10,7 @@ export default function CervicalSpondylosisPage() {
       <Header />
       <Navbar />
 
-      <main className="px-6 py-10 max-w-4xl mx-auto space-y-8">
+      <main className="px-6 py-10 bg-[#e3ffe0] max-w-screen mx-auto text-center space-y-8">
         <section>
           <h1 className="text-3xl font-bold mb-6 text-green-700">
             Cervical Spondylosis Homeopathy Treatment

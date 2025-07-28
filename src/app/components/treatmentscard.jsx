@@ -79,14 +79,12 @@ export default function TreatmentsCard() {
       </h2>
 
       {/* Full-Width Image on Top */}
-<div className="mb-10 max-w-7xl mx-auto">
+       <div className="relative w-auto h-64">
   <Image
     src="/c.jpg"
-    alt="Homeopathy Treatments"
-    width={1920}
-    height={600}
-    className="w-full h-[600px] rounded-xl  object-cover"
-    priority
+    alt="Description"
+    fill
+    className="object-cover"
   />
 </div>
 

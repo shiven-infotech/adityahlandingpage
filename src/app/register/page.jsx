@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useEffect, useState } from "react";
 import AOS from "aos";
 import "aos/dist/aos.css";
 
@@ -8,44 +8,33 @@ import Header from "../components/header";
 import Navbar from "../components/navbar";
 import Footer from "../components/footer";
 
-export default function PatientRegisterPage() {
-  const [formData, setFormData] = useState({
-    fullName: "",
-    gender: "",
-    dob: "",
-    phone: "",
+export default function OnlineFormsPage() {
+  const [form, setForm] = useState({
+    name: "",
     email: "",
+    gender: "",
     address: "",
-    ailments: "",
+    city: "",
+    zip: "",
+    country: "",
+    disease: "",
+    mobile: "",
+    promoCode: "",
   });
 
-  const [submitted, setSubmitted] = useState(false);
-
   useEffect(() => {
-    AOS.init({ duration: 1000, once: true });
+    AOS.init({ duration: 800 });
   }, []);
 
   const handleChange = (e) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
+    const { name, value } = e.target;
+    setForm({ ...form, [name]: value });
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log("Submitted Data:", formData);
-    setSubmitted(true);
-
-    setTimeout(() => {
-      setSubmitted(false);
-      setFormData({
-        fullName: "",
-        gender: "",
-        dob: "",
-        phone: "",
-        email: "",
-        address: "",
-        ailments: "",
-      });
-    }, 3000);
+    console.log("Form Submitted:", form);
+    // TODO: Add submission logic
   };
 
   return (
@@ -53,130 +42,184 @@ export default function PatientRegisterPage() {
       <Header />
       <Navbar />
 
-      <main className=" flex items-center justify-center bg-[#e3ffe0] px-4 py-12">
-        <div
-          className="bg-[#e3ffe0]  p-8 max-w-2xl w-full space-y-6"
-          data-aos="fade-up"
-        >
-          <h1
-            className="text-3xl font-bold text-green-700 text-center"
-            data-aos="zoom-in"
-          >
-            New Patient Registration
-          </h1>
+      <main className="py-10 px-4 md:px-16 max-w-5xl mx-auto" data-aos="fade-up">
+        <div className="bg-white p-6 md:p-10 rounded-xl shadow-lg border">
+          <h2 className="text-xl md:text-2xl text-center font-bold mb-8 text-yellow-600">
+            Register now for Free & get a Complimentary Case Evaluation
+          </h2>
 
-          {submitted && (
-            <div
-              className="text-green-700 text-center font-semibold animate-bounce"
-              data-aos="fade-in"
-            >
-              ✅ Registration Successful!
-            </div>
-          )}
-
-          <form onSubmit={handleSubmit} className="space-y-4" data-aos="fade-up">
-            {/* Full Name */}
-            <div>
-              <label className="block font-medium">Full Name</label>
+          <form onSubmit={handleSubmit} className="grid grid-cols-1 md:grid-cols-2 gap-6 text-sm">
+            {/* Name */}
+            <div className="flex items-center border rounded px-3">
+              <span className="text-gray-400 mr-2">👤</span>
               <input
                 type="text"
-                name="fullName"
-                value={formData.fullName}
+                name="name"
+                placeholder="Full Name *"
+                value={form.name}
                 onChange={handleChange}
+                className="w-full p-2 outline-none"
                 required
-                className="w-full p-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-green-500"
               />
-            </div>
-
-            {/* Gender and DOB */}
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-              <div>
-                <label className="block font-medium">Gender</label>
-                <select
-                  name="gender"
-                  value={formData.gender}
-                  onChange={handleChange}
-                  required
-                  className="w-full p-2 border border-gray-300 rounded-md"
-                >
-                  <option value="">Select</option>
-                  <option>Male</option>
-                  <option>Female</option>
-                  <option>Other</option>
-                </select>
-              </div>
-
-              <div>
-                <label className="block font-medium">Date of Birth</label>
-                <input
-                  type="date"
-                  name="dob"
-                  value={formData.dob}
-                  onChange={handleChange}
-                  required
-                  className="w-full p-2 border border-gray-300 rounded-md"
-                />
-              </div>
-            </div>
-
-            {/* Phone and Email */}
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-              <div>
-                <label className="block font-medium">Phone Number</label>
-                <input
-                  type="tel"
-                  name="phone"
-                  value={formData.phone}
-                  onChange={handleChange}
-                  required
-                  className="w-full p-2 border border-gray-300 rounded-md"
-                />
-              </div>
-
-              <div>
-                <label className="block font-medium">Email</label>
-                <input
-                  type="email"
-                  name="email"
-                  value={formData.email}
-                  onChange={handleChange}
-                  className="w-full p-2 border border-gray-300 rounded-md"
-                />
-              </div>
             </div>
 
             {/* Address */}
-            <div>
-              <label className="block font-medium">Address</label>
-              <textarea
+            <div className="flex items-center border rounded px-3">
+              <span className="text-gray-400 mr-2">📍</span>
+              <input
+                type="text"
                 name="address"
-                value={formData.address}
+                placeholder="Address *"
+                value={form.address}
                 onChange={handleChange}
-                rows="3"
+                className="w-full p-2 outline-none"
                 required
-                className="w-full p-2 border border-gray-300 rounded-md"
               />
             </div>
 
-            {/* Ailments */}
-            <div>
-              <label className="block font-medium">Describe Ailments</label>
-              <textarea
-                name="ailments"
-                value={formData.ailments}
+            {/* Email */}
+            <div className="flex items-center border rounded px-3">
+              <span className="text-gray-400 mr-2">📧</span>
+              <input
+                type="email"
+                name="email"
+                placeholder="Email Id *"
+                value={form.email}
                 onChange={handleChange}
-                rows="3"
-                placeholder="Mention any existing conditions..."
-                className="w-full p-2 border border-gray-300 rounded-md"
+                className="w-full p-2 outline-none"
+                required
               />
             </div>
 
-            <button
-              type="submit"
-              className="w-full bg-green-600 hover:bg-green-700 text-white py-2 rounded-md text-lg font-semibold transition"
-            >
-              Register Patient
-            </button>
+            {/* City */}
+            <div className="flex items-center border rounded px-3">
+              <span className="text-gray-400 mr-2">🏙️</span>
+              <input
+                type="text"
+                name="city"
+                placeholder="City *"
+                value={form.city}
+                onChange={handleChange}
+                className="w-full p-2 outline-none"
+                required
+              />
+            </div>
+
+            {/* Gender */}
+            <div className="flex items-center gap-6 px-3">
+              <span className="text-gray-500">⚥</span>
+              <label className="flex items-center gap-2">
+                <input type="radio" name="gender" value="Male" onChange={handleChange} required />
+                Male
+              </label>
+              <label className="flex items-center gap-2">
+                <input type="radio" name="gender" value="Female" onChange={handleChange} />
+                Female
+              </label>
+            </div>
+
+            {/* Zip Code */}
+            <div className="flex items-center border rounded px-3">
+              <span className="text-gray-400 mr-2">📨</span>
+              <input
+                type="text"
+                name="zip"
+                placeholder="Zip Code *"
+                value={form.zip}
+                onChange={handleChange}
+                className="w-full p-2 outline-none"
+                required
+              />
+            </div>
+
+            {/* Country */}
+            <div className="flex items-center border rounded px-3">
+              <span className="text-gray-400 mr-2">🌐</span>
+              <select
+                name="country"
+                value={form.country}
+                onChange={handleChange}
+                className="w-full p-2 outline-none bg-transparent"
+                required
+              >
+                <option value="">Select Your Country *</option>
+                <option value="India">India</option>
+                <option value="USA">USA</option>
+                <option value="UK">UK</option>
+                <option value="Australia">Australia</option>
+              </select>
+            </div>
+
+            {/* Disease */}
+            <div className="flex items-center border rounded px-3">
+              <span className="text-gray-400 mr-2">🩺</span>
+              <select
+                name="disease"
+                value={form.disease}
+                onChange={handleChange}
+                className="w-full p-2 outline-none bg-transparent"
+                required
+              >
+                <option value="">Select Your Disease *</option>
+                <option value="Eczema">Eczema</option>
+                <option value="Psoriasis">Psoriasis</option>
+                <option value="Asthma">Asthma</option>
+              </select>
+            </div>
+
+            {/* Mobile */}
+            <div className="flex items-center border rounded px-3">
+              <span className="text-gray-400 mr-2">📞</span>
+              <input
+                type="tel"
+                name="mobile"
+                placeholder="Mobile Number *"
+                value={form.mobile}
+                onChange={handleChange}
+                className="w-full p-2 outline-none"
+                required
+              />
+            </div>
+
+            {/* Promo Code */}
+            <div className="flex items-center border rounded px-3">
+              <span className="text-gray-400 mr-2">🎁</span>
+              <input
+                type="text"
+                name="promoCode"
+                placeholder="Promo Code / Corporate Code"
+                value={form.promoCode}
+                onChange={handleChange}
+                className="w-full p-2 outline-none"
+              />
+            </div>
+
+            {/* reCAPTCHA mock */}
+            <div className="col-span-2 text-center mt-4">
+              <div className="inline-block border p-4 rounded-md bg-gray-50">
+                <label className="flex items-center justify-center gap-3">
+                  <input type="checkbox" required />
+                  I'm not a robot
+                </label>
+                <p className="text-xs text-gray-500 mt-1">reCAPTCHA – Privacy • Terms</p>
+              </div>
+            </div>
+
+            {/* Register Button */}
+            <div className="col-span-2 text-center mt-6">
+              <button
+                type="submit"
+                className="bg-yellow-400 hover:bg-yellow-500 text-black font-semibold py-2 px-6 rounded-lg transition"
+              >
+                Register
+              </button>
+              <p className="text-sm mt-4">
+                Already Registered?{" "}
+                <a href="/login" className="text-blue-600 underline">
+                  Login
+                </a>
+              </p>
+            </div>
           </form>
         </div>
       </main>

@@ -10,7 +10,7 @@ export default function JointPainPage() {
     <>
       <Header />
       <Navbar />
-      <main className="px-6 py-10 max-w-4xl mx-auto space-y-10">
+      <main className="px-6 py-10 bg-[#e3ffe0] max-w-screen text-center mx-auto space-y-10">
         <section>
           <h1 className="text-3xl font-bold text-green-700 mb-4">Joint Pain Homeopathy Treatment</h1>
 
