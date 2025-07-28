@@ -73,18 +73,18 @@ export default function TreatmentsCard() {
   ];
 
   return (
-    <section className="px-4 py-12 bg-[#e3ffe0]">
+    <section className="px-4 py-12  bg-[#e3ffe0]">
       <h2 className="text-2xl sm:text-3xl font-bold text-center text-green-700 mb-8">
         Clinical Conditions For Acute and Chronic Ailments
       </h2>
 
       {/* Full-Width Image on Top */}
-       <div className="relative w-auto h-64">
+       <div className="relative  max-w-7xl mx-auto h-100">
   <Image
-    src="/c.jpg"
+    src="/d.jpg"
     alt="Description"
     fill
-    className="object-cover"
+    className="object-cover rounded-xl  "
   />
 </div>
 
