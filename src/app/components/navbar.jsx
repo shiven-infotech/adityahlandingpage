@@ -25,7 +25,8 @@ export default function Navbar() {
         {label:"About Us", href:"/aboutus/aboutus"},
         { label: "Fundamentals of Homeopathy", href: "/aboutus/fundamentalsofhomeopathy" },
         { label: "Myths & Facts About Homeopathy", href: "/aboutus/myths&factsabouthomeopathy" },
-        {label:"Vision and Mission", href:"/aboutus/visionandmission"}
+        {label:"Vision and Mission", href:"/aboutus/visionandmission"},
+        {label:"Team Balance", href:"/aboutus/teambalance"}
       ],
     },
     {
@@ -230,7 +231,7 @@ export default function Navbar() {
         { label: "Reversal Program", href: "/reversalprogram" },
         { label: "Garbh Sanskar Classes", href: "/garbhsanskarclasses" },
         { label: "Right Brain Activation Classes", href: "/rightbrainactivationclasses" },
-        { label: "Pre Pregancy", href: "/prepregancy" },
+        { label: "Pre Pregnancy", href: "/prepregnancy" },
         { label: "Post Delivery", href: "/postdelivery" },
         { label: "Corporate Wellness Program", href: "/corporatewellnessprogram" },
       ],

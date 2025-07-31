@@ -15,7 +15,7 @@ export default function Footer() {
       <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
         {/* Clinic Info */}
         <div>
-          <h2 className="text-xl font-bold mb-3">Aditya Homeopathy Clinic</h2>
+          <h2 className="text-xl font-bold mb-3">Aditya Homoeopathic Clinic</h2>
           <p>
             Healing naturally with classical homeopathy. Personalized care for
             all ages and conditions.

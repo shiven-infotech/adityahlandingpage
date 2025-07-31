@@ -8,146 +8,246 @@ import Header from "../../components/header";
 import Navbar from "../../components/navbar";
 import Footer from "../../components/footer";
 
-export default function OnlineFormsPage() {
-  const [selectedForm, setSelectedForm] = useState("new");
-
+export default function NewPatientForm() {
   useEffect(() => {
-    AOS.init({ duration: 800 });
+    AOS.init({ duration: 800, once: true });
   }, []);
+
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    gender: "",
+    address: "",
+    city: "",
+    zip: "",
+    country: "",
+    disease: "",
+    phone: "",
+    promo: "",
+  });
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData((prev) => ({ ...prev, [name]: value }));
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    console.log("Form submitted:", formData);
+  };
 
   return (
     <>
       <Header />
       <Navbar />
 
-      <main className="py-10 px-4 md:px-16 max-w-5xl mx-auto" data-aos="fade-up">
-        <div className="bg-white p-6 md:p-10 rounded-xl shadow-lg border">
-          <h2 className="text-2xl font-bold text-center text-yellow-600 mb-6">
-            Online Patient Forms
-          </h2>
-
-          {/* Form Selector */}
-          <div className="mb-6 flex flex-col md:flex-row gap-4 justify-center items-center">
-            <label className="text-gray-600 font-medium">Select Form Type:</label>
-            <select
-              value={selectedForm}
-              onChange={(e) => setSelectedForm(e.target.value)}
-              className="border px-4 py-2 rounded-md text-sm"
-            >
-              <option value="new">New Patient Registration</option>
-              <option value="followup">Follow-up Appointment</option>
-              <option value="feedback">Patient Feedback</option>
-              <option value="custom">Custom Form</option>
-            </select>
+      <main className="bg-[#f0fdf4] px-4 py-12 min-h-screen flex flex-col lg:flex-row gap-6">
+        {/* Side Menus */}
+        <aside className="lg:w-64 w-full flex flex-col gap-6 sticky top-24 self-start h-fit z-10">
+          {/* Health Packages */}
+          <div className="  p-4">
+            <h3 className="font-bold text-green-700 mb-2">Health Packages</h3>
+            <ul className="space-y-1 text-sm ">
+              <li><a href="/healthpackages/reversalprogram" className="hover:underline">Reversal Program</a></li>
+              <li><a href="#" className="hover:underline">Full Body Scan</a></li>
+              <li><a href="#" className="hover:underline">Homeopathy Combo</a></li>
+              <li><a href="#" className="hover:underline">Wellness Plan</a></li>
+            </ul>
           </div>
 
-          {/* Render selected form */}
-          {selectedForm === "new" && <NewPatientForm />}
-          {selectedForm === "followup" && <FollowUpForm />}
-          {selectedForm === "feedback" && <FeedbackForm />}
-          {selectedForm === "custom" && <CustomForm />}
+          {/* Main Links */}
+          <div className=" p-4">
+            <h3 className="font-bold text-green-700 mb-2">Main</h3>
+            <ul className="space-y-1 text-sm ">
+              <li><a href="/resource/patientstestimonials" className="hover:underline"> Patients Testimonials</a></li>
+              <li><a href="/resource/casestudies" className="hover:underline">Case Studies</a></li>
+              <li><a href="/resource/blogs" className="hover:underline">Blogs</a></li>
+              <li><a href="/resource/onlineforms" className="hover:underline">Online Forms</a></li>
+            </ul>
+          </div>
+        </aside>
+
+        {/* Form Section */}
+        <div className="flex-1 flex justify-center" data-aos="fade-up">
+          <div className="w-full max-w-4xl bg-white rounded-xl shadow-lg p-8">
+            <h2 className="text-2xl font-bold text-yellow-600 mb-6 text-center">
+              Register now for Free & get a Complimentary Case Evaluation
+            </h2>
+
+            <form onSubmit={handleSubmit} className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              {/* Full Name */}
+              <div className="relative">
+                <input
+                  type="text"
+                  name="name"
+                  placeholder="Full Name *"
+                  value={formData.name}
+                  onChange={handleChange}
+                  required
+                  className="w-full border border-gray-300 rounded px-4 py-2 pl-10"
+                />
+                <span className="absolute left-3 top-2.5 text-purple-700">👤</span>
+              </div>
+
+              {/* Address */}
+              <div className="relative">
+                <input
+                  type="text"
+                  name="address"
+                  placeholder="Address *"
+                  value={formData.address}
+                  onChange={handleChange}
+                  required
+                  className="w-full border border-gray-300 rounded px-4 py-2 pl-10"
+                />
+                <span className="absolute left-3 top-2.5">📍</span>
+              </div>
+
+              {/* Email */}
+              <div className="relative">
+                <input
+                  type="email"
+                  name="email"
+                  placeholder="Email Id *"
+                  value={formData.email}
+                  onChange={handleChange}
+                  required
+                  className="w-full border border-gray-300 rounded px-4 py-2 pl-10"
+                />
+                <span className="absolute left-3 top-2.5">📧</span>
+              </div>
+
+              {/* City */}
+              <div className="relative">
+                <input
+                  type="text"
+                  name="city"
+                  placeholder="City *"
+                  value={formData.city}
+                  onChange={handleChange}
+                  required
+                  className="w-full border border-gray-300 rounded px-4 py-2 pl-10"
+                />
+                <span className="absolute left-3 top-2.5">🏙️</span>
+              </div>
+
+              {/* Gender */}
+              <div className="flex items-center gap-4 col-span-2">
+                <span className="text-gray-500">⚥</span>
+                <label className="flex items-center gap-1">
+                  <input type="radio" name="gender" value="Male" onChange={handleChange} /> Male
+                </label>
+                <label className="flex items-center gap-1">
+                  <input type="radio" name="gender" value="Female" onChange={handleChange} /> Female
+                </label>
+              </div>
+
+              {/* Zip Code */}
+              <div className="relative">
+                <input
+                  type="text"
+                  name="zip"
+                  placeholder="Zip Code *"
+                  value={formData.zip}
+                  onChange={handleChange}
+                  required
+                  className="w-full border border-gray-300 rounded px-4 py-2 pl-10"
+                />
+                <span className="absolute left-3 top-2.5">🏳️</span>
+              </div>
+
+              {/* Country */}
+              <div className="relative">
+                <select
+                  name="country"
+                  value={formData.country}
+                  onChange={handleChange}
+                  required
+                  className="w-full border border-gray-300 rounded px-4 py-2 pl-10 bg-white"
+                >
+                  <option value="">Select Your Country *</option>
+                  <option value="India">India</option>
+                  <option value="USA">USA</option>
+                  <option value="UK">UK</option>
+                  <option value="Other">Other</option>
+                </select>
+                <span className="absolute left-3 top-2.5">🌐</span>
+              </div>
+
+              {/* Disease */}
+              <div className="relative">
+                <select
+                  name="disease"
+                  value={formData.disease}
+                  onChange={handleChange}
+                  required
+                  className="w-full border border-gray-300 rounded px-4 py-2 pl-10 bg-white"
+                >
+                  <option value="">Select Your Disease *</option>
+                  <option value="Diabetes">Diabetes</option>
+                  <option value="Skin">Skin Issues</option>
+                  <option value="Other">Other</option>
+                </select>
+                <span className="absolute left-3 top-2.5">🧬</span>
+              </div>
+
+              {/* Phone */}
+              <div className="relative">
+                <input
+                  type="tel"
+                  name="phone"
+                  placeholder="Mobile Number *"
+                  value={formData.phone}
+                  onChange={handleChange}
+                  required
+                  className="w-full border border-gray-300 rounded px-4 py-2 pl-10"
+                />
+                <span className="absolute left-3 top-2.5">📞</span>
+              </div>
+
+              {/* Promo */}
+              <div className="relative">
+                <input
+                  type="text"
+                  name="promo"
+                  placeholder="Promo Code / Corporate Code"
+                  value={formData.promo}
+                  onChange={handleChange}
+                  className="w-full border border-gray-300 rounded px-4 py-2 pl-10"
+                />
+                <span className="absolute left-3 top-2.5">🎁</span>
+              </div>
+
+              {/* reCAPTCHA Placeholder */}
+              <div className="col-span-2 flex justify-center">
+                <div className="border rounded p-4 text-center w-fit text-sm">
+                  <label>
+                    <input type="checkbox" required className="mr-2" /> I'm not a robot
+                  </label>
+                  <div className="text-xs text-gray-500 mt-1">reCAPTCHA – Privacy • Terms</div>
+                </div>
+              </div>
+
+              {/* Submit */}
+              <div className="col-span-2 flex justify-center">
+                <button
+                  type="submit"
+                  className="bg-yellow-500 hover:bg-yellow-600 text-white font-bold py-2 px-8 rounded"
+                >
+                  Register
+                </button>
+              </div>
+
+              <div className="col-span-2 text-center text-sm">
+                Already Registered?{" "}
+                <a href="#" className="text-blue-600 underline">Login</a>
+              </div>
+            </form>
+          </div>
         </div>
       </main>
 
       <Footer />
     </>
-  );
-}
-
-// ========== New Patient Form ==============
-function NewPatientForm() {
-  const [form, setForm] = useState({
-    name: "", email: "", gender: "", address: "", city: "", zip: "",
-    country: "", disease: "", mobile: "", promoCode: ""
-  });
-
-  const handleChange = (e) => setForm({ ...form, [e.target.name]: e.target.value });
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    console.log("New Patient Form Submitted", form);
-  };
-
-  return (
-    <form onSubmit={handleSubmit} className="grid grid-cols-1 md:grid-cols-2 gap-6 text-sm">
-      <Input name="name" value={form.name} onChange={handleChange} placeholder="Full Name *" />
-      <Input name="address" value={form.address} onChange={handleChange} placeholder="Address *" />
-      <Input type="email" name="email" value={form.email} onChange={handleChange} placeholder="Email Id *" />
-      <Input name="city" value={form.city} onChange={handleChange} placeholder="City *" />
-      <Select name="gender" value={form.gender} onChange={handleChange} options={["Male", "Female"]} label="Gender *" />
-      <Input name="zip" value={form.zip} onChange={handleChange} placeholder="Zip Code *" />
-      <Select name="country" value={form.country} onChange={handleChange} options={["India", "USA", "UK"]} label="Country *" />
-      <Select name="disease" value={form.disease} onChange={handleChange} options={["Eczema", "Psoriasis", "Asthma"]} label="Disease *" />
-      <Input name="mobile" value={form.mobile} onChange={handleChange} placeholder="Mobile Number *" />
-      <Input name="promoCode" value={form.promoCode} onChange={handleChange} placeholder="Promo Code" />
-      <div className="col-span-2 text-center">
-        <button type="submit" className="bg-yellow-400 hover:bg-yellow-500 py-2 px-6 rounded-lg mt-4 font-semibold">
-          Register
-        </button>
-      </div>
-    </form>
-  );
-}
-
-// ========== Follow-up Form ==============
-function FollowUpForm() {
-  return (
-    <div className="text-center text-gray-600 text-sm">
-      <p className="mb-4">This is a placeholder for the <strong>Follow-up Appointment Form</strong>.</p>
-      <button className="bg-blue-500 text-white py-2 px-4 rounded">Coming Soon</button>
-    </div>
-  );
-}
-
-// ========== Feedback Form ==============
-function FeedbackForm() {
-  return (
-    <div className="text-center text-gray-600 text-sm">
-      <p className="mb-4">This is a placeholder for the <strong>Patient Feedback Form</strong>.</p>
-      <button className="bg-green-500 text-white py-2 px-4 rounded">Coming Soon</button>
-    </div>
-  );
-}
-
-// ========== Custom Form ==============
-function CustomForm() {
-  return (
-    <div className="text-center text-gray-600 text-sm">
-      <p className="mb-4">You can add a <strong>custom form</strong> here dynamically.</p>
-      <button className="bg-purple-500 text-white py-2 px-4 rounded">Custom Form Logic</button>
-    </div>
-  );
-}
-
-// ========== Reusable Input ============
-function Input({ name, value, onChange, placeholder, type = "text" }) {
-  return (
-    <input
-      type={type}
-      name={name}
-      value={value}
-      onChange={onChange}
-      placeholder={placeholder}
-      required
-      className="border p-2 rounded-md w-full"
-    />
-  );
-}
-
-// ========== Reusable Select ============
-function Select({ name, value, onChange, options = [], label }) {
-  return (
-    <select
-      name={name}
-      value={value}
-      onChange={onChange}
-      required
-      className="border p-2 rounded-md w-full bg-white"
-    >
-      <option value="">{label}</option>
-      {options.map((opt, idx) => (
-        <option key={idx} value={opt}>{opt}</option>
-      ))}
-    </select>
   );
 }

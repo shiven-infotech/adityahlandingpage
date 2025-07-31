@@ -1,0 +1,14 @@
+ <nav className="p-4 space-y-2">
+              <h3 className="text-lg font-semibold mb-2">Main</h3>
+              <Link href="/aboutus/aboutus" className="block px-3 py-2 rounded hover:bg-green-100 hover:text-green-900 transition">About Us</Link>
+              <Link href="/aboutus/fundamentalsofhomeopathy" className="block px-3 py-2 rounded hover:bg-green-100 hover:text-green-900 transition">Fundamentals of Homeopathy</Link>
+              <Link href="/aboutus/myths&factsabouthomeopathy" className="block px-3 py-2 rounded hover:bg-green-100 hover:text-green-900 transition">Myths & Facts About Homeopathy</Link>
+              <Link href="/aboutus/visionandmission" className="block px-3 py-2 rounded hover:bg-green-100 hover:text-green-900 transition">Vision and Mission</Link>
+              <Link href="/aboutus/teambalance" className="block px-3 py-2 rounded hover:bg-green-100 hover:text-green-900 transition">Team Balance</Link>
+            </nav>
+
+
+
+
+
+            
