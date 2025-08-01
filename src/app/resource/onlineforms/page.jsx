@@ -19,11 +19,11 @@ export default function NewPatientForm() {
     gender: "",
     address: "",
     city: "",
-    zip: "",
-    country: "",
-    disease: "",
+    
+   
+   
     phone: "",
-    promo: "",
+    reference: "",
   });
 
   const handleChange = (e) => {
@@ -41,7 +41,7 @@ export default function NewPatientForm() {
       <Header />
       <Navbar />
 
-      <main className="bg-[#f0fdf4] px-4 py-12 min-h-screen flex flex-col lg:flex-row gap-6">
+      <main className="bg-[#e3ffe0] px-4 py-12 min-h-screen flex flex-col lg:flex-row gap-6">
         {/* Side Menus */}
         <aside className="lg:w-64 w-full flex flex-col gap-6 sticky top-24 self-start h-fit z-10">
           {/* Health Packages */}
@@ -69,7 +69,7 @@ export default function NewPatientForm() {
 
         {/* Form Section */}
         <div className="flex-1 flex justify-center" data-aos="fade-up">
-          <div className="w-full max-w-4xl bg-white rounded-xl shadow-lg p-8">
+          <div className="w-full max-w-4xl  p-8">
             <h2 className="text-2xl font-bold text-yellow-600 mb-6 text-center">
               Register now for Free & get a Complimentary Case Evaluation
             </h2>
@@ -142,55 +142,9 @@ export default function NewPatientForm() {
                 </label>
               </div>
 
-              {/* Zip Code */}
-              <div className="relative">
-                <input
-                  type="text"
-                  name="zip"
-                  placeholder="Zip Code *"
-                  value={formData.zip}
-                  onChange={handleChange}
-                  required
-                  className="w-full border border-gray-300 rounded px-4 py-2 pl-10"
-                />
-                <span className="absolute left-3 top-2.5">🏳️</span>
-              </div>
+              
 
-              {/* Country */}
-              <div className="relative">
-                <select
-                  name="country"
-                  value={formData.country}
-                  onChange={handleChange}
-                  required
-                  className="w-full border border-gray-300 rounded px-4 py-2 pl-10 bg-white"
-                >
-                  <option value="">Select Your Country *</option>
-                  <option value="India">India</option>
-                  <option value="USA">USA</option>
-                  <option value="UK">UK</option>
-                  <option value="Other">Other</option>
-                </select>
-                <span className="absolute left-3 top-2.5">🌐</span>
-              </div>
-
-              {/* Disease */}
-              <div className="relative">
-                <select
-                  name="disease"
-                  value={formData.disease}
-                  onChange={handleChange}
-                  required
-                  className="w-full border border-gray-300 rounded px-4 py-2 pl-10 bg-white"
-                >
-                  <option value="">Select Your Disease *</option>
-                  <option value="Diabetes">Diabetes</option>
-                  <option value="Skin">Skin Issues</option>
-                  <option value="Other">Other</option>
-                </select>
-                <span className="absolute left-3 top-2.5">🧬</span>
-              </div>
-
+                
               {/* Phone */}
               <div className="relative">
                 <input
@@ -210,8 +164,8 @@ export default function NewPatientForm() {
                 <input
                   type="text"
                   name="promo"
-                  placeholder="Promo Code / Corporate Code"
-                  value={formData.promo}
+                  placeholder="Refrence code"
+                  value={formData.refrence}
                   onChange={handleChange}
                   className="w-full border border-gray-300 rounded px-4 py-2 pl-10"
                 />
@@ -232,7 +186,7 @@ export default function NewPatientForm() {
               <div className="col-span-2 flex justify-center">
                 <button
                   type="submit"
-                  className="bg-yellow-500 hover:bg-yellow-600 text-white font-bold py-2 px-8 rounded"
+                  className="bg-green-700 hover:bg-yellow-600 text-white font-bold py-2 px-8 rounded"
                 >
                   Register
                 </button>

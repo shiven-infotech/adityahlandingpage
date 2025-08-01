@@ -3,121 +3,115 @@
 import { useEffect } from "react";
 import AOS from "aos";
 import "aos/dist/aos.css";
-
+import { FaFacebookF, FaInstagram, FaLinkedinIn } from "react-icons/fa";
 import Header from "../../components/header";
 import Navbar from "../../components/navbar";
 import Footer from "../../components/footer";
-import Image from "next/image";
-import { FaInstagram, FaTwitter, FaFacebookF } from "react-icons/fa";
 
-const blogs = [
-  {
-    title: "Understanding Homeopathy: A Modern Guide",
-    content:
-      "Homeopathy is gaining global traction as a holistic healing practice. This article dives into how individualized treatments offer powerful solutions for chronic and acute ailments alike.",
-    date: "July 25, 2025",
-    author: "Dr. Anita Verma",
-    image: "/blogs.jpg",
-  },
-  {
-    title: "Top 10 Remedies for Seasonal Allergies",
-    content:
-      "Learn how homeopathic solutions like Allium Cepa and Sabadilla offer safe, side-effect-free relief from sneezing, runny nose, and more.",
-    date: "July 20, 2025",
-    author: "Dr. Rakesh Sharma",
-    image: "/blogs1.jpg",
-  },
-  {
-    title: "Why Children Respond Well to Homeopathy",
-    content:
-      "Homeopathy is gentle yet effective for children. Discover how it helps with colds, behavioral issues, and immunity building.",
-    date: "July 15, 2025",
-    author: "Dr. Meera Joshi",
-    image: "/blogs2.jpg",
-  },
-  {
-    title: "Treating PCOS Naturally Through Homeopathy",
-    content:
-      "Explore how homeopathy provides long-term relief for PCOS symptoms like irregular periods, acne, and hormonal imbalance.",
-    date: "July 5, 2025",
-    author: "Dr. Neha Kulkarni",
-    image: "/blogs3.jpg",
-  },
-];
+const BlogSection = ({ title, articles }) => (
+  <section className="mb-20" data-aos="fade-up">
+    <h2 className="text-3xl font-bold text-green-900 mb-8  pb-2">{title}</h2>
+    {articles.map(({ title, image, content, link }, i) => (
+      <div key={i} className="mb-14">
+        <img src={image} alt={title} className="w-full h-72 object-cover rounded-xl shadow" />
+        <h3 className="text-2xl font-semibold text-green-800 mt-6 mb-2">{title}</h3>
+        <p className=" leading-relaxed text-[17px] mb-4">{content}</p>
+       
+        <div className="flex gap-6 mt-4 text-green-700 text-xl">
+          <a href="https://instagram.com" target="_blank"><FaInstagram /></a>
+          <a href="https://facebook.com" target="_blank"><FaFacebookF /></a>
+          <a href="https://linkedin.com" target="_blank"><FaLinkedinIn /></a>
+        </div>
+      </div>
+    ))}
+  </section>
+);
 
 export default function BlogsPage() {
   useEffect(() => {
     AOS.init({ duration: 800 });
   }, []);
 
+  const hotTopics = [
+    {
+      title: "Homeopathy in the Modern World",
+      image: "https://source.unsplash.com/featured/?homeopathy,nature",
+      content:
+        "Homeopathy has transformed from an alternative into an integral part of modern holistic wellness. From enhancing immunity to treating chronic conditions, its reach is growing daily. People now seek balance—not just relief—and homeopathy offers just that, rooted in nature and science. The resurgence of homeopathy in modern practice shows how personalized medicine is reshaping healthcare philosophies.",
+      link: "https://www.homeopathy360.com/homeopathy-in-modern-world",
+    },
+  ];
+
+  const latestBlogs = [
+    {
+      title: "Treating Skin Disorders Naturally",
+      image: "https://source.unsplash.com/featured/?eczema,skin,herbal",
+      content:
+        "Skin disorders like eczema, psoriasis, and acne go beyond appearance—they affect confidence, comfort, and self-worth. Homeopathy doesn’t suppress the symptoms—it heals the root causes. Remedies such as Sulphur and Graphites have shown long-term relief in patients. In this blog, we explore the emerging trends of skin healing through homeopathy’s gentle and holistic approach.",
+      link: "https://www.homeopathy360.com/homeopathic-treatment-skin-disorders",
+    },
+  ];
+
+  const allBlogs = [
+    {
+      title: "Women’s Wellness with Homeopathy",
+      image: "https://source.unsplash.com/featured/?women,health",
+      content:
+        "Women's health concerns like PCOS, PMS, fertility issues, and menopause-related symptoms are often poorly managed by conventional medicine. Homeopathy offers balance and restoration, addressing emotional and physical symptoms without hormone therapy. This article dives into how personalized remedies can support women throughout different life stages.",
+      link: "https://www.homeopathy360.com/homeopathy-for-women",
+    },
+    {
+      title: "Chronic Diseases: Long-Term Relief Through Homeopathy",
+      image: "https://source.unsplash.com/featured/?chronic,illness,natural",
+      content:
+        "Unlike quick-fix treatments, homeopathy works gradually to build your immune response and inner vitality. Chronic ailments like asthma, migraines, arthritis, or even anxiety respond well to carefully selected homeopathic remedies. Learn how constitutional treatment is making life better for chronic patients globally.",
+      link: "https://www.homeopathy360.com/homeopathy-chronic-illnesses",
+    },
+    {
+      title: "Boosting Immunity the Natural Way",
+      image: "https://source.unsplash.com/featured/?immunity,homeopathy",
+      content:
+        "We’re in an era where boosting immunity isn’t just desirable—it’s necessary. From children to the elderly, people are seeking safe immunity-building approaches. Homeopathy helps by activating natural defense mechanisms without overstimulating. Dive into the top remedies and protocols that can help enhance your resistance against seasonal infections and stress-induced weaknesses.",
+      link: "https://www.homeopathy360.com/homeopathy-immunity",
+    },
+  ];
+
   return (
     <>
       <Header />
       <Navbar />
-
-      <main className="max-w-7xl  mx-auto px-4 py-10">
-        {/* Title Section */}
-        <div className="text-center mb-12" data-aos="fade-down">
-          <h1 className="text-4xl font-bold text-green-700">Our Blogs</h1>
-          <p className="text-gray-600 mt-2 text-lg">
-            Hot Topics, Latest Blogs, and Insights from Experts
-          </p>
-        </div>
-
-        {/* Search Bar */}
-        <div className="max-w-md mx-auto mb-10" data-aos="zoom-in">
-          <input
-            type="text"
-            placeholder="Search blogs..."
-            className="w-full border border-gray-300 rounded-full px-4 py-2 outline-none shadow-sm"
-          />
-        </div>
-
-        {/* Blog Entries */}
-        <div className="space-y-14">
-          {blogs.map((blog, index) => (
-            <div key={index} className="space-y-4" data-aos="fade-up">
-              <div className="relative w-full h-125 rounded-lg overflow-hidden">
-                <Image
-                  src={blog.image}
-                  alt={blog.title}
-                  fill
-                  className="object-cover"
-                />
-              </div>
-              <div>
-                <h2 className="text-2xl font-semibold text-green-800">{blog.title}</h2>
-                <p className="text-sm text-gray-500 mb-2">
-                  {blog.date} · by {blog.author}
-                </p>
-                <p className="text-gray-700">{blog.content}</p>
-                <div className="mt-4 flex gap-6 text-green-700 text-sm">
-                  <button className="hover:underline">👍 Like</button>
-                  <button className="hover:underline">🔁 Reblog</button>
-                  <button className="hover:underline">🔗 Share</button>
-                </div>
-              </div>
+      <main className="bg-[#e3ffe0] px-4 sm:px-6 py-12">
+        <div className="lg:flex lg:gap-12 max-w-screen mx-auto">
+          {/* Sidebar */}
+          <aside className="lg:w-64 w-full mb-10 lg:mb-0 sticky top-24 h-fit self-start z-10">
+            <div className="mb-6 p-4 ">
+              <h3 className="font-bold text-green-700 mb-2">Health Packages</h3>
+              <ul className="space-y-1 text-sm">
+                <li><a href="/healthpackages/reversalprogram" className="hover:underline">Reversal Program</a></li>
+                <li><a href="#" className="hover:underline">Full Body Scan</a></li>
+                <li><a href="#" className="hover:underline">Homeopathy Combo</a></li>
+                <li><a href="#" className="hover:underline">Wellness Plan</a></li>
+              </ul>
             </div>
-          ))}
-        </div>
+            <div className="p-4 ">
+              <h3 className="font-bold text-green-700 mb-2">Main</h3>
+              <ul className="space-y-1 text-sm">
+                <li><a href="/resource/patientstestimonials" className="hover:underline">Patients Testimonials</a></li>
+                <li><a href="/resource/casestudies" className="hover:underline">Case Studies</a></li>
+                <li><a href="/resource/blogs" className="hover:underline">Blogs</a></li>
+                <li><a href="/resource/onlineforms" className="hover:underline">Online Forms</a></li>
+              </ul>
+            </div>
+          </aside>
 
-        {/* Follow Us Section */}
-        <div className="pt-14 border-t mt-16 text-center" data-aos="fade-up">
-          <h3 className="text-xl font-semibold text-green-700 mb-4">Follow Us</h3>
-          <div className="flex justify-center gap-6 text-2xl text-green-700">
-            <a href="#" className="hover:text-green-900">
-              <FaFacebookF />
-            </a>
-            <a href="#" className="hover:text-green-900">
-              <FaTwitter />
-            </a>
-            <a href="#" className="hover:text-green-900">
-              <FaInstagram />
-            </a>
+          {/* Blog Content */}
+          <div className="flex-1">
+            <BlogSection title="🔥 Hot Topics" articles={hotTopics} />
+            <BlogSection title="🆕 Latest Blogs" articles={latestBlogs} />
+            <BlogSection title="📖 All Blog Posts" articles={allBlogs} />
           </div>
         </div>
       </main>
-
       <Footer />
     </>
   );
