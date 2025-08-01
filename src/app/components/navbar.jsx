@@ -215,8 +215,9 @@ export default function Navbar() {
 
     {
       label: "Alternative Therapies",
+      href:"/alternativetherapies",
       children: [
-        { label: "Nutrition", href: "/nutrition" },
+        { label: "Nutrition", href: "/alternativetherapies/nutrition" },
         { label: "Counselling", href: "/counselling" },
         { label: "Acupuncture Therapy", href: "/acupuncturetherapy" },
         { label: "Acupressure Therapy", href: "/acupressuretherapy" },
@@ -227,8 +228,9 @@ export default function Navbar() {
     },
     {
       label: "Health Packages",
+      href:"/healthpackages " ,
       children: [
-        { label: "Reversal Program", href: "/reversalprogram" },
+        { label: "Reversal Program", href: "/healthpackages/reversalprogram" },
         { label: "Garbh Sanskar Classes", href: "/garbhsanskarclasses" },
         { label: "Right Brain Activation Classes", href: "/rightbrainactivationclasses" },
         { label: "Pre Pregnancy", href: "/prepregnancy" },
