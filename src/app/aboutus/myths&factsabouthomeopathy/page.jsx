@@ -1,12 +1,14 @@
 "use client";
 
 import Image from "next/image";
+import Link from "next/link";
 import { useEffect } from "react";
 import AOS from "aos";
 import "aos/dist/aos.css";
 import Header from "../../components/header";
 import Navbar from "../../components/navbar";
 import Footer from "../../components/footer";
+import { FaHeartbeat, FaCapsules, FaStethoscope } from "react-icons/fa";
 
 export default function HomeopathyMythsFacts() {
   useEffect(() => {
@@ -43,72 +45,126 @@ export default function HomeopathyMythsFacts() {
     },
   ];
 
+  const sections = [
+    { id: "/healthpackages/reversalprogram", label: "Reversal Program",  },
+    { id: "/healthpackages/garbhsanskarclasses", label: "Garbh Sanskar Classes",  },
+    { id: "/healthpackages/rightbrainactivationclasses", label: "Right Brain Activation Classes", },
+      { id: "/healthpackages/prepregnancy", label: "Pre Pregnancy",  },
+    { id: "/healthpackages/postdelivery", label: "Post Delivery",  },
+    { id: "/healthpackages/corporatewellnessprogram", label: "Corporate Wellness Program", },
+  ];
+
   const topItems = data.slice(0, 2);
   const bottomItems = data.slice(2);
 
   return (
     <>
-        <Header />
-        <Navbar />
-    <div className="bg-[#e3ffe0] py-12 px-4">
-      <h1 className="text-3xl font-bold text-green-700 text-center mb-10">
-        Myths & Facts About Homeopathy
-      </h1>
+      <Header />
+      <Navbar />
 
-      {/* Top Section */}
-      <div className="flex flex-col-reverse lg:flex-row items-center max-w-7xl mx-auto gap-10">
-        {/* Left Cards */}
-        <div className="w-full lg:w-1/2 grid grid-cols-1 gap-6">
-          {topItems.map((item, index) => (
-            <div
-              key={index}
-              className="bg-white rounded-2xl shadow hover:shadow-xl transition p-6 border border-green-100"
-              data-aos="fade-up"
-              data-aos-delay={index * 150}
-            >
-              <h2 className="text-lg font-semibold text-red-500 mb-2">Myth</h2>
-              <p className="text-gray-800 mb-4">{item.myth}</p>
-              <h3 className="text-lg font-semibold text-green-600 mb-2">Fact</h3>
-              <p className="text-gray-700">{item.fact}</p>
+      <div className="bg-[#e3ffe0] px-4 py-10">
+        <div className="max-w-screen mx-auto flex flex-col md:flex-row gap-6">
+          {/* Sticky Sidebar */}
+          <aside className="hidden md:flex flex-col gap-6 w-64 h-fit sticky top-24">
+            {/* Sidebar 1 */}
+            <nav className="p-4 space-y-2">
+              <h3 className="text-lg font-semibold mb-2">Health Packages</h3>
+              {sections.map((sec) => (
+                <Link
+                  key={sec.id}
+                  href={sec.id}
+                  className="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-green-100 hover:text-green-900 transition"
+                >
+                  <span className="text-lg">{sec.icon}</span>
+                  {sec.label}
+                </Link>
+              ))}
+            </nav>
+
+            {/* Sidebar 2 */}
+            <nav className="p-4 space-y-2">
+              <h3 className="text-lg font-semibold mb-2">Main</h3>
+              <Link href="/aboutus/aboutus" className="block px-3 py-2 rounded hover:bg-green-100 hover:text-green-900 transition">
+                About Us
+              </Link>
+              <Link href="/aboutus/fundamentalsofhomeopathy" className="block px-3 py-2 rounded hover:bg-green-100 hover:text-green-900 transition">
+                Fundamentals of Homeopathy
+              </Link>
+              <Link href="/aboutus/myths&factsabouthomeopathy" className="block px-3 py-2 rounded hover:bg-green-100 hover:text-green-900 transition">
+                Myths & Facts About Homeopathy
+              </Link>
+              <Link href="/aboutus/visionandmission" className="block px-3 py-2 rounded hover:bg-green-100 hover:text-green-900 transition">
+                Vision and Mission
+              </Link>
+              <Link href="/aboutus/teambalance" className="block px-3 py-2 rounded hover:bg-green-100 hover:text-green-900 transition">
+                Team Balance
+              </Link>
+            </nav>
+          </aside>
+
+          {/* Main Content */}
+          <main className="flex-1">
+            <h1 className="text-3xl font-bold text-green-700 text-center mb-10" data-aos="fade-down">
+              Myths & Facts About Homeopathy
+            </h1>
+
+            {/* Top Section */}
+            <div className="flex flex-col-reverse lg:flex-row items-center max-w-7xl mx-auto gap-10">
+              {/* Left Cards */}
+              <div className="w-full lg:w-1/2 grid grid-cols-1 gap-6">
+                {topItems.map((item, index) => (
+                  <div
+                    key={index}
+                    className="bg-white rounded-2xl shadow hover:shadow-xl transition p-6 border border-green-100"
+                    data-aos="fade-up"
+                    data-aos-delay={index * 150}
+                  >
+                    <h2 className="text-lg font-semibold text-red-500 mb-2">Myth</h2>
+                    <p className="text-gray-800 mb-4">{item.myth}</p>
+                    <h3 className="text-lg font-semibold text-green-600 mb-2">Fact</h3>
+                    <p className="text-gray-700">{item.fact}</p>
+                  </div>
+                ))}
+              </div>
+
+              {/* Right Image */}
+              <div className="w-full lg:w-1/2 flex justify-center">
+                <div className="w-full max-w-[280px] sm:max-w-[320px] md:max-w-[360px] lg:max-w-[400px]">
+                  <Image
+                    src="/facts.png"
+                    alt="Doctors with natural elements"
+                    width={400}
+                    height={400}
+                    priority
+                    className="rounded-2xl object-contain w-full h-auto max-h-[450px] transition-transform duration-700 ease-in-out hover:scale-105"
+                    data-aos="zoom-in"
+                    data-aos-delay="300"
+                  />
+                </div>
+              </div>
             </div>
-          ))}
-        </div>
 
-        {/* Right Image */}
-        <div className="w-full lg:w-1/2 flex justify-center">
-          <div className="w-full max-w-[280px] sm:max-w-[320px] md:max-w-[360px] lg:max-w-[400px]">
-            <Image
-              src="/facts.png"
-              alt="Doctors with natural elements"
-              width={400}
-              height={400}
-              priority
-              className="rounded-2xl object-contain w-full h-auto max-h-[450px] transition-transform duration-700 ease-in-out hover:scale-105"
-              data-aos="zoom-in"
-              data-aos-delay="300"
-            />
-          </div>
+            {/* Bottom Section */}
+            <div className="max-w-7xl mx-auto mt-10 grid grid-cols-1 md:grid-cols-2 gap-6">
+              {bottomItems.map((item, index) => (
+                <div
+                  key={index}
+                  className="bg-white rounded-2xl shadow hover:shadow-xl transition p-6 border border-green-100"
+                  data-aos="fade-up"
+                  data-aos-delay={(index + 2) * 150}
+                >
+                  <h2 className="text-lg font-semibold text-red-500 mb-2">Myth</h2>
+                  <p className="text-gray-800 mb-4">{item.myth}</p>
+                  <h3 className="text-lg font-semibold text-green-600 mb-2">Fact</h3>
+                  <p className="text-gray-700">{item.fact}</p>
+                </div>
+              ))}
+            </div>
+          </main>
         </div>
       </div>
 
-      {/* Bottom Section */}
-      <div className="max-w-7xl mx-auto mt-10 grid grid-cols-1 md:grid-cols-2 gap-6">
-        {bottomItems.map((item, index) => (
-          <div
-            key={index}
-            className="bg-white rounded-2xl shadow hover:shadow-xl transition p-6 border border-green-100"
-            data-aos="fade-up"
-            data-aos-delay={(index + 2) * 150}
-          >
-            <h2 className="text-lg font-semibold text-red-500 mb-2">Myth</h2>
-            <p className="text-gray-800 mb-4">{item.myth}</p>
-            <h3 className="text-lg font-semibold text-green-600 mb-2">Fact</h3>
-            <p className="text-gray-700">{item.fact}</p>
-          </div>
-        ))}
-      </div>
-    </div>
-    <Footer />
+      <Footer />
     </>
   );
 }
