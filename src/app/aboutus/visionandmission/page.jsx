@@ -12,9 +12,12 @@ import Footer from "../../components/footer";
 // Dummy icons and sections for Health Packages sidebar (replace with real ones)
 import { FaHeartbeat, FaLeaf, FaFlask } from "react-icons/fa";
 const sections = [
-  { id: "#diabetes", label: "Diabetes", icon: <FaHeartbeat /> },
-  { id: "#detox", label: "Detox Plans", icon: <FaLeaf /> },
-  { id: "#immunity", label: "Immunity Boosters", icon: <FaFlask /> },
+  { id: "/healthpackages/reversalprogram", label: "Reversal Program",  },
+  { id: "/healthpackages/garbhsanskarclasses", label: "Garbh Sanskar Classes", },
+  { id: "/healthpackages/rightbrainactivationclasses", label: "Right Brain Activation Classes", },
+  { id: "/healthpackages/prepregnancy", label: "Pre Pregnancy",  },
+  { id: "/healthpackages/postdelivery", label: "Post Delivery", },
+  { id: "/healthpackages/corporatewellnessprogram", label: "Corporate Wellness Program", },
 ];
 
 export default function VisionAndMissionPage() {
@@ -27,13 +30,13 @@ export default function VisionAndMissionPage() {
       <Header />
       <Navbar />
 
-      <main className="bg-[#e3ffe0] py-16 px-4">
+      <main className="bg-[#e3ffe0] py-4 px-4">
         <div className="max-w-screen mx-auto flex flex-col md:flex-row gap-10">
           {/* Sticky Sidebar */}
           <aside className="hidden md:flex flex-col gap-6 w-64 h-fit sticky top-24">
             {/* Sidebar 1 */}
             <nav className="p-4 space-y-2 ">
-              <h3 className="text-lg font-semibold mb-2">Health Packages</h3>
+              <h3 className="text-lg text-green-700 font-semibold mb-2">Health Packages</h3>
               {sections.map((sec) => (
                 <Link
                   key={sec.id}
@@ -48,7 +51,7 @@ export default function VisionAndMissionPage() {
 
             {/* Sidebar 2 */}
             <nav className="p-4 space-y-2 ">
-              <h3 className="text-lg font-semibold mb-2">Main</h3>
+              <h3 className="text-lg text-green-700 font-semibold mb-2">Main</h3>
               <Link href="/aboutus/aboutus" className="block px-3 py-2 rounded hover:bg-green-100 hover:text-green-900 transition">
                 About Us
               </Link>
@@ -88,9 +91,8 @@ export default function VisionAndMissionPage() {
               </div>
               <div className="flex-1">
                 <h2 className="text-3xl font-bold text-green-700 mb-4">Our Vision</h2>
-                <p className="text-gray-700 text-lg leading-relaxed">
-                  To become a globally trusted name in holistic and compassionate homeopathic care,
-                  reaching every individual with accessible, affordable, and natural healing solutions.
+                <p className=" text-lg leading-relaxed">
+                At the heart of our vision lies a steadfast commitment to transforming global healthcare by reestablishing the timeless wisdom of homoeopathy as a trusted, first-line choice for healing. We envision a world where individuals are empowered to choose safe, natural, and holistic treatment options that not only alleviate symptoms but nurture the body, mind, and spirit in unison. Rooted in the principles of "like cures like" and the body's innate capacity to heal, our goal is to make homoeopathy an accessible, affordable, and scientifically respected mode of treatment across all communities, regardless of socio-economic status. We aspire to build a future where every household recognizes the value of individualized care, gentle medicine, and disease prevention—leading to healthier lives and more compassionate societies. Through continuous research, innovation, and education, we aim to uplift the global perception of homoeopathy and position it as a vital pillar of integrative medicine, respected not just as an alternative, but as a powerful primary healthcare system of the 21st century.
                 </p>
               </div>
             </section>
@@ -106,12 +108,9 @@ export default function VisionAndMissionPage() {
               </div>
               <div className="flex-1">
                 <h2 className="text-3xl font-bold text-green-700 mb-4">Our Mission</h2>
-                <ul className="list-disc pl-5 space-y-2 text-gray-700 text-lg leading-relaxed">
-                  <li>Provide safe, effective, and personalized homeopathic treatment for all age groups.</li>
-                  <li>Educate and empower communities about natural healing and preventive care.</li>
-                  <li>Continuously innovate through research, patient care, and technology.</li>
-                  <li>Foster a caring and inclusive healthcare environment for all.</li>
-                </ul>
+               <p className="text-lg">
+                Our mission is to deliver compassionate, evidence-informed, and deeply personalized homeopathic healthcare that honors each individual's unique constitution, experiences, and healing journey. We are dedicated to restoring health and well-being by offering gentle, non-toxic, and holistic treatments that stimulate the body’s natural healing powers rather than suppress symptoms. Through patient-centered care, we strive to address the root causes of illness—physical, emotional, and environmental—rather than just the outward manifestations. Our goal is to promote a healthcare culture where trust, transparency, and empathy are paramount. We are committed to spreading awareness about the effectiveness of homeopathy through education, outreach, and community engagement, empowering individuals to make informed choices about their health. By integrating traditional principles with modern innovations, research, and clinical excellence, we aim to raise the global standard of homeopathic practice. Ultimately, our mission is to serve as a beacon of hope for those seeking natural healing and to create healthier societies by cultivating preventive, sustainable, and personalized healthcare pathways for all.
+               </p>
               </div>
             </section>
           </div>

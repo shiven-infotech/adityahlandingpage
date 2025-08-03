@@ -68,7 +68,7 @@ export default function HomeopathyMythsFacts() {
           <aside className="hidden md:flex flex-col gap-6 w-64 h-fit sticky top-24">
             {/* Sidebar 1 */}
             <nav className="p-4 space-y-2">
-              <h3 className="text-lg font-semibold mb-2">Health Packages</h3>
+              <h3 className="text-lg font-semibold mb-2 text-green-700">Health Packages</h3>
               {sections.map((sec) => (
                 <Link
                   key={sec.id}
@@ -83,7 +83,7 @@ export default function HomeopathyMythsFacts() {
 
             {/* Sidebar 2 */}
             <nav className="p-4 space-y-2">
-              <h3 className="text-lg font-semibold mb-2">Main</h3>
+              <h3 className="text-lg text-green-700 font-semibold mb-2">Main</h3>
               <Link href="/aboutus/aboutus" className="block px-3 py-2 rounded hover:bg-green-100 hover:text-green-900 transition">
                 About Us
               </Link>

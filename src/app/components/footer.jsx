@@ -11,20 +11,22 @@ import {
 
 export default function Footer() {
   return (
-    <footer className="bg-green-700 text-white py-8 px-4">
-      <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+    <footer className="bg-green-700 text-white py-6 px-4">
+      <div className="max-w-8xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
         {/* Clinic Info */}
         <div>
           <h2 className="text-xl font-bold mb-3">Aditya Homoeopathic Clinic</h2>
           <p>
             Healing naturally with classical homeopathy. Personalized care for
-            all ages and conditions.
+            all ages and conditions. we believe in healing the root cause—not just the symptoms. With a focus on safe, natural, and personalized care, we strive to restore balance and promote long-term wellness for every patient. Trusted by families across generations, our commitment lies in compassionate, holistic healing through the timeless science of homoeopathy.
+
+
           </p>
         </div>
 
         {/* Quick Links */}
         <div>
-          <h3 className="text-lg font-semibold mb-3">Quick Links</h3>
+          <h3 className="text-lg font-semibold mb-3">Quick Connect</h3>
           <ul className="space-y-2 text-sm">
             <li>
               <a href="/" className="hover:text-yellow-300">Home</a>
@@ -94,9 +96,17 @@ export default function Footer() {
       </div>
 
       {/* Bottom Bar */}
-      <div className="mt-10 border-t border-green-600 pt-4 text-center text-sm text-green-200">
-        © {new Date().getFullYear()} Aditya Homeopathy Clinic. All rights reserved.
-      </div>
+      <div className="mt-10 border-t border-green-600 pt-4 flex flex-col md:flex-row justify-between items-center ">
+  <div className="mb-2 md:mb-0">
+    © {new Date().getFullYear()} Aditya Homeopathy Clinic. All rights reserved.
+  </div>
+  <div className="flex space-x-4">
+    <a href="/terms-of-use" className="hover:text-yellow-300">Terms of Use</a>
+    <a href="/privacy-policy" className="hover:text-yellow-300">Privacy Policy</a>
+    <a href="/legal-disclaimer" className="hover:text-yellow-300">Legal Disclaimer</a>
+  </div>
+</div>
+
     </footer>
   );
 }

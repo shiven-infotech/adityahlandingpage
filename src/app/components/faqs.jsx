@@ -3,7 +3,7 @@ import Image from "next/image";
 import { useState } from "react";
 import { FaChevronDown, FaChevronUp, FaQuestionCircle } from "react-icons/fa";
 import { useRef, useEffect } from "react";
-
+import Link from "next/link"
 export default function FAQSection() {
   const [openIndex, setOpenIndex] = useState(null);
 
@@ -88,13 +88,14 @@ export default function FAQSection() {
       </div>
 
       {/* Footer CTA Box */}
-      <div className="mt-14 text-center bg-white border border-green-300 py-8 px-6 rounded-xl max-w-3xl mx-auto">
-        <h3 className="text-xl md:text-2xl font-bold text-gray-800 mb-2">Didn't find your question?</h3>
-        <p className="text-gray-600 mb-4">We’re happy to help! Reach out to us for personalized answers.</p>
-        <button className="bg-green-600 hover:bg-green-700 text-white font-semibold px-6 py-2 rounded-full transition duration-300">
-          📩 Contact Us
-        </button>
-      </div>
-    </section>
+    <div className="mt-14 text-center bg-white border border-green-300 py-8 px-6 rounded-xl max-w-3xl mx-auto">
+  <h3 className="text-xl md:text-2xl font-bold text-gray-800 mb-2">Didn't find your question?</h3>
+  <p className="text-gray-600 mb-4">We’re happy to help! Reach out to us for personalized answers.</p>
+  <Link href="/contactus/contactus">
+    <button className="bg-green-600 hover:bg-green-700 text-white font-semibold px-6 py-2 rounded-full transition duration-300">
+      📩 Contact Us
+    </button>
+  </Link>
+</div>    </section>
   );
 }

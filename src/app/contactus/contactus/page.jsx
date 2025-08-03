@@ -45,9 +45,9 @@ export default function ContactUsPage() {
         <div className="max-w-screen mx-auto flex flex-col md:flex-row gap-6">
           {/* Sidebar */}
           <aside className="hidden md:flex flex-col gap-6 w-64 h-fit sticky top-24">
-            <nav className="p-4 space-y-2 bg-[#e3ffe0]" data-aos="fade-right">
-              <h3 className="text-lg font-semibold mb-2">Health Packages</h3>
-              <ul className="space-y-2 text-gray-800 font-medium">
+            <nav className="p-4 space-y-3 bg-[#e3ffe0]" data-aos="fade-right">
+              <h3 className="text-lg text-green-700 font-semibold mb-2">Health Packages</h3>
+              <ul className="space-y-3 text-gray-800 font-medium">
                 <li><a href="/reversalprogram" className="hover:text-green-700">Reversal Program</a></li>
                 <li><a href="/garbhsanskarclasses" className="hover:text-green-700">Garbh Sanskar Classes</a></li>
                 <li><a href="/rightbrainactivationclasses" className="hover:text-green-700">Right Brain Activation</a></li>
@@ -58,7 +58,7 @@ export default function ContactUsPage() {
             </nav>
 
             <nav className="p-4 space-y-2" data-aos="fade-right" data-aos-delay="100">
-              <h3 className="text-lg font-semibold mb-2">Main</h3>
+              <h3 className="text-lg font-semibold mb-2 text-green-700">Main</h3>
               <Link href="/contactus/contactus" className="block px-3 py-2 rounded hover:bg-green-100 hover:text-green-900 transition">Contact Us</Link>
               <Link href="/contactus/requestacallback" className="block px-3 py-2 rounded hover:bg-green-100 hover:text-green-900 transition">Request a Call Back</Link>
               <Link href="/contactus/didnotfindyourquestions" className="block px-3 py-2 rounded hover:bg-green-100 hover:text-green-900 transition">Did not Find Your Questions</Link>

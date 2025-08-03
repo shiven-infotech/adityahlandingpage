@@ -41,28 +41,30 @@ export default function NewPatientForm() {
       <Header />
       <Navbar />
 
-      <main className="bg-[#e3ffe0] px-4 py-12 min-h-screen flex flex-col lg:flex-row gap-6">
+      <main className="bg-[#e3ffe0] px-4 py-4 min-h-screen flex flex-col lg:flex-row gap-6">
         {/* Side Menus */}
         <aside className="lg:w-64 w-full flex flex-col gap-6 sticky top-24 self-start h-fit z-10">
           {/* Health Packages */}
-          <div className="  p-4">
-            <h3 className="font-bold text-green-700 mb-2">Health Packages</h3>
-            <ul className="space-y-1 text-sm ">
-              <li><a href="/healthpackages/reversalprogram" className="hover:underline">Reversal Program</a></li>
-              <li><a href="#" className="hover:underline">Full Body Scan</a></li>
-              <li><a href="#" className="hover:underline">Homeopathy Combo</a></li>
-              <li><a href="#" className="hover:underline">Wellness Plan</a></li>
+          <div className="  ">
+            <h3 className="font-bold text-lg text-green-700 mb-2">Health Packages</h3>
+            <ul className="space-y-3  ">
+              <li><a href="/healthpackages/reversalprogram" className="hover:text-green-700">Reversal Program</a></li>
+              <li><a href="/healthpackages/garbhsanskarclasses" className="hover:text-green-700">Garbh Sanskar Classes</a></li>
+              <li><a href="/healthpackages/rightbrainactivationclasses" className="hover:text-green-700">Right Brain Activation Classes</a></li>
+              <li><a href="/healthpackages/prepregnancy" className="hover:text-green-700">Pre Pregnancy</a></li> 
+              <li><a href="/healthpackages/postdelivery" className="hover:text-green-700">Post Delivery</a></li>
+              <li><a href="/healthpackages/corporatewellnessprogram" className="hover:text-gren-700">Corporate Wellness Program</a></li>
             </ul>
           </div>
 
           {/* Main Links */}
-          <div className=" p-4">
-            <h3 className="font-bold text-green-700 mb-2">Main</h3>
-            <ul className="space-y-1 text-sm ">
-              <li><a href="/resource/patientstestimonials" className="hover:underline"> Patients Testimonials</a></li>
-              <li><a href="/resource/casestudies" className="hover:underline">Case Studies</a></li>
-              <li><a href="/resource/blogs" className="hover:underline">Blogs</a></li>
-              <li><a href="/resource/onlineforms" className="hover:underline">Online Forms</a></li>
+          <div className=" ">
+            <h3 className="font-bold text-lg text-green-700 mb-2">Main</h3>
+            <ul className="space-y-3  ">
+              <li><a href="/resource/patientstestimonials" className="hover:text-green-700"> Patients Testimonials</a></li>
+              <li><a href="/resource/casestudies" className="hover:text-green-700">Case Studies</a></li>
+              <li><a href="/resource/blogs" className="hover:text-green-700">Blogs</a></li>
+              <li><a href="/resource/onlineforms" className="hover:text-green-700">Online Forms</a></li>
             </ul>
           </div>
         </aside>

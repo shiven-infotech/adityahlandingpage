@@ -218,12 +218,12 @@ export default function Navbar() {
       href:"/alternativetherapies",
       children: [
         { label: "Nutrition", href: "/alternativetherapies/nutrition" },
-        { label: "Counselling", href: "/counselling" },
-        { label: "Acupuncture Therapy", href: "/acupuncturetherapy" },
-        { label: "Acupressure Therapy", href: "/acupressuretherapy" },
-        { label: "Ayurvedic Therapy", href: "/ayurvedictherapy" },
-        { label: "Naturopathy", href: "/naturopathy" },
-        { label: "Physiotherapy", href: "/physiotherapy" },
+        { label: "Counselling", href: "/alternativetherapies/counselling" },
+        { label: "Acupuncture Therapy", href: "/alternativetherapies/acupuncturetherapy" },
+        { label: "Acupressure Therapy", href: "/alternativetherapies/acupressuretherapy" },
+        { label: "Ayurvedic Therapy", href: "/alternativetherapies/ayurvedictherapy" },
+        { label: "Naturopathy", href: "/alternativetherapies/naturopathy" },
+        { label: "Physiotherapy", href: "/alternativetherapies/physiotherapy" },
       ],
     },
     {

@@ -16,9 +16,9 @@ export default function NutritionPage() {
     <>
       <Header />
       <Navbar />
-      <main className="px-6 py-12 lg:px-24 bg-[#e3ffe0] text-gray-800">
+      <main className=" py-5 px-2 bg-[#e3ffe0] ">
         <section data-aos="fade-up" className="max-w-screen mx-auto">
-          <h1 className="text-4xl font-bold text-center mb-6 text-green-700">
+          <h1 className="text-4xl font-bold mb-6 text-green-700">
             Holistic Nutrition & Homeopathy
           </h1>
           <p className="text-lg leading-relaxed mb-8">
@@ -48,7 +48,7 @@ export default function NutritionPage() {
             individuality and promotes natural healing.
           </p>
 
-          <h2 className="text-2xl font-semibold mt-10 mb-4 text-green-600">What We Offer:</h2>
+          <h2 className="text-2xl font-semibold mt-10 mb-4 text-green-700">What We Offer:</h2>
           <ul className="list-disc list-inside text-lg space-y-2">
             <li>
               <strong>Constitution-based diet planning</strong> to support homeopathic prescriptions
@@ -83,7 +83,7 @@ export default function NutritionPage() {
 
           <div className="mt-12 text-center">
             <a
-              href="/contact"
+              href="/register"
               className="inline-block bg-green-600 text-white px-6 py-3 rounded-xl text-lg hover:bg-green-700 transition duration-300"
             >
               Book a Nutritional Consultation

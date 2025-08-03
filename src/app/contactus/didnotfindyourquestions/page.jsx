@@ -70,8 +70,8 @@ export default function DidNotFindYourQuestionPage() {
           <aside className="hidden md:flex flex-col gap-6 w-64 h-fit sticky top-24">
             {/* Sidebar 1 */}
            <nav className="p-4 space-y-2 bg-[#e3ffe0]">
-              <h3 className="text-lg font-semibold mb-2">Health Packages</h3>
-              <ul className="space-y-2 text-gray-800 font-medium">
+              <h3 className="text-lg text-green-700 font-semibold mb-2">Health Packages</h3>
+              <ul className="space-y-3 text-gray-800 font-medium">
                 <li><a href="/reversalprogram" className="hover:text-green-700">Reversal Program</a></li>
                 <li><a href="/garbhsanskarclasses" className="hover:text-green-700">Garbh Sanskar Classes</a></li>
                 <li><a href="/rightbrainactivationclasses" className="hover:text-green-700">Right Brain Activation</a></li>
@@ -81,8 +81,8 @@ export default function DidNotFindYourQuestionPage() {
               </ul>
             </nav>
             {/* Sidebar 2 */}
-             <nav className="p-4 space-y-2">
-              <h3 className="text-lg font-semibold mb-2">Main</h3>
+             <nav className="p-2 space-y-2">
+              <h3 className="text-lg text-green-700 font-semibold mb-2">Main</h3>
               <Link href="/contactus/contactus" className="block px-3 py-2 rounded hover:bg-green-100 hover:text-green-900 transition">Contact Us</Link>
               <Link href="/contactus/requestacallback" className="block px-3 py-2 rounded hover:bg-green-100 hover:text-green-900 transition">Request a Call Back</Link>
               <Link href="/contactus/didnotfindyourquestions" className="block px-3 py-2 rounded hover:bg-green-100 hover:text-green-900 transition">Did not Find Your Questions</Link>
