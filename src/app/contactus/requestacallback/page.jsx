@@ -18,7 +18,7 @@ export default function RequestACallBackPage() {
     lastName: "",
     phone: "",
     subject: "",
-    date: "",
+    query: "",
   });
 
   useEffect(() => {
@@ -75,74 +75,99 @@ export default function RequestACallBackPage() {
 
           {/* Main Form Section */}
           <section className="flex-1 w-full rounded-xl p-6 md:p-8 space-y-6" data-aos="fade-left">
-            <h2 className="text-2xl font-bold text-gray-800 border-b-2 border-yellow-400 pb-2">
-              Request a Call Back
-            </h2>
+  <h2 className="text-2xl font-bold text-gray-800 border-b-2 border-yellow-400 pb-2">
+    Request a Call Back
+  </h2>
 
-            <form onSubmit={handleSubmit} className="space-y-4" data-aos="zoom-in-up">
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                <div data-aos="fade-up">
-                  <label className="font-medium">First Name <span className="text-red-500">*</span></label>
-                  <input
-                    type="text"
-                    name="firstName"
-                    value={formData.firstName}
-                    onChange={handleChange}
-                    required
-                    className="w-full border rounded-md px-3 py-2"
-                  />
-                </div>
+  <form onSubmit={handleSubmit} className="space-y-4" data-aos="zoom-in-up">
+    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+      <div data-aos="fade-up">
+        <label className="font-medium">
+          First Name <span className="text-red-500">*</span>
+        </label>
+        <input
+          type="text"
+          name="firstName"
+          value={formData.firstName}
+          onChange={handleChange}
+          required
+          className="w-full border rounded-md px-3 py-2"
+        />
+      </div>
 
-                <div data-aos="fade-up" data-aos-delay="100">
-                  <label className="font-medium">Last Name <span className="text-red-500">*</span></label>
-                  <input
-                    type="text"
-                    name="lastName"
-                    value={formData.lastName}
-                    onChange={handleChange}
-                    required
-                    className="w-full border rounded-md px-3 py-2"
-                  />
-                </div>
-              </div>
+      <div data-aos="fade-up" data-aos-delay="100">
+        <label className="font-medium">
+          Last Name <span className="text-red-500">*</span>
+        </label>
+        <input
+          type="text"
+          name="lastName"
+          value={formData.lastName}
+          onChange={handleChange}
+          required
+          className="w-full border rounded-md px-3 py-2"
+        />
+      </div>
+    </div>
 
-              <div data-aos="fade-up" data-aos-delay="150">
-                <label className="font-medium">Mobile Number <span className="text-red-500">*</span></label>
-                <input
-                  type="tel"
-                  name="phone"
-                  value={formData.phone}
-                  onChange={handleChange}
-                  required
-                  className="w-full border rounded-md px-3 py-2"
-                />
-              </div>
+    <div data-aos="fade-up" data-aos-delay="150">
+      <label className="font-medium">
+        Mobile Number <span className="text-red-500">*</span>
+      </label>
+      <input
+        type="tel"
+        name="phone"
+        value={formData.phone}
+        onChange={handleChange}
+        required
+        className="w-full border rounded-md px-3 py-2"
+      />
+    </div>
 
-              <div data-aos="fade-up" data-aos-delay="200">
-                <label className="font-medium">Subject <span className="text-red-500">*</span></label>
-                <input
-                  type="text"
-                  name="subject"
-                  value={formData.subject}
-                  onChange={handleChange}
-                  required
-                  className="w-full border rounded-md px-3 py-2"
-                />
-              </div>
+    <div data-aos="fade-up" data-aos-delay="200">
+      <label className="font-medium">
+        Subject <span className="text-red-500">*</span>
+      </label>
+      <input
+        type="text"
+        name="subject"
+        value={formData.subject}
+        onChange={handleChange}
+        required
+        className="w-full border rounded-md px-3 py-2"
+      />
+    </div>
 
-              {/* Hidden field to show date if needed */}
-              <input type="hidden" name="date" value={formData.date} />
+    {/* ✅ New Query Field */}
+    <div data-aos="fade-up" data-aos-delay="250">
+      <label className="font-medium">
+        Query <span className="text-red-500">*</span>
+      </label>
+      <textarea
+        name="query"
+        value={formData.query}
+        onChange={handleChange}
+        required
+        rows="4"
+        placeholder="Write your query here..."
+        className="w-full border rounded-md px-3 py-2"
+      />
+    </div>
 
-              <button
-                type="submit"
-                className="bg-green-600 text-white px-6 py-2 rounded-md hover:bg-green-700 transition w-full sm:w-auto"
-                data-aos="zoom-in"
-                data-aos-delay="300"
-              >
-                Submit
-              </button>
-            </form>
-          </section>
+    {/* Hidden field for date */}
+    <input type="hidden" name="date" value={formData.date} />
+
+    <button
+      type="submit"
+      className="bg-green-600 text-white px-6 py-2 rounded-md hover:bg-green-700 transition w-full sm:w-auto"
+      data-aos="zoom-in"
+      data-aos-delay="300"
+    >
+      Submit
+    </button>
+  </form>
+</section>
+
         </div>
       </div>
 

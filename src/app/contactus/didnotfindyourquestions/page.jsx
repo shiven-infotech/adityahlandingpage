@@ -5,6 +5,8 @@ import AOS from "aos";
 import "aos/dist/aos.css";
 import Link from "next/link";
 
+
+
 import Header from "../../components/header";
 import Navbar from "../../components/navbar";
 import Footer from "../../components/footer";
@@ -100,7 +102,7 @@ export default function DidNotFindYourQuestionPage() {
           <section className="flex-1 space-y-10" data-aos="fade-left">
             {/* Form Section */}
             <div className="bg-[#e3ffe0] p-6" data-aos="fade-up">
-              <h2 className="text-2xl font-bold mb-4 text-green-700">Didn't Find Your Question?</h2>
+        
               <form onSubmit={handleSubmit} className="space-y-4">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                   <div>
@@ -132,16 +134,38 @@ export default function DidNotFindYourQuestionPage() {
 
             {/* FAQs Section */}
             <div className="bg-[#e3ffe0] p-6" data-aos="fade-up">
-              <h3 className="text-xl font-semibold mb-4 text-green-700">Frequently Asked Questions</h3>
-              <ul className="space-y-3">
-                {faqs.map((faq, index) => (
-                  <li key={index} className="border-b pb-2">
-                    <strong>{faq.question}</strong>
-                    <p className="text-gray-700">{faq.answer}</p>
-                  </li>
-                ))}
-              </ul>
-            </div>
+  <h3 className="text-xl font-semibold mb-4 text-green-700">Frequently Asked Questions</h3>
+  <ul className="space-y-3">
+    {[
+      { question: "What is homeopathy?", answer: "Homeopathy is a natural form of medicine that uses highly diluted substances to trigger the body's healing processes." },
+      { question: "Is homeopathy safe for children?", answer: "Yes, homeopathic remedies are safe and effective for all age groups including infants and children." },
+      { question: "Can I take homeopathy along with allopathy?", answer: "Yes, homeopathy can often be taken alongside conventional medicine, but it’s best to consult your doctor." },
+      { question: "How long does homeopathic treatment take?", answer: "Treatment duration depends on the individual and the condition. Chronic cases may take longer to respond than acute cases." },
+      { question: "Are there any side effects of homeopathy?", answer: "Homeopathic remedies are generally safe with minimal to no side effects when taken as prescribed." },
+      { question: "How do I take homeopathic medicines?", answer: "They are usually taken as small sweet pills or liquid drops under the tongue, away from food and drinks." },
+      { question: "Do homeopathic medicines have expiry dates?", answer: "Yes, homeopathic medicines do have expiry dates, but their shelf life is generally long if stored properly." },
+      { question: "Can homeopathy treat skin conditions?", answer: "Yes, many skin conditions like eczema, psoriasis, and acne can be effectively treated with homeopathy." }
+    ].map((faq, index) => (
+      <li key={index} className="border-b pb-2">
+        <strong>{faq.question}</strong>
+        <p className="text-gray-700">{faq.answer}</p>
+      </li>
+    ))}
+  </ul>
+
+  {/* Didn't find your question? Section */}
+  <div className="mt-10 text-center   py-8 px-6 rounded-xl max-w-3xl mx-auto" data-aos="fade-up" data-aos-delay="200">
+    <h4 className="text-xl md:text-2xl font-bold text-gray-800 mb-2">Didn't find your question?</h4>
+    <p className="text-gray-600 mb-4">We’re happy to help! Reach out to us for personalized answers.</p>
+    <a
+      href="#form"
+      className="inline-block bg-green-600 text-white px-6 py-2 rounded-md hover:bg-green-700 transition"
+    >
+      Ask Your Question
+    </a>
+  </div>
+</div>
+
           </section>
         </div>
       </div>

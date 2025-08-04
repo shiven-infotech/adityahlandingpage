@@ -10,14 +10,14 @@ import Footer from "../../components/footer";
 
 export default function ContactUsPage() {
   const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    phone: "",
-    address: "",
-    country: "",
+    firstname: "",
+    lastname: "",
+    mobilenumber: "",
+  
+   
     city: "",
-    zip: "",
-    role: "",
+   
+   
     query: "",
   });
 
@@ -67,73 +67,84 @@ export default function ContactUsPage() {
           </aside>
 
           {/* Contact Form */}
-          <section className="flex-1 bg-[#e3ffe0] p-8 space-y-6" id="form" data-aos="fade-up">
-            <h2 className="text-2xl font-bold text-gray-800 border-b-2 border-yellow-400 pb-2">Contact Us</h2>
-            <p className="text-gray-600">
-              Kindly fill in your contact details to know more about the details of the Welcome Program.
-              You can also call us on the following numbers or contact us via email.
-            </p>
+         {/* Contact Form */}
+<section className="flex-1 bg-[#e3ffe0] p-8 space-y-6" id="form" data-aos="fade-up">
+  <h2 className="text-2xl font-bold text-gray-800 border-b-2 border-yellow-400 pb-2">Contact Us</h2>
+  <p className="text-gray-600">
+    Kindly fill in your contact details to know more about the details of the Welcome Program.
+    You can also call us on the following numbers or contact us via email.
+  </p>
 
-            <form onSubmit={handleSubmit} className="space-y-4" data-aos="zoom-in" data-aos-delay="200">
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                <div>
-                  <label className="font-medium">First Name</label>
-                  <input
-                    type="text"
-                    name="name"
-                    value={formData.name}
-                    onChange={handleChange}
-                    required
-                    className="w-full border rounded-md px-3 py-2"
-                  />
-                </div>
-                <div>
-                  <label className="font-medium">Last name</label>
-                  <input
-                    type="text"
-                    name="email"
-                    value={formData.email}
-                    onChange={handleChange}
-                    required
-                    className="w-full border rounded-md px-3 py-2"
-                  />
-                </div>
-                <div>
-                  <label className="font-medium">Mobile Number</label>
-                  <input
-                    type="tel"
-                    name="phone"
-                    value={formData.phone}
-                    onChange={handleChange}
-                    required
-                    className="w-full border rounded-md px-3 py-2"
-                  />
-                </div>
-              </div>
+  <form onSubmit={handleSubmit} className="space-y-4" data-aos="zoom-in" data-aos-delay="200">
+    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+      <div>
+        <label className="font-medium">First Name</label>
+        <input
+          type="text"
+          name="name"
+          value={formData.name}
+          onChange={handleChange}
+          required
+          className="w-full border rounded-md px-3 py-2"
+        />
+      </div>
+      <div>
+        <label className="font-medium">Last Name</label>
+        <input
+          type="text"
+          name="email"
+          value={formData.email}
+          onChange={handleChange}
+          required
+          className="w-full border rounded-md px-3 py-2"
+        />
+      </div>
+      <div>
+        <label className="font-medium">Mobile Number</label>
+        <input
+          type="tel"
+          name="phone"
+          value={formData.phone}
+          onChange={handleChange}
+          required
+          className="w-full border rounded-md px-3 py-2"
+        />
+      </div>
+      <div>
+        <label className="font-medium">City</label>
+        <input
+          type="text"
+          name="city"
+          value={formData.city}
+          onChange={handleChange}
+          className="w-full border rounded-md px-3 py-2"
+        />
+      </div>
+    </div>
 
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-                <div>
-                  <label className="font-medium">City</label>
-                  <input
-                    type="text"
-                    name="city"
-                    value={formData.city}
-                    onChange={handleChange}
-                    className="w-full border rounded-md px-3 py-2"
-                  />
-                </div>
-              </div>
+    <div>
+      <label className="font-medium">Your Query</label>
+      <textarea
+        name="query"
+        value={formData.query}
+        onChange={handleChange}
+        rows={4}
+        placeholder="Write your message here..."
+        className="w-full border rounded-md px-3 py-2"
+      ></textarea>
+    </div>
 
-              <button
-                type="submit"
-                className="bg-green-600 text-white px-6 py-2 rounded-md hover:bg-green-700 transition"
-                data-aos="fade-up"
-                data-aos-delay="400"
-              >
-                Submit
-              </button>
-            </form>
-          </section>
+    <button
+      type="submit"
+      className="bg-green-600 text-white px-6 py-2 rounded-md hover:bg-green-700 transition"
+      data-aos="fade-up"
+      data-aos-delay="400"
+    >
+      Submit
+    </button>
+  </form>
+</section>
+
         </div>
       </main>
       <Footer />
