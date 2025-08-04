@@ -32,7 +32,7 @@ export default function aboutus() {
       <Header />
       <Navbar />
 
-      <div className="bg-[#e3ffe0] px-4 py-8">
+      <div className="bg-[#e3ffe0] px-4 py-4">
         <div className="max-w-screen mx-auto flex flex-col md:flex-row gap-6">
           
           {/* Sticky Sidebar Container */}
@@ -44,7 +44,7 @@ export default function aboutus() {
                 <Link
                   key={sec.id}
                   href={`${sec.id}`}
-                  className="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-green-100 hover:text-green-900 transition"
+                  className="flex items-center   py-1 hover:bg-green-100 hover:text-green-900 transition"
                 >
                   <span className="text-lg">{sec.icon}</span>
                   {sec.label}

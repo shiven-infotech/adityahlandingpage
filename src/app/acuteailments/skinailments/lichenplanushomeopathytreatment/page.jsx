@@ -10,7 +10,7 @@ export default function LichenPlanusPage() {
     <>
       <Header />
         <Navbar />
-      <div className="max-w-6xl mx-auto px-4 py-12">
+      <div className="max-w-screen bg-[#e3ffe0] mx-auto px-4 py-12">
         <h1 className="text-3xl md:text-4xl font-bold text-green-700 mb-6">
           Lichen Planus Homeopathy Treatment
         </h1>

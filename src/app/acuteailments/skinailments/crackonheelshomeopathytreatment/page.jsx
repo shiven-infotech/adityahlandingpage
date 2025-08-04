@@ -11,7 +11,7 @@ export default function CracksOnHeelsPage() {
       <Header />
       <Navbar />
 
-      <div className="max-w-4xl mx-auto px-4 py-10 text-gray-800">
+      <div className="max-w-screen bg-[#e3ffe0] mx-auto px-4 py-10 text-gray-800">
         <h1 className="text-3xl md:text-4xl font-bold text-green-700 mb-6">
           Cracks on Heels Homeopathy Treatment
         </h1>
@@ -27,25 +27,38 @@ export default function CracksOnHeelsPage() {
         </section>
 
         {/* Why Homeopathy Works */}
-        <section className="mb-10">
-          <h2 className="text-2xl font-semibold mb-4">
-            How Can Homeopathy Treatment Be a Good Option for Cracks on Heels?
-          </h2>
-          <ul className="list-disc list-inside space-y-3">
-            <li>
-              <strong>Personalized Care:</strong> Treatment is tailor-made based on your skin, lifestyle, and health.
-            </li>
-            <li>
-              <strong>Natural Healing:</strong> Uses gentle, plant-based remedies with no harsh chemicals.
-            </li>
-            <li>
-              <strong>Happy Feet:</strong> Restores moisture and heals painful heel cracks.
-            </li>
-            <li>
-              <strong>Keep Cracks Away:</strong> Targets root causes to prevent future problems.
-            </li>
-          </ul>
-        </section>
+        <section className="mb-10 flex flex-col md:flex-row items-center gap-6">
+  {/* Text on the left */}
+  <div className="md:w-1/2">
+    <h2 className="text-2xl font-semibold mb-4">
+      How Can Homeopathy Treatment Be a Good Option for Cracks on Heels?
+    </h2>
+    <ul className="list-disc list-inside space-y-3">
+      <li>
+        <strong>Personalized Care:</strong> Treatment is tailor-made based on your skin, lifestyle, and health.
+      </li>
+      <li>
+        <strong>Natural Healing:</strong> Uses gentle, plant-based remedies with no harsh chemicals.
+      </li>
+      <li>
+        <strong>Happy Feet:</strong> Restores moisture and heals painful heel cracks.
+      </li>
+      <li>
+        <strong>Keep Cracks Away:</strong> Targets root causes to prevent future problems.
+      </li>
+    </ul>
+  </div>
+
+  {/* Image on the right */}
+  <div className="md:w-1/2">
+    <img
+      src="/crack.jpeg"
+      alt="Homeopathy for Cracked Heels"
+      className=" w-full object-cover"
+    />
+  </div>
+</section>
+
 
         {/* Comparison */}
         <section className="mb-10">
@@ -69,43 +82,56 @@ export default function CracksOnHeelsPage() {
         </section>
 
         {/* FAQs */}
-        <section className="mb-10">
-          <h2 className="text-2xl font-semibold mb-4">
-            FAQs about Cracks on Heels Homeopathy Treatment
-          </h2>
-          <div className="space-y-4">
-            <div>
-              <strong>Can homeopathy completely cure heel cracks?</strong>
-              <p>
-                Yes, by addressing dryness, pressure, and internal causes, homeopathy can offer lasting relief.
-              </p>
-            </div>
-            <div>
-              <strong>How long does it take to see improvements?</strong>
-              <p>
-                Most people notice improvement in a few weeks to months depending on severity and consistency.
-              </p>
-            </div>
-            <div>
-              <strong>Are remedies safe for children?</strong>
-              <p>
-                Yes. Homeopathic remedies are gentle and safe for all age groups.
-              </p>
-            </div>
-            <div>
-              <strong>Can it help with severe pain?</strong>
-              <p>
-                Yes, homeopathy reduces inflammation and pain naturally without strong medication.
-              </p>
-            </div>
-            <div>
-              <strong>What lifestyle changes can help?</strong>
-              <p>
-                Moisturize feet, wear proper shoes, avoid prolonged standing, and maintain hygiene.
-              </p>
-            </div>
-          </div>
-        </section>
+       <section className="mb-10 flex flex-col md:flex-row items-center gap-6">
+  {/* Image on the left */}
+  <div className="md:w-1/2">
+    <img
+      src="/crack2.png"
+      alt="Cracked Heels FAQs"
+      className=" w-full object-cover"
+    />
+  </div>
+
+  {/* Text on the right */}
+  <div className="md:w-1/2">
+    <h2 className="text-2xl font-semibold mb-4">
+      FAQs about Cracks on Heels Homeopathy Treatment
+    </h2>
+    <div className="space-y-4">
+      <div>
+        <strong>Can homeopathy completely cure heel cracks?</strong>
+        <p>
+          Yes, by addressing dryness, pressure, and internal causes, homeopathy can offer lasting relief.
+        </p>
+      </div>
+      <div>
+        <strong>How long does it take to see improvements?</strong>
+        <p>
+          Most people notice improvement in a few weeks to months depending on severity and consistency.
+        </p>
+      </div>
+      <div>
+        <strong>Are remedies safe for children?</strong>
+        <p>
+          Yes. Homeopathic remedies are gentle and safe for all age groups.
+        </p>
+      </div>
+      <div>
+        <strong>Can it help with severe pain?</strong>
+        <p>
+          Yes, homeopathy reduces inflammation and pain naturally without strong medication.
+        </p>
+      </div>
+      <div>
+        <strong>What lifestyle changes can help?</strong>
+        <p>
+          Moisturize feet, wear proper shoes, avoid prolonged standing, and maintain hygiene.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
 
         {/* Call to Action */}
         <section className="text-center mt-10 bg-green-50 p-6 rounded-lg shadow-md">

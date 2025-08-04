@@ -44,10 +44,10 @@ export default function ContactUsPage() {
       <main className=" bg-[#e3ffe0]">
         <div className="max-w-screen mx-auto flex flex-col md:flex-row gap-6">
           {/* Sidebar */}
-          <aside className="hidden md:flex flex-col gap-6 w-64 h-fit sticky top-24">
+          <aside className="hidden md:flex flex-col  w-64 h-fit sticky top-24">
             <nav className="p-4 space-y-3 bg-[#e3ffe0]" data-aos="fade-right">
               <h3 className="text-lg text-green-700 font-semibold mb-2">Health Packages</h3>
-              <ul className="space-y-3 text-gray-800 font-medium">
+              <ul className="space-y-3 py-1  font-medium">
                 <li><a href="/reversalprogram" className="hover:text-green-700">Reversal Program</a></li>
                 <li><a href="/garbhsanskarclasses" className="hover:text-green-700">Garbh Sanskar Classes</a></li>
                 <li><a href="/rightbrainactivationclasses" className="hover:text-green-700">Right Brain Activation</a></li>
