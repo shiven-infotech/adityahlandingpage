@@ -9,7 +9,7 @@ export default function SkinRashesPage() {
     <>
       <Header />
       <Navbar />
-      <main className="px-4 py-10  max-w-screen mx-auto text-gray-800 space-y-10">
+      <main className="px-4 bg-[#e3ffe0] py-10  max-w-screen mx-auto text-gray-800 space-y-10">
         <h1 className="text-3xl md:text-4xl font-bold text-green-700">
           Skin Rashes Homeopathy Treatment
         </h1>
