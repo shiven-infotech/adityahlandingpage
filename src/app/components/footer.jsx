@@ -52,9 +52,7 @@ export default function Footer() {
           <div className="flex items-center gap-2 text-sm mb-2">
             <FaPhoneAlt /> <span>+91 98765 43210</span>
           </div>
-          <div className="flex items-center gap-2 text-sm mb-4">
-            <FaEnvelope /> <span>info@adityahomeopathy.com</span>
-          </div>
+         
           <div className="flex gap-4 text-xl flex-wrap">
             <a href="https://www.facebook.com" target="_blank" rel="noopener noreferrer" className="hover:text-yellow-300">
               <FaFacebookF />

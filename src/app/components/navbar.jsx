@@ -26,7 +26,7 @@ export default function Navbar() {
         { label: "Fundamentals of Homeopathy", href: "/aboutus/fundamentalsofhomeopathy" },
         { label: "Myths & Facts About Homeopathy", href: "/aboutus/myths&factsabouthomeopathy" },
         {label:"Vision and Mission", href:"/aboutus/visionandmission"},
-        {label:"Team Balance", href:"/aboutus/teambalance"}
+        {label:"Our Team", href:"/aboutus/ourteam"}
       ],
     },
     {

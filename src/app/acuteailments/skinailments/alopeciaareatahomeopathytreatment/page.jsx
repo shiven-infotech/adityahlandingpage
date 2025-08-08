@@ -16,7 +16,8 @@ export default function AlopeciaAreataPage() {
       <Header />
       <Navbar />
 
-      <main className="px-4 md:px-20 py-10 space-y-12">
+       <main className="max-w-screen-2xl mx-auto px-4 md:px-8 py-10 space-y-12">
+
         <section>
           <h1 className="text-3xl md:text-4xl font-bold text-green-700 mb-4">
             Alopecia Areata Homeopathy Treatment?
@@ -29,15 +30,26 @@ export default function AlopeciaAreataPage() {
           </p>
         </section>
 
-        <section>
-          <h2 className="text-2xl font-semibold text-green-700 mb-2">How Homeopathy Helps with Alopecia Areata</h2>
-          <ul className="list-disc pl-6 space-y-2 text-gray-700 text-lg">
-            <li><strong>Holistic Approach:</strong> Homeopathy considers your overall health, stress levels, and hair loss pattern to design a personalized plan.</li>
-            <li><strong>Natural Remedies:</strong> Uses gentle, chemical-free ingredients to promote hair regrowth.</li>
-            <li><strong>Immune System Balance:</strong> Aims to correct immune response that causes hair follicle damage.</li>
-            <li><strong>Safe and Non-Invasive:</strong> Ideal for all ages with no harsh side effects or surgical interventions.</li>
-          </ul>
-        </section>
+        
+<section className="flex flex-col md:flex-row items-center gap-8">
+  <div className="md:w-2/3">
+    <h2 className="text-2xl font-semibold text-green-700 mb-2">How Homeopathy Helps with Alopecia Areata</h2>
+    <ul className="list-disc pl-6 space-y-2 text-gray-700 text-lg">
+      <li><strong>Holistic Approach:</strong> Homeopathy takes into account various factors such as how much hair is lost, your overall health, and even emotional stress levels to create a treatment plan just for you.</li>
+      <li><strong>Natural Remedies:</strong> Homeopathic medicines use gentle ingredients from nature that help stimulate hair growth without using any harsh chemicals or additives.</li>
+      <li><strong>Immune System Balance:</strong> Homeopathy works on balancing your body's immune system, which can help prevent more hair loss and encourage new hair to grow.</li>
+      <li><strong>Safe and Non-Invasive:</strong> Homeopathic treatments are safe for everyone, including children and older adults, and they offer treatments that don’t involve surgeries or invasive procedures, making them comfortable and effective options for managing alopecia areata.</li>
+    </ul>
+  </div>
+  <div className="md:w-1/3">
+    <img
+      src="/alopecia1.jpeg"
+      alt="Homeopathy for Alopecia Areata"
+      className=" w-full h-80"
+    />
+  </div>
+</section>
+
 
         <section>
           <h2 className="text-2xl font-semibold text-green-700 mb-2">Homeopathy vs Other Treatments</h2>
@@ -49,31 +61,42 @@ export default function AlopeciaAreataPage() {
           </ul>
         </section>
 
-        <section>
-          <h2 className="text-2xl font-semibold text-green-700 mb-4">FAQs about Alopecia Areata Homeopathy Treatment</h2>
-          <div className="space-y-4 text-gray-700 text-lg">
-            <div>
-              <strong>Can homeopathy cure Alopecia Areata completely?</strong>
-              <p>It aims to manage and treat it holistically. While full recovery varies per individual, many see great improvement.</p>
-            </div>
-            <div>
-              <strong>How long does it take to see improvements?</strong>
-              <p>Some people notice hair growth in a few months, while others need longer treatment. Patience is key.</p>
-            </div>
-            <div>
-              <strong>Are homeopathic remedies safe for children?</strong>
-              <p>Yes, they are safe and effective for kids, with no harsh effects.</p>
-            </div>
-            <div>
-              <strong>Can homeopathy help in severe cases?</strong>
-              <p>Yes, even severe cases can benefit with a consistent and personalized plan.</p>
-            </div>
-            <div>
-              <strong>What lifestyle changes help?</strong>
-              <p>Manage stress, eat a balanced diet, stay hydrated, and follow a regular, gentle hair care routine.</p>
-            </div>
-          </div>
-        </section>
+        // SECTION: FAQs (Image Left, Text Right)
+<section className="flex flex-col md:flex-row items-center gap-8">
+  <div className="md:w-1/3">
+    <img
+      src="/alopecia2.jpeg"
+      alt="FAQ Illustration"
+      className=" w-full"
+    />
+  </div>
+  <div className="md:w-2/3">
+    <h2 className="text-2xl font-semibold text-green-700 mb-4">FAQs about Alopecia Areata Homeopathy Treatment</h2>
+    <div className="space-y-4 text-gray-700 text-lg">
+      <div>
+        <strong>Can homeopathy cure Alopecia Areata completely?</strong>
+        <p>Homeopathy aims to treat Alopecia Areata holistically, addressing underlying causes and promoting hair regrowth naturally. While complete cure varies for each individual, many experience significant improvements with homeopathic treatments.</p>
+      </div>
+      <div>
+        <strong>How long does it take to see improvements with homeopathic treatment for Alopecia Areata?</strong>
+        <p>The timeframe for seeing improvements with homeopathy can vary from person to person. Some individuals notice changes in a few months, while others may require longer treatment durations. Patience and consistency with treatment are key for optimal results.</p>
+      </div>
+      <div>
+        <strong>Are homeopathic remedies safe for children with Alopecia Areata?</strong>
+        <p>Yes, homeopathic remedies are generally safe for children with Alopecia Areata. They offer gentle and non-invasive treatment options suitable for children, ensuring effective and safe management of the condition.</p>
+      </div>
+      <div>
+        <strong>Can homeopathy help with severe cases of Alopecia Areata?</strong>
+        <p>Homeopathy can be beneficial for severe cases of Alopecia Areata by addressing immune system imbalances and promoting natural hair regrowth. While results may vary, consulting with a qualified homeopathic practitioner can provide personalized treatment options for severe cases.</p>
+      </div>
+      <div>
+        <strong>What lifestyle changes can complement homeopathy in managing Alopecia Areata effectively?</strong>
+        <p>Lifestyle changes such as managing stress levels, maintaining a balanced diet rich in nutrients, staying hydrated, getting regular exercise, and practicing good hair care habits can complement homeopathic treatment for Alopecia Areata. These changes support overall health and contribute to the effectiveness of homeopathic remedies in managing the condition.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
 
         <section className="bg-green-50 p-6 rounded-xl text-center">
           <h3 className="text-xl font-semibold text-green-800 mb-2">

@@ -40,7 +40,7 @@ export default function PatientTestimonialsPage() {
     },
   ];
 
-  const [formData, setFormData] = useState({ name: "", feedback: "", rating: 5 });
+  const [formData, setFormData] = useState({ firstname: "", lastname: "", mobile:"", feedback:"",  rating: 5 });
   const [submitted, setSubmitted] = useState(false);
 
   const handleChange = (e) => {
@@ -59,7 +59,7 @@ export default function PatientTestimonialsPage() {
       <Header />
       <Navbar />
 
-      <main className="bg-[#e3ffe0] py-4 px-4 text-gray-800">
+      <main className="bg-[#e3ffe0] py-2 px-4 ">
         <div className="flex flex-col lg:flex-row max-w-screen mx-auto gap-12">
           {/* Sidebars */}
           <div className="lg:w-64 w-full flex flex-col gap-8 sticky top-24 self-start z-10">
@@ -87,7 +87,7 @@ export default function PatientTestimonialsPage() {
           </div>
 
           {/* Main Content */}
-          <div className="flex-1 space-y-12">
+          <div className="flex-1 space-y-8">
             {/* Title */}
             <section className="text-center" data-aos="fade-down">
               <h1 className="text-4xl md:text-5xl font-bold text-green-700">
@@ -123,72 +123,107 @@ export default function PatientTestimonialsPage() {
               ))}
             </section>
 
-            {/* Submit Form */}
-            <section className="  p-8" data-aos="fade-up">
-              <h2 className="text-2xl font-semibold text-green-700 text-center">
-                Submit Your Testimonial
-              </h2>
-              <p className="text-center text-gray-600 mt-2">
-                We’d love to hear how homeopathy helped you.
-              </p>
+           {/* Submit Form */}
+<section className="p-8" data-aos="fade-up">
+  <h2 className="text-2xl font-semibold text-green-700 text-center">
+    Submit Your Testimonial
+  </h2>
+  <p className="text-center text-gray-600 mt-2">
+    We’d love to hear how homeopathy helped you.
+  </p>
 
-              <form onSubmit={handleSubmit} className="mt-6 space-y-4 max-w-xl mx-auto">
-                <div>
-                  <label className="block text-gray-700 font-medium mb-1">Your Name</label>
-                  <input
-                    type="text"
-                    name="name"
-                    value={formData.name}
-                    onChange={handleChange}
-                    required
-                    className="w-full border border-gray-300 rounded-md p-2"
-                    placeholder="Enter your full name"
-                  />
-                </div>
+  <form onSubmit={handleSubmit} className="mt-6 space-y-4 max-w-xl mx-auto">
+    {/* First and Last Name */}
+    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+      <div>
+        <label className="block text-gray-700 font-medium mb-1">First Name</label>
+        <input
+          type="text"
+          name="firstName"
+          value={formData.firstName}
+          onChange={handleChange}
+          required
+          className="w-full border border-gray-300 rounded-md p-2"
+          placeholder="Enter your first name"
+        />
+      </div>
+      <div>
+        <label className="block text-gray-700 font-medium mb-1">Last Name</label>
+        <input
+          type="text"
+          name="lastName"
+          value={formData.lastName}
+          onChange={handleChange}
+          required
+          className="w-full border border-gray-300 rounded-md p-2"
+          placeholder="Enter your last name"
+        />
+      </div>
+    </div>
 
-                <div>
-                  <label className="block text-gray-700 font-medium mb-1">Your Feedback</label>
-                  <textarea
-                    name="feedback"
-                    rows={4}
-                    value={formData.feedback}
-                    onChange={handleChange}
-                    required
-                    className="w-full border border-gray-300 rounded-md p-2"
-                    placeholder="Share your experience"
-                  />
-                </div>
+    {/* Mobile Number */}
+    <div>
+      <label className="block text-gray-700 font-medium mb-1">Mobile Number</label>
+      <input
+        type="tel"
+        name="mobile"
+        value={formData.mobile}
+        onChange={handleChange}
+        required
+        pattern="[0-9]{10}"
+        className="w-full border border-gray-300 rounded-md p-2"
+        placeholder="Enter your 10-digit mobile number"
+      />
+    </div>
 
-                <div>
-                  <label className="block text-gray-700 font-medium mb-1">Your Rating</label>
-                  <select
-                    name="rating"
-                    value={formData.rating}
-                    onChange={handleChange}
-                    className="w-full border border-gray-300 rounded-md p-2"
-                  >
-                    {[5, 4, 3, 2, 1].map((r) => (
-                      <option key={r} value={r}>
-                        {r} Star{r > 1 ? "s" : ""}
-                      </option>
-                    ))}
-                  </select>
-                </div>
+    {/* Feedback */}
+    <div>
+      <label className="block text-gray-700 font-medium mb-1">Your Feedback</label>
+      <textarea
+        name="feedback"
+        rows={4}
+        value={formData.feedback}
+        onChange={handleChange}
+        required
+        className="w-full border border-gray-300 rounded-md p-2"
+        placeholder="Share your experience"
+      />
+    </div>
 
-                <button
-                  type="submit"
-                  className="w-full bg-green-600 text-white font-semibold py-2 rounded-md hover:bg-green-700 transition"
-                >
-                  Submit Testimonial
-                </button>
+    {/* Rating */}
+    <div>
+      <label className="block text-gray-700 font-medium mb-1">Your Rating</label>
+      <select
+        name="rating"
+        value={formData.rating}
+        onChange={handleChange}
+        className="w-full border border-gray-300 rounded-md p-2"
+      >
+        {[5, 4, 3, 2, 1].map((r) => (
+          <option key={r} value={r}>
+            {r} Star{r > 1 ? "s" : ""}
+          </option>
+        ))}
+      </select>
+    </div>
 
-                {submitted && (
-                  <p className="text-green-700 font-medium mt-4 text-center">
-                    Thank you! Your testimonial has been submitted.
-                  </p>
-                )}
-              </form>
-            </section>
+    {/* Submit Button */}
+    <button
+      type="submit"
+      className="w-full bg-green-600 text-white font-semibold py-2 rounded-md hover:bg-green-700 transition"
+    >
+      Submit Testimonial
+    </button>
+
+    {/* Success Message */}
+    {submitted && (
+      <p className="text-green-700 font-medium mt-4 text-center">
+        Thank you! Your testimonial has been submitted.
+      </p>
+    )}
+  </form>
+</section>
+
           </div>
         </div>
       </main>

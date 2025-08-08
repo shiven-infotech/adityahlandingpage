@@ -63,25 +63,38 @@ export default function AppointmentPage() {
               )}
 
               <form className="space-y-5" onSubmit={handleSubmit}>
-                {/* Role */}
+                {/* First Name */}
                 <div>
                   <label className="block text-sm font-medium text-gray-700">
-                    Select Role
+                    First Name
                   </label>
-                  <select className="w-full border border-gray-300 rounded px-3 py-2" required>
-                    <option value="">Choose Role</option>
-                    <option>Patient</option>
-                    <option> doctor</option>
-                  </select>
+                  <input
+                    type="text"
+                    required
+                    placeholder="Enter first name"
+                    className="w-full border border-gray-300 rounded px-3 py-2"
+                  />
+                </div>
+
+                {/* Last Name */}
+                <div>
+                  <label className="block text-sm font-medium text-gray-700">
+                    Last Name
+                  </label>
+                  <input
+                    type="text"
+                    required
+                    placeholder="Enter last name"
+                    className="w-full border border-gray-300 rounded px-3 py-2"
+                  />
                 </div>
 
                 {/* Doctor */}
                 <div>
                   <label className="block text-sm font-medium text-gray-700">
-                    Select Doctor
+                    Doctor
                   </label>
                   <select className="w-full border border-gray-300 rounded px-3 py-2" required>
-                    <option value="">Choose Doctor</option>
                     <option>Dr. Shital Khodke</option>
                   </select>
                 </div>
@@ -159,16 +172,6 @@ export default function AppointmentPage() {
                     tileDisabled={({ date }) => date.getDay() === 0}
                     className="rounded-lg border border-gray-200 w-full"
                   />
-                </div>
-
-                {/* Selected Date */}
-                <div>
-                  <label className="block text-sm font-medium text-gray-700">
-                    Selected Date
-                  </label>
-                  <div className="text-green-800 font-semibold">
-                    {date.toDateString()}
-                  </div>
                 </div>
 
                 {/* Submit */}
