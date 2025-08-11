@@ -4,27 +4,21 @@ import { useState, useEffect } from "react";
 import AOS from "aos";
 import "aos/dist/aos.css";
 import Link from "next/link";
-
 import Header from "../../components/header";
 import Navbar from "../../components/navbar";
 import Footer from "../../components/footer";
 
-
-
-
-export default function RequestACallBackPage() {
+export default function requestacallbackPage() {
   const [formData, setFormData] = useState({
-    firstName: "",
-    lastName: "",
-    phone: "",
-    subject: "",
+    firstname: "",
+    lastname: "",
+    mobilenumber: "",
+    city: "",
     query: "",
   });
 
   useEffect(() => {
-    AOS.init({ duration: 800 });
-    const today = new Date().toISOString().split("T")[0];
-    setFormData((prev) => ({ ...prev, date: today }));
+    AOS.init({ duration: 800, once: true });
   }, []);
 
   const handleChange = (e) => {
@@ -36,138 +30,166 @@ export default function RequestACallBackPage() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log("Call Back Request Submitted:", formData);
-    // Optionally show success message here
+    console.log("Form submitted:", formData);
+    // You can add actual form submission logic here
   };
 
+  const sections = [
+    { id: "reversalprogram", label: "Reversal Program" },
+    { id: "garbhsanskarclasses", label: "Garbh Sanskar classes" },
+    { id: "rightbrainactivationclasses", label: "Right Brain Activation Classes" },
+    { id: "prepregnancy", label: "Pre Pregnancy" },
+    { id: "Postdelivery", label: "Post Delivery" },
+    { id: "corporatewellnessprogram", label: "Corporate Wellness Program" },
+  ];
 
   return (
     <>
       <Header />
       <Navbar />
 
-      <div className="bg-[#e3ffe0] ">
+      <div className="bg-[#e3ffe0] px-4 py-4">
         <div className="max-w-screen mx-auto flex flex-col md:flex-row gap-6">
-          
-          {/* Sticky Sidebars */}
-          <aside className="hidden md:flex flex-col  w-64 h-fit sticky top-24">
+          {/* Sticky Sidebar Container */}
+          <aside className="hidden md:flex flex-col gap-6 w-64 h-fit sticky top-24">
             {/* Sidebar 1 */}
-           <nav className="p-4 space-y-2 bg-[#e3ffe0]">
-              <h3 className="text-lg text-green-700 font-semibold mb-2">Health Packages</h3>
-              <ul className="space-y-3 text-gray-800 font-medium">
-                <li><a href="/reversalprogram" className="hover:text-green-700">Reversal Program</a></li>
-                <li><a href="/garbhsanskarclasses" className="hover:text-green-700">Garbh Sanskar Classes</a></li>
-                <li><a href="/rightbrainactivationclasses" className="hover:text-green-700">Right Brain Activation</a></li>
-                <li><a href="/prepregnancy" className="hover:text-green-700">Pre Pregnancy</a></li>
-                <li><a href="/postdelivery" className="hover:text-green-700">Post Delivery</a></li>
-                <li><a href="/corporatewellnessprogram" className="hover:text-green-700">Corporate Wellness Program</a></li>
-              </ul>
+            <nav className="space-y-1">
+              <h3 className="text-xl text-green-700 px-2 font-semibold">
+                Health Packages
+              </h3>
+              {sections.map((sec) => (
+                <Link
+                  key={sec.id}
+                  href={`#${sec.id}`}
+                  className="flex  hover:text-green-700 transition"
+                >
+                  <span className=" p-1">{sec.icon}</span>
+                  {sec.label}
+                </Link>
+              ))}
             </nav>
+
             {/* Sidebar 2 */}
-            <nav className="p-4 space-y-2">
-              <h3 className="text-lg text-green-700 font-semibold mb-2">Main</h3>
-              <Link href="/contactus/contactus" className="block px-3 py-2 rounded hover:bg-green-100 hover:text-green-900 transition">Contact Us</Link>
-              <Link href="/contacus/requestacallback" className="block px-3 py-2 rounded hover:bg-green-100 hover:text-green-900 transition">Request a Call Back</Link>
-              <Link href="/contactus/didnotfindyourquestions" className="block px-3 py-2 rounded hover:bg-green-100 hover:text-green-900 transition">Did not Find Your Questions</Link>
-              
+            <nav className="p-1  space-y-1">
+              <h3 className="text-xl text-green-700 font-semibold">Main</h3>
+              <Link
+                href="/aboutus/aboutus"
+                className="block hover:text-green-700 transition"
+              >
+                About Us
+              </Link>
+              <Link
+                href="/aboutus/fundamentalsofhomeopathy"
+                className="block hover:text-green-700 transition"
+              >
+                Fundamentals of Homeopathy
+              </Link>
+              <Link
+                href="/aboutus/myths&factsabouthomeopathy"
+                className="block hover:text-green-700 transition"
+              >
+                Myths & Facts About Homeopathy
+              </Link>
+              <Link
+                href="/aboutus/visionandmission"
+                className="block hover:text-green-700 transition"
+              >
+                Vision and Mission
+              </Link>
+              <Link
+                href="/aboutus/ourteam"
+                className="block hover:text-green-900 transition"
+              >
+                Our Team
+              </Link>
             </nav>
           </aside>
 
-          {/* Main Form Section */}
-          <section className="flex-1 w-full rounded-xl p-6 md:p-8 space-y-6" data-aos="fade-left">
-  <h2 className="text-2xl font-bold text-gray-800 border-b-2 border-yellow-400 pb-2">
-    Request a Call Back
-  </h2>
+          {/* Contact Form */}
+          <section
+            className="flex-1 bg-[#e3ffe0] p-8 space-y-6"
+            id="form"
+            data-aos="fade-up"
+          >
+            <h2 className="text-2xl font-bold text-green-700 border-b-2 border-green-400 pb-2">
+              Request a Call Back
+            </h2>
+            
 
-  <form onSubmit={handleSubmit} className="space-y-4" data-aos="zoom-in-up">
-    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-      <div data-aos="fade-up">
-        <label className="font-medium">
-          First Name <span className="text-red-500">*</span>
-        </label>
-        <input
-          type="text"
-          name="firstName"
-          value={formData.firstName}
-          onChange={handleChange}
-          required
-          className="w-full border rounded-md px-3 py-2"
-        />
-      </div>
+            <form
+              onSubmit={handleSubmit}
+              className="space-y-4"
+              data-aos="zoom-in"
+              data-aos-delay="200"
+            >
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div>
+                  <label className="font-medium">First Name</label>
+                  <input
+                    type="text"
+                    name="firstname"
+                    value={formData.firstname}
+                    onChange={handleChange}
+                    required
+                    className="w-full border rounded-md px-3 py-2"
+                  />
+                </div>
+                <div>
+                  <label className="font-medium">Last Name</label>
+                  <input
+                    type="text"
+                    name="lastname"
+                    value={formData.lastname}
+                    onChange={handleChange}
+                    required
+                    className="w-full border rounded-md px-3 py-2"
+                  />
+                </div>
+                <div>
+                  <label className="font-medium">Mobile Number</label>
+                  <input
+                    type="tel"
+                    name="mobilenumber"
+                    value={formData.mobilenumber}
+                    onChange={handleChange}
+                    required
+                    className="w-full border rounded-md px-3 py-2"
+                  />
+                </div>
+                <div>
+                  <label className="font-medium">City</label>
+                  <input
+                    type="text"
+                    name="city"
+                    value={formData.city}
+                    onChange={handleChange}
+                    className="w-full border rounded-md px-3 py-2"
+                  />
+                </div>
+              </div>
 
-      <div data-aos="fade-up" data-aos-delay="100">
-        <label className="font-medium">
-          Last Name <span className="text-red-500">*</span>
-        </label>
-        <input
-          type="text"
-          name="lastName"
-          value={formData.lastName}
-          onChange={handleChange}
-          required
-          className="w-full border rounded-md px-3 py-2"
-        />
-      </div>
-    </div>
+              <div>
+                <label className="font-medium">Your Query</label>
+                <textarea
+                  name="query"
+                  value={formData.query}
+                  onChange={handleChange}
+                  rows={4}
+                  placeholder="Write your message here..."
+                  className="w-full border rounded-md px-3 py-2"
+                ></textarea>
+              </div>
 
-    <div data-aos="fade-up" data-aos-delay="150">
-      <label className="font-medium">
-        Mobile Number <span className="text-red-500">*</span>
-      </label>
-      <input
-        type="tel"
-        name="phone"
-        value={formData.phone}
-        onChange={handleChange}
-        required
-        className="w-full border rounded-md px-3 py-2"
-      />
-    </div>
-
-    <div data-aos="fade-up" data-aos-delay="200">
-      <label className="font-medium">
-        Subject <span className="text-red-500">*</span>
-      </label>
-      <input
-        type="text"
-        name="subject"
-        value={formData.subject}
-        onChange={handleChange}
-        required
-        className="w-full border rounded-md px-3 py-2"
-      />
-    </div>
-
-    {/* ✅ New Query Field */}
-    <div data-aos="fade-up" data-aos-delay="250">
-      <label className="font-medium">
-        Query <span className="text-red-500">*</span>
-      </label>
-      <textarea
-        name="query"
-        value={formData.query}
-        onChange={handleChange}
-        required
-        rows="4"
-        placeholder="Write your query here..."
-        className="w-full border rounded-md px-3 py-2"
-      />
-    </div>
-
-    {/* Hidden field for date */}
-    <input type="hidden" name="date" value={formData.date} />
-
-    <button
-      type="submit"
-      className="bg-green-600 text-white px-6 py-2 rounded-md hover:bg-green-700 transition w-full sm:w-auto"
-      data-aos="zoom-in"
-      data-aos-delay="300"
-    >
-      Submit
-    </button>
-  </form>
-</section>
-
+              <button
+                type="submit"
+                className="bg-green-600  text-white px-6 py-2 rounded-md hover:bg-green-700 transition"
+                data-aos="fade-up"
+                data-aos-delay="400"
+              >
+                Submit
+              </button>
+            </form>
+          </section>
         </div>
       </div>
 

@@ -38,56 +38,56 @@ export default function aboutus() {
           {/* Sticky Sidebar Container */}
           <aside className="hidden md:flex flex-col gap-6 w-64 h-fit sticky top-24">
             {/* Sidebar 1 */}
-            <nav className=" p-4  space-y-2">
-              <h3 className="text-lg text-green-700 font-semibold mb-2">Health Packages</h3>
+            <nav className="   space-y-1">
+              <h3 className="text-xl text-green-700 px-2 font-semibold ">Health Packages</h3>
               {sections.map((sec) => (
                 <Link
                   key={sec.id}
                   href={`${sec.id}`}
-                  className="flex items-center   py-1 hover:bg-green-100 hover:text-green-900 transition"
+                  className="flex items-center  hover:text-green-700 transition"
                 >
-                  <span className="text-lg">{sec.icon}</span>
+                  <span className="text-lg p-1">{sec.icon}</span>
                   {sec.label}
                 </Link>
               ))}
             </nav>
 
             {/* Sidebar 2 */}
-            <nav className=" p-4  space-y-2">
+            <nav className=" p-1  space-y-1">
 
-              <h3 className="text-lg text-green-700 font-semibold mb-2">Main</h3>
+              <h3 className="text-xl text-green-700 font-semibold ">Main</h3>
 
               <Link
                 href="/aboutus/aboutus"
-                className="block px-3 py-2 rounded hover:bg-green-100 hover:text-green-900 transition"
+                className="block   hover:text-green-700 transition"
               >
                 About Us
               </Link>
               <Link
                 href="/aboutus/fundamentalsofhomeopathy"
-                className="block px-3 py-2 rounded hover:bg-green-100 hover:text-green-900 transition"
+                className="block    hover:text-green-700 transition"
               >
                 Fundamentals of Homeopathy
               </Link>
               <Link
                 href="/aboutus/myths&factsabouthomeopathy"
-                className="block px-3 py-2 rounded hover:bg-green-100 hover:text-green-900 transition"
+                className="block hover:text-green-700 transition"
               >
                 Myths & Facts About Homeopathy
               </Link>
 
                <Link
                 href="/aboutus/visionandmission"
-                className="block px-3 py-2 rounded hover:bg-green-100 hover:text-green-900 transition"
+                className="block hover:text-green-700 transition"
               >
                 Vision and Mission
               </Link>
 
                 <Link
-                href="/aboutus/teambalance"
-                className="block px-3 py-2 rounded hover:bg-green-100 hover:text-green-900 transition"
+                href="/aboutus/ourteam"
+                className="block  hover:text-green-900 transition"
               >
-                Team Balance
+                Our Team
               </Link>
 
 

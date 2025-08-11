@@ -4,9 +4,6 @@ import { useEffect, useState } from "react";
 import AOS from "aos";
 import "aos/dist/aos.css";
 import Link from "next/link";
-
-
-
 import Header from "../../components/header";
 import Navbar from "../../components/navbar";
 import Footer from "../../components/footer";
@@ -21,26 +18,14 @@ export default function DidNotFindYourQuestionPage() {
     date: "",
   });
 
-  const [faqs, setFaqs] = useState([
+  const faqs = [
     { question: "Is homeopathy safe for children?", answer: "Yes, homeopathy is safe and effective for all age groups." },
     { question: "How long does treatment take?", answer: "It depends on the condition and individual response." },
-    {
-      question: "How long does it take to see results with homeopathy?",
-      answer: "The time for visible results varies depending on the individual and condition. Acute issues may improve within days, while chronic problems may take weeks to months of consistent treatment.",
-    },
-    {
-      question: "Can I take homeopathic treatment alongside allopathic medicines?",
-      answer: "Yes, homeopathy can be taken safely with conventional medicines. Our doctor will guide you on the best approach to integrate both therapies effectively.",
-    },
-    {
-      question: "Does homeopathy treat the root cause of disease?",
-      answer: "Yes, homeopathy aims to address the root cause by enhancing the body’s natural healing mechanisms rather than suppressing symptoms.",
-    },
-    {
-      question: "Is online consultation available at Aditya Homeopathic Clinic?",
-      answer: "Yes, we offer both in-clinic and online consultations for your convenience. You can request a callback or book an appointment through our website.",
-    },
-  ]);
+    { question: "How long does it take to see results with homeopathy?", answer: "The time for visible results varies depending on the condition. Acute issues may improve in days, chronic cases may take weeks or months." },
+    { question: "Can I take homeopathic treatment alongside allopathic medicines?", answer: "Yes, homeopathy can be taken safely with conventional medicines under guidance." },
+    { question: "Does homeopathy treat the root cause of disease?", answer: "Yes, it works on the root cause by enhancing the body’s natural healing mechanisms." },
+    { question: "Is online consultation available at Aditya Homeopathic Clinic?", answer: "Yes, we offer both in-clinic and online consultations." },
+  ];
 
   useEffect(() => {
     AOS.init({ duration: 1000 });
@@ -58,116 +43,102 @@ export default function DidNotFindYourQuestionPage() {
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log("Submitted Question:", formData);
-    // Submit to backend or API here
+    // API submission logic here
   };
+
+  const sections = [
+    { id: "reversalprogram", label: "Reversal Program" },
+    { id: "garbhsanskarclasses", label: "Garbh Sanskar Classes" },
+    { id: "rightbrainactivationclasses", label: "Right Brain Activation Classes" },
+    { id: "prepregnancy", label: "Pre Pregnancy" },
+    { id: "Postdelivery", label: "Post Delivery" },
+    { id: "corporatewellnessprogram", label: "Corporate Wellness Program" },
+  ];
 
   return (
     <>
       <Header />
       <Navbar />
 
-      <div className="bg-[#e3ffe0] ">
+      <div className="bg-[#e3ffe0] px-4 py-4">
         <div className="max-w-screen mx-auto flex flex-col md:flex-row gap-6">
-          {/* Sticky Sidebar Menu */}
-          <aside className="hidden md:flex flex-col  w-64 h-fit sticky top-24">
-            {/* Sidebar 1 */}
-           <nav className="p-4 space-y-2 bg-[#e3ffe0]">
-              <h3 className="text-lg text-green-700 font-semibold mb-2">Health Packages</h3>
-              <ul className="space-y-3 text-gray-800 font-medium">
-                <li><a href="/reversalprogram" className="hover:text-green-700">Reversal Program</a></li>
-                <li><a href="/garbhsanskarclasses" className="hover:text-green-700">Garbh Sanskar Classes</a></li>
-                <li><a href="/rightbrainactivationclasses" className="hover:text-green-700">Right Brain Activation</a></li>
-                <li><a href="/prepregnancy" className="hover:text-green-700">Pre Pregnancy</a></li>
-                <li><a href="/postdelivery" className="hover:text-green-700">Post Delivery</a></li>
-                <li><a href="/corporatewellnessprogram" className="hover:text-green-700">Corporate Wellness Program</a></li>
-              </ul>
-            </nav>
-            {/* Sidebar 2 */}
-             <nav className="p-2 space-y-2">
-              <h3 className="text-lg text-green-700 font-semibold mb-2">Main</h3>
-              <Link href="/contactus/contactus" className="block px-3 py-2 rounded hover:bg-green-100 hover:text-green-900 transition">Contact Us</Link>
-              <Link href="/contactus/requestacallback" className="block px-3 py-2 rounded hover:bg-green-100 hover:text-green-900 transition">Request a Call Back</Link>
-              <Link href="/contactus/didnotfindyourquestions" className="block px-3 py-2 rounded hover:bg-green-100 hover:text-green-900 transition">Did not Find Your Questions</Link>
-             
+          {/* Sidebar */}
+          <aside className="hidden md:flex flex-col gap-6 w-64 h-fit sticky top-24">
+            <nav className="space-y-1">
+              <h3 className="text-xl text-green-700 px-2 font-semibold">Health Packages</h3>
+              {sections.map((sec) => (
+                <Link
+                  key={sec.id}
+                  href={`#${sec.id}`}
+                  className="flex hover:text-green-700 transition"
+                >
+                 <span className=" p-1">{sec.icon}</span>
+                  {sec.label}
+                </Link>
+              ))}
             </nav>
 
-
- 
-
-
-            
+            <nav className="p-1 space-y-1">
+              <h3 className="text-xl text-green-700 font-semibold">Main</h3>
+              <Link href="/aboutus/aboutus" className="block hover:text-green-700 transition">About Us</Link>
+              <Link href="/aboutus/fundamentalsofhomeopathy" className="block hover:text-green-700 transition">Fundamentals of Homeopathy</Link>
+              <Link href="/aboutus/myths&factsabouthomeopathy" className="block hover:text-green-700 transition">Myths & Facts About Homeopathy</Link>
+              <Link href="/aboutus/visionandmission" className="block hover:text-green-700 transition">Vision and Mission</Link>
+              <Link href="/aboutus/ourteam" className="block hover:text-green-900 transition">Our Team</Link>
+            </nav>
           </aside>
 
-          {/* Main Content */}
-          <section className="flex-1 space-y-10" data-aos="fade-left">
-            {/* Form Section */}
-            <div className="bg-[#e3ffe0] p-6" data-aos="fade-up">
-        
-              <form onSubmit={handleSubmit} className="space-y-4">
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                  <div>
-                    <label className="block font-medium">First Name</label>
-                    <input type="text" name="firstName" value={formData.firstName} onChange={handleInputChange} required className="w-full p-2 border rounded-md" />
-                  </div>
-                  <div>
-                    <label className="block font-medium">Last Name</label>
-                    <input type="text" name="lastName" value={formData.lastName} onChange={handleInputChange} required className="w-full p-2 border rounded-md" />
-                  </div>
-                  <div>
-                    <label className="block font-medium">Mobile Number</label>
-                    <input type="tel" name="mobile" value={formData.mobile} onChange={handleInputChange} required className="w-full p-2 border rounded-md" />
-                  </div>
-                  <div>
-                    <label className="block font-medium">Subject</label>
-                    <input type="text" name="subject" value={formData.subject} onChange={handleInputChange} required className="w-full p-2 border rounded-md" />
-                  </div>
-                </div>
+         {/* Main Content */}
+<section className="flex-1 space-y-10">
 
-                <div>
-                  <label className="block font-medium">Your Question</label>
-                  <textarea name="question" value={formData.question} onChange={handleInputChange} required rows="4" className="w-full p-2 border rounded-md" />
-                </div>
-
-                <button type="submit" className="bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700">Submit</button>
-              </form>
-            </div>
-
-            {/* FAQs Section */}
-            <div className="bg-[#e3ffe0] p-6" data-aos="fade-up">
-  <h3 className="text-xl font-semibold mb-4 text-green-700">Frequently Asked Questions</h3>
-  <ul className="space-y-3">
-    {[
-      { question: "What is homeopathy?", answer: "Homeopathy is a natural form of medicine that uses highly diluted substances to trigger the body's healing processes." },
-      { question: "Is homeopathy safe for children?", answer: "Yes, homeopathic remedies are safe and effective for all age groups including infants and children." },
-      { question: "Can I take homeopathy along with allopathy?", answer: "Yes, homeopathy can often be taken alongside conventional medicine, but it’s best to consult your doctor." },
-      { question: "How long does homeopathic treatment take?", answer: "Treatment duration depends on the individual and the condition. Chronic cases may take longer to respond than acute cases." },
-      { question: "Are there any side effects of homeopathy?", answer: "Homeopathic remedies are generally safe with minimal to no side effects when taken as prescribed." },
-      { question: "How do I take homeopathic medicines?", answer: "They are usually taken as small sweet pills or liquid drops under the tongue, away from food and drinks." },
-      { question: "Do homeopathic medicines have expiry dates?", answer: "Yes, homeopathic medicines do have expiry dates, but their shelf life is generally long if stored properly." },
-      { question: "Can homeopathy treat skin conditions?", answer: "Yes, many skin conditions like eczema, psoriasis, and acne can be effectively treated with homeopathy." }
-    ].map((faq, index) => (
-      <li key={index} className="border-b pb-2">
-        <strong>{faq.question}</strong>
-        <p className="text-gray-700">{faq.answer}</p>
-      </li>
-    ))}
-  </ul>
-
-  {/* Didn't find your question? Section */}
-  <div className="mt-10 text-center   py-8 px-6 rounded-xl max-w-3xl mx-auto" data-aos="fade-up" data-aos-delay="200">
-    <h4 className="text-xl md:text-2xl font-bold text-gray-800 mb-2">Didn't find your question?</h4>
-    <p className="text-gray-600 mb-4">We’re happy to help! Reach out to us for personalized answers.</p>
-    <a
-      href="#form"
-      className="inline-block bg-green-600 text-white px-6 py-2 rounded-md hover:bg-green-700 transition"
-    >
-      Ask Your Question
-    </a>
+  {/* FAQs */}
+  <div className="bg-[#e3ffe0] p-6 rounded-lg" data-aos="fade-up">
+    <h3 className="text-xl font-semibold mb-4 text-green-700">Frequently Asked Questions</h3>
+    <ul className="space-y-3">
+      {faqs.map((faq, index) => (
+        <li key={index} className="border-b pb-2">
+          <strong>{faq.question}</strong>
+          <p className="text-gray-700">{faq.answer}</p>
+        </li>
+      ))}
+    </ul>
   </div>
-</div>
 
-          </section>
+  {/* Form */}
+  <div className="bg-[#e3ffe0] p-6 rounded-lg" id="form" data-aos="fade-up">
+    <h3 className="text-xl font-semibold mb-4 text-green-700">Ask Your Question</h3>
+    <form onSubmit={handleSubmit} className="space-y-4">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div>
+          <label className="block font-medium">First Name</label>
+          <input type="text" name="firstName" value={formData.firstName} onChange={handleInputChange} required className="w-full p-2 border rounded-md" />
         </div>
+        <div>
+          <label className="block font-medium">Last Name</label>
+          <input type="text" name="lastName" value={formData.lastName} onChange={handleInputChange} required className="w-full p-2 border rounded-md" />
+        </div>
+        <div>
+          <label className="block font-medium">Mobile Number</label>
+          <input type="tel" name="mobile" value={formData.mobile} onChange={handleInputChange} required className="w-full p-2 border rounded-md" />
+        </div>
+        <div>
+          <label className="block font-medium">Subject</label>
+          <input type="text" name="subject" value={formData.subject} onChange={handleInputChange} required className="w-full p-2 border rounded-md" />
+        </div>
+      </div>
+      <div>
+        <label className="block font-medium">Your Question</label>
+        <textarea name="question" value={formData.question} onChange={handleInputChange} required rows="4" className="w-full p-2 border rounded-md" />
+      </div>
+      <button type="submit" className="bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700">
+        Submit
+      </button>
+    </form>
+  </div>
+
+
+</section>
+        </div>  
       </div>
 
       <Footer />

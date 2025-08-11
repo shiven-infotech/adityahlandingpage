@@ -15,7 +15,7 @@ const sections = [
   { id: "/healthpackages/reversalprogram", label: "Reversal Program",  },
   { id: "/healthpackages/garbhsanskarclasses", label: "Garbh Sanskar Classes", },
   { id: "/healthpackages/rightbrainactivationclasses", label: "Right Brain Activation Classes", },
-  { id: "/healthpackages/prepregnancy", label: "Pre Pregnancy",  },
+  { id: "/healthpackages/prepregnancy", label: " Pre Pregnancy ",  },
   { id: "/healthpackages/postdelivery", label: "Post Delivery", },
   { id: "/healthpackages/corporatewellnessprogram", label: "Corporate Wellness Program", },
 ];
@@ -35,37 +35,37 @@ export default function VisionAndMissionPage() {
           {/* Sticky Sidebar */}
           <aside className="hidden md:flex flex-col gap-6 w-64 h-fit sticky top-24">
             {/* Sidebar 1 */}
-            <nav className="p-4 space-y-2 ">
-              <h3 className="text-lg text-green-700 font-semibold mb-2">Health Packages</h3>
+            <nav className=" space-y-1 ">
+              <h3 className="text-xl text-green-700 font-semibold px-2 ">Health Packages</h3>
               {sections.map((sec) => (
                 <Link
                   key={sec.id}
                   href={sec.id}
-                  className="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-green-100 hover:text-green-900 transition"
+                  className="flex items-center  hover:text-green-700 transition"
                 >
-                  <span className="text-lg">{sec.icon}</span>
+                  <span className="text-lg p-1">{sec.icon}</span>
                   {sec.label}
                 </Link>
               ))}
             </nav>
 
             {/* Sidebar 2 */}
-            <nav className="p-4 space-y-2 ">
-              <h3 className="text-lg text-green-700 font-semibold mb-2">Main</h3>
-              <Link href="/aboutus/aboutus" className="block px-3 py-2 rounded hover:bg-green-100 hover:text-green-900 transition">
+            <nav className="p-1 space-y-1 ">
+              <h3 className="text-xl text-green-700 font-semibold ">Main</h3>
+              <Link href="/aboutus/aboutus" className="block  hover:text-green-900 transition">
                 About Us
               </Link>
-              <Link href="/aboutus/fundamentalsofhomeopathy" className="block px-3 py-2 rounded hover:bg-green-100 hover:text-green-900 transition">
+              <Link href="/aboutus/fundamentalsofhomeopathy" className="block hover:text-green-700 transition">
                 Fundamentals of Homeopathy
               </Link>
-              <Link href="/aboutus/myths&factsabouthomeopathy" className="block px-3 py-2 rounded hover:bg-green-100 hover:text-green-900 transition">
+              <Link href="/aboutus/myths&factsabouthomeopathy" className="block hover:text-green-700 transition">
                 Myths & Facts About Homeopathy
               </Link>
-              <Link href="/aboutus/visionandmission" className="block px-3 py-2 rounded hover:bg-green-100 hover:text-green-900 transition">
+              <Link href="/aboutus/visionandmission" className="block hover:text-green-700 transition">
                 Vision and Mission
               </Link>
-              <Link href="/aboutus/teambalance" className="block px-3 py-2 rounded hover:bg-green-100 hover:text-green-900 transition">
-                Team Balance
+              <Link href="/aboutus/ourteam" className="block hover:text-green-700 transition">
+                Our Team
               </Link>
             </nav>
           </aside>

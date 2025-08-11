@@ -282,7 +282,7 @@ export default function Navbar() {
                 <>
                   <span className="cursor-pointer hover:text-green-700">{item.label}</span>
                   <ul
-                    className={`absolute  left-0 top-full mt-2 bg-[#e3ffe0] text-center text-black font-medium rounded shadow-lg min-w-[200px] z-50 transition-all duration-200 ease-in-out ${
+                    className={`absolute  left-0 top-full mt-2 bg-[#e3ffe0] px-2 text-black font-medium rounded shadow-lg min-w-[200px] z-50 transition-all duration-200 ease-in-out ${
                       openDropdown === idx
                         ? "opacity-100 visible translate-y-0"
                         : "opacity-0 invisible -translate-y-2"
@@ -291,17 +291,17 @@ export default function Navbar() {
                     {item.children.map((child) => (
                       <li
                         key={child.label}
-                        className="relative group"
+                        className="relative group "
                         onMouseEnter={() => setOpenSubDropdown(child.label)}
                         onMouseLeave={() => setOpenSubDropdown(null)}
                       >
                         {child.children ? (
                           <>
-                            <span className="block px-4  py-2 hover:text-green-700 cursor-pointer">
+                            <span className="block px-2  py-2 hover:text-green-700 cursor-pointer">
                               {child.label}
                             </span>
                             <ul
-                              className={`absolute left-full top-0 ml-1 bg-[#e3ffe0] text-black font-medium rounded shadow-lg min-w-[220px] max-h-[400px] overflow-y-auto z-50 transition-all duration-200 ease-in-out ${
+                              className={`absolute left-full top-0 ml-1 bg-[#e3ffe0] px-2 text-black font-medium rounded shadow-lg min-w-[220px] max-h-[400px] overflow-y-auto z-50 transition-all duration-200 ease-in-out ${
                                 openSubDropdown === child.label
                                   ? "opacity-100 visible"
                                   : "opacity-0 invisible"

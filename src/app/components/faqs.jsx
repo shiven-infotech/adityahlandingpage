@@ -47,15 +47,16 @@ export default function FAQSection() {
               ${visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}
             `}
           >
-            <div className="relative w-full md:w-[]">
-              <Image
-                src="/doctors elements.png"
-                alt="Healthcare Icons"
-                width={500}
-                height={500}
-                className="rounded-lg  hover:scale-105 transition-transform duration-300 ease-in-out"
-              />
-            </div>
+            <div className="relative w-full max-w-md mx-auto md:mx-0">
+  <Image
+    src="/doctors elements.png"
+    alt="Healthcare Icons"
+    width={500}
+    height={350}
+    className="rounded-lg shadow-lg object-cover hover:scale-105 transition-transform duration-300 ease-in-out"
+  />
+</div>
+
           </div>
 
           {/* Right FAQ Panel */}

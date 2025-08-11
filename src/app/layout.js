@@ -27,3 +27,8 @@ export default function RootLayout({ children }) {
     </html>
   );
 }
+
+import './globals.css'; // or wherever your global css is
+
+
+
