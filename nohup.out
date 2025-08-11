@@ -1,0 +1,38 @@
+
+> aditya-homeopathy@0.1.0 start
+> next start
+
+ ⨯ Failed to start server
+Error: listen EADDRINUSE: address already in use :::3000
+    at <unknown> (Error: listen EADDRINUSE: address already in use :::3000)
+    at new Promise (<anonymous>) {
+  code: 'EADDRINUSE',
+  errno: -98,
+  syscall: 'listen',
+  address: '::',
+  port: 3000
+}
+
+> aditya-homeopathy@0.1.0 start
+> next start
+
+ ⨯ Failed to start server
+Error: listen EADDRINUSE: address already in use :::3000
+    at <unknown> (Error: listen EADDRINUSE: address already in use :::3000)
+    at new Promise (<anonymous>) {
+  code: 'EADDRINUSE',
+  errno: -98,
+  syscall: 'listen',
+  address: '::',
+  port: 3000
+}
+
+> aditya-homeopathy@0.1.0 start
+> next start
+
+   ▲ Next.js 15.3.5
+   - Local:        http://localhost:4320
+   - Network:      http://31.97.206.200:4320
+
+ ✓ Starting...
+ ✓ Ready in 528ms
