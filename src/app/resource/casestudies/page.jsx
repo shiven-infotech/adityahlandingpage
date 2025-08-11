@@ -37,7 +37,7 @@ const BlogSection = ({ articles }) => {
           <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 mt-4 border-t pt-4">
             <a
               href={link}
-              target="_blank"
+             
               rel="noopener noreferrer"
               className="inline-block text-green-700 underline hover:text-green-900"
             >
@@ -106,7 +106,7 @@ export default function BlogsPage() {
       image: "/related2.jpg",
       content:
         "Homeopathy has transformed from an alternative into an integral part of modern holistic wellness...",
-      link: "/blogs/homeopathymodernworld",
+      link: "/resource/blogs/homeopathymodernworld",
     },
   ];
 
@@ -116,7 +116,7 @@ export default function BlogsPage() {
       image: "/treatment.jpeg",
       content:
         "Skin disorders like eczema, psoriasis, and acne go beyond appearance—they affect confidence...",
-      link: "/blogs/treating-skin-disorders",
+      link: "/resource/blogs/treatingskindisorders",
     },
   ];
 
@@ -126,20 +126,20 @@ export default function BlogsPage() {
       image: "/women2.jpg",
       content:
         "Women's health concerns like PCOS, PMS, fertility issues, and menopause-related symptoms...",
-      link: "/blogs/womens-wellness",
+      link: "/resource/blogs/womenswellness",
     },
     {
       title: "Chronic Diseases: Long-Term Relief Through Homeopathy",
       image: "/chronic.jpeg",
       content:
         "Unlike quick-fix treatments, homeopathy works gradually to build your immune response...",
-      link: "/blogs/chronic-diseases",
+      link: "/resource/blogs/chronicdiseases",
     },
     {
       title: "Boosting Immunity the Natural Way",
       image: "/immunity.jpeg",
       content: "We’re in an era where boosting immunity isn’t just desirable—it’s necessary...",
-      link: "/blogs/boosting-immunity",
+      link: "/resource/blogs/boostingimmunity",
     },
   ];
 
@@ -204,13 +204,13 @@ export default function BlogsPage() {
           {/* Right Sidebar */}
           <aside className="space-y-8 sticky top-24 h-fit self-start z-10">
             {/* Hot Topics */}
-            <div className="p-1" data-aos="fade-left">
+            <div className="p-1" >
               <h3 className="font-bold text-lg text-green-700 mb-2">Hot Topics</h3>
               <p className="text-gray-700 leading-relaxed">{hotTopicsText}</p>
             </div>
 
             {/* Latest Blogs */}
-            <div className="p-1" data-aos="fade-left">
+            <div className="p-1">
               <h3 className="font-bold text-lg text-green-700 mb-2">Latest Blogs</h3>
               <p className="text-gray-700 leading-relaxed">{latestBlogsText}</p>
             </div>
