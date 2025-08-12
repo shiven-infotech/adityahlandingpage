@@ -7,7 +7,8 @@ import Link from "next/link";
 import Header from "../../../components/header";
 import Navbar from "../../../components/navbar";
 import Footer from "../../../components/footer";
-
+// React Icons
+import { FaFacebookF, FaInstagram, FaLinkedinIn, FaYoutube, FaStar, FaStarHalfAlt } from "react-icons/fa";
 export default function TreatingSkinDisordersPage() {
   useEffect(() => {
     AOS.init({ once: true });
@@ -75,29 +76,68 @@ export default function TreatingSkinDisordersPage() {
           time, this approach not only brings visible improvements but also enhances your overall
           health and vitality.
         </p>
-
-        <div className=" p-6 ">
-          <h3 className="text-xl text-center font-semibold text-green-700 mb-4">
-            Book Your Consultation Today
-          </h3>
-          <p className="mb-4 text-center text-gray-700 leading-relaxed">
-            If you are struggling with a skin disorder, don’t wait for it to worsen or keep coming
-            back. Homeopathy offers you a safe, holistic, and natural path to clearer, healthier
-            skin — without the risks of harsh chemicals or invasive treatments. Take the first step
-            toward restoring your skin’s natural glow and your confidence. Contact us today to
-            schedule a consultation and start your personalized healing journey.
-          </p>
-
-          <div className="flex justify-center">
-            <Link href="/contactus/requestacallback">
-              <button className="bg-green-700 text-white items-center justify-center px-6 py-2 rounded-lg hover:bg-yellow-400 transition duration-300">
-                Request a Call Back
-              </button>
-            </Link>
-          </div>
-        </div>
       </main>
-
+       
+        {/* Follow Us & Reviews */}
+             <section
+               className="bg-[#e3ffe0] py-4 px-4 text-center"
+               data-aos="fade-up"
+             >
+               {/* Follow Us */}
+               <h3 className="text-2xl font-bold mb-4">Follow Us</h3>
+               <div className="flex justify-center gap-6 mb-8">
+                 <a
+                   href="https://facebook.com"
+                   target="_blank"
+                   rel="noopener noreferrer"
+                   className="text-green-700 hover:text-green-900 transition text-3xl"
+                 >
+                   <FaFacebookF />
+                 </a>
+                 <a
+                   href="https://instagram.com"
+                   target="_blank"
+                   rel="noopener noreferrer"
+                   className="text-green-700 hover:text-green-900 transition text-3xl"
+                 >
+                   <FaInstagram />
+                 </a>
+                 <a
+                   href="https://linkedin.com"
+                   target="_blank"
+                   rel="noopener noreferrer"
+                   className="text-green-700 hover:text-green-900 transition text-3xl"
+                 >
+                   <FaLinkedinIn />
+                 </a>
+                 <a
+                   href="https://youtube.com"
+                   target="_blank"
+                   rel="noopener noreferrer"
+                   className="text-green-700 hover:text-green-900 transition text-3xl"
+                 >
+                   <FaYoutube />
+                 </a>
+               </div>
+       
+               {/* Reviews */}
+               {/* <h4 className="text-xl font-semibold mb-3">What Our Patients Say</h4> */}
+               <div className="flex justify-center items-center gap-2 mb-2 text-yellow-500 text-xl">
+                 <FaStar />
+                 <FaStar />
+                 <FaStar />
+                 <FaStar />
+                 <FaStarHalfAlt />
+               </div>
+               <p className="text-gray-700 mb-1">4.5 out of 5 based on 1,200+ reviews</p>
+               {/* <a
+                 href="/reviews"
+                 className="text-green-700 font-medium hover:underline"
+               >
+                 Read Reviews →
+               </a> */}
+             </section>
+  
       <Footer />
     </>
   );

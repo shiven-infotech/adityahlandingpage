@@ -80,11 +80,9 @@ export default function DidNotFindYourQuestionPage() {
 
             <nav className="p-1 space-y-1">
               <h3 className="text-xl text-green-700 font-semibold">Main</h3>
-              <Link href="/aboutus/aboutus" className="block hover:text-green-700 transition">About Us</Link>
-              <Link href="/aboutus/fundamentalsofhomeopathy" className="block hover:text-green-700 transition">Fundamentals of Homeopathy</Link>
-              <Link href="/aboutus/myths&factsabouthomeopathy" className="block hover:text-green-700 transition">Myths & Facts About Homeopathy</Link>
-              <Link href="/aboutus/visionandmission" className="block hover:text-green-700 transition">Vision and Mission</Link>
-              <Link href="/aboutus/ourteam" className="block hover:text-green-900 transition">Our Team</Link>
+              <Link href="/contactus/contactus" className="block hover:text-green-700 transition">Contact Us</Link>
+              <Link href="/contactus/requestacallback" className="block hover:text-green-700 transition">Request a Call Back</Link>
+              <Link href="/contactus/didnotfindyourquestions" className="block hover:text-green-700 transition">Did not Find Your Questions</Link>
             </nav>
           </aside>
 

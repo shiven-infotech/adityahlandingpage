@@ -8,6 +8,9 @@ import Header from "../../../components/header";
 import Navbar from "../../../components/navbar";
 import Footer from "../../../components/footer";
 
+// React Icons
+import { FaFacebookF, FaInstagram, FaLinkedinIn, FaYoutube, FaStar, FaStarHalfAlt } from "react-icons/fa";
+
 export default function HomeopathyModernWorld() {
   useEffect(() => {
     AOS.init({ once: true });
@@ -79,23 +82,67 @@ export default function HomeopathyModernWorld() {
         </p>
       </section>
 
-      {/* Call to Action */}
+     {/* Follow Us & Reviews */}
       <section
-        className="bg-[#e3ffe0] py-10 px-6 text-center"
+        className="bg-[#e3ffe0] py-4 px-4 text-center"
         data-aos="fade-up"
       >
-        <h3 className="text-2xl font-bold mb-3">Interested in Learning More?</h3>
-        <p className="mb-6 ">
-          Explore our resources, read patient stories, and consult with our
-          experienced practitioners.
-        </p>
-        <a
-          href="/contactus/contactus"
-          className="bg-green-600 text-white px-6 py-3 rounded-lg hover:bg-green-700 transition"
+        {/* Follow Us */}
+        <h3 className="text-2xl font-bold mb-4">Follow Us</h3>
+        <div className="flex justify-center gap-6 mb-8">
+          <a
+            href="https://facebook.com"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-green-700 hover:text-green-900 transition text-3xl"
+          >
+            <FaFacebookF />
+          </a>
+          <a
+            href="https://instagram.com"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-green-700 hover:text-green-900 transition text-3xl"
+          >
+            <FaInstagram />
+          </a>
+          <a
+            href="https://linkedin.com"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-green-700 hover:text-green-900 transition text-3xl"
+          >
+            <FaLinkedinIn />
+          </a>
+          <a
+            href="https://youtube.com"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-green-700 hover:text-green-900 transition text-3xl"
+          >
+            <FaYoutube />
+          </a>
+        </div>
+
+        {/* Reviews */}
+        {/* <h4 className="text-xl font-semibold mb-3">What Our Patients Say</h4> */}
+        <div className="flex justify-center items-center gap-2 mb-2 text-yellow-500 text-xl">
+          <FaStar />
+          <FaStar />
+          <FaStar />
+          <FaStar />
+          <FaStarHalfAlt />
+        </div>
+        <p className="text-gray-700 mb-1">4.5 out of 5 based on 1,200+ reviews</p>
+        {/* <a
+          href="/reviews"
+          className="text-green-700 font-medium hover:underline"
         >
-          Contact Us
-        </a>
+          Read Reviews →
+        </a> */}
       </section>
+
+
 
       <Footer />
     </>

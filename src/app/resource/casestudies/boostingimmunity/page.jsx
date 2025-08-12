@@ -7,7 +7,8 @@ import "aos/dist/aos.css";
 import Header from "../../../components/header";
 import Navbar from "../../../components/navbar";
 import Footer from "../../../components/footer";
-
+// React Icons
+import { FaFacebookF, FaInstagram, FaLinkedinIn, FaYoutube, FaStar, FaStarHalfAlt } from "react-icons/fa";
 export default function BoostingImmunityPage() {
   useEffect(() => {
     AOS.init({ once: true });
@@ -99,18 +100,65 @@ export default function BoostingImmunityPage() {
         </div>
       </section>
 
-      {/* Call to Action */}
-      <section className="bg-green-800 text-white py-12 text-center" data-aos="zoom-in">
-        <h2 className="text-3xl font-bold mb-4">Ready to Strengthen Your Immunity?</h2>
-        <p className="mb-6">Consult our experienced homeopaths and begin your journey to a healthier you.</p>
-        <a
-          href="/appointment"
-          className="bg-white text-green-800 px-6 py-3 rounded-full font-semibold hover:bg-gray-200 transition"
-        >
-          Book an Appointment
-        </a>
-      </section>
-
+     {/* Follow Us & Reviews */}
+           <section
+             className="bg-[#e3ffe0] py-4 px-4 text-center"
+             data-aos="fade-up"
+           >
+             {/* Follow Us */}
+             <h3 className="text-2xl font-bold mb-4">Follow Us</h3>
+             <div className="flex justify-center gap-6 mb-8">
+               <a
+                 href="https://facebook.com"
+                 target="_blank"
+                 rel="noopener noreferrer"
+                 className="text-green-700 hover:text-green-900 transition text-3xl"
+               >
+                 <FaFacebookF />
+               </a>
+               <a
+                 href="https://instagram.com"
+                 target="_blank"
+                 rel="noopener noreferrer"
+                 className="text-green-700 hover:text-green-900 transition text-3xl"
+               >
+                 <FaInstagram />
+               </a>
+               <a
+                 href="https://linkedin.com"
+                 target="_blank"
+                 rel="noopener noreferrer"
+                 className="text-green-700 hover:text-green-900 transition text-3xl"
+               >
+                 <FaLinkedinIn />
+               </a>
+               <a
+                 href="https://youtube.com"
+                 target="_blank"
+                 rel="noopener noreferrer"
+                 className="text-green-700 hover:text-green-900 transition text-3xl"
+               >
+                 <FaYoutube />
+               </a>
+             </div>
+     
+             {/* Reviews */}
+             {/* <h4 className="text-xl font-semibold mb-3">What Our Patients Say</h4> */}
+             <div className="flex justify-center items-center gap-2 mb-2 text-yellow-500 text-xl">
+               <FaStar />
+               <FaStar />
+               <FaStar />
+               <FaStar />
+               <FaStarHalfAlt />
+             </div>
+             <p className="text-gray-700 mb-1">4.5 out of 5 based on 1,200+ reviews</p>
+             {/* <a
+               href="/reviews"
+               className="text-green-700 font-medium hover:underline"
+             >
+               Read Reviews →
+             </a> */}
+           </section>
       <Footer />
     </>
   );

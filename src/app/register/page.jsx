@@ -15,9 +15,9 @@ export default function OnlineFormsPage() {
     gender: "",
     address: "",
     city: "",
-    zip: "",
+    pinCode: "",
     country: "",
-    disease: "",
+    consultation: "",
     mobile: "",
     promoCode: "",
   });
@@ -42,7 +42,7 @@ export default function OnlineFormsPage() {
       <Header />
       <Navbar />
 
-      <main className="py-10 px-4 md:px-16 max-w-5xl mx-auto" data-aos="fade-up">
+      <main className="py-4 px-4 bg-[#e3ffe0] md:px-16 max-w-screen mx-auto" data-aos="fade-up">
         <div className="bg-white p-6 md:p-10 rounded-xl shadow-lg border">
           <h2 className="text-xl md:text-2xl text-center font-bold mb-8 text-yellow-600">
             Register now for Free & get a Complimentary Case Evaluation
@@ -118,14 +118,14 @@ export default function OnlineFormsPage() {
               </label>
             </div>
 
-            {/* Zip Code */}
+            {/* postal code */}
             <div className="flex items-center border rounded px-3">
               <span className="text-gray-400 mr-2">📨</span>
               <input
                 type="text"
-                name="zip"
-                placeholder="Zip Code *"
-                value={form.zip}
+                name="PinCode"
+                placeholder="Pin code "
+                value={form.pinCode}
                 onChange={handleChange}
                 className="w-full p-2 outline-none"
                 required
@@ -150,20 +150,29 @@ export default function OnlineFormsPage() {
               </select>
             </div>
 
-            {/* Disease */}
+            {/* consultation */}
             <div className="flex items-center border rounded px-3">
               <span className="text-gray-400 mr-2">🩺</span>
               <select
-                name="disease"
-                value={form.disease}
+                name="consultation"
+                value={form.consultation}
                 onChange={handleChange}
                 className="w-full p-2 outline-none bg-transparent"
                 required
               >
-                <option value="">Select Your Disease *</option>
-                <option value="Eczema">Eczema</option>
-                <option value="Psoriasis">Psoriasis</option>
-                <option value="Asthma">Asthma</option>
+                <option value="">Select Your Consultation </option>
+                <option value="reversalprogram">Reversal Program</option>
+                <option value="garbhsanskarclasses">Garbh Sanskar Classes</option>
+                <option value="rightbrainactivationclasses">Right Brain Activation Classes</option>
+                <option value="prepregnancy">Pre Pregnancy</option>
+                <option value="postdelivery">Post Delivery</option>
+                <option value="corporatewellnessprogram">Corporate Wellness Program</option>
+                <option value="nutrition">Nutrition</option>
+                <option value="counselling">Counselling</option>
+                <option value="Acupuncturetherapy">Acupunsture Therapy</option>
+                <option value="ayurvedictherapy">Ayurvedic Therapy</option>
+                <option value="naturopathy">Naturopathy</option>
+                <option value="physiotherapy">Physiotherapy</option>
               </select>
             </div>
 
@@ -194,17 +203,7 @@ export default function OnlineFormsPage() {
               />
             </div>
 
-            {/* reCAPTCHA mock */}
-            <div className="col-span-2 text-center mt-4">
-              <div className="inline-block border p-4 rounded-md bg-gray-50">
-                <label className="flex items-center justify-center gap-3">
-                  <input type="checkbox" required />
-                  I'm not a robot
-                </label>
-                <p className="text-xs text-gray-500 mt-1">reCAPTCHA – Privacy • Terms</p>
-              </div>
-            </div>
-
+           
             {/* Register Button */}
             <div className="col-span-2 text-center mt-6">
               <button
@@ -213,12 +212,7 @@ export default function OnlineFormsPage() {
               >
                 Register
               </button>
-              <p className="text-sm mt-4">
-                Already Registered?{" "}
-                <a href="/login" className="text-blue-600 underline">
-                  Login
-                </a>
-              </p>
+              
             </div>
           </form>
         </div>

@@ -1,6 +1,8 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
+import Link from "next/link";
+import { useRouter } from "next/navigation";
 import AOS from "aos";
 import "aos/dist/aos.css";
 
@@ -9,6 +11,8 @@ import Navbar from "../../components/navbar";
 import Footer from "../../components/footer";
 
 export default function NewPatientForm() {
+  const router = useRouter();
+
   useEffect(() => {
     AOS.init({ once: true });
   }, []);
@@ -34,260 +38,99 @@ export default function NewPatientForm() {
     console.log("Form submitted:", formData);
   };
 
+  const sections = [
+    { id: "reversalprogram", label: "Reversal Program" },
+    { id: "garbhsanskarclasses", label: "Garbh Sanskar classes" },
+    { id: "rightbrainactivationclasses", label: "Right Brain Activation Classes" },
+    { id: "prepregnancy", label: "Pre Pregnancy" },
+    { id: "postdelivery", label: "Post Delivery" },
+    { id: "corporatewellnessprogram", label: "Corporate Wellness Program" },
+  ];
+
   return (
     <>
       <Header />
       <Navbar />
 
-      <main className="bg-[#e3ffe0] px-4 py-4 flex flex-col lg:flex-row gap-6">
-        {/* Side Menus */}
-        <aside className="lg:w-64 w-full flex flex-col gap-6 sticky top-24 self-start h-fit z-10">
-          {/* Health Packages */}
-          <div>
-            <h3 className="font-bold text-lg text-green-700 mb-2">
-              Health Packages
-            </h3>
-            <ul className="space-y-3">
-              <li>
-                <a
-                  href="/healthpackages/reversalprogram"
-                  className="hover:text-green-700"
+      <main className="bg-[#e3ffe0] py-4 px-4">
+        <div className="max-w-screen mx-auto flex flex-col md:flex-row gap-6">
+          {/* Sticky Sidebar */}
+          <aside className="hidden md:flex flex-col gap-6 w-64 h-fit sticky top-24">
+            {/* Sidebar 1 */}
+            <nav className="space-y-1">
+              <h3 className="text-xl text-green-700 px-2 font-semibold">Health Packages</h3>
+              {sections.map((sec) => (
+                <Link
+                  key={sec.id}
+                  href={`/${sec.id}`}
+                  className="block hover:text-green-700 transition px-2"
                 >
-                  Reversal Program
-                </a>
-              </li>
-              <li>
-                <a
-                  href="/healthpackages/garbhsanskarclasses"
-                  className="hover:text-green-700"
-                >
-                  Garbh Sanskar Classes
-                </a>
-              </li>
-              <li>
-                <a
-                  href="/healthpackages/rightbrainactivationclasses"
-                  className="hover:text-green-700"
-                >
-                  Right Brain Activation Classes
-                </a>
-              </li>
-              <li>
-                <a
-                  href="/healthpackages/prepregnancy"
-                  className="hover:text-green-700"
-                >
-                  Pre Pregnancy
-                </a>
-              </li>
-              <li>
-                <a
-                  href="/healthpackages/postdelivery"
-                  className="hover:text-green-700"
-                >
-                  Post Delivery
-                </a>
-              </li>
-              <li>
-                <a
-                  href="/healthpackages/corporatewellnessprogram"
-                  className="hover:text-green-700"
-                >
-                  Corporate Wellness Program
-                </a>
-              </li>
-            </ul>
-          </div>
+                  {sec.label}
+                </Link>
+              ))}
+            </nav>
 
-          {/* Main Links */}
-          <div>
-            <h3 className="font-bold text-lg text-green-700 mb-2">Main</h3>
-            <ul className="space-y-3">
-              <li>
-                <a
-                  href="/resource/patientstestimonials"
-                  className="hover:text-green-700"
-                >
-                  Patients Testimonials
-                </a>
-              </li>
-              <li>
-                <a
-                  href="/resource/casestudies"
-                  className="hover:text-green-700"
-                >
-                  Case Studies
-                </a>
-              </li>
-              <li>
-                <a href="/resource/blogs" className="hover:text-green-700">
-                  Blogs
-                </a>
-              </li>
-              <li>
-                <a
-                  href="/resource/onlineforms"
-                  className="hover:text-green-700"
-                >
-                  Online Forms
-                </a>
-              </li>
-            </ul>
-          </div>
-        </aside>
+            {/* Sidebar 2 */}
+            <nav className="p-1 space-y-1">
+              <h3 className="text-xl text-green-700 font-semibold">Main</h3>
+              <Link href="/resource/patientstestimonials" className="block hover:text-green-700 transition">
+                Patients Testimonials
+              </Link>
+              <Link href="/resource/casestudies" className="block hover:text-green-700 transition">
+                Case Studies
+              </Link>
+              <Link href="/resource/blogs" className="block hover:text-green-700 transition">
+                Blogs
+              </Link>
+              <Link href="/aboutus/visionandmission" className="block hover:text-green-700 transition">
+                Online Forms
+              </Link>
+            </nav>
+          </aside>
 
-        {/* Form Section */}
-        <div className="flex-1 flex justify-center" data-aos="fade-up">
-          <div className="w-full max-w-4xl p-8">
-            <form
-              onSubmit={handleSubmit}
-              className="grid grid-cols-1 sm:grid-cols-2 gap-4"
-            >
-              {/* Full Name */}
-              <div className="relative">
-                <input
-                  type="text"
-                  name="name"
-                  placeholder="Full Name *"
-                  value={formData.name}
-                  onChange={handleChange}
-                  required
-                  className="w-full border border-gray-300 rounded px-4 py-2 pl-10"
-                />
-                <span className="absolute left-3 top-2.5 text-purple-700">👤</span>
-              </div>
+          {/* Form Section */}
+          <div className="flex-1 flex justify-center" data-aos="fade-up">
+            <div className="w-full max-w-4xl p-8  rounded shadow">
+              <form
+                onSubmit={handleSubmit}
+                className="grid grid-cols-1 sm:grid-cols-2 gap-4"
+              >
+               
 
-              {/* Address */}
-              <div className="relative">
-                <input
-                  type="text"
-                  name="address"
-                  placeholder="Address *"
-                  value={formData.address}
-                  onChange={handleChange}
-                  required
-                  className="w-full border border-gray-300 rounded px-4 py-2 pl-10"
-                />
-                <span className="absolute left-3 top-2.5">📍</span>
-              </div>
+                
 
-              {/* Email */}
-              <div className="relative">
-                <input
-                  type="email"
-                  name="email"
-                  placeholder="Email Id *"
-                  value={formData.email}
-                  onChange={handleChange}
-                  required
-                  className="w-full border border-gray-300 rounded px-4 py-2 pl-10"
-                />
-                <span className="absolute left-3 top-2.5">📧</span>
-              </div>
+               
 
-              {/* City */}
-              <div className="relative">
-                <input
-                  type="text"
-                  name="city"
-                  placeholder="City *"
-                  value={formData.city}
-                  onChange={handleChange}
-                  required
-                  className="w-full border border-gray-300 rounded px-4 py-2 pl-10"
-                />
-                <span className="absolute left-3 top-2.5">🏙️</span>
-              </div>
-
-              {/* Gender */}
-              <div className="flex items-center gap-4 col-span-2">
-                <span className="text-gray-500">⚥</span>
-                <label className="flex items-center gap-1">
-                  <input
-                    type="radio"
-                    name="gender"
-                    value="Male"
-                    onChange={handleChange}
-                  />{" "}
-                  Male
-                </label>
-                <label className="flex items-center gap-1">
-                  <input
-                    type="radio"
-                    name="gender"
-                    value="Female"
-                    onChange={handleChange}
-                  />{" "}
-                  Female
-                </label>
-              </div>
-
-              {/* Phone */}
-              <div className="relative">
-                <input
-                  type="tel"
-                  name="phone"
-                  placeholder="Mobile Number *"
-                  value={formData.phone}
-                  onChange={handleChange}
-                  required
-                  className="w-full border border-gray-300 rounded px-4 py-2 pl-10"
-                />
-                <span className="absolute left-3 top-2.5">📞</span>
-              </div>
-
-              {/* Promo */}
-              <div className="relative">
-                <input
-                  type="text"
-                  name="promo"
-                  placeholder="Reference Code"
-                  value={formData.promo}
-                  onChange={handleChange}
-                  className="w-full border border-gray-300 rounded px-4 py-2 pl-10"
-                />
-                <span className="absolute left-3 top-2.5">🎁</span>
-              </div>
-
-              {/* Online Forms Dropdown */}
-<div className="relative col-span-2">
-  <select
-    name="onlineForm"
-    value={formData.onlineForm}
-    onChange={(e) => {
-      handleChange(e);
-      if (e.target.value === "appointment") {
-        window.location.href = "/appointment"; // Redirect to appointment form page
-      }
-    }}
-    required
-    className="w-full border border-gray-300 rounded px-4 py-2 pl-10 appearance-none"
-  >
-    <option value="">Select Online Form *</option>
-    <option value="appointment">📅 Appointment Form</option>
-  </select>
-  <span className="absolute left-3 top-2.5">📂</span>
-</div>
+               
 
 
-              {/* Submit */}
-              <div className="col-span-2 flex justify-center">
-                <button
-                  type="submit"
-                  className="bg-green-700 hover:bg-yellow-600 text-white font-bold py-2 px-8 rounded"
-                >
-                  Register
-                </button>
-              </div>
+               
 
-              {/* Login Link */}
-              <div className="col-span-2 text-center text-sm">
-                Already Registered?{" "}
-                <a href="#" className="text-blue-600 underline">
-                  Login
-                </a>
-              </div>
-            </form>
+               
+
+                {/* Online Forms Dropdown */}
+                <div className="relative col-span-2">
+                  <select
+                    name="onlineForm"
+                    value={formData.onlineForm}
+                    onChange={(e) => {
+                      handleChange(e);
+                      if (e.target.value === "appointment") {
+                        router.push("/appointment");
+                      }
+                    }}
+                    required
+                    className="w-full border border-gray-300 rounded px-4 py-2 pl-10 appearance-none"
+                  >
+                    <option value="">Select Online Form *</option>
+                    <option value="appointment">📅 Appointment Form</option>
+                  </select>
+                  <span className="absolute left-3 top-2.5">📜</span>
+                </div>
+
+               
+              </form>
+            </div>
           </div>
         </div>
       </main>

@@ -73,35 +73,24 @@ export default function ContactUsPage() {
             <nav className="p-1  space-y-1">
               <h3 className="text-xl text-green-700 font-semibold">Main</h3>
               <Link
-                href="/aboutus/aboutus"
+                href="/contactus/contactus"
                 className="block hover:text-green-700 transition"
               >
-                About Us
+                Contact Us 
               </Link>
               <Link
-                href="/aboutus/fundamentalsofhomeopathy"
+                href="/contactus/requestacallback"
                 className="block hover:text-green-700 transition"
               >
-                Fundamentals of Homeopathy
+                Request a Call Back
               </Link>
               <Link
-                href="/aboutus/myths&factsabouthomeopathy"
+                href="/contactus/didnotfindyourquestions"
                 className="block hover:text-green-700 transition"
               >
-                Myths & Facts About Homeopathy
+                Did not Find Your Questions
               </Link>
-              <Link
-                href="/aboutus/visionandmission"
-                className="block hover:text-green-700 transition"
-              >
-                Vision and Mission
-              </Link>
-              <Link
-                href="/aboutus/ourteam"
-                className="block hover:text-green-900 transition"
-              >
-                Our Team
-              </Link>
+             
             </nav>
           </aside>
 
@@ -161,10 +150,10 @@ export default function ContactUsPage() {
                   />
                 </div>
                 <div>
-                  <label className="font-medium">City</label>
+                  <label className="font-medium">Subject</label>
                   <input
                     type="text"
-                    name="city"
+                    name="subject"
                     value={formData.city}
                     onChange={handleChange}
                     className="w-full border rounded-md px-3 py-2"

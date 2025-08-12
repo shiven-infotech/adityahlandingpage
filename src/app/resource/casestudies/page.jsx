@@ -20,24 +20,26 @@ const sections = [
   { id: "corporatewellnessprogram", label: "Corporate Wellness Program" },
 ];
 
-const BlogSection = ({ articles }) => {
+ const BlogSection = ({ articles }) => {
   return (
     <section className="mb-20" data-aos="fade-up">
       {articles.map(({ title, image, content, link }, i) => (
         <div key={i} className="mb-14">
+          {/* Title above image */}
+          <h3 className="text-2xl font-semibold text-green-800 mb-4">{title}</h3>
+
+          {/* Image below title */}
           <img
             src={image}
             alt={title || "Blog image"}
             className="w-full h-[360px] object-cover rounded-md"
           />
 
-          <h3 className="text-2xl font-semibold text-green-800 mt-6 mb-2">{title}</h3>
-          <p className="leading-relaxed text-[17px] mb-4">{content}</p>
+          <p className="leading-relaxed text-[17px] mt-6 mb-4">{content}</p>
 
           <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 mt-4 border-t pt-4">
             <a
               href={link}
-             
               rel="noopener noreferrer"
               className="inline-block text-green-700 underline hover:text-green-900"
             >
@@ -88,6 +90,7 @@ const BlogSection = ({ articles }) => {
     </section>
   );
 };
+
 
 export default function BlogsPage() {
   useEffect(() => {
@@ -170,26 +173,23 @@ export default function BlogsPage() {
             <nav className="p-1 space-y-1">
               <h3 className="text-xl text-green-700 font-semibold">Main</h3>
 
-              <Link href="/aboutus/aboutus" className="block hover:text-green-700 transition">
-                About Us
+             <Link href="/resource/patientstestimonials" className="block hover:text-green-700 transition">
+                Patients Testimonials
               </Link>
               <Link
-                href="/aboutus/fundamentalsofhomeopathy"
+                href="/resource/casestudies"
                 className="block hover:text-green-700 transition"
               >
-                Fundamentals of Homeopathy
+                Case Studies
               </Link>
               <Link
-                href="/aboutus/myths&factsabouthomeopathy"
+                href="/resource/blogs"
                 className="block hover:text-green-700 transition"
               >
-                Myths & Facts About Homeopathy
+                Blogs
               </Link>
               <Link href="/aboutus/visionandmission" className="block hover:text-green-700 transition">
-                Vision and Mission
-              </Link>
-              <Link href="/aboutus/ourteam" className="block hover:text-green-700 transition">
-                Our Team
+                Online Forms
               </Link>
             </nav>
           </aside>
@@ -202,19 +202,95 @@ export default function BlogsPage() {
           </div>
 
           {/* Right Sidebar */}
-          <aside className="space-y-8 sticky top-24 h-fit self-start z-10">
-            {/* Hot Topics */}
-            <div className="p-1" >
-              <h3 className="font-bold text-lg text-green-700 mb-2">Hot Topics</h3>
-              <p className="text-gray-700 leading-relaxed">{hotTopicsText}</p>
-            </div>
+           <aside className="space-y-8 sticky top-24 h-fit self-start z-10">
+  {/* Hot Topics */}
+  <div className="p-1">
+    <h3 className="font-bold text-lg text-green-700 mb-2">Hot Topics</h3>
+   
+    <ul className=" text-sm list-disc space-y-1 ">
+      <li>
+        <Link href="/resource/blogs/homeopathymodernworld" className="hover:underline hover:text-green-900">
+          Homeopathy in the Modern World
+        </Link>
+      </li>
+      <li>
+        <Link href="/resource/blogs/mentalhealth" className="hover:underline hover:text-green-900">
+          Role of Homeopathy in Mental Wellness
+        </Link>
+      </li>
+      <li>
+        <Link href="/resource/blogs/childhealth" className="hover:underline hover:text-green-900">
+          Safe Remedies for Children
+        </Link>
+      </li>
+      <li>
+        <Link href="/resource/blogs/seasonalallergies" className="hover:underline hover:text-green-900">
+          Natural Relief for Seasonal Allergies
+        </Link>
+      </li>
+    </ul>
+  </div>
 
-            {/* Latest Blogs */}
-            <div className="p-1">
-              <h3 className="font-bold text-lg text-green-700 mb-2">Latest Blogs</h3>
-              <p className="text-gray-700 leading-relaxed">{latestBlogsText}</p>
-            </div>
-          </aside>
+  {/* Latest Blogs */}
+  <div className="p-1">
+    <h3 className="font-bold text-lg text-green-700 mb-2">Latest Blogs</h3>
+   
+    <ul className=" list-disc text-sm space-y-1 ">
+      <li>
+        <Link href="/resource/blogs/treatingskindisorders" className="hover:underline hover:text-green-900">
+          Treating Skin Disorders Naturally
+        </Link>
+      </li>
+      <li>
+        <Link href="/resource/blogs/boostingimmunity" className="hover:underline hover:text-green-900">
+          Boosting Immunity the Natural Way
+        </Link>
+      </li>
+      <li>
+        <Link href="/resource/blogs/chronicdiseases" className="hover:underline hover:text-green-900">
+          Chronic Diseases: Long-Term Relief
+        </Link>
+      </li>
+      <li>
+        <Link href="/resource/blogs/womenswellness" className="hover:underline hover:text-green-900">
+          Women’s Wellness with Homeopathy
+        </Link>
+      </li>
+    </ul>
+  </div>
+  
+  {/* Complete List of Blogs */}
+  <div className="p-1">
+    <h3 className="font-bold text-lg text-green-700 mb-2">Complete List of Blogs</h3>
+    <ul className="list-disc text-sm space-y-1">
+      <li>
+        <Link href="/resource/blogs/homeopathymodernworld" className="hover:underline hover:text-green-900">
+          Homeopathy in the Modern World
+        </Link>
+      </li>
+      <li>
+        <Link href="/resource/blogs/treatingskindisorders" className="hover:underline hover:text-green-900">
+          Treating Skin Disorders Naturally
+        </Link>
+      </li>
+      <li>
+        <Link href="/resource/blogs/boostingimmunity" className="hover:underline hover:text-green-900">
+          Boosting Immunity the Natural Way
+        </Link>
+      </li>
+      <li>
+        <Link href="/resource/blogs/chronicdiseases" className="hover:underline hover:text-green-900">
+          Chronic Diseases: Long-Term Relief
+        </Link>
+      </li>
+      <li>
+        <Link href="/resource/blogs/womenswellness" className="hover:underline hover:text-green-900">
+          Women’s Wellness with Homeopathy
+        </Link>
+      </li>
+    </ul>
+  </div>
+</aside>
         </div>
       </main>
       <Footer />
