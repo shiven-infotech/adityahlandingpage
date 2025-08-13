@@ -11,18 +11,16 @@ import Footer from "../components/footer";
 
 export default function OnlineFormsPage() {
   const [form, setForm] = useState({
-  firstName: "",
-  lastName: "",
-  email: "",
-  gender: "",
-  address: "",
-  city: "",
-  pinCode: "",
-  country: "",
-  consultation: "",
-  mobile: "",
-  promoCode: "",
-});
+    firstName: "",
+    lastName: "",
+    mobile: "",
+    address: "",
+    city: "",
+    state: "",
+    country: "",
+    gender: "",
+    pinCode: "",
+  });
 
   useEffect(() => {
     AOS.init({ duration: 800 });
@@ -44,11 +42,8 @@ export default function OnlineFormsPage() {
       <Header />
       <Navbar />
 
-      <main
-        className="py-4 px-4 bg-[#e3ffe0] md:px-16 "
-        data-aos="fade-up"
-      >
-        <div className="bg-white p-2 max-w-6xl mx-auto  rounded-xl shadow-lg border">
+      <main className="py-4 px-4 bg-[#e3ffe0] md:px-16" data-aos="fade-up">
+        <div className="bg-white p-2 max-w-6xl mx-auto rounded-xl shadow-lg border">
           <h2 className="text-xl md:text-2xl text-center font-bold mb-8 text-yellow-600">
             Register now for Free & get a Complimentary Case Evaluation
           </h2>
@@ -58,33 +53,46 @@ export default function OnlineFormsPage() {
             className="grid grid-cols-1 md:grid-cols-2 gap-6 text-sm"
           >
             {/* First Name */}
-<div className="flex items-center border rounded px-3">
-  <span className="text-gray-400 mr-2">👤</span>
-  <input
-    type="text"
-    name="firstName"
-    placeholder="First Name *"
-    value={form.firstName || ""}
-    onChange={handleChange}
-    className="w-full p-2 outline-none"
-    required
-  />
-</div>
+            <div className="flex items-center border rounded px-3">
+              <span className="text-gray-400 mr-2">👤</span>
+              <input
+                type="text"
+                name="firstName"
+                placeholder="First Name *"
+                value={form.firstName}
+                onChange={handleChange}
+                className="w-full p-2 outline-none"
+                required
+              />
+            </div>
 
-{/* Last Name */}
-<div className="flex items-center border rounded px-3">
-  <span className="text-gray-400 mr-2">👤</span>
-  <input
-    type="text"
-    name="lastName"
-    placeholder="Last Name *"
-    value={form.lastName || ""}
-    onChange={handleChange}
-    className="w-full p-2 outline-none"
-    required
-  />
-</div>
+            {/* Last Name */}
+            <div className="flex items-center border rounded px-3">
+              <span className="text-gray-400 mr-2">👤</span>
+              <input
+                type="text"
+                name="lastName"
+                placeholder="Last Name *"
+                value={form.lastName}
+                onChange={handleChange}
+                className="w-full p-2 outline-none"
+                required
+              />
+            </div>
 
+            {/* Mobile Number */}
+            <div className="flex items-center border rounded px-3">
+              <span className="text-gray-400 mr-2">📞</span>
+              <input
+                type="tel"
+                name="mobile"
+                placeholder="Mobile Number *"
+                value={form.mobile}
+                onChange={handleChange}
+                className="w-full p-2 outline-none"
+                required
+              />
+            </div>
 
             {/* Address */}
             <div className="flex items-center border rounded px-3">
@@ -94,20 +102,6 @@ export default function OnlineFormsPage() {
                 name="address"
                 placeholder="Address *"
                 value={form.address}
-                onChange={handleChange}
-                className="w-full p-2 outline-none"
-                required
-              />
-            </div>
-
-            {/* Email */}
-            <div className="flex items-center border rounded px-3">
-              <span className="text-gray-400 mr-2">📧</span>
-              <input
-                type="email"
-                name="email"
-                placeholder="Email Id *"
-                value={form.email}
                 onChange={handleChange}
                 className="w-full p-2 outline-none"
                 required
@@ -126,6 +120,38 @@ export default function OnlineFormsPage() {
                 className="w-full p-2 outline-none"
                 required
               />
+            </div>
+
+            {/* State */}
+            <div className="flex items-center border rounded px-3">
+              <span className="text-gray-400 mr-2">🗺️</span>
+              <input
+                type="text"
+                name="state"
+                placeholder="State *"
+                value={form.state}
+                onChange={handleChange}
+                className="w-full p-2 outline-none"
+                required
+              />
+            </div>
+
+            {/* Country */}
+            <div className="flex items-center border rounded px-3">
+              <span className="text-gray-400 mr-2">🌐</span>
+              <select
+                name="country"
+                value={form.country}
+                onChange={handleChange}
+                className="w-full p-2 outline-none bg-transparent"
+                required
+              >
+                <option value="">Select Your Country *</option>
+                <option value="India">India</option>
+                <option value="USA">USA</option>
+                <option value="UK">UK</option>
+                <option value="Australia">Australia</option>
+              </select>
             </div>
 
             {/* Gender */}
@@ -158,7 +184,7 @@ export default function OnlineFormsPage() {
               <input
                 type="text"
                 name="pinCode"
-                placeholder="Pin code"
+                placeholder="Pin code *"
                 value={form.pinCode}
                 onChange={handleChange}
                 className="w-full p-2 outline-none"
@@ -166,82 +192,7 @@ export default function OnlineFormsPage() {
               />
             </div>
 
-            {/* Country */}
-            <div className="flex items-center border rounded px-3">
-              <span className="text-gray-400 mr-2">🌐</span>
-              <select
-                name="country"
-                value={form.country}
-                onChange={handleChange}
-                className="w-full p-2 outline-none bg-transparent"
-                required
-              >
-                <option value="">Select Your Country *</option>
-                <option value="India">India</option>
-                <option value="USA">USA</option>
-                <option value="UK">UK</option>
-                <option value="Australia">Australia</option>
-              </select>
-            </div>
-
-            {/* Consultation */}
-            <div className="flex items-center border rounded px-3">
-              <span className="text-gray-400 mr-2">🩺</span>
-              <select
-                name="consultation"
-                value={form.consultation}
-                onChange={handleChange}
-                className="w-full p-2 outline-none bg-transparent"
-                required
-              >
-                <option value="">Select Your Consultation</option>
-                <option value="reversalprogram">Reversal Program</option>
-                <option value="garbhsanskarclasses">Garbh Sanskar Classes</option>
-                <option value="rightbrainactivationclasses">
-                  Right Brain Activation Classes
-                </option>
-                <option value="prepregnancy">Pre Pregnancy</option>
-                <option value="postdelivery">Post Delivery</option>
-                <option value="corporatewellnessprogram">
-                  Corporate Wellness Program
-                </option>
-                <option value="nutrition">Nutrition</option>
-                <option value="counselling">Counselling</option>
-                <option value="acupuncturetherapy">Acupuncture Therapy</option>
-                <option value="ayurvedictherapy">Ayurvedic Therapy</option>
-                <option value="naturopathy">Naturopathy</option>
-                <option value="physiotherapy">Physiotherapy</option>
-              </select>
-            </div>
-
-            {/* Mobile */}
-            <div className="flex items-center border rounded px-3">
-              <span className="text-gray-400 mr-2">📞</span>
-              <input
-                type="tel"
-                name="mobile"
-                placeholder="Mobile Number *"
-                value={form.mobile}
-                onChange={handleChange}
-                className="w-full p-2 outline-none"
-                required
-              />
-            </div>
-
-            {/* Promo Code */}
-            <div className="flex items-center border rounded px-3">
-              <span className="text-gray-400 mr-2">🎁</span>
-              <input
-                type="text"
-                name="promoCode"
-                placeholder="Promo Code / Corporate Code"
-                value={form.promoCode}
-                onChange={handleChange}
-                className="w-full p-2 outline-none"
-              />
-            </div>
-
-            {/* Submit & Links */}
+            {/* Submit Button */}
             <div className="col-span-2 text-center mt-6">
               <button
                 type="submit"
@@ -250,10 +201,7 @@ export default function OnlineFormsPage() {
                 Register
               </button>
 
-              <p
-                className="mt-6 text-sm text-center text-gray-600"
-                
-              >
+              <p className="mt-6 text-sm text-center text-gray-600">
                 Don’t have an account?{" "}
                 <Link
                   href="/register"
@@ -263,16 +211,16 @@ export default function OnlineFormsPage() {
                 </Link>
               </p>
 
-              <p
-                className="mt-3 text-xs text-center text-gray-500"
-                
-              >
+              <p className="mt-3 text-xs text-center text-gray-500">
                 By registering you agree to our{" "}
                 <Link href="/terms" className="underline hover:text-green-700">
                   Terms and Conditions
                 </Link>
                 ,{" "}
-                <Link href="/privacy" className="underline hover:text-green-700">
+                <Link
+                  href="/privacy"
+                  className="underline hover:text-green-700"
+                >
                   Privacy Policy
                 </Link>{" "}
                 and{" "}
