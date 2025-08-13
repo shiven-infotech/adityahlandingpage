@@ -11,7 +11,7 @@ import Header from "../../components/header";
 import Navbar from "../../components/navbar";
 import Footer from "../../components/footer";
 
-// ✅ Make sure form is rendered only on client (avoids hydration issues from extensions)
+// ✅ Make sure form is rendered only on client (avoids hydration issues)
 const ClientForm = dynamic(() => Promise.resolve(FormComponent), { ssr: false });
 
 export default function PatientTestimonialsPage() {
@@ -77,7 +77,7 @@ export default function PatientTestimonialsPage() {
                   href={`${sec.id}`}
                   className="flex items-center hover:text-green-700 transition"
                 >
-                   <span className="text-lg p-1">{sec.icon}</span>
+                  <span className="text-lg p-1">{sec.icon}</span>
                   {sec.label}
                 </Link>
               ))}
@@ -101,10 +101,9 @@ export default function PatientTestimonialsPage() {
               >
                 Blogs
               </Link>
-              <Link href="/aboutus/visionandmission" className="block hover:text-green-700 transition">
+              <Link href="/resource/onlineforms" className="block hover:text-green-700 transition">
                 Online Forms
               </Link>
-             
             </nav>
           </aside>
 
@@ -177,17 +176,33 @@ function FormComponent() {
     subject: "",
     feedback: "",
     rating: 5,
+    photo: null,
   });
+  const [preview, setPreview] = useState(null);
   const [submitted, setSubmitted] = useState(false);
 
   const handleChange = (e) => {
-    const { name, value } = e.target;
-    setFormData((prev) => ({ ...prev, [name]: value }));
+    const { name, value, files } = e.target;
+    if (name === "photo") {
+      const file = files[0];
+      setFormData((prev) => ({ ...prev, photo: file }));
+      setPreview(file ? URL.createObjectURL(file) : null);
+    } else {
+      setFormData((prev) => ({ ...prev, [name]: value }));
+    }
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
+
+    // If sending to backend, use FormData
+    const data = new FormData();
+    Object.keys(formData).forEach((key) => {
+      data.append(key, formData[key]);
+    });
+
     console.log("Submitted Testimonial:", formData);
+
     setSubmitted(true);
     setFormData({
       firstName: "",
@@ -196,7 +211,9 @@ function FormComponent() {
       subject: "",
       feedback: "",
       rating: 5,
+      photo: null,
     });
+    setPreview(null);
   };
 
   return (
@@ -208,7 +225,7 @@ function FormComponent() {
         We’d love to hear how homeopathy helped you.
       </p>
 
-      <form onSubmit={handleSubmit} className="mt-6 space-y-4 max-w-xl mx-auto">
+      <form onSubmit={handleSubmit} className="mt-6 space-y-1 max-w-xl mx-auto">
         {/* First & Last Name */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           <div>
@@ -295,6 +312,27 @@ function FormComponent() {
               </option>
             ))}
           </select>
+        </div>
+
+        {/* Photo Upload */}
+        <div>
+          <label className="block text-gray-700 font-medium mb-1">Your Photo</label>
+          <input
+            type="file"
+            name="photo"
+            accept="image/*"
+            onChange={handleChange}
+            className="w-full border border-gray-300 rounded-md p-2"
+          />
+          {preview && (
+            <div className="mt-3 flex justify-center">
+              <img
+                src={preview}
+                alt="Preview"
+                className="h-24 w-24 rounded-full object-cover border-2 border-green-600"
+              />
+            </div>
+          )}
         </div>
 
         {/* Submit */}

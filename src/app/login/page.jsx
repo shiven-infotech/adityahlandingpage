@@ -35,50 +35,50 @@ export default function LoginPage() {
       <Header />
       <Navbar />
 
-      <div className="flex flex-col md:flex-row max-w-screen bg-[#e3ffe0] mx-auto px-2 py-10 gap-10">
+      <div className="flex flex-col md:flex-row max-w-screen bg-[#e3ffe0] mx-auto px-4 py-4 gap-10">
         {/* Sticky Sidebar Container */}
         <aside className="hidden md:flex flex-col gap-6 w-64 h-fit sticky top-24">
          
         
-          <nav className=" space-y-2 ">
-            <h3 className="text-lg text-green-700 font-semibold mb-2">Main</h3>
+          <nav className="  space-y-1 ">
+            <h3 className="text-xl text-green-700 font-semibold px-1">Main</h3>
             <Link
               href="/aboutus/aboutus"
-              className="block px-3 py-2  hover:text-green-900 transition"
+              className="block  px-1  hover:text-green-700 transition"
             >
               About Us
             </Link>
             <Link
               href="/aboutus/fundamentalsofhomeopathy"
-              className="block px-3 py-2  hover:text-green-900 transition"
+              className="block px-1  hover:text-green-700 transition"
             >
               Fundamentals of Homeopathy
             </Link>
             <Link
               href="/aboutus/myths&factsabouthomeopathy"
-              className="block px-3 py-2  hover:text-green-900 transition"
+              className="block px-1  hover:text-green-700 transition"
             >
               Myths & Facts About Homeopathy
             </Link>
             <Link
               href="/aboutus/visionandmission"
-              className="block px-3 py-2  hover:text-green-900 transition"
+              className="block px-1  hover:text-green-700 transition"
             >
               Vision and Mission
             </Link>
             <Link
-              href="/aboutus/teambalance"
-              className="block px-3 py-2  hover:text-green-900 transition"
+              href="/aboutus/ourteam"
+              className="block px-1  hover:text-green-700 transition"
             >
-              Team Balance
+             Our Team 
             </Link>
           </nav>
         </aside>
 
         {/* Login Section */}
-        <section className="flex-1  px-4 py-10 rounded">
+        <section className="flex-1    rounded">
           <div
-            className="max-w-xl mx-auto  p-10 "
+            className="max-w-xl mx-auto p-4  "
             data-aos="zoom-in"
           >
             <h2
@@ -148,41 +148,9 @@ export default function LoginPage() {
               </div>
             </form>
 
-            {/* Register Link */}
-            <p
-              className="mt-6 text-sm text-center text-gray-600"
-              data-aos="fade-up"
-              data-aos-delay="400"
-            >
-              Don’t have an account?{" "}
-              <Link
-                href="/register"
-                className="text-green-700 font-medium hover:underline"
-              >
-                Register here
-              </Link>
-            </p>
+          
 
-            {/* Terms Note */}
-            <p
-              className="mt-3 text-xs text-center text-gray-500"
-              data-aos="fade-up"
-              data-aos-delay="500"
-            >
-              By registering you agree to our{" "}
-              <Link href="/terms" className="underline hover:text-green-700">
-                Terms and Conditions
-              </Link>
-              ,{" "}
-              <Link href="/privacy" className="underline hover:text-green-700">
-                Privacy Policy
-              </Link>{" "}
-              and{" "}
-              <Link href="/disclaimer" className="underline hover:text-green-700">
-                Legal Disclaimers
-              </Link>
-              .
-            </p>
+           
           </div>
         </section>
       </div>

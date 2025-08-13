@@ -20,24 +20,49 @@ const sections = [
   { id: "corporatewellnessprogram", label: "Corporate Wellness Program" },
 ];
 
- const BlogSection = ({ articles }) => {
+  const BlogSection = ({ articles }) => {
   return (
     <section className="mb-20" data-aos="fade-up">
       {articles.map(({ title, image, content, link }, i) => (
         <div key={i} className="mb-14">
-          {/* Title above image */}
-          <h3 className="text-2xl font-semibold text-green-800 mb-4">{title}</h3>
 
-          {/* Image below title */}
-          <img
-            src={image}
-            alt={title || "Blog image"}
-            className="w-full h-[360px] object-cover rounded-md"
-          />
+          {/* Title + Search Row */}
+          <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-4 gap-3">
+            {/* Title */}
+            <Link href={link} className="block">
+              <h3 className="text-2xl font-semibold text-green-800 hover:underline hover:text-green-900">
+                {title}
+              </h3>
+            </Link>
 
+            {/* Search Bar */}
+            <div className="relative w-full sm:w-64">
+              <input
+                type="text"
+                placeholder="Search blogs..."
+                className="w-full border border-gray-300 rounded-md px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-green-500"
+              />
+              <button className="absolute right-2 top-2 text-green-700 hover:text-green-900">
+                🔍
+              </button>
+            </div>
+          </div>
+
+          {/* Image */}
+          <Link href={link} className="block">
+            <img
+              src={image}
+              alt={title || "Blog image"}
+              className="w-full h-[360px] object-cover rounded-md hover:opacity-90 transition"
+            />
+          </Link>
+
+          {/* Content */}
           <p className="leading-relaxed text-[17px] mt-6 mb-4">{content}</p>
 
+          {/* Footer Actions */}
           <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 mt-4 border-t pt-4">
+            {/* Read More */}
             <a
               href={link}
               rel="noopener noreferrer"
@@ -46,22 +71,16 @@ const sections = [
               Read More
             </a>
 
+            {/* Social Links */}
             <div className="flex items-center gap-3 text-green-700 text-xl">
               <span className="text-sm font-semibold">Follow Us:</span>
-              <a href="https://instagram.com" target="_blank" rel="noopener noreferrer">
-                <FaInstagram />
-              </a>
-              <a href="https://facebook.com" target="_blank" rel="noopener noreferrer">
-                <FaFacebookF />
-              </a>
-              <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer">
-                <FaLinkedinIn />
-              </a>
-              <a href="https://youtube.com" target="_blank" rel="noopener noreferrer">
-                <FaYoutube />
-              </a>
+              <a href="https://instagram.com" target="_blank" rel="noopener noreferrer"><FaInstagram /></a>
+              <a href="https://facebook.com" target="_blank" rel="noopener noreferrer"><FaFacebookF /></a>
+              <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer"><FaLinkedinIn /></a>
+              <a href="https://youtube.com" target="_blank" rel="noopener noreferrer"><FaYoutube /></a>
             </div>
 
+            {/* Like, Reblog, Share */}
             <div className="flex items-center gap-4 text-green-700 text-base">
               <button className="hover:text-green-900">👍 Like</button>
               <button className="hover:text-green-900">🔄 Reblog</button>
@@ -90,6 +109,7 @@ const sections = [
     </section>
   );
 };
+
 
 
 export default function BlogsPage() {

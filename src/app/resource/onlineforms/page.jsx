@@ -88,50 +88,45 @@ export default function NewPatientForm() {
             </nav>
           </aside>
 
-          {/* Form Section */}
-          <div className="flex-1 flex justify-center" data-aos="fade-up">
-            <div className="w-full max-w-4xl p-8  rounded shadow">
-              <form
-                onSubmit={handleSubmit}
-                className="grid grid-cols-1 sm:grid-cols-2 gap-4"
-              >
-               
+         {/* Form Section */}
+<div className="flex-1 flex justify-center" data-aos="fade-up">
+  <div className="w-full max-w-4xl p-6 rounded shadow bg-white">
+    <form
+      onSubmit={handleSubmit}
+      className="grid grid-cols-1 sm:grid-cols-2 gap-4 items-center"
+    >
+      {/* Title */}
+      <h1 className="text-green-700 font-bold col-span-2 text-lg">
+        Select Online Forms
+      </h1>
 
-                
+      {/* Online Forms Dropdown */}
+      <div className="relative col-span-2">
+        <select
+          name="onlineForm"
+          value={formData.onlineForm}
+          onChange={(e) => {
+            handleChange(e);
+            if (e.target.value === "appointment") {
+              router.push("/appointment");
+            } else if (e.target.value === "newpatient") {
+              router.push("/register");
+            }
+          }}
+          required
+          className="w-full border border-gray-300 rounded px-3 py-2 appearance-none focus:outline-none focus:ring-2 focus:ring-green-500"
+        >
+          <option value="" disabled>
+            Forms
+          </option>
+          <option value="appointment">📅 Appointment Form</option>
+          <option value="newpatient">📝 New Patients Register Form</option>
+        </select>
+      </div>
+    </form>
+  </div>
+</div>
 
-               
-
-               
-
-
-               
-
-               
-
-                {/* Online Forms Dropdown */}
-                <div className="relative col-span-2">
-                  <select
-                    name="onlineForm"
-                    value={formData.onlineForm}
-                    onChange={(e) => {
-                      handleChange(e);
-                      if (e.target.value === "appointment") {
-                        router.push("/appointment");
-                      }
-                    }}
-                    required
-                    className="w-full border border-gray-300 rounded px-4 py-2 pl-10 appearance-none"
-                  >
-                    <option value="">Select Online Form *</option>
-                    <option value="appointment">📅 Appointment Form</option>
-                  </select>
-                  <span className="absolute left-3 top-2.5">📜</span>
-                </div>
-
-               
-              </form>
-            </div>
-          </div>
         </div>
       </main>
 

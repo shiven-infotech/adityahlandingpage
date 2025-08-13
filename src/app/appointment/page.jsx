@@ -92,32 +92,35 @@ export default function AppointmentPage() {
                 options={["Dr. Shital Khodke"]}
                 required
               />
-
-              {/* Appointment Mode */}
-              <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1">
-                  Appointment Mode
-                </label>
-                <div className="flex items-center gap-4">
-                  <RadioField
-                    label="Online"
-                    value="online"
-                    checked={mode === "online"}
-                    onChange={() => setMode("online")}
-                  />
-                  <RadioField
-                    label="Offline"
-                    value="offline"
-                    checked={mode === "offline"}
-                    onChange={() => setMode("offline")}
-                  />
-                </div>
-              </div>
-
-              {/* Clinic Address */}
-              {mode === "offline" && (
-                <InputField label="Clinic Address" name="clinicAddress" />
-              )}
+             {/* Appointment Mode */}
+<div>
+  <label className="block text-sm font-medium text-gray-700 mb-1">
+    Appointment Mode
+  </label>
+  <div className="flex items-center gap-4">
+    <RadioField
+      label="Online"
+      value="online"
+      checked={mode === "online"}
+      onChange={() => setMode("online")}
+    />
+    <RadioField
+      label="Offline"
+      value="offline"
+      checked={mode === "offline"}
+      onChange={() => setMode("offline")}
+    />
+    {mode === "offline" && (
+      <div className="flex-1">
+        <InputField
+          label="Clinic Address"
+          name="clinicAddress"
+          className="w-full"
+        />
+      </div>
+    )}
+  </div>
+</div>
 
               {/* Calendar + Slots + Consultation */}
               <div className="grid grid-cols-1 md:grid-cols-[40%_60%] ">
@@ -174,7 +177,7 @@ export default function AppointmentPage() {
                       className="border border-gray-300 rounded px-2 py-1 w-full text-sm"
                       required
                     >
-                      <option value="">Select</option>
+                      <option value="">Offline Consultation</option>
                       <option value="reversalprogram">Reversal Program</option>
                       <option value="garbhsanskarclasses">Garbh Sanskar Classes</option>
                       <option value="rightbrainactivationclasses">Right Brain Activation Classes</option>
