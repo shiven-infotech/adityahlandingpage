@@ -3,9 +3,9 @@
 import { useEffect } from "react";
 import AOS from "aos";
 import "aos/dist/aos.css";
-import Header from "../../../components/header";
-import Navbar from "../../../components/navbar";
-import Footer from "../../../components/footer";
+import Header from "../../components/header";
+import Navbar from "../../components/navbar";
+import Footer from "../../components/footer";
 import Link from "next/link";
 import { FaHeartbeat, FaCapsules, FaStethoscope } from "react-icons/fa";
 
@@ -77,14 +77,14 @@ export default function HomeopathyFundamentals() {
           <aside className="hidden md:flex flex-col gap-6 w-64 h-fit sticky top-24">
             {/* Sidebar 1 */}
             <nav className=" space-y-1">
-              <h3 className="text-xl text-green-700 px-2 font-semibold ">Health Packages</h3>
+              <h3 className="text-xl text-green-700 font-semibold px-2">Health Packages</h3>
               {sections.map((sec) => (
                 <Link
                   key={sec.id}
                   href={sec.id}
-                  className="flex items-center  hover:text-green-700 transition"
+                  className="flex  hover:text-green-900 transition"
                 >
-                  <span className="text-lg p-1">{sec.icon}</span>
+                  <span className="p-1">{sec.icon}</span>
                   {sec.label}
                 </Link>
               ))}
@@ -93,24 +93,19 @@ export default function HomeopathyFundamentals() {
             {/* Sidebar 2 */}
             <nav className="p-1 space-y-1">
               <h3 className="text-xl text-green-700 font-semibold ">Main</h3>
-
               <Link href="/aboutus/aboutus" className="block  hover:text-green-700 transition">
                 About Us
               </Link>
-
-              <Link href="/aboutus/fundamentalsofhomeopathy" className="block hover:text-green-700 transition">
+              <Link href="/aboutus/fundamentalsofhomeopathy" className="block   hover:text-green-700 transition">
                 Fundamentals of Homeopathy
               </Link>
-
-              <Link href="/aboutus/myths&factsabouthomeopathy" className="block  hover:text-green-700 transition">
+              <Link href="/aboutus/myths&factsabouthomeopathy" className="block   hover:text-green-700 transition">
                 Myths & Facts About Homeopathy
               </Link>
-
-              <Link href="/aboutus/visionandmission" className="block hover:text-green-700 transition">
+              <Link href="/aboutus/visionandmission" className="block   hover:text-green-700 transition">
                 Vision and Mission
               </Link>
-
-              <Link href="/aboutus/ourteam" className="block hover:text-green-700 transition">
+              <Link href="/aboutus/Ourteam" className="block  hover:text-green-700 transition">
                 Our Team
               </Link>
             </nav>

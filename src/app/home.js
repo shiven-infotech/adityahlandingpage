@@ -1,20 +1,20 @@
-import Header from "./web/components/header"; 
-import Navbar from "./web/components/navbar";
-import Hero from "./web/components/hero";
-import ClassicalHomeopathySection from "./web/components/classicalhomeopathy";
-import SpecialitySection from "./web/components/specialitysection";
-import TreatmentsCard from "./web/components/treatmentscard";
-import AlternativeTherapies from "./web/components/alternativetherapies";
-import HealthPackages from "./web/components/healthpackages";
-import BenefitsSection from "./web/components/benefitssection";
-import WhyChooseUs from "./web/components/whychooseus";
-import CorporateWellnessSection from "./web/components/corporatewellnesssection";
-import PhilanthropySection from "./web/components/philantropysection";
-import Graphs from "./web/components/graphs";
-import PatientTestimonials from "./web/components/patienttestimonials";
-import Faqs from "./web/components/faqs";
-import ClientAppointmentWrapper from "./web/components/clientAppointmentWrapper";
-import Footer from "./web/components/footer";
+import Header from "./components/header"; 
+import Navbar from "./components/navbar";
+import Hero from "./components/hero";
+import ClassicalHomeopathySection from "./components/classicalhomeopathy";
+import SpecialitySection from "./components/specialitysection";
+import TreatmentsCard from "./components/treatmentscard";
+import AlternativeTherapies from "./components/alternativetherapies";
+import HealthPackages from "./components/healthpackages";
+import BenefitsSection from "./components/benefitssection";
+import WhyChooseUs from "./components/whychooseus";
+import CorporateWellnessSection from "./components/corporatewellnesssection";
+import PhilanthropySection from "./components/philantropysection";
+import Graphs from "./components/graphs";
+import PatientTestimonials from "./components/patienttestimonials";
+import Faqs from "./components/faqs";
+import ClientAppointmentWrapper from "./components/clientAppointmentWrapper";
+import Footer from "./components/footer";
 
 
 export default function Home() {

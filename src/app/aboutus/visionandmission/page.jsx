@@ -5,9 +5,9 @@ import AOS from "aos";
 import "aos/dist/aos.css";
 import Link from "next/link";
 
-import Header from "../../../components/header";
-import Navbar from "../../../components/navbar";
-import Footer from "../../../components/footer";
+import Header from "../../components/header";
+import Navbar from "../../components/navbar";
+import Footer from "../../components/footer";
 
 // Dummy icons and sections for Health Packages sidebar (replace with real ones)
 import { FaHeartbeat, FaLeaf, FaFlask } from "react-icons/fa";
@@ -15,7 +15,7 @@ const sections = [
   { id: "/healthpackages/reversalprogram", label: "Reversal Program",  },
   { id: "/healthpackages/garbhsanskarclasses", label: "Garbh Sanskar Classes", },
   { id: "/healthpackages/rightbrainactivationclasses", label: "Right Brain Activation Classes", },
-  { id: "/healthpackages/prepregnancy", label: " Pre Pregnancy ",  },
+  { id: "/healthpackages/prepregnancy", label: "Pre Pregnancy",  },
   { id: "/healthpackages/postdelivery", label: "Post Delivery", },
   { id: "/healthpackages/corporatewellnessprogram", label: "Corporate Wellness Program", },
 ];
@@ -36,14 +36,14 @@ export default function VisionAndMissionPage() {
           <aside className="hidden md:flex flex-col gap-6 w-64 h-fit sticky top-24">
             {/* Sidebar 1 */}
             <nav className=" space-y-1 ">
-              <h3 className="text-xl text-green-700 font-semibold px-2 ">Health Packages</h3>
+              <h3 className="text-xl text-green-700 font-semibold px-2">Health Packages</h3>
               {sections.map((sec) => (
                 <Link
                   key={sec.id}
                   href={sec.id}
-                  className="flex items-center  hover:text-green-700 transition"
+                  className="flex  hover:text-green-700 transition"
                 >
-                  <span className="text-lg p-1">{sec.icon}</span>
+                  <span className="p-1">{sec.icon}</span>
                   {sec.label}
                 </Link>
               ))}
@@ -52,20 +52,20 @@ export default function VisionAndMissionPage() {
             {/* Sidebar 2 */}
             <nav className="p-1 space-y-1 ">
               <h3 className="text-xl text-green-700 font-semibold ">Main</h3>
-              <Link href="/aboutus/aboutus" className="block  hover:text-green-900 transition">
+              <Link href="/aboutus/aboutus" className="block  hover:text-green-700 transition">
                 About Us
               </Link>
-              <Link href="/aboutus/fundamentalsofhomeopathy" className="block hover:text-green-700 transition">
+              <Link href="/aboutus/fundamentalsofhomeopathy" className="block  hover:text-green-700 transition">
                 Fundamentals of Homeopathy
               </Link>
-              <Link href="/aboutus/myths&factsabouthomeopathy" className="block hover:text-green-700 transition">
+              <Link href="/aboutus/myths&factsabouthomeopathy" className="block  hover:text-green-700 transition">
                 Myths & Facts About Homeopathy
               </Link>
-              <Link href="/aboutus/visionandmission" className="block hover:text-green-700 transition">
+              <Link href="/aboutus/visionandmission" className="block  hover:text-green-700 transition">
                 Vision and Mission
               </Link>
-              <Link href="/aboutus/ourteam" className="block hover:text-green-700 transition">
-                Our Team
+              <Link href="/aboutus/ourteam" className="block  hover:text-green-700 transition">
+               Our Team 
               </Link>
             </nav>
           </aside>

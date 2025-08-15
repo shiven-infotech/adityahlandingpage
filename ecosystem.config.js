@@ -1,7 +1,7 @@
 module.exports = {
   apps: [
     {
-      name: "aditya-land",
+      name: "nextjs-app",
       script: "npm",
       args: "start",
       env: {
