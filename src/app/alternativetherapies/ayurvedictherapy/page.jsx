@@ -18,7 +18,7 @@ export default function AyurvedicPage() {
       <Header />
       <Navbar />
 
-      <main className="px-4 py-10 max-w-screen mx-auto text-black" data-aos="fade-up">
+      <main className="px-4 bg-[#e3ffe0]  py-10 max-w-screen mx-auto text-black" data-aos="fade-up">
         <h1 className="text-4xl font-bold  text-green-700 mb-10">
           Ayurvedic Therapy – Reconnecting with the Wisdom of Nature
         </h1>

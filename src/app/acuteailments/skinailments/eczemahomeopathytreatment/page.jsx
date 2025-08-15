@@ -169,7 +169,7 @@ export default function EczemaPage() {
             Our skilled homeopathic practitioners are here to craft a treatment plan just for you.
           </p>
           <a
-            href="/contactform"
+            href="/appointment"
             className="inline-block bg-white text-green-700 font-semibold px-6 py-3 rounded-lg shadow hover:bg-green-100 hover:scale-105 transition-transform duration-300"
           >
             Book Your Appointment

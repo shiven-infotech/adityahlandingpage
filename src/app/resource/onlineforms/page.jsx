@@ -88,7 +88,7 @@ export default function NewPatientForm() {
             </nav>
           </aside>
 
-         {/* Form Section */}
+        {/* Form Section */}
 <div className="flex-1 flex justify-center" data-aos="fade-up">
   <div className="w-full max-w-4xl p-6 rounded shadow bg-white">
     <form
@@ -111,6 +111,8 @@ export default function NewPatientForm() {
               router.push("/appointment");
             } else if (e.target.value === "newpatient") {
               router.push("/register");
+            } else if (e.target.value === "nutrition") {
+              router.push("/resource/onlineforms/nutrition");
             }
           }}
           required
@@ -121,6 +123,7 @@ export default function NewPatientForm() {
           </option>
           <option value="appointment">📅 Appointment Form</option>
           <option value="newpatient">📝 New Patients Register Form</option>
+          <option value="nutrition">🥗 Nutrition Form</option>
         </select>
       </div>
     </form>
