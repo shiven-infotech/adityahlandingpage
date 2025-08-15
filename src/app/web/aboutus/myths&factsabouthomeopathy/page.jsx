@@ -5,9 +5,9 @@ import Link from "next/link";
 import { useEffect } from "react";
 import AOS from "aos";
 import "aos/dist/aos.css";
-import Header from "../../../components/header";
-import Navbar from "../../../components/navbar";
-import Footer from "../../../components/footer";
+import Header from "../../components/header";
+import Navbar from "../../components/navbar";
+import Footer from "../../components/footer";
 import { FaHeartbeat, FaCapsules, FaStethoscope } from "react-icons/fa";
 
 export default function HomeopathyMythsFacts() {
