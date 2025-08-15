@@ -5,9 +5,9 @@ import AOS from "aos";
 import "aos/dist/aos.css";
 import Link from "next/link";
 
-import Header from "../../../components/header";
-import Navbar from "../../../components/navbar";
-import Footer from "../../../components/footer";
+import Header from "../../components/header";
+import Navbar from "../../components/navbar";
+import Footer from "../../components/footer";
 
 export default function TeamBalancePage() {
   useEffect(() => {
