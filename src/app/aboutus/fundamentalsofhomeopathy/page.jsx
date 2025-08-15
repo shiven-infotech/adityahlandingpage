@@ -108,6 +108,12 @@ export default function HomeopathyFundamentals() {
               <Link href="/aboutus/Ourteam" className="block  hover:text-green-700 transition">
                 Our Team
               </Link>
+              <Link href="/aboutus/whyhomoeopathy" className="block  hover:text-green-700 transition">
+                Why Homoeopathy
+              </Link>
+              <Link href="/aboutus/benefitsofhomoeopathy" className="block  hover:text-green-700 transition">
+                Benefits of Homoeopathy
+              </Link>
             </nav>
           </aside>
 

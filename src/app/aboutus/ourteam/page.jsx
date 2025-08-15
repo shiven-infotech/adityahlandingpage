@@ -83,6 +83,8 @@ export default function TeamBalancePage() {
               <Link href="/aboutus/myths&factsabouthomeopathy" className="block  hover:text-green-700 transition">Myths & Facts About Homeopathy</Link>
               <Link href="/aboutus/visionandmission" className="block  hover:text-green-700 transition">Vision and Mission</Link>
               <Link href="/aboutus/ourteam" className="block  hover:text-green-700 transition">Our Team</Link>
+              <Link href="/aboutus/whyhomoeopathy" className="block  hover:text-green-700 transition">Why Homoeopathy</Link>
+              <Link href="/aboutus/benefitsofhomoeopathy" className="block  hover:text-green-700 transition">Benefits of Homoeopathy</Link>
             </nav>
           </aside>
 

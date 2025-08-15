@@ -10,7 +10,7 @@ import 'swiper/css/navigation';
 const slides = [
   {
     image: '/hero.jpeg',
-    title: 'Welcome to Aditya Homeopathy',
+    title: 'Welcome to Aditya Homoeopathy',
     subtitle: 'Natural Healing with Aditya Homeopathy',
   },
   {
@@ -20,7 +20,7 @@ const slides = [
   },
   {
     image: '/expert.jpeg',
-    title: 'Expert Homeopathic Doctors',
+    title: 'Expert Homoeopathic Doctors',
     subtitle: 'Experience You Can Trust',
   },
 ];

@@ -26,7 +26,10 @@ export default function Navbar() {
         { label: "Fundamentals of Homeopathy", href: "/aboutus/fundamentalsofhomeopathy" },
         { label: "Myths & Facts About Homeopathy", href: "/aboutus/myths&factsabouthomeopathy" },
         {label:"Vision and Mission", href:"/aboutus/visionandmission"},
-        {label:"Our Team", href:"/aboutus/ourteam"}
+        {label:"Our Team", href:"/aboutus/ourteam"},
+        { label: "Why Homoeopathy", href: "/aboutus/whyhomoeopathy" },
+        { label: "Benefits of Homoeopathy", href: "/aboutus/benefitsofhomoeopathy" },
+       
       ],
     },
     {
