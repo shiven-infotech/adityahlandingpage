@@ -20,7 +20,7 @@ export default function NutritionPage() {
       <main className="py-4 px-4 bg-[#e3ffe0]">
         <section data-aos="fade-up" className="max-w-screen mx-auto">
           <h1 className="text-4xl font-bold mb-6 text-green-700">
-            Holistic Nutrition & Homeopathy
+            Holistic Nutrition & Homoeopathy
           </h1>
 
           {/* Paragraph + Image Right */}
@@ -111,7 +111,7 @@ export default function NutritionPage() {
               <strong>Nutrition for mental health</strong> — anxiety, depression, fatigue
             </li>
             <li>
-              <strong>Homeopathic-compatible meal plans</strong> tailored to your remedy profile
+              <strong>Homoeopathic-compatible meal plans</strong> tailored to your remedy profile
             </li>
           </ul>
 
