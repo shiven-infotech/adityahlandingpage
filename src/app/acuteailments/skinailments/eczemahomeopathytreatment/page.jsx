@@ -3,8 +3,8 @@ import React, { useEffect } from "react";
 import AOS from "aos";
 import "aos/dist/aos.css";
 import Header from "../../../components/header";
-import Navbar from "@/app/web/components/navbar";
-import Footer from "@/app/web/components/footer";
+import Navbar from "@/app/components/navbar";
+import Footer from "@/app/components/footer";
 import { FaInstagram, FaFacebookF, FaTwitter } from "react-icons/fa";
 
 export default function EczemaPage() {
