@@ -133,18 +133,24 @@ export default function CracksOnHeelsPage() {
 </section>
 
 
-        {/* Call to Action */}
-        <section className="text-center mt-10 bg-green-50 p-6 rounded-lg shadow-md">
-          <h3 className="text-xl font-semibold mb-4 text-green-700">
-            Are your cracked heels causing discomfort?
-          </h3>
-          <p className="mb-4">
-            Connect with our experienced homeopathic practitioners today for natural solutions that promote healing and restore smoothness to your heels.
-          </p>
-          <button className="bg-green-700 hover:bg-green-800 text-white font-semibold px-6 py-2 rounded-lg transition">
-            Book Appointment
-          </button>
-        </section>
+       
+{/* Call to Action */}
+<section className="text-center mt-10 p-6">
+  <h3 className="text-3xl font-semibold mb-4 text-green-700">
+    Are your cracked heels causing discomfort?
+  </h3>
+  <p className="mb-4 text-lg">
+    Connect with our experienced homeopathic practitioners today for natural solutions that promote healing and restore smoothness to your heels. Take the first step towards healthier and pain-free feet with homeopathy!
+  </p>
+
+  <Link
+    href="/appointment" 
+    className="inline-block bg-green-700 hover:bg-green-800 text-white font-semibold px-6 py-2 rounded-lg transition"
+  >
+    Book Appointment
+  </Link>
+</section>
+
       </div>
 
       <Footer />
