@@ -207,8 +207,7 @@ export default function CracksOnHeelsPage() {
 </section>
 
 
-       import Link from "next/link";  // add this at the top of your file
-
+       
 {/* Call to Action */}
 <section className="text-center mt-10 p-6">
   <h3 className="text-3xl font-semibold mb-4 text-green-700">
