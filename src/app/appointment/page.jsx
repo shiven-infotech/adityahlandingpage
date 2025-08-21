@@ -13,9 +13,8 @@ import Footer from "../components/footer";
 
 const Calendar = dynamic(() => import("react-calendar"), { ssr: false });
 
-
-// let adityaurl = 'https://admin.adityahomoeopathicclinic.com/api/';
-let adityaurl = 'http://localhost:5500/';
+let adityaurl = 'https://admin.adityahomoeopathicclinic.com/api/';
+// let adityaurl = "http://localhost:5500/";
 
 const initialState = {
   doctor: undefined,
@@ -68,10 +67,8 @@ const fetchAppointments = async (doctorId, date) => {
   }
 };
 
-
 const createItem = async (path, data) => {
   try {
-    
     const response = await fetch(`${adityaurl}${path}`, {
       method: "POST",
       headers: {
@@ -94,6 +91,20 @@ const createItem = async (path, data) => {
   }
 };
 
+const getItem = async (path) => {
+  try {
+    const response = await fetch(`${adityaurl}${path}`);
+    if (!response.ok) {
+      throw new Error("Failed to fetch item");
+    }
+    const data = await response.json();
+    return data;
+  } catch (error) {
+    console.error("Error fetching item:", error);
+    return null;
+  }
+};
+
 export default function AppointmentPage() {
   const [date, setDate] = useState(null);
   const [mode, setMode] = useState("online");
@@ -110,6 +121,7 @@ export default function AppointmentPage() {
   const [timeslots, settimeslots] = useState();
   const [bookedSlot, setBookedSlot] = useState();
   const [bookedAppointments, setBookeedAppointments] = useState();
+  const [phone, setphone] = useState(false)
 
   useEffect(() => {
     console.log("fial form data", formData);
@@ -120,22 +132,19 @@ export default function AppointmentPage() {
     let ibookedSlots = selectedDoctor?.availability?.[getDateFormat(date)]?.timeSlots || [];
     settimeslots(ibookedSlots);
 
-    fetchAppointments(formData?.doctor?.id, "2025-01-01").then((apn) => {
+    fetchAppointments(formData?.doctor?.id, getDateFormat(date)).then((apn) => {
       const bookedAppointments =
-    (Object.keys(apn || {}).length > 0 &&
-    apn?.filter((e) => e?.bookDate?.slice(0, 10) === getDateFormat(date))
-        .filter((e) => e?.status !== 'Cancelled')
-        .map((e) => ({
-          patient: e?.patient?.id,
-          bookedTime: e?.bookTimeSlot?._id,
-          bookedStatus: e?.status,
-          name: e?.patient?.name,
-        }))) ||
-    [];
+        (Object.keys(apn || {}).length > 0 &&
+          apn?.filter((e) => e?.status !== "Cancelled")
+            .map((e) => ({
+              patient: e?.patient?.id,
+              bookedTime: e?.bookTimeSlot?._id,
+              bookedStatus: e?.status,
+              name: e?.patient?.name,
+            }))) ||
+        [];
       setBookeedAppointments(bookedAppointments);
     });
-
-    console.log('wrorn gdate selcted', date)
   }, [date]);
 
   useEffect(() => {
@@ -184,58 +193,57 @@ export default function AppointmentPage() {
   }, []);
 
   const handelButtonClick = (e) => {
-    e.preventDefault()
+    e.preventDefault();
     let isValidInput = true;
     let updatedFormError = { ...formError };
 
     if (!formData.patient || !formData.patient.name) {
-      updatedFormError.patient.name = 'Patient Name is required!';
-      window.alert('Patient name is required!');
+      updatedFormError.patient.name = "Patient Name is required!";
+      window.alert("Patient name is required!");
       isValidInput = false;
     } else {
       if (formData?.patient?.id === undefined) {
-        const nameParts = formData.patient.name.split(' ');
-        if (nameParts.length !== 2) {
-          updatedFormError.patient.name = 'Invalid format for Patient Name. Please provide both first name and surname.';
-          window.alert('Invalid patient name');
+        if (!formData?.patient?.name || !formData?.patient?.surname) {
+          updatedFormError.patient.name = "Invalid format for Patient Name. Please provide both first name and surname.";
+          window.alert("Invalid patient name");
           isValidInput = false;
         }
       }
     }
 
     if (formData?.patient?.phone?.length < 10) {
-      window.alert('Invalid phone number');
+      window.alert("Invalid phone number");
       isValidInput = false;
     }
 
     if (!formData.bookDate) {
       // Validate date
-      updatedFormError.bookDate = 'please select date';
-      window.alert('please select date');
+      updatedFormError.bookDate = "please select date";
+      window.alert("please select date");
       isValidInput = false;
     }
 
     //  validate doctor name
     if (!formData.bookTimeSlot._id) {
-      updatedFormError.bookTimeSlot = 'please select time';
-      window.alert('please select time');
+      updatedFormError.bookTimeSlot = "please select time";
+      window.alert("please select time");
       isValidInput = false;
     }
 
     // Set role-specific properties
-    if (formData.selectedRole === 'consultant') {
+    if (formData.selectedRole === "consultant") {
       formData.IsConsultant = true;
     } else {
       formData.IsConsultant = false;
     }
 
-    if (formData.selectedRole === 'assistantDoctor') {
+    if (formData.selectedRole === "assistantDoctor") {
       formData.IsAssistantDoctor = true;
     } else {
       formData.IsAssistantDoctor = false;
     }
 
-    if (formData.selectedRole === 'doctor') {
+    if (formData.selectedRole === "doctor") {
       formData.IsDoctor = true;
     } else {
       formData.IsDoctor = false;
@@ -244,12 +252,11 @@ export default function AppointmentPage() {
     formData.IsOnline = formData.IsOnline;
     setFormError(updatedFormError);
 
-
     if (isValidInput) {
       if (formData?.patient?.id === undefined) {
-        let names = formData?.patient?.name?.split(' ');
+        let names = formData?.patient?.name?.split(" ");
 
-        createItem('public/customer/', { firstName: names?.[0], surname: names?.[1], mobile: formData?.patient?.phone }).then((e) => {
+        createItem("public/customer/", { firstName: names?.[0], surname: names?.[1], mobile: formData?.patient?.phone }).then((e) => {
           let data = e?.customer;
           let updateData = { ...formData };
           updateData.patient.name = names?.[0];
@@ -257,19 +264,23 @@ export default function AppointmentPage() {
           updateData.patient.id = data?._id;
 
           if (updateData?.patient.id !== undefined) {
-            createItem('public/appointment' ,updateData).then(apbook=>{
-              window.alert('Appointment booked successfully!');
-            }).catch(err=>{
-              window.alert('Failed To Book')
-            });
+            createItem("public/appointment", updateData)
+              .then((apbook) => {
+                window.alert("Appointment booked successfully!");
+              })
+              .catch((err) => {
+                window.alert("Failed To Book");
+              });
           }
         });
       } else {
-        createItem('public/appointment', formData).then(apbook=>{
-          window.alert('Appointment booked successfully!');
-        }).catch(err=>{
-          window.alert('Failed To Book')
-        });
+        createItem("public/appointment", formData)
+          .then((apbook) => {
+            window.alert("Appointment booked successfully!");
+          })
+          .catch((err) => {
+            window.alert("Failed To Book");
+          });
       }
     }
   };
@@ -312,12 +323,14 @@ export default function AppointmentPage() {
 
               <div className="flex flex-col">
                 <div className="flex items-center gap-2 w-full md:w-auto">
-              <InputField
-                  required={true}
-                  label="Enter Phone Number"
-                  placeholder="Contact Number"
-                  onChange={(e) => {
-                    setFormData((prev) => ({ ...prev, patient: { ...prev.patient, phone: e.target.value } }));
+                  <InputField
+                    required={true}
+                    label="Enter Phone Number"
+                    placeholder="Contact Number"
+                    onChange={(e) => {
+                      setFormData((prev) => ({ ...prev, patient: { ...prev.patient, phone: e.target.value } }));
+                      setCustomers([])
+                      setphone(false);
                     }}
                     value={formData?.patient.phone}
                     type="text"
@@ -327,46 +340,63 @@ export default function AppointmentPage() {
                   <button
                     type="button"
                     className="px-2 py-1 mt-5 bg-green-600 text-white rounded"
+                    onClick={() => {
+                      if (formData?.patient?.phone) {
+                        getItem(`customer?search=${formData?.patient?.phone}`).then((data) => {
+                          setCustomers(data);
+                          setphone(true);
+                        });
+                      }
+                    }}
                   >
-                    Search
+                    Submit
                   </button>
-                  </div>
-                    <div className="flex justify-start gap-10 items-center w-full p-3 m-2 border border-gray-300 rounded-lg">
-
+                </div>
+             {phone &&   <div className="flex justify-start gap-10 items-center w-full p-3 m-2 border border-gray-300 rounded-lg">
                   <SelectField
-                  options={doctorsData?.map((doctor) => ({
-                    value: doctor._id,
-                    label: doctor.name,
-                  }))}
-                  value={formData?.doctor?.id}
-                  onChange={(e) => {
-                    let selectedDoctor = doctorsData?.filter((i) => i?._id == e.target.value)?.[0];
-                    const { _id, name } = selectedDoctor;
-                    setFormData((prev) => ({ ...prev, doctor: { id: _id, name: name } }));
-                  }}
-                  placeholder="Select Patient"
-                  label={"Select Existing"}
-                  name={"doctor"}
-                  error={formError.doctor}
-                />
-          <span className="text-black">OR</span>
+                    options={
+                      customers?.map((p) => ({
+                        label: `${p?.firstName} ${p?.surname}`,
+                        value: p?._id,
+                      })) || []
+                    }
+                    value={formData?.patient?.id}
+                    onChange={(e) => {
+                      const selectedPatient = customers?.find((p) => p?._id === e.target.value);
+                      if (selectedPatient) {
+                        setFormData((prev) => ({
+                          ...prev,
+                          patient: {
+                            id: selectedPatient?._id,
+                            name: selectedPatient?.firstName,
+                            phone: selectedPatient?.mobile,
+                            surname: selectedPatient?.surname,
+                          },
+                        }));
+                      }
+                    }}
+                    placeholder="Select Patient"
+                    label={"Select Existing"}
+                    name={"name"}
+                    error={formError?.patient?.name}
+                  />
+                  <span className="text-black">OR</span>
                   <InputField
-                  required={true}
+                    required={true}
                     label="Create New"
                     name="name"
                     onChange={(e) => {
-                    let selectedPatient = customers?.filter((p) => `${p?.firstName} ${p?.surname}` == e.target.value)?.[0];
-                    if (selectedPatient !== undefined) {
-                      setFormData((prev) => ({ ...prev, patient: { id: selectedPatient?._id, name: selectedPatient?.firstName, phone: selectedPatient?.mobile, surname: selectedPatient?.surname } }));
-                    } else {
-                      setFormData((prev) => ({ ...prev, patient: { name: e.target.value, phone: "" } }));
-                    }
-                  }}
-                  value={customers?.filter((p) => p?._id == formData?.patient?.id)?.[0]?.firstName}
-                  error={formError?.patient?.name}
-                  placeholder="[firstname lastname]"
-                />
-                </div>
+                      let selectedPatient = customers?.filter((p) => `${p?.firstName} ${p?.surname}` == e.target.value)?.[0];
+                      let fullname = e.target.value?.split(' ')
+                      if (selectedPatient === undefined) {
+                        setFormData((prev) => ({ ...prev, patient: {...prev?.patient, name:fullname?.[0], surname:fullname?.[1]} }));
+                      } 
+                    }}
+                    value={customers?.filter((p) => p?._id == formData?.patient?.id)?.[0]?.firstName}
+                    error={formError?.patient?.name}
+                    placeholder="[firstname lastname]"
+                  />
+                </div>}
               </div>
 
               {formData.selectedRole === "doctor" && doctorsData?.length > 0 && (
@@ -455,12 +485,12 @@ export default function AppointmentPage() {
                             disabled={isBooked?.bookedStatus}
                             onClick={() => {
                               if (!isBooked?.bookedStatus) {
-                                setFormData((prevForm) => ({ ...prevForm, bookDate: date, bookTimeSlot: slot }));
+                                setFormData((prevForm) => ({ ...prevForm, bookDate: getDateFormat(date), bookTimeSlot: slot }));
                                 setBookedSlot(slot?._id);
                               }
                             }}
                             className={`px-2 py-1 rounded-lg text-xs font-medium border transition ${
-                              isBooked?.bookedTime ? "bg-red-100 text-red-500 border-red-300 cursor-not-allowed" : selectedSlot === slot.time ? "bg-green-600 text-white border-green-700" : "bg-green-100 text-green-700 border-green-300 hover:bg-green-200"
+                              isBooked?.bookedStatus ? "bg-red-100 text-red-500 border-red-300 cursor-not-allowed" : selectedSlot === slot.time ? "bg-green-600 text-white border-green-700" : "bg-green-100 text-green-700 border-green-300 hover:bg-green-200"
                             }`}
                           >
                             <div
@@ -534,7 +564,7 @@ function SelectField({ label, name, options, required, onChange, error }) {
       <label className="block text-sm font-medium text-gray-700">{label}</label>
       <select name={name} className="w-full border border-gray-300 rounded px-2 py-1 text-sm text-black" required={required} onChange={onChange} defaultValue="">
         {name !== "selectedRole" && (
-          <option value="" disabled>
+          <option value="" >
             -- Select an option --
           </option>
         )}
