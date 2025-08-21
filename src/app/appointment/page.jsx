@@ -14,6 +14,9 @@ import Footer from "../components/footer";
 const Calendar = dynamic(() => import("react-calendar"), { ssr: false });
 
 
+// let adityaurl = 'https://admin.adityahomoeopathicclinic.com/api/';
+let adityaurl = 'http://localhost:5500/';
+
 const initialState = {
   doctor: undefined,
   patient: { id: undefined, name: null, phone: "" },
@@ -50,7 +53,7 @@ const getAvailableDays = (selectedDoctor) => {
 const fetchAppointments = async (doctorId, date) => {
   try {
     const formattedDate = date;
-    const apiUrl = `https://admin.adityahomoeopathicclinic.com/api/appointment/external?doctorName=${doctorId}&date=${formattedDate}&page=1&limit=100`;
+    const apiUrl = `${adityaurl}appointment/external?doctorName=${doctorId}&date=${formattedDate}&page=1&limit=100`;
     const response = await fetch(apiUrl);
 
     if (!response.ok) {
@@ -69,7 +72,7 @@ const fetchAppointments = async (doctorId, date) => {
 const createItem = async (path, data) => {
   try {
     
-    const response = await fetch(`https://admin.adityahomoeopathicclinic.com/api/${path}`, {
+    const response = await fetch(`${adityaurl}${path}`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -99,7 +102,7 @@ export default function AppointmentPage() {
   const [hasMounted, setHasMounted] = useState(false);
   const [consultationType, setConsultationType] = useState("");
   const [formData, setFormData] = useState(initialState);
-  const [formError, setFormError] = useState(initialState);
+  const [formError, setFormError] = useState({});
   const [doctorsData, setDoctorsData] = useState(null);
   const [consultantDoctors, setConsultantDoctors] = useState(null);
   const [customers, setCustomers] = useState(null);
@@ -139,13 +142,13 @@ export default function AppointmentPage() {
     let apiUrl = "";
     switch (formData?.selectedRole) {
       case "doctor":
-        apiUrl = "https://admin.adityahomoeopathicclinic.com/api/doctor/external/doctor";
+        apiUrl = `${adityaurl}doctor/external/doctor`;
         break;
       case "assistantDoctor":
-        apiUrl = "https://admin.adityahomoeopathicclinic.com/api/assistantDoctor";
+        apiUrl = `${adityaurl}assistantDoctor`;
         break;
       case "consultant":
-        apiUrl = "https://admin.adityahomoeopathicclinic.com/api/consultant";
+        apiUrl = `${adityaurl}consultant`;
         break;
       default:
         return;
@@ -307,12 +310,51 @@ export default function AppointmentPage() {
                 </div>
               </div>
 
-              <div className="grid grid-cols-1 sm:grid-cols-3 gap-2">
-                <InputField
-                  label="Patient [firstname lastname]"
-                  name="name"
-                  required
+              <div className="flex flex-col">
+                <div className="flex items-center gap-2 w-full md:w-auto">
+              <InputField
+                  required={true}
+                  label="Enter Phone Number"
+                  placeholder="Contact Number"
                   onChange={(e) => {
+                    setFormData((prev) => ({ ...prev, patient: { ...prev.patient, phone: e.target.value } }));
+                    }}
+                    value={formData?.patient.phone}
+                    type="text"
+                    name="phoneNumber"
+                    error={formError?.patient?.phone}
+                  />
+                  <button
+                    type="button"
+                    className="px-2 py-1 mt-5 bg-green-600 text-white rounded"
+                  >
+                    Search
+                  </button>
+                  </div>
+                    <div className="flex justify-start gap-10 items-center w-full p-3 m-2 border border-gray-300 rounded-lg">
+
+                  <SelectField
+                  options={doctorsData?.map((doctor) => ({
+                    value: doctor._id,
+                    label: doctor.name,
+                  }))}
+                  value={formData?.doctor?.id}
+                  onChange={(e) => {
+                    let selectedDoctor = doctorsData?.filter((i) => i?._id == e.target.value)?.[0];
+                    const { _id, name } = selectedDoctor;
+                    setFormData((prev) => ({ ...prev, doctor: { id: _id, name: name } }));
+                  }}
+                  placeholder="Select Patient"
+                  label={"Select Existing"}
+                  name={"doctor"}
+                  error={formError.doctor}
+                />
+          <span className="text-black">OR</span>
+                  <InputField
+                  required={true}
+                    label="Create New"
+                    name="name"
+                    onChange={(e) => {
                     let selectedPatient = customers?.filter((p) => `${p?.firstName} ${p?.surname}` == e.target.value)?.[0];
                     if (selectedPatient !== undefined) {
                       setFormData((prev) => ({ ...prev, patient: { id: selectedPatient?._id, name: selectedPatient?.firstName, phone: selectedPatient?.mobile, surname: selectedPatient?.surname } }));
@@ -322,19 +364,9 @@ export default function AppointmentPage() {
                   }}
                   value={customers?.filter((p) => p?._id == formData?.patient?.id)?.[0]?.firstName}
                   error={formError?.patient?.name}
-                  placeholder="-- Select Or Enter Patient --"
+                  placeholder="[firstname lastname]"
                 />
-                <InputField
-                  label="Patient Contact"
-                  placeholder="Enter Contact Number"
-                  onChange={(e) => {
-                    setFormData((prev) => ({ ...prev, patient: { ...prev.patient, phone: e.target.value } }));
-                  }}
-                  value={formData?.patient.phone}
-                  type="text"
-                  name="phoneNumber"
-                  error={formError?.patient?.phone}
-                />
+                </div>
               </div>
 
               {formData.selectedRole === "doctor" && doctorsData?.length > 0 && (
@@ -486,11 +518,11 @@ export default function AppointmentPage() {
 }
 
 /* Helper Components */
-function InputField({ label, name, type = "text", required, onChange, error }) {
+function InputField({ label, name, type = "text", required, onChange, error, placeholder }) {
   return (
     <div>
       <label className="block text-sm font-medium text-gray-700 text-black">{label}</label>
-      <input onChange={onChange} type={type} name={name} required={required} placeholder={label} className="w-full border border-gray-300 rounded px-2 py-1 text-sm text-black" />
+      <input onChange={onChange} type={type} name={name} required={required} placeholder={placeholder} className="w-full border border-gray-300 rounded px-2 py-1 text-sm text-black" />
       {error && <small>{error}</small>}
     </div>
   );
