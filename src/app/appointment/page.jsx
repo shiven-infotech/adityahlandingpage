@@ -538,7 +538,7 @@ function SelectField({ label, name, options, required, onChange, error }) {
             -- Select an option --
           </option>
         )}
-        {options.map((opt, idx) => (
+        {options?.map((opt, idx) => (
           <option key={idx} value={opt?.value}>
             {opt?.label}
           </option>
