@@ -9,15 +9,15 @@ export default function SkinRashesPage() {
     <>
       <Header />
       <Navbar />
-      <main className="px-4 bg-[#e3ffe0] py-10  max-w-screen mx-auto text-gray-800 space-y-10">
-        <h1 className="text-3xl md:text-4xl font-bold text-green-700">
-          Skin Rashes Homeopathy Treatment
+      <main className="px-4 bg-[#e3ffe0] py-4  max-w-screen mx-auto  space-y-10">
+        <h1 className="text-3xl md:text-4xl font-bold text-green-700 text-center ">
+          Skin Rashes Homoeopathy Treatment
         </h1>
 
         {/* What is Skin Rashes */}
         <section>
-          <h2 className="text-2xl text-green-700 font-semibold mb-2">What is Skin Rashes?</h2>
-          <p>
+          <h2 className="text-3xl text-green-700 font-semibold mb-2">What is Skin Rashes?</h2>
+          <p className="text-lg leading-relaxed">
             Skin rashes are changes in how your skin looks or feels and can happen for different reasons.
             They often look like red, itchy patches or bumps and can be caused by allergies, infections, or other health problems.
             Rashes can range from mild to severe, and they might appear and disappear quickly or stay for a while.
@@ -30,10 +30,10 @@ export default function SkinRashesPage() {
         {/* How can homeopathy help - with image on right */}
         <section className="flex flex-col md:flex-row items-start gap-6">
           <div className="md:w-2/3">
-            <h2 className="text-2xl text-green-700 font-semibold mb-2">
+            <h2 className="text-3xl text-green-700 font-semibold mb-2">
               How can homeopathy treatment be a good option for Skin Rashes?
             </h2>
-            <ul className="list-disc pl-5 space-y-3">
+            <ul className="list-disc pl-5 text-lg space-y-3">
               <li>
                 <strong>Holistic Approach:</strong> Homeopathy looks at you as a whole person, not just your rash. It considers not only the symptoms of your rash but also what might be causing it and your overall health. This helps in creating a treatment plan that's personalized just for you, taking into account everything that might be contributing to your rash.
               </li>

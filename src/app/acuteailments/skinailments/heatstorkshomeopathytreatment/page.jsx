@@ -4,20 +4,20 @@ import Image from "next/image";
 import Header from "../../../components/header";
 import Navbar from "../../../components/navbar";
 import Footer from "../../../components/footer";
-
+import Link from "next/link";
 export default function HeatStorksPage() {
   return (
     <>
       <Header />
       <Navbar />
-      <main className="max-w-screen mx-auto px-4 py-10 text-gray-800 space-y-12">
+      <main className="max-w-screen mx-auto bg-[#e3ffe0] px-4 py-10 text-gray-800 space-y-12">
         <h1 className="text-3xl md:text-4xl font-bold text-center text-green-700">
           Heat Storks Homeopathy Treatment?
         </h1>
 
         {/* What is Heat Storks? */}
         <section>
-          <h2 className="text-2xl font-semibold text-green-600 mb-3">
+          <h2 className="text-2xl font-semibold text-green-700 mb-3">
             What is Heat Storks?
           </h2>
           <p className="text-lg leading-relaxed">
@@ -36,7 +36,7 @@ export default function HeatStorksPage() {
         <section className="flex flex-col md:flex-row items-center gap-6">
           {/* Text */}
           <div className="md:w-1/2">
-            <h2 className="text-2xl font-semibold text-green-600 mb-3">
+            <h2 className="text-2xl font-semibold text-green-700 mb-3">
               Homeopathy Treatment for Heat Storks
             </h2>
             <p className="text-lg leading-relaxed">
@@ -76,35 +76,99 @@ export default function HeatStorksPage() {
           </div>
         </section>
 
-        {/* Comparison Section */}
-        <section>
-          <h2 className="text-2xl font-semibold text-green-600 mb-3">
-            Comparison with Other Treatments
-          </h2>
-          <ul className="list-disc pl-6 space-y-3 text-lg">
-            <li>
-              <strong>Conventional Medicine:</strong> It can give quick relief,
-              but sometimes it comes with side effects that can be harsh on your body.
-            </li>
-            <li>
-              <strong>Herbal Remedies:</strong> These can be helpful, but their
-              effectiveness can vary. Also, they might not get to the root cause of
-              Heat Storks like homeopathy does, so the relief may not be as long-lasting.
-            </li>
-            <li>
-              <strong>Diet and Lifestyle Changes:</strong> These are great for overall
-              health and can work well with homeopathy. However, they might not directly
-              target the specific symptoms of Heat Storks like homeopathic remedies can.
-            </li>
-            <li>
-              <strong>Alternative Therapies:</strong> These can be beneficial too, but
-              they might not offer the same level of personalized treatment that homeopathy
-              does for Heat Storks. Homeopathy takes into account your unique symptoms and
-              constitution for a more tailored approach to healing.
-            </li>
-          </ul>
-        </section>
 
+        {/* Causes of Heat Stroke */}
+<section className="py-8 bg-[#e3ffe0]">
+  <div className="max-w-screen mx-auto">
+    <h2 className="text-3xl font-bold text-green-700 mb-6">
+      Causes of Heat Stroke
+    </h2>
+    <p className="text-lg leading-relaxed mb-4">
+      Heat stroke occurs when the body overheats and is unable to regulate its temperature 
+      effectively, leading to a dangerous rise in body temperature. It is a serious medical 
+      condition that requires immediate attention. Common causes include:
+    </p>
+    <ul className="list-disc pl-6 text-lg space-y-2">
+      <li>
+        **Prolonged Exposure to High Temperatures** – Staying in hot, humid environments for 
+        extended periods without cooling measures.
+      </li>
+      <li>
+        **Intense Physical Activity in Heat** – Strenuous exercise or labor in hot weather 
+        can overwhelm the body’s ability to cool itself.
+      </li>
+      <li>
+        **Dehydration** – Inadequate fluid intake reduces sweating and impairs the body’s 
+        natural cooling system.
+      </li>
+      <li>
+        **Wearing Heavy or Non-Breathable Clothing** – Prevents sweat from evaporating and 
+        traps body heat.
+      </li>
+      <li>
+        **Certain Medications or Health Conditions** – Drugs affecting hydration, sweating, 
+        or circulation, as well as conditions like heart disease or obesity, increase risk.
+      </li>
+      <li>
+        **Alcohol Consumption** – Alcohol interferes with body temperature regulation and 
+        promotes dehydration.
+      </li>
+    </ul>
+    <p className="text-lg leading-relaxed mt-4">
+      When these factors combine, the body’s cooling mechanisms fail, leading to a rapid 
+      rise in core temperature and the onset of heat stroke.
+    </p>
+  </div>
+</section>
+
+
+    {/* Signs and Symptoms of Heat Stroke */}
+<section className="py-8 bg-[#e3ffe0]">
+  <div className="max-w-screen mx-auto">
+    <h2 className="text-3xl font-bold text-green-700 mb-6">
+      Signs and Symptoms of Heat Stroke
+    </h2>
+    <p className="text-lg leading-relaxed mb-4">
+      Heat stroke is a medical emergency that can develop quickly and requires 
+      immediate attention. Recognizing the signs and symptoms early can help 
+      prevent serious complications. Common symptoms include:
+    </p>
+    <ul className="list-disc pl-6 text-lg space-y-2">
+      <li>
+        **High Body Temperature** – Core body temperature rising above 104°F (40°C).
+      </li>
+      <li>
+        **Hot, Flushed Skin** – Skin may feel dry or slightly moist due to failed 
+        sweating mechanisms.
+      </li>
+      <li>
+        **Altered Mental State** – Confusion, agitation, slurred speech, irritability, 
+        seizures, or loss of consciousness.
+      </li>
+      <li>
+        **Rapid Heartbeat and Breathing** – Increased pulse and shallow breathing 
+        as the body struggles to cool down.
+      </li>
+      <li>
+        **Headache and Dizziness** – A throbbing headache, lightheadedness, or fainting.
+      </li>
+      <li>
+        **Nausea and Vomiting** – Digestive upset caused by overheating and dehydration.
+      </li>
+      <li>
+        **Weakness and Fatigue** – Extreme tiredness and muscle weakness due to heat stress.
+      </li>
+    </ul>
+    <p className="text-lg leading-relaxed mt-4">
+      If any of these symptoms are present, immediate medical care is crucial 
+      to prevent life-threatening complications from heat stroke.
+    </p>
+  </div>
+</section>
+
+
+
+       
         {/* FAQs Section with Image on Left */}
         <section className="flex flex-col md:flex-row items-center gap-6">
           {/* Image on Left */}
@@ -120,7 +184,7 @@ export default function HeatStorksPage() {
 
           {/* Text */}
           <div className="md:w-1/2">
-            <h2 className="text-2xl font-semibold text-green-600 mb-3">
+            <h2 className="text-2xl font-semibold text-green-700 mb-3">
               FAQs about Heat Storks Homeopathy Treatment
             </h2>
             <div className="space-y-5 text-lg">
@@ -171,17 +235,24 @@ export default function HeatStorksPage() {
           </div>
         </section>
 
-        {/* Call to Action */}
-        <section className="bg-green-50 p-6 rounded-lg border border-green-200">
-          <h2 className="text-xl font-semibold text-green-700 mb-2">
-            Call to Action
-          </h2>
-          <p className="text-lg leading-relaxed">
-            If you're dealing with Heat Storks symptoms, consider chatting with a skilled homeopath.
-            They can guide you toward personalized and natural treatments that could make a real difference
-            for you. <strong>Take a step towards feeling better today!</strong>
-          </p>
-        </section>
+        {/* --- Call to Action Section --- */}
+<section className=" p-6   mt-10 text-center">
+  <h2 className="text-2xl font-semibold mb-3 text-green-800">
+    Ready to Begin Your Healing Journey?
+  </h2>
+  <p className="text-lg">
+    Are you looking to bring back your skin's natural color? Connect with our
+    skilled homeopathic practitioners today for tailored treatment plans...
+  </p>
+  <div className="mt-5">
+    <Link
+      href="/appointment"
+      className="inline-block bg-green-700 text-white px-6 py-3 rounded-full font-semibold hover:bg-green-800 transition"
+    >
+      Book Your Consultation
+    </Link>
+  </div>
+</section>
       </main>
       <Footer />
     </>

@@ -23,12 +23,12 @@ export default function Header() {
 
         {/* Right: Buttons */}
         <div className="flex mx-3 gap-3">
-          <Link href="/public/appointment">
+          <Link href="/appointment">
             <span className="  bg-white text-green-700 font-medium px-4 py-2 rounded-md hover:bg-green-100 transition">
               Book an Appointment
             </span>
           </Link>
-          <Link href="/public/patients/addNew">
+          <Link href="/register">
             <span className=" bg-white text-green-700 font-medium px-4 py-2 rounded-md hover:bg-green-100 transition">
               New Patient Register
             </span>
