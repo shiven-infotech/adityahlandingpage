@@ -4,6 +4,7 @@ import React from "react";
 import Header from "../../../components/header";   // Adjust paths if needed
 import Navbar from "../../../components/navbar";
 import Footer from "../../../components/footer";
+import Link from "next/link";
 
 export default function CracksOnHeelsPage() {
   return (
