@@ -26,7 +26,10 @@ export default function Navbar() {
         { label: "Fundamentals of Homeopathy", href: "/aboutus/fundamentalsofhomeopathy" },
         { label: "Myths & Facts About Homeopathy", href: "/aboutus/myths&factsabouthomeopathy" },
         {label:"Vision and Mission", href:"/aboutus/visionandmission"},
-        {label:"Our Team", href:"/aboutus/ourteam"}
+        {label:"Our Team", href:"/aboutus/ourteam"},
+        { label: "Why Homoeopathy", href: "/aboutus/whyhomoeopathy" },
+        { label: "Benefits of Homoeopathy", href: "/aboutus/benefitsofhomoeopathy" },
+       
       ],
     },
     {
@@ -129,16 +132,17 @@ export default function Navbar() {
     },
 
     {
-      label: "Chronic Ailments",
+            label: "Chronic Ailments",
       children: [
-        { label: "Brain Aliments", 
-          href: "/ChronicAilments/brainaliments",
+        {
+           label: "Brain Ailments", 
+          href: "/chronicailments/brainailments/",
         
        children: [
-        { label: "Brain Infract", href: "/ChronicAilments/brainaliments/braininfarct" },
-        { label: "Brain Haemorrhage", href: "/ChronicAilments/brainaliments/brainhaemorrage" },
-        { label: "Haematoma of Brain", href: "/ChronicAilments/brainaliments/haematomaofbrain" },
-        { label: "Migraine Headache", href: "/ChronicAilments/brainaliments/migraineheadache" },
+        { label: "Brain Infarct", href: "/chronicailments/brainailments/braininfarct" },
+        { label: "Brain Haemorrhage", href: "/chronicailments/brainailments/brainhaemorrhage" },
+        { label: "Haematoma of Brain", href: "/chronicailments/brainailments/haematomaofbrain" },
+        { label: "Migraine Headache", href: "/chronicailments/brainailments/migraineheadache" },
        
       ],
     },

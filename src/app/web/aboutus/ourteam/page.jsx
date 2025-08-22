@@ -5,9 +5,9 @@ import AOS from "aos";
 import "aos/dist/aos.css";
 import Link from "next/link";
 
-import Header from "../../components/header";
-import Navbar from "../../components/navbar";
-import Footer from "../../components/footer";
+import Header from "../../../components/header";
+import Navbar from "../../../components/navbar";
+import Footer from "../../../components/footer";
 
 export default function TeamBalancePage() {
   useEffect(() => {
@@ -62,14 +62,14 @@ export default function TeamBalancePage() {
           <aside className="hidden md:flex flex-col gap-6 w-64 h-fit sticky top-24">
             {/* Sidebar 1 */}
             <nav className="  space-y-1">
-              <h3 className="text-xl text-green-700 font-semibold px-2">Health Packages</h3>
+              <h3 className="text-xl text-green-700 font-semibold px-2 ">Health Packages</h3>
               {sections.map((sec) => (
                 <Link
                   key={sec.id}
                   href={sec.id}
-                  className="flex  hover:text-green-700 transition"
+                  className="flex items-center  hover:text-green-700 transition"
                 >
-                  <span className="p-1">{sec.icon}</span>
+                  <span className="text-lg p-1">{sec.icon}</span>
                   {sec.label}
                 </Link>
               ))}
@@ -78,13 +78,16 @@ export default function TeamBalancePage() {
             {/* Sidebar 2 */}
             <nav className="p-1  space-y-1">
               <h3 className="text-xl text-green-700 font-semibold ">Main</h3>
-              <Link href="/aboutus/aboutus" className="block  hover:text-green-700 transition">About Us</Link>
-              <Link href="/aboutus/fundamentalsofhomeopathy" className="block  hover:text-green-700 transition">Fundamentals of Homeopathy</Link>
-              <Link href="/aboutus/myths&factsabouthomeopathy" className="block  hover:text-green-700 transition">Myths & Facts About Homeopathy</Link>
-              <Link href="/aboutus/visionandmission" className="block  hover:text-green-700 transition">Vision and Mission</Link>
-              <Link href="/aboutus/ourteam" className="block  hover:text-green-700 transition">Our Team</Link>
-              <Link href="/aboutus/whyhomoeopathy" className="block  hover:text-green-700 transition">Why Homoeopathy</Link>
-              <Link href="/aboutus/benefitsofhomoeopathy" className="block  hover:text-green-700 transition">Benefits of Homoeopathy</Link>
+
+              <Link href="/aboutus/aboutus" className="block hover:text-green-900 transition">About Us</Link>
+
+              <Link href="/aboutus/fundamentalsofhomeopathy" className="block  hover:text-green-900 transition">Fundamentals of Homeopathy</Link>
+
+              <Link href="/aboutus/myths&factsabouthomeopathy" className="block  hover:text-green-900 transition">Myths & Facts About Homeopathy</Link>
+
+              <Link href="/aboutus/visionandmission" className="block  hover:text-green-900 transition">Vision and Mission</Link>
+
+              <Link href="/aboutus/teambalance" className="block  hover:text-green-900 transition">Our Team</Link>
             </nav>
           </aside>
 
