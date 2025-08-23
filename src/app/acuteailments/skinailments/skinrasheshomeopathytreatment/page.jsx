@@ -3,7 +3,7 @@ import React from "react";
 import Header from "../../../components/header";
 import Navbar from "../../../components/navbar";
 import Footer from "../../../components/footer";
-
+import Link from "next/link";
 export default function SkinRashesPage() {
   return (
     <>
@@ -31,7 +31,7 @@ export default function SkinRashesPage() {
         <section className="flex flex-col md:flex-row items-start gap-6">
           <div className="md:w-2/3">
             <h2 className="text-3xl text-green-700 font-semibold mb-2">
-              How can homeopathy treatment be a good option for Skin Rashes?
+              How can homoeopathy treatment be a good option for Skin Rashes?
             </h2>
             <ul className="list-disc pl-5 text-lg space-y-3">
               <li>
@@ -60,32 +60,65 @@ export default function SkinRashesPage() {
           </div>
         </section>
 
-        {/* Comparison with Other Treatments */}
-        <section>
-          <h2 className="text-2xl text-green-700 font-semibold mb-2">Comparison with Other Treatments</h2>
-          <ul className="list-disc pl-5 space-y-3">
-            <li>
-              <strong>Conventional Treatments:</strong> These are treatments you might get from a regular doctor.
-              They often help with the symptoms of your rash, like itching or redness, but they don't always figure out why the rash happened in the first place.
-              So, while they can give you relief, they might not stop the rash from coming back.
-            </li>
-            <li>
-              <strong>Topical Treatments:</strong> These are creams or ointments you put directly on your skin.
-              They can make your rash feel better temporarily by soothing the skin, but they might not get to the root of the problem like homeopathy does.
-              So, they're good for quick relief but might not prevent future rashes.
-            </li>
-            <li>
-              <strong>Oral Medications:</strong> These are pills or liquids you take by mouth.
-              They can be effective for some rashes, but they can also have side effects like upset stomach or drowsiness.
-              Homeopathy, on the other hand, is a safer option because it uses natural ingredients that are gentler on your body.
-            </li>
-            <li>
-              <strong>Herbal Remedies:</strong> These are treatments made from plants. They're similar to homeopathy in being natural,
-              but they might not be as personalized. Homeopathy considers your unique rash and overall health to create a customized treatment plan,
-              which can be more effective for specific rashes.
-            </li>
-          </ul>
-        </section>
+       {/* Causes of Skin Rashes */}
+<section className="  ">
+  <h2 className="text-3xl font-bold text-green-700 mb-4 ">
+    Causes of Skin Rashes
+  </h2>
+  <div className=" text-lg space-y-4 leading-relaxed">
+    <p>
+      Skin rashes can occur due to a wide range of factors, and they often appear
+      as red, itchy, or inflamed patches on the skin. One of the most common
+      causes is allergic reactions, which may be triggered by certain foods,
+      insect bites, medications, or direct contact with substances like soaps,
+      detergents, or plants such as poison ivy.
+    </p>
+    <p>
+      Infections, whether bacterial, viral, or fungal, are also significant
+      contributors to skin rashes. Conditions such as measles, chickenpox, ringworm,
+      or impetigo can all present with rashes as a primary symptom. Additionally,
+      autoimmune disorders like eczema, psoriasis, and lupus can lead to
+      recurrent or chronic rashes that may flare up under stress or environmental
+      triggers.
+    </p>
+    <p>
+      Heat and excessive sweating can result in heat rashes, particularly in hot
+      and humid climates. Stress, hormonal imbalances, and certain underlying
+      medical conditions can also play a role. Identifying the exact cause is
+      essential to managing and treating rashes effectively.
+    </p>
+  </div>
+</section>
+
+    
+   {/* Signs and Symptoms of Skin Rashes */}
+<section className="    ">
+  <h2 className="text-3xl font-bold text-green-700 mb-4">
+    Signs and Symptoms of Skin Rashes
+  </h2>
+  <div className=" text-lg space-y-4 leading-relaxed">
+    <p>
+      The signs and symptoms of skin rashes vary depending on the underlying
+      cause, but most rashes share some common features. The skin often becomes
+      red, inflamed, and itchy, causing noticeable discomfort. Some rashes may
+      also produce a burning or stinging sensation.
+    </p>
+    <p>
+      Small bumps, blisters, or patches of scaly, dry skin can develop and may
+      spread across different areas of the body. In certain cases, the rash may
+      ooze fluid, crust over, or cause pain, especially when linked to infections
+      or allergic reactions.
+    </p>
+    <p>
+      In chronic conditions like eczema or psoriasis, rashes may recur frequently
+      and cause thickened or cracked skin over time. Other symptoms such as
+      swelling, fever, or fatigue may accompany the rash if it is part of a
+      systemic condition or infection.
+    </p>
+  </div>
+</section>
+
+
 
         {/* FAQs - with image on left */}
         <section className="flex flex-col md:flex-row items-start gap-6">
@@ -99,26 +132,26 @@ export default function SkinRashesPage() {
           </div>
 
           <div className="md:w-2/3 order-1 md:order-2">
-            <h2 className="text-2xl  text-green-700 font-semibold mb-4">
-              FAQs about Skin Rashes Homeopathy Treatment
+            <h2 className="text-3xl  text-green-700 font-semibold mb-4">
+              FAQs about Skin Rashes Homoeopathy Treatment
             </h2>
-            <div className="space-y-5">
+            <div className="space-y-5 text-lg">
               <div>
-                <strong>How does homeopathy determine the best remedy for my skin rash?</strong>
+                <strong className="text-green-700">How does homeopathy determine the best remedy for my skin rash?</strong>
                 <p>
                   Homeopathy considers your specific rash symptoms, like appearance, itchiness, and triggers like allergies or stress.
                   It matches these details with natural remedies known to help similar symptoms, creating a personalized treatment plan just for you.
                 </p>
               </div>
               <div>
-                <strong>Are homeopathic remedies safe for children with skin rashes?</strong>
+                <strong className="text-green-700">Are homeopathic remedies safe for children with skin rashes?</strong>
                 <p>
                   Yes, homeopathic remedies are generally safe for children with skin rashes.
                   They are gentle and don't have harsh chemicals, making them a good choice for soothing rashes in kids without worrying about side effects.
                 </p>
               </div>
               <div>
-                <strong>Can homeopathy treat chronic skin conditions causing rashes?</strong>
+                <strong className="text-green-700">Can homeopathy treat chronic skin conditions causing rashes?</strong>
                 <p>
                   Yes, homeopathy can be effective for chronic skin conditions that lead to rashes.
                   By addressing the root cause and promoting balance in your body's natural healing processes,
@@ -126,7 +159,7 @@ export default function SkinRashesPage() {
                 </p>
               </div>
               <div>
-                <strong>How long does it take to see improvement with homeopathic treatment for skin rashes?</strong>
+                <strong className="text-green-700">How long does it take to see improvement with homeopathic treatment for skin rashes?</strong>
                 <p>
                   The time it takes to see improvement varies depending on factors like the type and severity of the rash,
                   your overall health, and how closely you follow the treatment plan.
@@ -134,7 +167,7 @@ export default function SkinRashesPage() {
                 </p>
               </div>
               <div>
-                <strong>Are there any lifestyle changes recommended alongside homeopathy for skin rashes?</strong>
+                <strong className="text-green-700">Are there any lifestyle changes recommended alongside homeopathy for skin rashes?</strong>
                 <p>
                   Alongside homeopathic treatment, lifestyle changes can support skin health and recovery.
                   This may include avoiding triggers like allergens, maintaining good hygiene, staying hydrated,
@@ -146,17 +179,24 @@ export default function SkinRashesPage() {
           </div>
         </section>
 
-        {/* Call to Action */}
-        <section className="bg-green-100 p-6 rounded-md shadow-md mt-12 text-center">
-          <h3 className="text-xl font-semibold text-green-700 mb-2">
-            Ready for Relief?
-          </h3>
-          <p>
-            If you're struggling with annoying skin rashes, consider talking to a skilled homeopath.
-            They can offer personalized and natural treatments that may help your skin feel better and healthier again.
-            Don't let rashes bother you—find relief with a homeopathic approach!
-          </p>
-        </section>
+       {/* Call to Action */}
+<section className=" p-6 mt-12 text-center">
+  <h3 className="text-3xl font-semibold text-green-700 mb-2">
+    Ready for Relief?
+  </h3>
+  <p className=" text-lg mb-4">
+    If you're struggling with annoying skin rashes, consider talking to a skilled homeopath.
+    They can offer personalized and natural treatments that may help your skin feel better and healthier again.
+    Don't let rashes bother you—find relief with a homeopathic approach!
+  </p>
+  <Link
+    href="/appointment" // 👉 change this path to where you want
+    className="inline-block bg-green-600 text-white px-5 py-2 rounded-lg shadow-md hover:bg-green-700 transition"
+  >
+    Book An Appointment
+  </Link>
+</section>
+
       </main>
       <Footer />
     </>

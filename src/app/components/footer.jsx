@@ -54,19 +54,19 @@ export default function Footer() {
           </div>
          
           <div className="flex gap-4 text-xl flex-wrap">
-            <a href="https://www.facebook.com" target="_blank" rel="noopener noreferrer" className="hover:text-yellow-300">
+            <a href="https://www.facebook.com/adityhomeoclinic" target="_blank" rel="noopener noreferrer" className="hover:text-yellow-300">
               <FaFacebookF />
             </a>
-            <a href="https://www.instagram.com" target="_blank" rel="noopener noreferrer" className="hover:text-yellow-300">
+            <a href="https://www.instagram.com/homoeopathiclinicaditya" target="_blank" rel="noopener noreferrer" className="hover:text-yellow-300">
               <FaInstagram />
             </a>
             <a href="https://wa.me/919876543210" target="_blank" rel="noopener noreferrer" className="hover:text-yellow-300">
               <FaWhatsapp />
             </a>
-            <a href="https://www.linkedin.com" target="_blank" rel="noopener noreferrer" className="hover:text-yellow-300">
+            <a href="https://www.linkedin.com/in/aditya-homomeopathic-clinic" target="_blank" rel="noopener noreferrer" className="hover:text-yellow-300">
               <FaLinkedinIn />
             </a>
-            <a href="https://www.youtube.com" target="_blank" rel="noopener noreferrer" className="hover:text-yellow-300">
+            <a href="https://www.youtube.com/channel/UCRqHt06am_aaC5y7KuueNxg" target="_blank" rel="noopener noreferrer" className="hover:text-yellow-300">
               <FaYoutube />
             </a>
             <a href="https://www.twitter.com" target="_blank" rel="noopener noreferrer" className="hover:text-yellow-300">
