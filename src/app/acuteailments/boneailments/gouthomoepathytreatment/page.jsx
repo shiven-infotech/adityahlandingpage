@@ -9,13 +9,13 @@ export default function GoutPage() {
     <>
       <Header />
       <Navbar />
-      <main className="max-w-screen text-center bg-[#e3ffe0] mx-auto px-4 py-10 space-y-10 text-gray-800">
+      <main className="max-w-screen  bg-[#e3ffe0] mx-auto px-4 py-4 space-y-8">
         <section>
-          <h1 className="text-3xl font-bold text-center mb-6">
-            Gout Homeopathy Treatment
+          <h1 className="text-4xl text-green-700 font-bold text-center mb-6">
+            Gout Homoeopathy Treatment
           </h1>
-          <h2 className="text-xl font-semibold mb-2">Understanding Gout</h2>
-          <p className="mb-4">
+         
+          <p className="mb-4 text-3xl text-green-700">
             <strong>What is Gout?</strong>
           </p>
           <p className="mb-4">
@@ -48,10 +48,10 @@ export default function GoutPage() {
         </section>
 
         <section>
-          <h2 className="text-2xl font-semibold mb-4">
-            Why Choose Homeopathy for Gout?
+          <h2 className="text-3xl text-green-700 font-semibold mb-4">
+            Why Choose Homoeopathy for Gout?
           </h2>
-          <ul className="list-disc pl-6 space-y-2">
+          <ul className=" space-y-2">
             <li>
               <strong>Holistic Approach:</strong> Homeopathy looks at your
               entire health, not just the gout symptoms. It tries to understand
