@@ -92,37 +92,154 @@ export default function AppointmentPage() {
                 options={["Dr. Shital Khodke"]}
                 required
               />
-             {/* Appointment Mode */}
-<div>
-  <label className="block text-sm font-medium text-gray-700 mb-1">
-    Appointment Mode
-  </label>
-  <div className="flex items-center gap-4">
-    <RadioField
-      label="Online"
-      value="online"
-      checked={mode === "online"}
-      onChange={() => setMode("online")}
-    />
-    <RadioField
-      label="Offline"
-      value="offline"
-      checked={mode === "offline"}
-      onChange={() => setMode("offline")}
-    />
-    {mode === "offline" && (
-      <div className="flex-1">
-        <InputField
-          label="Clinic Address"
-          name="clinicAddress"
-          className="w-full"
-        />
-      </div>
-    )}
-  </div>
-</div>
+              <div>
+                <label className="block text-sm font-medium text-gray-700 mb-1">Appointment Mode</label>
+                <div className="flex items-center gap-4">
+                  <RadioField label="Online" value="online" checked={formData.IsOnline} onChange={() => setFormData((prev) => ({ ...prev, IsOnline: true }))} />
+                  <RadioField label="Offline" value="offline" checked={!formData.IsOnline} onChange={() => setFormData((prev) => ({ ...prev, IsOnline: false }))} />
+                </div>
+              </div>
 
-              {/* Calendar + Slots + Consultation */}
+              <div className="flex flex-col">
+                <div className="flex items-center gap-2 w-full md:w-auto">
+                  <InputField
+                    required={true}
+                    label="Enter Phone Number"
+                    placeholder="Contact Number"
+                    onChange={(e) => {
+                      setFormData((prev) => ({ ...prev, patient: { ...prev.patient, phone: e.target.value } }));
+                      setCustomers([])
+                      setphone(false);
+                    }}
+                    value={formData?.patient.phone}
+                    type="text"
+                    name="phoneNumber"
+                    error={formError?.patient?.phone}
+                  />
+                  <button
+                    type="button"
+                    className="px-2 py-1 mt-5 bg-green-600 text-white rounded"
+                    onClick={() => {
+                      if (formData?.patient?.phone) {
+                        getItem(`customer?search=${formData?.patient?.phone}`).then((data) => {
+                          setCustomers(data);
+                          setphone(true);
+                        });
+                      }
+                    }}
+                  >
+                  {/* test */}
+                    Submit
+                  </button>
+                </div>
+             {phone &&   <div className="flex justify-start gap-10 items-center w-full p-3 m-2 border border-gray-300 rounded-lg">
+                  <SelectField
+                    options={
+                      customers?.map((p) => ({
+                        label: `${p?.firstName} ${p?.surname}`,
+                        value: p?._id,
+                      })) || []
+                    }
+                    value={formData?.patient?.id}
+                    onChange={(e) => {
+                      const selectedPatient = customers?.find((p) => p?._id === e.target.value);
+                      if (selectedPatient) {
+                        setFormData((prev) => ({
+                          ...prev,
+                          patient: {
+                            id: selectedPatient?._id,
+                            name: selectedPatient?.firstName,
+                            phone: selectedPatient?.mobile,
+                            surname: selectedPatient?.surname,
+                          },
+                        }));
+                      }
+                    }}
+                    placeholder="Select Patient"
+                    label={"Select Existing"}
+                    name={"name"}
+                    error={formError?.patient?.name}
+                  />
+                  <span className="text-black">OR</span>
+                  <InputField
+                    required={true}
+                    label="Create New"
+                    name="name"
+                    onChange={(e) => {
+                      let selectedPatient = customers?.filter((p) => `${p?.firstName} ${p?.surname}` == e.target.value)?.[0];
+                      let fullname = e.target.value?.split(' ')
+                      if (selectedPatient === undefined) {
+                        setFormData((prev) => ({ ...prev, patient: {...prev?.patient, name:fullname?.[0], surname:fullname?.[1]} }));
+                      } 
+                    }}
+                    value={customers?.filter((p) => p?._id == formData?.patient?.id)?.[0]?.firstName}
+                    error={formError?.patient?.name}
+                    placeholder="[firstname lastname]"
+                  />
+                </div>}
+              </div>
+
+              {formData.selectedRole === "doctor" && doctorsData?.length > 0 && (
+                <SelectField
+                  options={doctorsData?.map((doctor) => ({
+                    value: doctor._id,
+                    label: doctor.name,
+                  }))}
+                  value={formData?.doctor?.id}
+                  onChange={(e) => {
+                    let selectedDoctor = doctorsData?.filter((i) => i?._id == e.target.value)?.[0];
+                    const { _id, name } = selectedDoctor;
+                    setFormData((prev) => ({ ...prev, doctor: { id: _id, name: name } }));
+                  }}
+                  placeholder="Select Doctor"
+                  label={"Select Doctor"}
+                  name={"doctor"}
+                  error={formError.doctor}
+                />
+              )}
+
+              {formData.selectedRole === "assistantDoctor" && (
+                <>
+                  <SelectField
+                    options={assistantDoctor?.map((doctor) => ({
+                      value: doctor._id,
+                      label: doctor.name,
+                    }))}
+                    value={formData?.doctor?.id}
+                    onChange={(e) => {
+                      let selectedDoctor = assistantDoctor?.filter((i) => i?._id == e.target.value)?.[0];
+                      const { _id, name } = selectedDoctor;
+                      setFormData((prev) => ({ ...prev, doctor: { id: _id, name: name } }));
+                    }}
+                    placeholder="Select Assistant Doctor"
+                    label={"Select Assistant Doctor"}
+                    name={"doctor"}
+                    error={formError.doctor}
+                  />
+                </>
+              )}
+
+              {formData.selectedRole === "consultant" && consultantDoctors?.length > 0 && (
+                <>
+                  <SelectField
+                    options={consultantDoctors?.map((consultant) => ({
+                      value: consultant._id,
+                      label: consultant.name,
+                    }))}
+                    value={formData?.doctor?.id}
+                    onChange={(e) => {
+                      let selectedDoctor = consultantDoctors?.filter((i) => i?._id == e.target.value)?.[0];
+                      const { _id, name } = selectedDoctor;
+                      setFormData((prev) => ({ ...prev, doctor: { id: _id, name: name } }));
+                    }}
+                    placeholder="Select Consultant"
+                    label={"Select Consultant"}
+                    name={"doctor"}
+                    error={formError.Consultant}
+                  />
+                </>
+              )}
+
               <div className="grid grid-cols-1 md:grid-cols-[40%_60%] ">
                 {/* Calendar */}
                 <div>
