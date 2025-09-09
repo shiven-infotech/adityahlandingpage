@@ -11,6 +11,12 @@ import Header from "../../components/header";
 import Navbar from "../../components/navbar";
 import Footer from "../../components/footer";
 
+import {useDispatch, useSelector} from "react-redux";
+import { toast } from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css';
+import { CreateQuestions, CreateTestimonials } from "../../../../Redux/Api/LandingPageFormsApi";
+
+
 // ✅ Make sure form is rendered only on client (avoids hydration issues)
 const ClientForm = dynamic(() => Promise.resolve(FormComponent), { ssr: false });
 
@@ -170,20 +176,23 @@ export default function PatientTestimonialsPage() {
 // ✅ Client-only form component
 function FormComponent() {
   const [formData, setFormData] = useState({
-    firstName: "",
-    lastName: "",
-    mobile: "",
+    firstname: "",
+    lastname: "",
+    mobileNo: "",
     subject: "",
     feedback: "",
     rating: 5,
-    photo: null,
+    image: null,
   });
+
+  const dispatch = useDispatch()
+
   const [preview, setPreview] = useState(null);
   const [submitted, setSubmitted] = useState(false);
 
   const handleChange = (e) => {
     const { name, value, files } = e.target;
-    if (name === "photo") {
+    if (name === "image") {
       const file = files[0];
       setFormData((prev) => ({ ...prev, photo: file }));
       setPreview(file ? URL.createObjectURL(file) : null);
@@ -192,8 +201,13 @@ function FormComponent() {
     }
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
+
+            if (formData.mobileNo.length !== 10) {
+      toast.error("Mobile number should be 10 digits");
+      return;
+            }
 
     // If sending to backend, use FormData
     const data = new FormData();
@@ -203,11 +217,14 @@ function FormComponent() {
 
     console.log("Submitted Testimonial:", formData);
 
+    await dispatch(CreateTestimonials(formData))
+    toast.success("Form submitted successfully");
+
     setSubmitted(true);
     setFormData({
-      firstName: "",
-      lastName: "",
-      mobile: "",
+      firstname: "",
+      lastname: "",
+      mobileNo: "",
       subject: "",
       feedback: "",
       rating: 5,
@@ -232,8 +249,8 @@ function FormComponent() {
             <label className="block text-gray-700 font-medium mb-1">First Name</label>
             <input
               type="text"
-              name="firstName"
-              value={formData.firstName}
+              name="firstname"
+              value={formData.firstname}
               onChange={handleChange}
               required
               className="w-full border border-gray-300 rounded-md p-2"
@@ -244,8 +261,8 @@ function FormComponent() {
             <label className="block text-gray-700 font-medium mb-1">Last Name</label>
             <input
               type="text"
-              name="lastName"
-              value={formData.lastName}
+              name="lastname"
+              value={formData.lastname}
               onChange={handleChange}
               required
               className="w-full border border-gray-300 rounded-md p-2"
@@ -259,8 +276,8 @@ function FormComponent() {
           <label className="block text-gray-700 font-medium mb-1">Mobile Number</label>
           <input
             type="tel"
-            name="mobile"
-            value={formData.mobile}
+            name="mobileNo"
+            value={formData.mobileNo}
             onChange={handleChange}
             required
             pattern="[0-9]{10}"
@@ -319,7 +336,7 @@ function FormComponent() {
           <label className="block text-gray-700 font-medium mb-1">Your Photo</label>
           <input
             type="file"
-            name="photo"
+            name="image"
             accept="image/*"
             onChange={handleChange}
             className="w-full border border-gray-300 rounded-md p-2"

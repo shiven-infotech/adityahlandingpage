@@ -7,15 +7,21 @@ import Link from "next/link";
 import Header from "../../components/header";
 import Navbar from "../../components/navbar";
 import Footer from "../../components/footer";
+import {useDispatch, useSelector} from "react-redux";
+import { toast } from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css';
+import { CreateContactUs } from "../../../../Redux/Api/LandingPageFormsApi";
 
 export default function ContactUsPage() {
   const [formData, setFormData] = useState({
     firstname: "",
     lastname: "",
-    mobilenumber: "",
+    mobileNo: "",
     city: "",
     query: "",
   });
+
+  const dispatch = useDispatch()
 
   useEffect(() => {
     AOS.init({ duration: 800, once: true });
@@ -28,9 +34,26 @@ export default function ContactUsPage() {
     }));
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
+
+    //mobileNo should be 10 numbers
+    if (formData.mobileNo.length !== 10) {
+      toast.error("Mobile number should be 10 digits");
+      return;
+    }
+
     console.log("Form submitted:", formData);
+    await dispatch(CreateContactUs(formData))
+    setFormData({
+    firstname: "",
+    lastname: "",
+    mobileNo: "",
+    city: "",
+    query: "",
+    })
+    toast.success("Form submitted successfully");
+
     // You can add actual form submission logic here
   };
 
@@ -142,8 +165,8 @@ export default function ContactUsPage() {
                   <label className="font-medium">Mobile Number</label>
                   <input
                     type="tel"
-                    name="mobilenumber"
-                    value={formData.mobilenumber}
+                    name="mobileNo"
+                    value={formData.mobileNo}
                     onChange={handleChange}
                     required
                     className="w-full border rounded-md px-3 py-2"
@@ -154,7 +177,7 @@ export default function ContactUsPage() {
                   <input
                     type="text"
                     name="subject"
-                    value={formData.city}
+                    value={formData.subject}
                     onChange={handleChange}
                     className="w-full border rounded-md px-3 py-2"
                   />

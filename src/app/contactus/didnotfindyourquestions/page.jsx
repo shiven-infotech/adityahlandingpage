@@ -7,16 +7,21 @@ import Link from "next/link";
 import Header from "../../components/header";
 import Navbar from "../../components/navbar";
 import Footer from "../../components/footer";
+import {useDispatch, useSelector} from "react-redux";
+import { toast } from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css';
+import { CreateQuestions } from "../../../../Redux/Api/LandingPageFormsApi";
 
 export default function DidNotFindYourQuestionPage() {
   const [formData, setFormData] = useState({
-    firstName: "",
-    lastName: "",
-    mobile: "",
+    firstname: "",
+    lastname: "",
+    mobileNo: "",
     subject: "",
-    question: "",
-    date: "",
+    query: "",
   });
+
+    const dispatch = useDispatch()
 
   const faqs = [
     { question: "Is homeopathy safe for children?", answer: "Yes, homeopathy is safe and effective for all age groups." },
@@ -40,10 +45,24 @@ export default function DidNotFindYourQuestionPage() {
     }));
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
+        if (formData.mobileNo.length !== 10) {
+      toast.error("Mobile number should be 10 digits");
+      return;
+
+    }
     console.log("Submitted Question:", formData);
     // API submission logic here
+            await dispatch(CreateQuestions(formData))
+        setFormData({
+        firstname: "",
+        lastname: "",
+        mobileNo: "",
+        subject: "",
+        query: "",
+        })
+        toast.success("Form submitted successfully");
   };
 
   const sections = [
@@ -109,15 +128,15 @@ export default function DidNotFindYourQuestionPage() {
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
         <div>
           <label className="block font-medium">First Name</label>
-          <input type="text" name="firstName" value={formData.firstName} onChange={handleInputChange} required className="w-full p-2 border rounded-md" />
+          <input type="text" name="firstname" value={formData.firstname} onChange={handleInputChange} required className="w-full p-2 border rounded-md" />
         </div>
         <div>
           <label className="block font-medium">Last Name</label>
-          <input type="text" name="lastName" value={formData.lastName} onChange={handleInputChange} required className="w-full p-2 border rounded-md" />
+          <input type="text" name="lastname" value={formData.lastname} onChange={handleInputChange} required className="w-full p-2 border rounded-md" />
         </div>
         <div>
           <label className="block font-medium">Mobile Number</label>
-          <input type="tel" name="mobile" value={formData.mobile} onChange={handleInputChange} required className="w-full p-2 border rounded-md" />
+          <input type="tel" name="mobileNo" value={formData.mobileNo} onChange={handleInputChange} required className="w-full p-2 border rounded-md" />
         </div>
         <div>
           <label className="block font-medium">Subject</label>
@@ -126,7 +145,7 @@ export default function DidNotFindYourQuestionPage() {
       </div>
       <div>
         <label className="block font-medium">Your Question</label>
-        <textarea name="question" value={formData.question} onChange={handleInputChange} required rows="4" className="w-full p-2 border rounded-md" />
+        <textarea name="query" value={formData.query} onChange={handleInputChange} required rows="4" className="w-full p-2 border rounded-md" />
       </div>
       <button type="submit" className="bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700">
         Submit

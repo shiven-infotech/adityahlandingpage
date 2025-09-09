@@ -7,16 +7,22 @@ import Link from "next/link";
 import Header from "../../components/header";
 import Navbar from "../../components/navbar";
 import Footer from "../../components/footer";
+import {useDispatch, useSelector} from "react-redux";
+import { toast } from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css';
+import { CreateCallBack } from "../../../../Redux/Api/LandingPageFormsApi";
 
 export default function RequestACallbackPage() {
   const [mounted, setMounted] = useState(false);
   const [formData, setFormData] = useState({
     firstname: "",
     lastname: "",
-    mobilenumber: "",
+    mobileNo: "",
     subject: "",
     query: "",
   });
+
+  const dispatch = useDispatch()
 
   useEffect(() => {
     setMounted(true);
@@ -30,10 +36,27 @@ export default function RequestACallbackPage() {
     }));
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
+
+        if (formData.mobileNo.length !== 10) {
+      toast.error("Mobile number should be 10 digits");
+      return;
+
+    }
     console.log("Form submitted:", formData);
     // Add actual submission logic here
+
+        await dispatch(CreateCallBack(formData))
+        setFormData({
+        firstname: "",
+        lastname: "",
+        mobileNo: "",
+        subject: "",
+        query: "",
+        })
+        toast.success("Form submitted successfully");
+    
   };
 
   const sections = [
@@ -111,8 +134,8 @@ export default function RequestACallbackPage() {
                   <label className="font-medium">Mobile Number</label>
                   <input
                     type="tel"
-                    name="mobilenumber"
-                    value={formData.mobilenumber}
+                    name="mobileNo"
+                    value={formData.mobileNo}
                     onChange={handleChange}
                     required
                     className="w-full border rounded-md px-3 py-2"

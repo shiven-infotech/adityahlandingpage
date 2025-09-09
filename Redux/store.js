@@ -1,10 +1,12 @@
 "use client";
 import { configureStore } from "@reduxjs/toolkit";
-import RegisterUserReducer from "./Slice/Auth/Register";
-import LoginReducer from "./Slice/Auth/Login";
 import storage from "redux-persist/lib/storage"; // defaults to localStorage
 import { persistReducer, persistStore } from "redux-persist";
 import { combineReducers } from "redux";
+
+import RegisterUserReducer from "./Slice/Auth/Register";
+import LoginReducer from "./Slice/Auth/Login";
+import FormsReducer from "./Slice/formSlice"
 
 const persistConfig = {
   key: "root",
@@ -14,6 +16,7 @@ const persistConfig = {
 const rootReducer = combineReducers({
   RegisterAPI: RegisterUserReducer,
   LoginAPI: LoginReducer,
+  FormsAPI: FormsReducer
 });
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);
