@@ -1,12 +1,10 @@
+"use client";
 import { createSlice } from "@reduxjs/toolkit";
 import { LoginUser } from "../../Api/AuthApi";
-
-const savedUser = JSON.parse(localStorage.getItem("user")) || [];
 
 const loginSlice = createSlice({
   name: "users/loginUser",
   initialState: {
-    data: savedUser,
     status: "idle",
     error: null,
   },
@@ -15,7 +13,6 @@ const loginSlice = createSlice({
       state.data = [];
       state.status = "idle";
       state.error = null;
-      localStorage.removeItem("user");
     },
   },
   extraReducers: (builder) => {
@@ -25,12 +22,7 @@ const loginSlice = createSlice({
       })
       .addCase(LoginUser.fulfilled, (state, action) => {
         state.status = "succeeded";
-        state.data = [action.payload]; // Store logged-in user data
-        localStorage.setItem("user", JSON.stringify(state.data));
-        let storedUser
-        storedUser = JSON.parse(localStorage.getItem("user"));
-        console.log("storedUser:", storedUser);  // Debug stored user
-
+        state.data = [action.payload]; 
       })
       .addCase(LoginUser.rejected, (state, action) => {
         state.status = "failed";

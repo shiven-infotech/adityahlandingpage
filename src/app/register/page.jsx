@@ -4,23 +4,32 @@ import { useEffect, useState } from "react";
 import Link from "next/link";
 import AOS from "aos";
 import "aos/dist/aos.css";
+import { useDispatch, useSelector } from 'react-redux';
 
 import Header from "../components/header";
 import Navbar from "../components/navbar";
 import Footer from "../components/footer";
+import { registerUser } from "../../../Redux/Api/AuthApi";
+import { toast } from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css';
+
 
 export default function OnlineFormsPage() {
   const [form, setForm] = useState({
     firstName: "",
-    lastName: "",
+    surname: "",
     mobile: "",
-    address: "",
+    location: "",
     city: "",
     state: "",
     country: "",
     gender: "",
-    pinCode: "",
+    pincode: "",
+    password:""
   });
+
+  const dispatch =  useDispatch();
+  const {} = useSelector((state) => state.RegisterAPI);
 
   useEffect(() => {
     AOS.init({ duration: 800 });
@@ -31,10 +40,34 @@ export default function OnlineFormsPage() {
     setForm((prev) => ({ ...prev, [name]: value }));
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log("Form Submitted:", form);
+    // console.log("Form Submitted:", form);
+    
+        const mobileRegex = /^\d{10}$/;
+    if (!mobileRegex.test(form.mobile)) {
+      toast.error("Mobile number must be exactly 10 digits!");
+      return;
+    }
+
     // TODO: Add submission logic
+    try{
+    await dispatch(registerUser(form))
+    toast.success("Form submitted successfully!");
+    setForm({    firstName: "",
+    surname: "",
+    mobile: "",
+    location: "",
+    city: "",
+    state: "",
+    country: "",
+    gender: "",
+    pincode: "",
+    password: ""
+  })
+    } catch (error) {
+    toast.error("Something went wrong. Please try again.");
+  }
   };
 
   return (
@@ -71,9 +104,23 @@ export default function OnlineFormsPage() {
               <span className="text-gray-400 mr-2">👤</span>
               <input
                 type="text"
-                name="lastName"
+                name="surname"
                 placeholder="Last Name *"
-                value={form.lastName}
+                value={form.surname}
+                onChange={handleChange}
+                className="w-full p-2 outline-none"
+                required
+              />
+            </div>
+
+            {/* password */}
+            <div className="flex items-center border rounded px-3">
+              <span className="text-gray-400 mr-2">🔒</span>
+              <input
+                type="password"
+                name="password"
+                placeholder="Password *"
+                value={form.password}
                 onChange={handleChange}
                 className="w-full p-2 outline-none"
                 required
@@ -99,9 +146,9 @@ export default function OnlineFormsPage() {
               <span className="text-gray-400 mr-2">📍</span>
               <input
                 type="text"
-                name="address"
+                name="location"
                 placeholder="Address *"
-                value={form.address}
+                value={form.location}
                 onChange={handleChange}
                 className="w-full p-2 outline-none"
                 required
@@ -183,9 +230,9 @@ export default function OnlineFormsPage() {
               <span className="text-gray-400 mr-2">📨</span>
               <input
                 type="text"
-                name="pinCode"
+                name="pincode"
                 placeholder="Pin code *"
-                value={form.pinCode}
+                value={form.pincode}
                 onChange={handleChange}
                 className="w-full p-2 outline-none"
                 required

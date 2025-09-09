@@ -8,7 +8,11 @@ import Link from "next/link";
 import Header from "../components/header";
 import Navbar from "../components/navbar";
 import Footer from "../components/footer";
-
+import {useDispatch, useSelector} from "react-redux";
+import { LoginUser } from "../../../Redux/Api/AuthApi";
+import { toast } from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css';
+import { useRouter } from "next/navigation";
 
 
 export default function LoginPage() {
@@ -17,15 +21,24 @@ export default function LoginPage() {
   const [submitted, setSubmitted] = useState(false);
   const [hasMounted, setHasMounted] = useState(false);
 
+  const dispatch = useDispatch();
+  const router = useRouter();
+
   useEffect(() => {
     setHasMounted(true);
     AOS.init({ duration: 800, once: true });
   }, []);
 
-  const handleLogin = (e) => {
+  const handleLogin = async (e) => {
     e.preventDefault();
-    setSubmitted(true);
-    setTimeout(() => setSubmitted(false), 3000);
+    // setSubmitted(true);
+    // setTimeout(() => setSubmitted(false), 3000);
+    await dispatch(LoginUser({username,password}))
+    toast.success("Login successfully!");
+    setUsername("");
+    setPassword("");
+    router.push("/");
+    // history.push("/dashboard");
   };
 
   if (!hasMounted) return null;
