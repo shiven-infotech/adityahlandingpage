@@ -13,7 +13,7 @@ export const LoginUser = createAsyncThunk(
   "users/LoginUser",
   async (userData , { rejectWithValue }) => {
     try {
-      const res = await axios.post(`${END_POINT}/customer/login`, userData);
+      const res = await axios.post(`${END_POINT}/doctor/loginByName`, userData);
       return res.data;
     } catch (error) {
       if (error.response?.status === 404) {

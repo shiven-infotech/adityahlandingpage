@@ -12,7 +12,7 @@ import {useDispatch, useSelector} from "react-redux";
 import { LoginUser } from "../../../Redux/Api/AuthApi";
 import { toast } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
-import { useRouter } from "next/navigation";
+import { redirect, useRouter } from "next/navigation";
 
 
 export default function LoginPage() {
@@ -27,6 +27,7 @@ export default function LoginPage() {
   useEffect(() => {
     setHasMounted(true);
     AOS.init({ duration: 800, once: true });
+    window.location.href = "https://admin.adityahomoeopathicclinic.com/dashboard";
   }, []);
 
   const handleLogin = async (e) => {
@@ -37,7 +38,7 @@ export default function LoginPage() {
     toast.success("Login successfully!");
     setUsername("");
     setPassword("");
-    router.push("/");
+    window.location.href = "https://admin.adityahomoeopathicclinic.com/dashboard";
     // history.push("/dashboard");
   };
 
