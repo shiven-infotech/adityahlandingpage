@@ -13,6 +13,98 @@ import Footer from "../components/footer";
 
 const Calendar = dynamic(() => import("react-calendar"), { ssr: false });
 
+let adityaurl = 'https://admin.adityahomoeopathicclinic.com/api/';
+// let adityaurl = "http://localhost:5500/";
+
+const initialState = {
+  doctor: undefined,
+  patient: { id: undefined, name: null, phone: "" },
+  bookTimeSlot: "",
+  selectedRole: "doctor",
+  IsOnline: false,
+  IsDoctor: true,
+};
+
+const getDateFormat = (date) => {
+  if (!date) return null;
+  const year = date.getFullYear();
+  const month = String(date.getMonth() + 1).padStart(2, "0");
+  const day = String(date.getDate()).padStart(2, "0");
+  return `${year}-${month}-${day}`;
+};
+
+const getAvailableDays = (selectedDoctor) => {
+  const availableDays = [];
+  const offDays = [];
+  const { availability } = selectedDoctor?.[0] || {};
+
+  Object.entries(availability || {}).forEach(([dateKey, dateValue]) => {
+    if (dateValue.a_status === "Available") {
+      availableDays.push(dateKey);
+    } else {
+      offDays.push(dateKey);
+    }
+  });
+
+  return availableDays;
+};
+
+const fetchAppointments = async (doctorId, date) => {
+  try {
+    const formattedDate = date;
+    const apiUrl = `${adityaurl}appointment/external?doctorName=${doctorId}&date=${formattedDate}&page=1&limit=100`;
+    const response = await fetch(apiUrl);
+
+    if (!response.ok) {
+      throw new Error("Failed to fetch appointments");
+    }
+
+    const data = await response.json();
+    return data;
+  } catch (error) {
+    console.error("Error fetching appointments:", error);
+    return null;
+  }
+};
+
+const createItem = async (path, data) => {
+  try {
+    const response = await fetch(`${adityaurl}${path}`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(data),
+    });
+
+    if (!response.ok) {
+      const errorData = await response.json();
+      // window.alert(errorData?.message || "Something went wrong");
+      throw new Error(errorData?.message || "Something went wrong");
+    }
+
+    const result = await response.json();
+    return result;
+  } catch (error) {
+    console.error("Error:", error);
+    // window.alert("Something went wrong while fetching data");
+  }
+};
+
+const getItem = async (path) => {
+  try {
+    const response = await fetch(`${adityaurl}${path}`);
+    if (!response.ok) {
+      throw new Error("Failed to fetch item");
+    }
+    const data = await response.json();
+    return data;
+  } catch (error) {
+    console.error("Error fetching item:", error);
+    return null;
+  }
+};
+
 export default function AppointmentPage() {
   const [date, setDate] = useState(null);
   const [mode, setMode] = useState("online");
@@ -20,15 +112,79 @@ export default function AppointmentPage() {
   const [selectedSlot, setSelectedSlot] = useState(null);
   const [hasMounted, setHasMounted] = useState(false);
   const [consultationType, setConsultationType] = useState("");
+  const [formData, setFormData] = useState(initialState);
+  const [formError, setFormError] = useState({});
+  const [doctorsData, setDoctorsData] = useState(null);
+  const [consultantDoctors, setConsultantDoctors] = useState(null);
+  const [customers, setCustomers] = useState(null);
+  const [assistantDoctor, setAssistantDoctor] = useState([]);
+  const [timeslots, settimeslots] = useState();
+  const [bookedSlot, setBookedSlot] = useState();
+  const [bookedAppointments, setBookeedAppointments] = useState();
+  const [phone, setphone] = useState(false)
 
-  const slots = [
-    { time: "10:00 AM", booked: false },
-    { time: "11:00 AM", booked: true },
-    { time: "12:00 PM", booked: false },
-    { time: "02:00 PM", booked: false },
-    { time: "03:00 PM", booked: true },
-    { time: "04:00 PM", booked: false },
-  ];
+  useEffect(() => {
+    console.log("fial form data", formData);
+  }, [formData]);
+
+  useEffect(() => {
+    let selectedDoctor = doctorsData?.filter((doctor) => doctor._id == formData?.doctor?.id)?.[0];
+    let ibookedSlots = selectedDoctor?.availability?.[getDateFormat(date)]?.timeSlots || [];
+    settimeslots(ibookedSlots);
+
+    fetchAppointments(formData?.doctor?.id, getDateFormat(date)).then((apn) => {
+      const bookedAppointments =
+        (Object.keys(apn || {}).length > 0 &&
+          apn?.filter((e) => e?.status !== "Cancelled")
+            .map((e) => ({
+              patient: e?.patient?.id,
+              bookedTime: e?.bookTimeSlot?._id,
+              bookedStatus: e?.status,
+              name: e?.patient?.name,
+            }))) ||
+        [];
+      setBookeedAppointments(bookedAppointments);
+    });
+  }, [date]);
+
+  useEffect(() => {
+    let apiUrl = "";
+    switch (formData?.selectedRole) {
+      case "doctor":
+        apiUrl = `${adityaurl}doctor/external/doctor`;
+        break;
+      case "assistantDoctor":
+        apiUrl = `${adityaurl}assistantDoctor`;
+        break;
+      case "consultant":
+        apiUrl = `${adityaurl}consultant`;
+        break;
+      default:
+        return;
+    }
+
+    const fetchData = async () => {
+      try {
+        const response = await fetch(apiUrl);
+        if (!response.ok) {
+          throw new Error("Failed to fetch data");
+        }
+        const data = await response.json();
+
+        if (formData?.selectedRole === "doctor") {
+          setDoctorsData(data);
+        } else if (formData?.selectedRole === "assistantDoctor") {
+          setAssistantDoctor(data);
+        } else if (formData?.selectedRole === "consultant") {
+          setConsultantDoctors(data);
+        }
+      } catch (error) {
+        console.error("Error fetching data:", error);
+      }
+    };
+
+    fetchData();
+  }, [formData?.selectedRole]);
 
   useEffect(() => {
     AOS.init({ duration: 800 });
@@ -36,14 +192,97 @@ export default function AppointmentPage() {
     setDate(new Date());
   }, []);
 
-  const handleSubmit = (e) => {
+  const handelButtonClick = (e) => {
     e.preventDefault();
-    if (!selectedSlot || !consultationType) {
-      alert("Please select a slot and consultation type before booking.");
-      return;
+    let isValidInput = true;
+    let updatedFormError = { ...formError };
+
+    if (!formData.patient || !formData.patient.name) {
+      updatedFormError.patient.name = "Patient Name is required!";
+      window.alert("Patient name is required!");
+      isValidInput = false;
+    } else {
+      if (formData?.patient?.id === undefined) {
+        if (!formData?.patient?.name || !formData?.patient?.surname) {
+          updatedFormError.patient.name = "Invalid format for Patient Name. Please provide both first name and surname.";
+          window.alert("Invalid patient name");
+          isValidInput = false;
+        }
+      }
     }
-    setSubmitted(true);
-    setTimeout(() => setSubmitted(false), 4000);
+
+    if (formData?.patient?.phone?.length < 10) {
+      window.alert("Invalid phone number");
+      isValidInput = false;
+    }
+
+    if (!formData.bookDate) {
+      // Validate date
+      updatedFormError.bookDate = "please select date";
+      window.alert("please select date");
+      isValidInput = false;
+    }
+
+    //  validate doctor name
+    if (!formData.bookTimeSlot._id) {
+      updatedFormError.bookTimeSlot = "please select time";
+      window.alert("please select time");
+      isValidInput = false;
+    }
+
+    // Set role-specific properties
+    if (formData.selectedRole === "consultant") {
+      formData.IsConsultant = true;
+    } else {
+      formData.IsConsultant = false;
+    }
+
+    if (formData.selectedRole === "assistantDoctor") {
+      formData.IsAssistantDoctor = true;
+    } else {
+      formData.IsAssistantDoctor = false;
+    }
+
+    if (formData.selectedRole === "doctor") {
+      formData.IsDoctor = true;
+    } else {
+      formData.IsDoctor = false;
+    }
+
+    formData.IsOnline = formData.IsOnline;
+    setFormError(updatedFormError);
+
+    if (isValidInput) {
+      if (formData?.patient?.id === undefined) {
+        let names = formData?.patient?.name?.split(" ");
+
+        createItem("public/customer/", { firstName: names?.[0], surname: names?.[1], mobile: formData?.patient?.phone }).then((e) => {
+          let data = e?.customer;
+          let updateData = { ...formData };
+          updateData.patient.name = names?.[0];
+          updateData.patient.surname = names?.[1];
+          updateData.patient.id = data?._id;
+
+          if (updateData?.patient.id !== undefined) {
+            createItem("public/appointment", updateData)
+              .then((apbook) => {
+                window.alert("Appointment booked successfully!");
+              })
+              .catch((err) => {
+                window.alert("Failed To Book");
+              });
+          }
+        });
+      } else {
+        createItem("public/appointment", formData)
+          .then((apbook) => {
+            window.alert("Appointment booked successfully!");
+          })
+          .catch((err) => {
+            window.alert("Failed To Book");
+          });
+      }
+    }
   };
 
   if (!hasMounted) return null;
@@ -53,43 +292,25 @@ export default function AppointmentPage() {
       <Header />
       <Navbar />
       <section className="bg-[#e3ffe0] py-2 px-3 sm:px-4 lg:px-6">
-        <form
-          className="max-w-screen mx-auto grid grid-cols-1 lg:grid-cols-[70%_30%] gap-6"
-          onSubmit={handleSubmit}
-        >
+        <form className="max-w-screen mx-auto grid grid-cols-1 lg:grid-cols-[70%_30%] gap-6" onSubmit={handelButtonClick}>
           {/* Form Section */}
-          <div
-            className="bg-white p-3 rounded-2xl shadow-md flex flex-col"
-            data-aos="fade-right"
-          >
-            <h2 className="text-2xl font-bold text-green-800 mb-2 text-center">
-              Book an Appointment
-            </h2>
+          <div className="bg-white p-3 rounded-2xl shadow-md flex flex-col" data-aos="fade-right">
+            <h2 className="text-2xl font-bold text-green-800 mb-2 text-center">Book an Appointment</h2>
 
-            {submitted && (
-              <div className="mb-3 p-2 rounded-lg bg-green-100 text-green-800 border border-green-300 animate-fadeIn text-sm">
-                ✅ Appointment submitted successfully!
-              </div>
-            )}
+            {submitted && <div className="mb-3 p-2 rounded-lg bg-green-100 text-green-800 border border-green-300 animate-fadeIn text-sm">✅ Appointment submitted successfully!</div>}
 
             <div className="space-y-2 flex-1">
-              {/* Name & Mobile */}
-              <div className="grid grid-cols-1 sm:grid-cols-3 gap-2">
-                <InputField label="First Name" name="firstName" required />
-                <InputField label="Last Name" name="lastName" required />
-                <InputField
-                  label="Mobile Number"
-                  name="mobileNumber"
-                  type="tel"
-                  required
-                />
-              </div>
-
-              {/* Doctor */}
               <SelectField
-                label="Doctor"
-                name="doctor"
-                options={["Dr. Shital Khodke"]}
+                label="Select Role"
+                name="selectedRole"
+                placeholder="Select Role"
+                options={[
+                  { value: "doctor", label: "Doctor" },
+                  { value: "consultant", label: "Consultant" },
+                  { value: "assistantDoctor", label: "Assistant Doctor" },
+                ]}
+                onChange={(e) => setFormData((prev) => ({ ...prev, selectedRole: e.target.value }))}
+                error={formError.selectedRole}
                 required
               />
               <div>
@@ -241,77 +462,59 @@ export default function AppointmentPage() {
               )}
 
               <div className="grid grid-cols-1 md:grid-cols-[40%_60%] ">
-                {/* Calendar */}
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-1">
-                    Choose a Date
-                  </label>
+                  <label className="block text-sm font-medium text-gray-700 mb-1">Choose a Date</label>
                   <Calendar
                     locale="en-GB"
                     onChange={setDate}
                     value={date}
-                    tileDisabled={({ date }) => date.getDay() === 0}
-                    className="rounded-lg border border-gray-200 w-full calendar-compact"
+                    tileDisabled={({ date }) => !getAvailableDays(doctorsData?.length > 0 && doctorsData?.filter((doctor) => doctor._id == formData?.doctor?.id))?.includes(date?.toISOString().slice(0, 10))}
+                    className="rounded-lg border border-gray-200 w-full calendar-compact text-black"
                   />
                 </div>
 
-                {/* Slots + Consultation in same row */}
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-3  items-start">
-                  {/* Available Slots */}
                   <div className="col-span-2">
-                    <label className="block text-sm font-medium text-gray-700 mb-1">
-                      Available Slots
-                    </label>
+                    <label className="block text-sm font-medium text-gray-700 mb-1">Available Slots</label>
                     <div className="grid grid-cols-3 gap-2">
-                      {slots.map((slot, idx) => (
-                        <button
-                          type="button"
-                          key={idx}
-                          disabled={slot.booked}
-                          onClick={() => setSelectedSlot(slot.time)}
-                          className={`px-2 py-1 rounded-lg text-xs font-medium border transition ${
-                            slot.booked
-                              ? "bg-red-100 text-red-500 border-red-300 cursor-not-allowed"
-                              : selectedSlot === slot.time
-                              ? "bg-green-600 text-white border-green-700"
-                              : "bg-green-100 text-green-700 border-green-300 hover:bg-green-200"
-                          }`}
-                        >
-                          {slot.time}
-                        </button>
-                      ))}
+                      {timeslots.map((slot, idx) => {
+                        const isBooked = bookedAppointments?.filter((i) => i?.bookedTime == slot?._id)?.[0];
+                        return (
+                          <button
+                            type="button"
+                            key={slot?._id}
+                            disabled={isBooked?.bookedStatus}
+                            onClick={() => {
+                              if (!isBooked?.bookedStatus) {
+                                setFormData((prevForm) => ({ ...prevForm, bookDate: getDateFormat(date), bookTimeSlot: slot }));
+                                setBookedSlot(slot?._id);
+                              }
+                            }}
+                            className={`px-2 py-1 rounded-lg text-xs font-medium border transition ${
+                              isBooked?.bookedStatus ? "bg-red-100 text-red-500 border-red-300 cursor-not-allowed" : selectedSlot === slot.time ? "bg-green-600 text-white border-green-700" : "bg-green-100 text-green-700 border-green-300 hover:bg-green-200"
+                            }`}
+                          >
+                            <div
+                              className="slotContent flex flex-col text-center"
+                              data-te-toggle="tooltip"
+                              data-te-placement="top"
+                              data-te-ripple-init
+                              data-te-ripple-color="light"
+                              title={bookedAppointments?.filter((i) => i?.bookedTime === slot?._id)?.[0]?.name ? `Booked By ${bookedAppointments?.filter((i) => i?.bookedTime === slot?._id)?.[0]?.name}` : "Empty"}
+                            >
+                              <p className="text-sm">
+                                {slot?.startTime} - {slot?.endTime}
+                              </p>
+                              <p className="bookedStatusLabel text-sm ">{isBooked?.bookedTime ? (isBooked?.bookedStatus ? isBooked?.bookedStatus : "Booked") : bookedSlot !== slot?._id ? "Available" : "Booked"}</p>
+                            </div>
+                          </button>
+                        );
+                      })}
                     </div>
-                  </div>
-
-                  {/* Consultation Type */}
-                  <div className="flex flex-col items-center">
-                    <label className="block text-sm font-medium text-gray-700 mb-1 text-center">
-                      Consultation Type
-                    </label>
-                    <select
-                      value={consultationType}
-                      onChange={(e) => setConsultationType(e.target.value)}
-                      className="border border-gray-300 rounded px-2 py-1 w-full text-sm"
-                      required
-                    >
-                      <option value="">Offline Consultation</option>
-                      <option value="reversalprogram">Reversal Program</option>
-                      <option value="garbhsanskarclasses">Garbh Sanskar Classes</option>
-                      <option value="rightbrainactivationclasses">Right Brain Activation Classes</option>
-                       <option value="prepregnancy">Pre Pregnancy</option>
-                      <option value="postdelivery">Post Delivery</option>
-                      <option value="corporatewellnessprogram">Corporate Wellness Program</option>
-                       <option value="acupuncturetherapy">Acupuncture Therapy</option>
-                      <option value="acupressuretherapy">Acupressure Therapy</option>
-                      <option value="ayurvedictherapy">Ayurvedic Therapy</option>
-                      <option value="naturopathy">Naturopathy</option>
-                      <option value="physiotherapy">Physiotherapy</option>
-                    </select>
                   </div>
                 </div>
               </div>
 
-              {/* Agreement */}
               <p className="text-xs text-gray-600 mt-3">
                 By Registering you agree to our{" "}
                 <a href="/appointment" className="text-green-700 underline">
@@ -328,11 +531,7 @@ export default function AppointmentPage() {
                 .
               </p>
 
-              {/* Submit */}
-              <button
-                type="submit"
-                className="w-full bg-green-700 text-white py-2 rounded-lg font-medium hover:bg-green-800 transition mt-3 text-sm"
-              >
+              <button type="submit" className="w-full bg-green-700 text-white py-2 rounded-lg font-medium hover:bg-green-800 transition mt-3 text-sm">
                 Book Appointment
               </button>
             </div>
@@ -340,13 +539,7 @@ export default function AppointmentPage() {
 
           {/* Image */}
           <div className="rounded-2xl overflow-hidden" data-aos="fade-left">
-            <Image
-              src="/appointment.png"
-              alt="Appointment Booking"
-              width={400}
-              height={400}
-              className="object-cover w-full h-full"
-            />
+            <Image src="/appointment.png" alt="Appointment Booking" width={400} height={400} className="object-cover w-full h-full" />
           </div>
         </form>
       </section>
@@ -356,34 +549,33 @@ export default function AppointmentPage() {
 }
 
 /* Helper Components */
-function InputField({ label, name, type = "text", required }) {
+function InputField({ label, name, type = "text", required, onChange, error, placeholder }) {
   return (
     <div>
-      <label className="block text-sm font-medium text-gray-700">{label}</label>
-      <input
-        type={type}
-        name={name}
-        required={required}
-        placeholder={label}
-        className="w-full border border-gray-300 rounded px-2 py-1 text-sm"
-      />
+      <label className="block text-sm font-medium text-gray-700 text-black">{label}</label>
+      <input onChange={onChange} type={type} name={name} required={required} placeholder={placeholder} className="w-full border border-gray-300 rounded px-2 py-1 text-sm text-black" />
+      {error && <small>{error}</small>}
     </div>
   );
 }
 
-function SelectField({ label, name, options, required }) {
+function SelectField({ label, name, options, required, onChange, error }) {
   return (
     <div>
       <label className="block text-sm font-medium text-gray-700">{label}</label>
-      <select
-        name={name}
-        className="w-full border border-gray-300 rounded px-2 py-1 text-sm"
-        required={required}
-      >
-        {options.map((opt, idx) => (
-          <option key={idx}>{opt}</option>
+      <select name={name} className="w-full border border-gray-300 rounded px-2 py-1 text-sm text-black" required={required} onChange={onChange} defaultValue="">
+        {name !== "selectedRole" && (
+          <option value="" >
+            -- Select an option --
+          </option>
+        )}
+        {options?.map((opt, idx) => (
+          <option key={idx} value={opt?.value}>
+            {opt?.label}
+          </option>
         ))}
       </select>
+      {error && <small>{error}</small>}
     </div>
   );
 }
@@ -391,14 +583,7 @@ function SelectField({ label, name, options, required }) {
 function RadioField({ label, value, checked, onChange }) {
   return (
     <label className="inline-flex items-center text-sm">
-      <input
-        type="radio"
-        name="mode"
-        value={value}
-        checked={checked}
-        onChange={onChange}
-        className="text-green-600"
-      />
+      <input type="radio" name="mode" value={value} checked={checked} onChange={onChange} className="text-green-600" />
       <span className="ml-1 text-gray-700">{label}</span>
     </label>
   );
