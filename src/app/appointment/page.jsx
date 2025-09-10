@@ -10,6 +10,7 @@ import Image from "next/image";
 import Header from "../components/header";
 import Navbar from "../components/navbar";
 import Footer from "../components/footer";
+import { toast } from "react-toastify";
 
 const Calendar = dynamic(() => import("react-calendar"), { ssr: false });
 
@@ -23,6 +24,8 @@ const initialState = {
   selectedRole: "doctor",
   IsOnline: false,
   IsDoctor: true,
+  branch:"",
+  selectedBranch: "",
 };
 
 const getDateFormat = (date) => {
@@ -256,6 +259,10 @@ export default function AppointmentPage() {
       if (formData?.patient?.id === undefined) {
         let names = formData?.patient?.name?.split(" ");
 
+        if(names.length < 2){
+          setFormError({ name: "Please enter your last name" } );
+        }
+
         createItem("public/customer/", { firstName: names?.[0], surname: names?.[1], mobile: formData?.patient?.phone }).then((e) => {
           let data = e?.customer;
           let updateData = { ...formData };
@@ -321,6 +328,23 @@ export default function AppointmentPage() {
                 </div>
               </div>
 
+                {!formData.IsOnline && (
+                  <div className="flex items-center gap-2 w-full md:w-auto">
+                   <SelectField
+                     label="Select Branch"
+                     name="selectedBranch"
+                     placeholder="Select Branch"
+                     options={[
+                       { value: "Mumbai", label: "Mumbai" },
+                       { value: "Pune", label: "Pune" },
+                       { value: "Delhi", label: "Delhi" },
+                     ]}
+                     onChange={(e) => setFormData((prev) => ({ ...prev, selectedBranch: e.target.value }))}
+                     error={formError.selectedRole}
+                     required
+                   />
+                  </div>)}
+     
               <div className="flex flex-col">
                 <div className="flex items-center gap-2 w-full md:w-auto">
                   <InputField
@@ -383,18 +407,20 @@ export default function AppointmentPage() {
                   />
                   <span className="text-black">OR</span>
                   <InputField
-                    required={customers.slength === 0 || true}
+                    required={customers.slength === 0}
                     label="Create New"
                     name="name"
                     onChange={(e) => {
                       let selectedPatient = customers?.filter((p) => `${p?.firstName} ${p?.surname}` == e.target.value)?.[0];
                       let fullname = e.target.value?.split(' ')
+                      
+                      
                       if (selectedPatient === undefined) {
-                        setFormData((prev) => ({ ...prev, patient: {...prev?.patient, name:fullname?.[0], surname:fullname?.[1]} }));
+                        setFormData((prev) => ({ ...prev, patient: {...prev?.patient, name:fullname?.[0], surname:fullname?.[1] || {} } }));
                       } 
                     }}
                     value={customers?.filter((p) => p?._id == formData?.patient?.id)?.[0]?.firstName}
-                    error={formError?.patient?.name}
+                    error={formError?.patient?.fullname}
                     placeholder="[firstname lastname]"
                   />
                 </div>}
