@@ -25,7 +25,6 @@ export default function OnlineFormsPage() {
     country: "",
     gender: "",
     pincode: "",
-    password:""
   });
 
   const dispatch =  useDispatch();
@@ -63,7 +62,6 @@ export default function OnlineFormsPage() {
     country: "",
     gender: "",
     pincode: "",
-    password: ""
   })
     } catch (error) {
     toast.error("Something went wrong. Please try again.");
@@ -107,20 +105,6 @@ export default function OnlineFormsPage() {
                 name="surname"
                 placeholder="Last Name *"
                 value={form.surname}
-                onChange={handleChange}
-                className="w-full p-2 outline-none"
-                required
-              />
-            </div>
-
-            {/* password */}
-            <div className="flex items-center border rounded px-3">
-              <span className="text-gray-400 mr-2">🔒</span>
-              <input
-                type="password"
-                name="password"
-                placeholder="Password *"
-                value={form.password}
                 onChange={handleChange}
                 className="w-full p-2 outline-none"
                 required

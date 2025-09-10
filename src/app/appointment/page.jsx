@@ -383,7 +383,7 @@ export default function AppointmentPage() {
                   />
                   <span className="text-black">OR</span>
                   <InputField
-                    required={true}
+                    required={customers.length === 0}
                     label="Create New"
                     name="name"
                     onChange={(e) => {
@@ -476,7 +476,7 @@ export default function AppointmentPage() {
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-3  items-start">
                   <div className="col-span-2">
                     <label className="block text-sm font-medium text-gray-700 mb-1">Available Slots</label>
-                    <div className="grid grid-cols-3 gap-2">
+                    <div className="grid grid-cols-3 gap-2 h-[30vh] overflow-y-scroll">
                       {timeslots.map((slot, idx) => {
                         const isBooked = bookedAppointments?.filter((i) => i?.bookedTime == slot?._id)?.[0];
                         return (
