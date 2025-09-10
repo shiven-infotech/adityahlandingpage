@@ -50,7 +50,7 @@ export default function Footer() {
         <div>
           <h3 className="text-lg font-semibold mb-3">Contact Us</h3>
           <div className="flex items-center gap-2 text-sm mb-2">
-            <FaPhoneAlt /> <span>+91 98765 43210</span>
+            {/* <FaPhoneAlt /> <span>+91 98765 43210</span> */}
           </div>
          
           <div className="flex gap-4 text-xl flex-wrap">

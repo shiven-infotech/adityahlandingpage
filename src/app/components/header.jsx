@@ -28,11 +28,11 @@ export default function Header() {
               Book an Appointment
             </span>
           </Link>
-          <Link href="/register">
+          {/* <Link href="/register">
             <span className=" bg-white text-green-700 font-medium px-4 py-2 rounded-md hover:bg-green-100 transition">
               New Patient Register
             </span>
-          </Link>
+          </Link> */}
         </div>
       </div>
     </header>
