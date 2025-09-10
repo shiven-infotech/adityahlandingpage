@@ -383,7 +383,7 @@ export default function AppointmentPage() {
                   />
                   <span className="text-black">OR</span>
                   <InputField
-                    required={customers.length === 0}
+                    required={customers.slength === 0 || true}
                     label="Create New"
                     name="name"
                     onChange={(e) => {
