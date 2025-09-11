@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import AOS from "aos";
 import "aos/dist/aos.css";
 import Link from "next/link";
@@ -9,7 +9,56 @@ import Navbar from "../../../components/navbar";
 import Footer from "../../../components/footer";
 // React Icons
 import { FaFacebookF, FaInstagram, FaLinkedinIn, FaYoutube, FaStar, FaStarHalfAlt } from "react-icons/fa";
+import { toast } from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css';
+import {useDispatch, useSelector} from "react-redux";
+import { CreateSharedThoughts } from "../../../../../Redux/Api/LandingPageFormsApi";
+
+
 export default function TreatingSkinDisordersPage() {
+
+    const [formData, setFormData] = useState({
+      firstname: "",
+      lastname: "",
+      comment: "",
+      // rating: 5,
+      mobileNo: "",
+      reference:"blogs"
+    });
+
+    const dispatch = useDispatch()
+    
+      const handleChange = (e) =>{
+        setFormData((prev)=>({
+          ...prev,
+          [e.target.name]: e.target.value,
+        }))
+      }
+    
+      const handleSubmit = async(e) => {
+    
+        e.preventDefault();
+        if (formData.mobileNo.length !== 10) {
+              toast.error("Mobile number should be 10 digits");
+              return;
+            }
+        
+            console.log("Form submitted:", formData);
+            await dispatch(CreateSharedThoughts(formData))
+            setFormData({
+            firstname: "",
+            lastname: "",
+            mobileNo: "",
+            city: "",
+            query: "",
+            comment:"",
+            rating: 5,
+            reference:"blogs"
+            })
+            toast.success("Form submitted successfully");
+    
+      }
+
   useEffect(() => {
     AOS.init({ once: true });
   }, []);
@@ -164,6 +213,9 @@ export default function TreatingSkinDisordersPage() {
         placeholder="Enter your first name"
         className="w-full border border-gray-300 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-green-400"
         required
+        name="firstname"
+                    value={formData.firstname}
+                    onChange={handleChange}
       />
     </div>
 
@@ -174,6 +226,9 @@ export default function TreatingSkinDisordersPage() {
       </label>
       <input
         type="text"
+                    name="lastname"
+                    value={formData.lastname}
+                    onChange={handleChange}        
         placeholder="Enter your last name"
         className="w-full border border-gray-300 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-green-400"
         required
@@ -187,6 +242,9 @@ export default function TreatingSkinDisordersPage() {
       </label>
       <input
         type="tel"
+                            name="mobileNo"
+                    value={formData.mobileNo}
+                    onChange={handleChange}
         placeholder="Enter your mobile number"
         pattern="[0-9]{10}"
         className="w-full border border-gray-300 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-green-400"
@@ -204,12 +262,17 @@ export default function TreatingSkinDisordersPage() {
         rows="4"
         className="w-full border border-gray-300 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-green-400"
         required
+                      value={formData.comment}
+              name="comment"
+              onChange={handleChange}
       ></textarea>
     </div>
 
     {/* Submit Button */}
     <div className="md:col-span-2 flex justify-center">
       <button
+        onClick={handleSubmit}
+
         type="submit"
         className="bg-green-700 text-white font-semibold px-6 py-2 rounded-lg hover:bg-green-800 transition duration-300"
       >

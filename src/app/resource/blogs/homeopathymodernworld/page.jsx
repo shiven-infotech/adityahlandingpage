@@ -3,10 +3,13 @@
 import { useEffect, useState } from "react";
 import AOS from "aos";
 import "aos/dist/aos.css";
+import {useDispatch, useSelector} from "react-redux";
 
 import Header from "../../../components/header";
 import Navbar from "../../../components/navbar";
 import Footer from "../../../components/footer";
+import { toast } from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css';
 
 // React Icons
 import {
@@ -17,10 +20,55 @@ import {
   FaStar,
   FaStarHalfAlt,
 } from "react-icons/fa";
+import { CreateSharedThoughts } from "../../../../../Redux/Api/LandingPageFormsApi";
 
 export default function HomeopathyModernWorld() {
   const [rating, setRating] = useState(0);
   const [hover, setHover] = useState(null);
+  const [formData, setFormData] = useState({
+    firstname: "",
+    lastname: "",
+    comment: "",
+    rating: 5,
+    mobileNo: "",
+    reference:"blogs"
+  });
+
+    const dispatch = useDispatch()
+
+  const handleChange = (e) =>{
+    setFormData((prev)=>({
+      ...prev,
+      [e.target.name]: e.target.value,
+    }))
+  }
+
+  const handleSubmit = async(e) => {
+
+    e.preventDefault();
+    if (formData.mobileNo.length !== 10) {
+          toast.error("Mobile number should be 10 digits");
+          return;
+        }
+    
+        console.log("Form submitted:", formData);
+        await dispatch(CreateSharedThoughts(formData))
+        setFormData({
+        firstname: "",
+        lastname: "",
+        mobileNo: "",
+        city: "",
+        query: "",
+        comment:"",
+        rating: 5,
+        reference:"blogs"
+        })
+        toast.success("Form submitted successfully");
+
+      }
+    
+
+
 
   useEffect(() => {
     AOS.init({ once: true });
@@ -200,9 +248,12 @@ export default function HomeopathyModernWorld() {
             </label>
             <input
               type="text"
+              name="firstname"
               placeholder="Enter your first name"
               className="w-full border border-gray-300 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-green-400"
               required
+              value={formData.firstname}
+              onChange={handleChange}
             />
           </div>
 
@@ -213,9 +264,12 @@ export default function HomeopathyModernWorld() {
             </label>
             <input
               type="text"
+              name="lastname"
               placeholder="Enter your last name"
               className="w-full border border-gray-300 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-green-400"
               required
+              value={formData.lastname}
+              onChange={handleChange}
             />
           </div>
 
@@ -226,10 +280,13 @@ export default function HomeopathyModernWorld() {
             </label>
             <input
               type="tel"
+              name="mobileNo"
               placeholder="Enter your mobile number"
               pattern="[0-9]{10}"
               className="w-full border border-gray-300 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-green-400"
               required
+              value={formData.mobileNo}
+              onChange={handleChange}
             />
           </div>
 
@@ -246,13 +303,20 @@ export default function HomeopathyModernWorld() {
                     key={index}
                     size={28}
                     className={
-                      currentRating <= (hover || rating)
+                      currentRating <= (hover || formData.rating)
                         ? "text-yellow-500 cursor-pointer"
                         : "text-gray-300 cursor-pointer"
                     }
-                    onClick={() => setRating(currentRating)}
+                    onClick={() =>
+                      handleChange({
+                        target: { name: "rating", value: currentRating },
+                      })
+                    }
+                    // name="rating"
                     onMouseEnter={() => setHover(currentRating)}
                     onMouseLeave={() => setHover(null)}
+                    value={currentRating}
+
                   />
                 );
               })}
@@ -265,10 +329,15 @@ export default function HomeopathyModernWorld() {
               Comment
             </label>
             <textarea
+
               placeholder="Write your comment..."
               rows="4"
               className="w-full border border-gray-300 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-green-400"
               required
+              value={formData.comment}
+              name="comment"
+              onChange={handleChange}
+              
             ></textarea>
           </div>
 
@@ -277,6 +346,7 @@ export default function HomeopathyModernWorld() {
             <button
               type="submit"
               className="bg-green-700 text-white font-semibold px-6 py-2 rounded-lg hover:bg-green-800 transition duration-300"
+              onClick={handleSubmit}
             >
               Submit
             </button>
