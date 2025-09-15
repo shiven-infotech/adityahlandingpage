@@ -85,22 +85,25 @@ export default function Navbar() {
             { label: "Joint and Muscular Pain", href: "/acuteailments/boneailments/jointandmuscularpainhomoepathytreatment" },
           ]
          },
-         { label: "Children Aliments", href: "/AcuteAilments/childrenaliments",
-          children: [
-            { label: "Late Learning to Walk", href: "/acuteailments/childrenailments/latelearningtowalk" },
-            { label: "Late Learning to Talk", href: "/AcuteAilments/childrenailments/latelearningtotalk" },
-            { label: "Stammering", href: "/AcuteAilments/childrenailments/stammering" },
-            { label: "Examination Phobia", href: "/AcuteAilments/childrenaliments/examinationphobia" },
-            { label: "Memory Grasping & Recollecting Problem", href: "/AcuteAilments/childrenalimnets/memorygrasping&recollectingproblem" },
-            { label: "Bed Wetting, Concentration Diffuculties", href: "/AcuteAilments/childrenaliments/bedwetting,concentrationdifficulties" },
-            { label: "Insect Bite, injury, Operation, Burns", href: "/AcuteAilments/childrenaliments/insectbite,injury,operation,burns" },
-            { label: "Mental Stress in adults", href: "/AcuteAilments/childrenaliments/mentalstressinadults" },
-            { label: "Children (irritant behaviour and violent behaviour)", href: "/AcuteAilments/childrenaliments/children(irritantbehaviourandviolentbehaviour)" },
-            {label: "Attention Deficit", href: "/AcuteAilments/childrenaliments/attentiondeficit" },
-            { label: "Hyperactivity Disorder", href: "/AcuteAilments/childrenaliments/hyperactivitydisorder" },
-            { label: "Children (disobedient, not interested in studies)", href: "/AcuteAilments/childrenaliments/children(disobedient,notinterestedinstudies)" },
-          ]
-         },
+         {
+  label: "Children Ailments",
+  href: "/acuteailments/childrenailments",
+  children: [
+    { label: "Late Learning to Walk", href: "/acuteailments/childrenailments/latelearningtowalkhomoepathytreatment" },
+    { label: "Late Learning to Talk", href: "/acuteailments/childrenailments/latelearningtotalkhomoepathytreatment" },
+    { label: "Stammering", href: "/acuteailments/childrenailments/stammeringhomoepathytreatment" },
+    { label: "Examination Phobia", href: "/acuteailments/childrenailments/examinationphobiahomoepathytreatment" },
+    { label: "Memory Grasping and Recollecting Problem", href: "/acuteailments/childrenailments/memorygraspingandrecollectingproblemhomoepathytreatment" },
+    { label: "Bed Wetting, Concentration Difficulties", href: "/acuteailments/childrenailments/bedwetting-concentrationdifficultieshomoepathytreatment" },
+    { label: "Insect Bite, Injury, Operation, Burns", href: "/acuteailments/childrenailments/insectbite-injury-operation-burnshomoepathytreatment" },
+    { label: "Mental Stress in Adults", href: "/acuteailments/childrenailments/mentalstressinadults-homoepathytreatment" },
+    { label: "Children (Irritant Behaviour and Violent Behaviour)", href: "/acuteailments/childrenailments/children-irritantbehaviour-violentbehaviour-homoepathytreatment" },
+    { label: "Attention Deficit", href: "/acuteailments/childrenailments/attentiondeficithomoepathytreatment" },
+    { label: "Hyperactivity Disorder", href: "/acuteailments/childrenailments/hyperactivitydisorderhomoepathytreatment" },
+    { label: "Children (Disobedient, Not Interested in Studies)", href: "/acuteailments/childrenailments/children-disobedient-notinterestedinstudies-homoepathytreatment" },
+  ]
+}
+,
         { label: "Digestive Disorders", href: "/AcuteAilments/digestivedisorder" ,
         children: [
           { label: "Acidity", href: "/AcuteAilments/digestivedisorders/acidity" },
