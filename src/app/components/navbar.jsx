@@ -104,20 +104,23 @@ export default function Navbar() {
   ]
 }
 ,
-        { label: "Digestive Disorders", href: "/AcuteAilments/digestivedisorder" ,
-        children: [
-          { label: "Acidity", href: "/AcuteAilments/digestivedisorders/acidity" },
-          { label: "Constipation", href: "/AcuteAilments/digestivedisorders/constipation" },
-          { label: "Piles", href: "/AcuteAilments/digestivedisorders/piles" },
-          { label: "Fissures", href: "/AcuteAilments/digestivedisorders/Fissures" },
-          { label: "Gases", href: "/AcuteAilments/digestivedisorders/gases" },
-          { label:"Stomatitis", href: "/AcuteAilments/digestivedisorders/stomatitis" },
-          { label: "IBS", href: "/AcuteAilments/digestivedisorders/ibs" },
-          { label: "Migraine", href: "/AcuteAilments/digestivedisorders/migraine" },
-          { label: "Motion Sickness", href: "/AcuteAilments/digestivedisorders/motionsickness" },
-          { label: "Food Posioning", href: "/AcuteAilments/digestivedisorders/foodposioning" },
-        ] 
-      },
+      {
+  label: "Digestive Disorders",
+  href: "/acuteailments/digestivedisorders",
+  children: [
+    { label: "Acidity", href: "/acuteailments/digestivedisorders/acidity" },
+    { label: "Constipation", href: "/acuteailments/digestivedisorders/constipation" },
+    { label: "Piles", href: "/acuteailments/digestivedisorders/piles" },
+    { label: "Fissures", href: "/acuteailments/digestivedisorders/fissures" },
+    { label: "Gases", href: "/acuteailments/digestivedisorders/gases" },
+    { label: "Stomatitis", href: "/acuteailments/digestivedisorders/stomatitis" },
+    { label: "IBS", href: "/acuteailments/digestivedisorders/ibs" },
+    { label: "Migraine", href: "/acuteailments/digestivedisorders/migraine" },
+    { label: "Motion Sickness", href: "/acuteailments/digestivedisorders/motionsickness" },
+    { label: "Food Poisoning", href: "/acuteailments/digestivedisorders/foodpoisoning" },
+  ],
+}
+,
       { label: "Female Aliments", href: "/AcuteAilments/femalealiments" ,
         children: [
           { label: "Irregular Period", href: "/AcuteAilments/femalealiments/irregularperiod" },
